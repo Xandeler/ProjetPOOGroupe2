@@ -1,1 +1,80 @@
 #pragma once
+#include "Paiement.h"
+#include "Client.h"
+#include "Article.h"
+#include "Adresse.h"
+#include <cliext/list>
+
+using namespace System::Collections::Generic;
+using namespace System;
+
+ref class Commande
+{
+private:
+	int^ ID_Commande;
+	String^ Lettres_Nom;
+	String^ Lettres_Prenom;
+	int^ Annee;
+	String^ Lettres_Ville;
+	String^ Reference;
+	String^ Date_Livraison;
+	String^ Date_Emission;
+	List<Paiement^>^ Liste_Paiements;
+	String^ Date_Fin_Paiement;
+	double^ Total_HT;
+	double^ Total_TTC;
+	String^ Nom_Societe;
+	Adresse^ Adresse_Societe;
+	int^ Numero_Service_Clients;
+	String^ Logo;
+	Adresse^ Adresse_Facturation;
+	Adresse^ Adresse_Livraison;
+	List<Article^>^ Liste_Articles;
+
+public:
+	Commande();
+	Commande(int^ ID_Commande, String^ Lettres_Nom, String^ Lettres_Prenom, int^ Annee, String^ Lettres_Ville, String^ Date_Livraison, String^ Date_Emission, String^ Date_Fin_Paiement, double^ Total_HT, double^ Total_TTC, String^ Nom_Societe, Adresse^ Adresse_Societe, int^ Numero_Service_Clients, String^ Logo, Adresse^ Adresse_Facturation, Adresse^ Adresse_Livraison);
+	int^ get_ID_Commande();
+	void set_ID_Commande(int^ id);
+	String^ get_Lettres_Nom();
+	void set_Lettres_Nom(Client^ client);
+	String^ get_Lettres_Prenom();
+	void set_Lettres_Prenom(Client^ client);
+	int^ get_Annee();
+	void set_Annee(int^ annee);
+	String^ get_Lettres_Ville();
+	void set_Lettres_Ville();
+	String^ get_Reference();
+	void set_Reference(int^ id, String^ lettrres_nom, String^ lettres_prenom, String^ lettres_ville, int^ annee);
+	String^ get_Date_Livraison();
+	void set_Date_Livraison(String^ date_livraison);
+	String^ get_Date_Emission();
+	void set_Date_Emission(String^ date_emission);
+	List<Paiement^>^ get_Liste_Paiements();
+	void ajouter_Paiement();
+	void supprimer_Paiement();
+	void modifier_Paiement();
+	void afficher_Paiement();
+	String^ get_Date_Fin_Paiement();
+	void set_Date_Fin_Paiement(String^ date_fin_paiement);
+	double^ get_Total_HT();
+	void set_Total_HT(double^ total_ht);
+	double^ get_Total_TTC();
+	void set_Total_TTC(double^ total_ttc);
+	String^ get_Nom_Societe();
+	void set_Nom_Societe(String^ nom_societe);
+	Adresse^ get_Adresse_Societe();
+	void set_Adresse_Societe(Adresse^ adresse_societe);
+	int^ get_Numero_Service_Clients();
+	void set_Numero_Service_Clients(int^ numero_service_clients);
+	String^ get_Logo();
+	void set_Logo(String^ logo);
+	Adresse^ get_Adresse_Facturation();
+	void set_Adresse_Facturation(Client client);
+	Adresse^ get_Adresse_Livraison();
+	void set_Adresse_Livraison(Client client);
+	void ajouter_Article();
+	void supprimer_Article();
+	void modifier_Article();
+	void afficher_Article();
+};
