@@ -120,14 +120,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Adresse.cpp" />
+    <ClCompile Include="Article.cpp" />
+    <ClCompile Include="Client.cpp" />
+    <ClCompile Include="Commandes.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="MyForm1.cpp" />
     <ClCompile Include="MyForm2.cpp" />
     <ClCompile Include="MyForm3.cpp" />
     <ClCompile Include="MyForm4.cpp" />
     <ClCompile Include="MyForm5.cpp" />
+    <ClCompile Include="Paiement.cpp" />
+    <ClCompile Include="Personne.cpp" />
+    <ClCompile Include="Personnel.cpp" />
+    <ClCompile Include="Statistiques.cpp" />
+    <ClCompile Include="Stock.cpp" />
+    <ClCompile Include="StockageCommandes.cpp" />
+    <ClCompile Include="SuperieurHierarchique.cpp" />
+    <ClCompile Include="Ville.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Adresse.h" />
+    <ClInclude Include="Article.h" />
+    <ClInclude Include="Client.h" />
+    <ClInclude Include="Commande.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -146,6 +162,14 @@
     <ClInclude Include="MyForm5.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Paiement.h" />
+    <ClInclude Include="Personne.h" />
+    <ClInclude Include="Personnel.h" />
+    <ClInclude Include="Statistiques.h" />
+    <ClInclude Include="Stock.h" />
+    <ClInclude Include="StockageCommandes.h" />
+    <ClInclude Include="SuperieurHierarchique.h" />
+    <ClInclude Include="Ville.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm1.resx">
