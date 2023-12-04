@@ -48,6 +48,13 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::RadioButton^ radioButton9;
 	private: System::Windows::Forms::Button^ button1;
 
+
+
+
+
+
+
+
 	protected:
 
 	private:
@@ -80,10 +87,10 @@ namespace ProjetPOOGroupe2 {
 			this->radioButton1->AutoSize = true;
 			this->radioButton1->Location = System::Drawing::Point(508, 65);
 			this->radioButton1->Name = L"radioButton1";
-			this->radioButton1->Size = System::Drawing::Size(61, 20);
+			this->radioButton1->Size = System::Drawing::Size(201, 20);
 			this->radioButton1->TabIndex = 0;
 			this->radioButton1->TabStop = true;
-			this->radioButton1->Text = L"Panier moyen (apr�s remise)";
+			this->radioButton1->Text = L"Panier moyen (après remise)";
 			this->radioButton1->UseVisualStyleBackColor = true;
 			// 
 			// radioButton2
@@ -91,10 +98,10 @@ namespace ProjetPOOGroupe2 {
 			this->radioButton2->AutoSize = true;
 			this->radioButton2->Location = System::Drawing::Point(508, 91);
 			this->radioButton2->Name = L"radioButton2";
-			this->radioButton2->Size = System::Drawing::Size(76, 20);
+			this->radioButton2->Size = System::Drawing::Size(186, 20);
 			this->radioButton2->TabIndex = 1;
 			this->radioButton2->TabStop = true;
-			this->radioButton2->Text = L"Chiffre d'affaire sur un mois";
+			this->radioButton2->Text = L"Chiffre d\'affaire sur un mois";
 			this->radioButton2->UseVisualStyleBackColor = true;
 			// 
 			// radioButton3
@@ -102,7 +109,7 @@ namespace ProjetPOOGroupe2 {
 			this->radioButton3->AutoSize = true;
 			this->radioButton3->Location = System::Drawing::Point(508, 117);
 			this->radioButton3->Name = L"radioButton3";
-			this->radioButton3->Size = System::Drawing::Size(90, 20);
+			this->radioButton3->Size = System::Drawing::Size(311, 20);
 			this->radioButton3->TabIndex = 2;
 			this->radioButton3->TabStop = true;
 			this->radioButton3->Text = L"Produit(s) sous le seuil de r�approvisionnement";
@@ -113,10 +120,10 @@ namespace ProjetPOOGroupe2 {
 			this->radioButton4->AutoSize = true;
 			this->radioButton4->Location = System::Drawing::Point(508, 143);
 			this->radioButton4->Name = L"radioButton4";
-			this->radioButton4->Size = System::Drawing::Size(72, 20);
+			this->radioButton4->Size = System::Drawing::Size(234, 20);
 			this->radioButton4->TabIndex = 3;
 			this->radioButton4->TabStop = true;
-			this->radioButton4->Text = L"Montant total des achats d'un client";
+			this->radioButton4->Text = L"Montant total des achats d\'un client";
 			this->radioButton4->UseVisualStyleBackColor = true;
 			// 
 			// radioButton5
@@ -124,7 +131,7 @@ namespace ProjetPOOGroupe2 {
 			this->radioButton5->AutoSize = true;
 			this->radioButton5->Location = System::Drawing::Point(508, 169);
 			this->radioButton5->Name = L"radioButton5";
-			this->radioButton5->Size = System::Drawing::Size(72, 20);
+			this->radioButton5->Size = System::Drawing::Size(241, 20);
 			this->radioButton5->TabIndex = 4;
 			this->radioButton5->TabStop = true;
 			this->radioButton5->Text = L"Liste des 10 articles les plus vendus";
@@ -135,7 +142,7 @@ namespace ProjetPOOGroupe2 {
 			this->radioButton6->AutoSize = true;
 			this->radioButton6->Location = System::Drawing::Point(508, 195);
 			this->radioButton6->Name = L"radioButton6";
-			this->radioButton6->Size = System::Drawing::Size(72, 20);
+			this->radioButton6->Size = System::Drawing::Size(252, 20);
 			this->radioButton6->TabIndex = 5;
 			this->radioButton6->TabStop = true;
 			this->radioButton6->Text = L"Liste des 10 articles les moins vendus";
@@ -146,7 +153,7 @@ namespace ProjetPOOGroupe2 {
 			this->radioButton7->AutoSize = true;
 			this->radioButton7->Location = System::Drawing::Point(508, 221);
 			this->radioButton7->Name = L"radioButton7";
-			this->radioButton7->Size = System::Drawing::Size(72, 20);
+			this->radioButton7->Size = System::Drawing::Size(201, 20);
 			this->radioButton7->TabIndex = 6;
 			this->radioButton7->TabStop = true;
 			this->radioButton7->Text = L"Valeur commerciale du stock";
@@ -157,21 +164,22 @@ namespace ProjetPOOGroupe2 {
 			this->radioButton8->AutoSize = true;
 			this->radioButton8->Location = System::Drawing::Point(508, 247);
 			this->radioButton8->Name = L"radioButton8";
-			this->radioButton8->Size = System::Drawing::Size(72, 20);
+			this->radioButton8->Size = System::Drawing::Size(167, 20);
 			this->radioButton8->TabIndex = 7;
 			this->radioButton8->TabStop = true;
-			this->radioButton8->Text = L"Valeur d'achat du stock";
+			this->radioButton8->Text = L"Valeur d\'achat du stock";
 			this->radioButton8->UseVisualStyleBackColor = true;
 			// 
-			// radioButton6
+			// radioButton9
 			// 
 			this->radioButton9->AutoSize = true;
 			this->radioButton9->Location = System::Drawing::Point(508, 273);
 			this->radioButton9->Name = L"radioButton9";
-			this->radioButton9->Size = System::Drawing::Size(72, 20);
+			this->radioButton9->Size = System::Drawing::Size(535, 20);
 			this->radioButton9->TabIndex = 8;
 			this->radioButton9->TabStop = true;
-			this->radioButton9->Text = L"Simulation des variations de valeurs commerciales pour en d�duire la valeur du stock";
+			this->radioButton9->Text = L"Simulation des variations de valeurs commerciales pour en déduire la valeur du st"
+				L"ock";
 			this->radioButton9->UseVisualStyleBackColor = true;
 			// 
 			// button1
@@ -184,7 +192,7 @@ namespace ProjetPOOGroupe2 {
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm5::button1_Click);
 			// 
-			// MyForm1
+			// MyForm5
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -213,5 +221,7 @@ namespace ProjetPOOGroupe2 {
 		this->Hide();
 
 	}
-	};
+	private: System::Void tabPage1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }
