@@ -19,3 +19,35 @@ void Ville::supprimer(double^ ID)
 {
 
 }
+
+double^ Ville::get_ID_Ville()
+{
+	throw gcnew System::NotImplementedException();
+	// TODO: insérer une instruction return ici
+}
+
+void Ville::set_ID_Ville(double^ ID)
+{
+	throw gcnew System::NotImplementedException();
+}
+
+String^ Ville::get_nom()
+{
+	throw gcnew System::NotImplementedException();
+	// TODO: insérer une instruction return ici
+}
+
+void Ville::set_nom(String^ nom)
+{
+	throw gcnew System::NotImplementedException();
+}
+
+Ville::Ville()
+{
+	throw gcnew System::NotImplementedException();
+}
+
+Ville::Ville(double^ ID, String^ nom)
+{
+	throw gcnew System::NotImplementedException();
+}

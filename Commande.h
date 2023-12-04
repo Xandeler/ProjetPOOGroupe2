@@ -33,17 +33,17 @@ private:
 
 public:
 	Commande();
-	Commande(int^ ID_Commande, String^ Lettres_Nom, String^ Lettres_Prenom, int^ Annee, String^ Lettres_Ville, String^ Date_Livraison, String^ Date_Emission, String^ Date_Fin_Paiement, double^ Total_HT, double^ Total_TTC, String^ Nom_Societe, Adresse^ Adresse_Societe, int^ Numero_Service_Clients, String^ Logo, Adresse^ Adresse_Facturation, Adresse^ Adresse_Livraison);
+	Commande(int^ id, String^ lettres_nom, String^ lettres_prenom, int^ annee, String^ lettres_ville, String^ date_livraison, String^ date_emission, String^ date_fin_paiement, double^ total_ht, double^ total_ttc, String^ nom_societe, Adresse^ adresse_societe, int^ numero_service_clients, String^ logo, Adresse^ adresse_facturation, Adresse^ adresse_livraison);
 	int^ get_ID_Commande();
 	void set_ID_Commande(int^ id);
 	String^ get_Lettres_Nom();
-	void set_Lettres_Nom(Client^ client);
+	void set_Lettres_Nom(String^ lettres_nom);
 	String^ get_Lettres_Prenom();
-	void set_Lettres_Prenom(Client^ client);
+	void set_Lettres_Prenom(String^ lettres_prenom);
 	int^ get_Annee();
 	void set_Annee(int^ annee);
 	String^ get_Lettres_Ville();
-	void set_Lettres_Ville();
+	void set_Lettres_Ville(String^ lettres_ville);
 	String^ get_Reference();
 	void set_Reference(int^ id, String^ lettrres_nom, String^ lettres_prenom, String^ lettres_ville, int^ annee);
 	String^ get_Date_Livraison();
@@ -70,9 +70,9 @@ public:
 	String^ get_Logo();
 	void set_Logo(String^ logo);
 	Adresse^ get_Adresse_Facturation();
-	void set_Adresse_Facturation(Client client);
+	void set_Adresse_Facturation(Adresse^ adresse_facturation);
 	Adresse^ get_Adresse_Livraison();
-	void set_Adresse_Livraison(Client client);
+	void set_Adresse_Livraison(Adresse^ adresse_livraison);
 	void ajouter_Article();
 	void supprimer_Article();
 	void modifier_Article();
