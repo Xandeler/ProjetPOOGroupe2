@@ -7,9 +7,9 @@ AccesBase::AccesBase(void)
 {
 
     ////FAIRE UN FICHIER DE CONFIGURATION POUR LA CONNEXION////
-    this->sCnx = "Data Source=PC-PORTABLE-LEO;Initial Catalog=BDP6;Persist Security Info=True;User ID=NOOOOOOOOOO;Password=NOOOOOOOOOO";
+    this->sCnx = "Data Source=PC-PORTABLE-LEO;Initial Catalog=BDP6;Persist Security Info=True;User ID=NOOOOOOOOOO;Password=NOOOOOOOOOO"; 
 
-    this->sSql = "Rien";
+    this->sSql = "Rien";  
 
     this->connection = gcnew System::Data::SqlClient::SqlConnection(this->sCnx);
     this->command = gcnew System::Data::SqlClient::SqlCommand(this->sSql, this->connection);

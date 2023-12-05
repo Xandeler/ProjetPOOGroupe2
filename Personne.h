@@ -8,7 +8,6 @@ protected:
 	int^ ID_Personne;
 	String^ Nom;
 	String^ Prenom;
-	System::String^ tableName = "";        //Nom de la table dans la base de donnees au format [dataBase].[dbo].[tableName]
 
 public:
 	int^ get_ID_Personne();

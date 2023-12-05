@@ -218,7 +218,7 @@ void Commande::set_Adresse_Livraison(Adresse^ adresse_livraison)
 
 void Commande::ajouter_Article()
 {
-    
+
 }
 
 void Commande::supprimer_Article()
