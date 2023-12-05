@@ -114,10 +114,7 @@ namespace ProjetPOOGroupe2 {
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->Column1,
-				this->Column2, 
-				this->Column3, 
-				this->Column4, 
-				this->Column5
+					this->Column2, this->Column3, this->Column4, this->Column5
 			});
 			this->dataGridView1->Location = System::Drawing::Point(85, 14);
 			this->dataGridView1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
@@ -154,7 +151,7 @@ namespace ProjetPOOGroupe2 {
 			this->Column3->ReadOnly = true;
 			this->Column3->Width = 125;
 			// 
-			// DateEmbauche
+			// Column4
 			// 
 			this->Column4->HeaderText = L"DateEmbauche";
 			this->Column4->MinimumWidth = 6;
@@ -162,7 +159,7 @@ namespace ProjetPOOGroupe2 {
 			this->Column4->ReadOnly = true;
 			this->Column4->Width = 125;
 			// 
-			// Column4
+			// Column5
 			// 
 			this->Column5->HeaderText = L"Superieur";
 			this->Column5->MinimumWidth = 6;
@@ -215,7 +212,7 @@ namespace ProjetPOOGroupe2 {
 			// 
 			// btn_modifier
 			// 
-			this->btn_modifier->Location = System::Drawing::Point(144, 330);
+			this->btn_modifier->Location = System::Drawing::Point(144, 328);
 			this->btn_modifier->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_modifier->Name = L"btn_modifier";
 			this->btn_modifier->Size = System::Drawing::Size(112, 55);
@@ -319,7 +316,7 @@ namespace ProjetPOOGroupe2 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 18);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(900, 600);
+			this->ClientSize = System::Drawing::Size(882, 553);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->lbl_resultats);

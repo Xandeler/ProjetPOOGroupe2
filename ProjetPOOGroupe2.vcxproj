@@ -177,6 +177,9 @@
     <EmbeddedResource Include="MyForm1.resx">
       <DependentUpon>MyForm1.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MyForm2.resx">
+      <DependentUpon>MyForm2.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MyForm5.resx">
       <DependentUpon>MyForm5.h</DependentUpon>
     </EmbeddedResource>
