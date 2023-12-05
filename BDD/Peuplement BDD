@@ -217,3 +217,11 @@ VALUES
 (0.95),
 (0.90);
 
+INSERT INTO Commande(Reference_Commande, Livraison_Prevue_Commande, Emission_Commande)
+VALUES
+('ESKU2023STR1', '2023-12-11', '2023-12-02'),
+('MEGO2023DIJ2', '2023-12-12', '2023-12-03'),
+('CLJO2023MET3', '2023-12-13', '2023-12-04'),
+('MELE2023BOU4', '2023-12-14', '2023-12-05'),
+('CEKI2023CLE5', '2023-12-15', '2023-12-06');
+
