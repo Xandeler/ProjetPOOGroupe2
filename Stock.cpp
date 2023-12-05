@@ -26,12 +26,12 @@ void Stock::ajouter()
     
 }
 
-void Stock::supprimer()
+void Stock::supprimer(int^ id)
 {
     
 }
 
-void Stock::modifier()
+void Stock::modifier(int^ id)
 {
     
 }
