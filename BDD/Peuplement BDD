@@ -1,3 +1,5 @@
+SET IDENTITY_INSERT Ville ON;
+
 INSERT INTO Ville (Id_Ville, Nom_ville, CodePostal_ville)
 VALUES
   (1, 'Paris', '75000'),
@@ -30,14 +32,3 @@ VALUES
   (28, 'Levallois-Perret', '92300'),
   (29, 'Clermont-Ferrand', '63000'),
   (30, 'Antibes', '06600');
-
-INSERT INTO Stock (Quantite_Stock, Seuil_Reapprovisionnement_Stock)
-SELECT TOP 100
-   Int((Rnd()*100) + 1) AS Quantite_Stock,
-   Int((Rnd()*50) + 1) AS Seuil_Reapprovisionnement_Stock
-FROM MSysObjects;
-
-
-
-
-
