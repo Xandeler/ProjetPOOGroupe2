@@ -10,7 +10,7 @@ namespace ProjetPOOGroupe2 {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Description résumé de MyForm1
+	/// Description r�sum�e de MyForm1
 	/// </summary>
 	public ref class MyForm5 : public System::Windows::Forms::Form
 	{
@@ -18,7 +18,7 @@ namespace ProjetPOOGroupe2 {
 		MyForm5(void)
 		{
 			InitializeComponent();
-			this->button_retour->Click += gcnew System::EventHandler(this, &MyForm5::button1_Click); // Permet de lier le bouton � la fonction
+			this->button_retour->Click += gcnew System::EventHandler(this, &MyForm5::button1_Click); // Permet de lier le bouton a fonction
 
 			//
 			//TODO: ajoutez ici le code du constructeur
@@ -27,7 +27,7 @@ namespace ProjetPOOGroupe2 {
 
 	protected:
 		/// <summary>
-		/// Nettoyage des ressources utilis�es.
+		/// Nettoyage des ressources utilisees.
 		/// </summary>
 		~MyForm5()
 		{
@@ -237,7 +237,7 @@ namespace ProjetPOOGroupe2 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(941, 409);
+			this->ClientSize = System::Drawing::Size(960, 402);
 			this->Controls->Add(this->label_statistiques);
 			this->Controls->Add(this->label_ID_client);
 			this->Controls->Add(this->textBox_ID_client);

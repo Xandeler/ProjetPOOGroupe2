@@ -1,88 +1,94 @@
-USE Electronic;
-
 CREATE TABLE Ville(
-   ID_Ville INT PRIMARY KEY IDENTITY,
-   Nom_ville VARCHAR(50),
-   CodePostal_Ville INT
-);
-
-CREATE TABLE Remise(
-   ID_Remise INT PRIMARY KEY IDENTITY,
-   Valeur_Remise FLOAT
-);
-
-CREATE TABLE Modif(
-   ID_Modif INT PRIMARY KEY IDENTITY,
-   Taux_TVA_Modif FLOAT,
-   Taux_Reduction_Modif FLOAT
-);
-
-CREATE TABLE Adresse(
-   ID_Adresse INT PRIMARY KEY IDENTITY,
-   Rue_Adresse VARCHAR(50),
-   Numero_Maison_Adresse INT,
-   Nature_Adresse VARCHAR(50),
-   ID_Ville INT NOT NULL,
-   FOREIGN KEY(ID_Ville) REFERENCES Ville(ID_Ville)
+   ID_Ville INT IDENTITY,
+   Nom_ville VARCHAR(50) ,
+   CodePostal_Ville INT,
+   PRIMARY KEY(ID_Ville)
 );
 
 CREATE TABLE Commande(
-   Reference_Commande VARCHAR(50) PRIMARY KEY,
+   Reference_Commande VARCHAR(50) ,
    Livraison_Prevue_Commande DATE,
    Emission_Commande DATE,
+   PRIMARY KEY(Reference_Commande)
 );
 
-
 CREATE TABLE Article(
-   ID_Article INT PRIMARY KEY IDENTITY,
+   Reference_Article INT IDENTITY,
    Prix_HT_Article MONEY,
-   Nom_Article VARCHAR(50),
-   Quantite_Article INT,
-   Seuil_Reduction_Article VARCHAR(50),
-   ID_Stock INT NOT NULL,
-   FOREIGN KEY(ID_Stock) REFERENCES Stock(ID_Stock)
+   Nom_Article VARCHAR(50) ,
+   Seuil_Reduction_Article VARCHAR(50) ,
+   Quantite_Stock_Article INT,
+   Seuil_Reapprovisionnement_Article INT,
+   PRIMARY KEY(Reference_Article)
+);
+
+CREATE TABLE Remise(
+   ID_Remise INT IDENTITY,
+   Valeur_Remise FLOAT,
+   PRIMARY KEY(ID_Remise)
 );
 
 CREATE TABLE Paiement(
-   ID_Paiement INT PRIMARY KEY IDENTITY,
-   Moyen_Paiement VARCHAR(50),
+   ID_Paiement INT IDENTITY,
+   Moyen_Paiement VARCHAR(50) ,
    Date_Paiement DATE,
    Date_Solde_Paiement DATE,
-   Reference_Commande VARCHAR(50) NOT NULL,
+   Reference_Commande VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(ID_Paiement),
    FOREIGN KEY(Reference_Commande) REFERENCES Commande(Reference_Commande)
 );
 
+CREATE TABLE Modif(
+   ID_Modif INT IDENTITY,
+   Taux_TVA_Modif FLOAT,
+   Taux_Reduction_Modif FLOAT,
+   PRIMARY KEY(ID_Modif)
+);
+
+CREATE TABLE Adresse(
+   ID_Adresse INT IDENTITY,
+   Rue_Adresse VARCHAR(50) ,
+   Numero_Maison_Adresse INT,
+   Nature_Adresse VARCHAR(50) ,
+   ID_Ville INT NOT NULL,
+   PRIMARY KEY(ID_Adresse),
+   FOREIGN KEY(ID_Ville) REFERENCES Ville(ID_Ville)
+);
 
 CREATE TABLE Personne(
-   ID_Personne INT PRIMARY KEY IDENTITY,
-   Nom_Personne VARCHAR(50),
-   Prenom_Personne VARCHAR(50),
+   ID_Personne INT IDENTITY,
+   Nom_Personne VARCHAR(50) ,
+   Prenom_Personne VARCHAR(50) ,
    ID_Adresse INT NOT NULL,
+   PRIMARY KEY(ID_Personne),
    FOREIGN KEY(ID_Adresse) REFERENCES Adresse(ID_Adresse)
 );
 
 CREATE TABLE Clients(
-   ID_Clients INT PRIMARY KEY IDENTITY,
+   ID_Clients INT IDENTITY,
    Date_Naissance_Clients DATE,
    Date_Premier_Achat_Clients DATE,
    ID_Personne INT NOT NULL,
+   PRIMARY KEY(ID_Clients),
    UNIQUE(ID_Personne),
    FOREIGN KEY(ID_Personne) REFERENCES Personne(ID_Personne)
 );
 
 CREATE TABLE SuperieurHierarchique(
-   ID_SuperieurHierarchique INT PRIMARY KEY IDENTITY,
+   ID_SuperieurHierarchique INT IDENTITY,
    DateEmbauche_SuperieurHierarchique DATE,
    ID_Personne INT NOT NULL,
+   PRIMARY KEY(ID_SuperieurHierarchique),
    UNIQUE(ID_Personne),
    FOREIGN KEY(ID_Personne) REFERENCES Personne(ID_Personne)
 );
 
 CREATE TABLE Personnel(
-   ID_Personnel INT PRIMARY KEY IDENTITY,
+   ID_Personnel INT IDENTITY,
    DateEmbauche_personnel DATE,
-   ID_SuperieurHierarchique INT,
+   ID_SuperieurHierarchique INT NOT NULL,
    ID_Personne INT NOT NULL,
+   PRIMARY KEY(ID_Personnel),
    UNIQUE(ID_Personne),
    FOREIGN KEY(ID_SuperieurHierarchique) REFERENCES SuperieurHierarchique(ID_SuperieurHierarchique),
    FOREIGN KEY(ID_Personne) REFERENCES Personne(ID_Personne)
@@ -90,26 +96,26 @@ CREATE TABLE Personnel(
 
 CREATE TABLE Effectue(
    ID_Clients INT,
-   Reference_Commande INT,
+   Reference_Commande VARCHAR(50) ,
    PRIMARY KEY(ID_Clients, Reference_Commande),
    FOREIGN KEY(ID_Clients) REFERENCES Clients(ID_Clients),
-   FOREIGN KEY(Reference_Commande) REFERENCES Commande(ID_Commande)
+   FOREIGN KEY(Reference_Commande) REFERENCES Commande(Reference_Commande)
 );
 
-CREATE TABLE Compose(
-   Reference_Commande VARCHAR(50),
+CREATE TABLE Composé(
+   Reference_Commande VARCHAR(50) ,
    Reference_Article INT,
    Quantite_Commande_Article INT,
    PRIMARY KEY(Reference_Commande, Reference_Article),
-   FOREIGN KEY(Reference_Commande) REFERENCES Commande(ID_Commande),
-   FOREIGN KEY(Reference_Article) REFERENCES Article(ID_Article)
+   FOREIGN KEY(Reference_Commande) REFERENCES Commande(Reference_Commande),
+   FOREIGN KEY(Reference_Article) REFERENCES Article(Reference_Article)
 );
 
 CREATE TABLE Comprend(
-   Reference_Commande VARCHAR(50),
+   Reference_Commande VARCHAR(50) ,
    ID_Remise INT,
    PRIMARY KEY(Reference_Commande, ID_Remise),
-   FOREIGN KEY(Reference_Commande) REFERENCES Commande(ID_Commande),
+   FOREIGN KEY(Reference_Commande) REFERENCES Commande(Reference_Commande),
    FOREIGN KEY(ID_Remise) REFERENCES Remise(ID_Remise)
 );
 
@@ -117,6 +123,6 @@ CREATE TABLE Comporte(
    Reference_Article INT,
    ID_Modif INT,
    PRIMARY KEY(Reference_Article, ID_Modif),
-   FOREIGN KEY(Reference_Article) REFERENCES Article(ID_Article),
+   FOREIGN KEY(Reference_Article) REFERENCES Article(Reference_Article),
    FOREIGN KEY(ID_Modif) REFERENCES Modif(ID_Modif)
 );
