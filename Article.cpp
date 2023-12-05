@@ -10,10 +10,9 @@ Article::Article()
 	this->set_Prix_TTC();
 	this->set_Seuil_Reapprovisionnement(1);
 	this->set_Seuil_Reduction(1);
-	this->set_Couleur("Rien");
 }
 
-Article::Article(int^ ID, String^ nom, int^ quantite, double^ prix_ht, double^ taux_tva, int^ seuil_reapprovisionnement, int^ seuil_reduction, String^ couleur)
+Article::Article(int^ ID, String^ nom, int^ quantite, double^ prix_ht, double^ taux_tva, int^ seuil_reapprovisionnement, int^ seuil_reduction)
 {
 	this->set_ID_Article(ID);
 	this->set_Nom(nom);
@@ -23,7 +22,6 @@ Article::Article(int^ ID, String^ nom, int^ quantite, double^ prix_ht, double^ t
 	this->set_Prix_TTC();
 	this->set_Seuil_Reapprovisionnement(seuil_reapprovisionnement);
 	this->set_Seuil_Reduction(seuil_reduction);
-	this->set_Couleur(couleur);
 }
 
 int^ Article::get_ID_Article()
@@ -106,14 +104,4 @@ int^ Article::get_Seuil_Reduction()
 void Article::set_Seuil_Reduction(int^ seuil_reduction)
 {
 	this->Seuil_Reduction = seuil_reduction;
-}
-
-String^ Article::get_Couleur()
-{
-	return this->Couleur;
-}
-
-void Article::set_Couleur(String^ couleur)
-{
-	this->Couleur = couleur;
 }

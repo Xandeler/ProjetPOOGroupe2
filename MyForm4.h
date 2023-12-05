@@ -18,7 +18,6 @@ namespace ProjetPOOGroupe2 {
 		MyForm4(void)
 		{
 			InitializeComponent();
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm4::button1_Click); // Permet de lier le bouton � la fonction
 
 			//
 			//TODO: ajoutez ici le code du constructeur
@@ -36,12 +35,44 @@ namespace ProjetPOOGroupe2 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::RadioButton^ radioButton1;
+	private: System::Windows::Forms::Button^ button_retour;
+	private: System::Windows::Forms::DataGridView^ dataGridView_stock;
+	private: System::Windows::Forms::Button^ button_modifier_article;
+	private: System::Windows::Forms::Button^ button_supprimer_article;
+	private: System::Windows::Forms::Button^ button_ajouter_article;
+	private: System::Windows::Forms::Label^ label_nom_article;
+	private: System::Windows::Forms::TextBox^ textBox_nom_article;
+	private: System::Windows::Forms::TextBox^ textBox_seuil_reapprovisionnement_article;
+
+
+
+	private: System::Windows::Forms::Label^ label_seuil_reapprovisionnement_article;
+	private: System::Windows::Forms::TextBox^ textBox_prix_ht_article;
+
+
+
+	private: System::Windows::Forms::Label^ label_prix_ht_article;
+	private: System::Windows::Forms::TextBox^ textBox_taux_tva_article;
+
+
+	private: System::Windows::Forms::Label^ label_taux_tva_article;
+	private: System::Windows::Forms::TextBox^ textBox_seuil_reduction_article;
+
+
+	private: System::Windows::Forms::Label^ label_seuil_reduction_article;
+	private: System::Windows::Forms::TextBox^ textBox_couleur_article;
+
+
+	private: System::Windows::Forms::Label^ label_couleur_article;
+
+
 	protected:
-	private: System::Windows::Forms::RadioButton^ radioButton2;
-	private: System::Windows::Forms::RadioButton^ radioButton3;
-	private: System::Windows::Forms::RadioButton^ radioButton4;
-	private: System::Windows::Forms::Button^ button1;
+
+	protected:
+
+
+
+
 
 	protected:
 
@@ -58,79 +89,194 @@ namespace ProjetPOOGroupe2 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton3 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton4 = (gcnew System::Windows::Forms::RadioButton());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->button_retour = (gcnew System::Windows::Forms::Button());
+			this->dataGridView_stock = (gcnew System::Windows::Forms::DataGridView());
+			this->button_modifier_article = (gcnew System::Windows::Forms::Button());
+			this->button_supprimer_article = (gcnew System::Windows::Forms::Button());
+			this->button_ajouter_article = (gcnew System::Windows::Forms::Button());
+			this->label_nom_article = (gcnew System::Windows::Forms::Label());
+			this->textBox_nom_article = (gcnew System::Windows::Forms::TextBox());
+			this->textBox_seuil_reapprovisionnement_article = (gcnew System::Windows::Forms::TextBox());
+			this->label_seuil_reapprovisionnement_article = (gcnew System::Windows::Forms::Label());
+			this->textBox_prix_ht_article = (gcnew System::Windows::Forms::TextBox());
+			this->label_prix_ht_article = (gcnew System::Windows::Forms::Label());
+			this->textBox_taux_tva_article = (gcnew System::Windows::Forms::TextBox());
+			this->label_taux_tva_article = (gcnew System::Windows::Forms::Label());
+			this->textBox_seuil_reduction_article = (gcnew System::Windows::Forms::TextBox());
+			this->label_seuil_reduction_article = (gcnew System::Windows::Forms::Label());
+			this->textBox_couleur_article = (gcnew System::Windows::Forms::TextBox());
+			this->label_couleur_article = (gcnew System::Windows::Forms::Label());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView_stock))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// radioButton1
+			// button_retour
 			// 
-			this->radioButton1->AutoSize = true;
-			this->radioButton1->Location = System::Drawing::Point(508, 65);
-			this->radioButton1->Name = L"radioButton1";
-			this->radioButton1->Size = System::Drawing::Size(61, 20);
-			this->radioButton1->TabIndex = 0;
-			this->radioButton1->TabStop = true;
-			this->radioButton1->Text = L"Creer un article";
-			this->radioButton1->UseVisualStyleBackColor = true;
+			this->button_retour->Location = System::Drawing::Point(0, 501);
+			this->button_retour->Name = L"button_retour";
+			this->button_retour->Size = System::Drawing::Size(112, 36);
+			this->button_retour->TabIndex = 4;
+			this->button_retour->Text = L"RETOUR";
+			this->button_retour->UseVisualStyleBackColor = true;
+			this->button_retour->Click += gcnew System::EventHandler(this, &MyForm4::button1_Click);
 			// 
-			// radioButton2
+			// dataGridView_stock
 			// 
-			this->radioButton2->AutoSize = true;
-			this->radioButton2->Location = System::Drawing::Point(508, 91);
-			this->radioButton2->Name = L"radioButton2";
-			this->radioButton2->Size = System::Drawing::Size(76, 20);
-			this->radioButton2->TabIndex = 1;
-			this->radioButton2->TabStop = true;
-			this->radioButton2->Text = L"Modifier un article";
-			this->radioButton2->UseVisualStyleBackColor = true;
+			this->dataGridView_stock->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView_stock->Location = System::Drawing::Point(181, 12);
+			this->dataGridView_stock->Name = L"dataGridView_stock";
+			this->dataGridView_stock->RowHeadersWidth = 51;
+			this->dataGridView_stock->RowTemplate->Height = 24;
+			this->dataGridView_stock->Size = System::Drawing::Size(713, 212);
+			this->dataGridView_stock->TabIndex = 5;
 			// 
-			// radioButton3
+			// button_modifier_article
 			// 
-			this->radioButton3->AutoSize = true;
-			this->radioButton3->Location = System::Drawing::Point(508, 117);
-			this->radioButton3->Name = L"radioButton3";
-			this->radioButton3->Size = System::Drawing::Size(90, 20);
-			this->radioButton3->TabIndex = 2;
-			this->radioButton3->TabStop = true;
-			this->radioButton3->Text = L"Supprimer un article";
-			this->radioButton3->UseVisualStyleBackColor = true;
+			this->button_modifier_article->Location = System::Drawing::Point(181, 433);
+			this->button_modifier_article->Name = L"button_modifier_article";
+			this->button_modifier_article->Size = System::Drawing::Size(147, 52);
+			this->button_modifier_article->TabIndex = 6;
+			this->button_modifier_article->Text = L"Modifier l\'article :";
+			this->button_modifier_article->UseVisualStyleBackColor = true;
 			// 
-			// radioButton4
+			// button_supprimer_article
 			// 
-			this->radioButton4->AutoSize = true;
-			this->radioButton4->Location = System::Drawing::Point(508, 143);
-			this->radioButton4->Name = L"radioButton4";
-			this->radioButton4->Size = System::Drawing::Size(72, 20);
-			this->radioButton4->TabIndex = 3;
-			this->radioButton4->TabStop = true;
-			this->radioButton4->Text = L"Afficher un article";
-			this->radioButton4->UseVisualStyleBackColor = true;
+			this->button_supprimer_article->Location = System::Drawing::Point(181, 346);
+			this->button_supprimer_article->Name = L"button_supprimer_article";
+			this->button_supprimer_article->Size = System::Drawing::Size(147, 52);
+			this->button_supprimer_article->TabIndex = 7;
+			this->button_supprimer_article->Text = L"Supprimer l\'article :";
+			this->button_supprimer_article->UseVisualStyleBackColor = true;
 			// 
-			// button1
+			// button_ajouter_article
 			// 
-			this->button1->Location = System::Drawing::Point(12, 363);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(112, 36);
-			this->button1->TabIndex = 4;
-			this->button1->Text = L"RETOUR";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm4::button1_Click);
+			this->button_ajouter_article->Location = System::Drawing::Point(181, 259);
+			this->button_ajouter_article->Name = L"button_ajouter_article";
+			this->button_ajouter_article->Size = System::Drawing::Size(147, 52);
+			this->button_ajouter_article->TabIndex = 8;
+			this->button_ajouter_article->Text = L"Ajouter un article :";
+			this->button_ajouter_article->UseVisualStyleBackColor = true;
 			// 
-			// MyForm1
+			// label_nom_article
+			// 
+			this->label_nom_article->AutoSize = true;
+			this->label_nom_article->Location = System::Drawing::Point(366, 259);
+			this->label_nom_article->Name = L"label_nom_article";
+			this->label_nom_article->Size = System::Drawing::Size(106, 16);
+			this->label_nom_article->TabIndex = 9;
+			this->label_nom_article->Text = L"Nom de l\'article :";
+			// 
+			// textBox_nom_article
+			// 
+			this->textBox_nom_article->Location = System::Drawing::Point(369, 288);
+			this->textBox_nom_article->Name = L"textBox_nom_article";
+			this->textBox_nom_article->Size = System::Drawing::Size(100, 22);
+			this->textBox_nom_article->TabIndex = 10;
+			// 
+			// textBox_seuil_reapprovisionnement_article
+			// 
+			this->textBox_seuil_reapprovisionnement_article->Location = System::Drawing::Point(369, 376);
+			this->textBox_seuil_reapprovisionnement_article->Name = L"textBox_seuil_reapprovisionnement_article";
+			this->textBox_seuil_reapprovisionnement_article->Size = System::Drawing::Size(100, 22);
+			this->textBox_seuil_reapprovisionnement_article->TabIndex = 12;
+			// 
+			// label_seuil_reapprovisionnement_article
+			// 
+			this->label_seuil_reapprovisionnement_article->AutoSize = true;
+			this->label_seuil_reapprovisionnement_article->Location = System::Drawing::Point(366, 347);
+			this->label_seuil_reapprovisionnement_article->Name = L"label_seuil_reapprovisionnement_article";
+			this->label_seuil_reapprovisionnement_article->Size = System::Drawing::Size(256, 16);
+			this->label_seuil_reapprovisionnement_article->TabIndex = 11;
+			this->label_seuil_reapprovisionnement_article->Text = L"Seuil de réapprovisionnement de l\'article :";
+			// 
+			// textBox_prix_ht_article
+			// 
+			this->textBox_prix_ht_article->Location = System::Drawing::Point(369, 463);
+			this->textBox_prix_ht_article->Name = L"textBox_prix_ht_article";
+			this->textBox_prix_ht_article->Size = System::Drawing::Size(100, 22);
+			this->textBox_prix_ht_article->TabIndex = 14;
+			// 
+			// label_prix_ht_article
+			// 
+			this->label_prix_ht_article->AutoSize = true;
+			this->label_prix_ht_article->Location = System::Drawing::Point(366, 434);
+			this->label_prix_ht_article->Name = L"label_prix_ht_article";
+			this->label_prix_ht_article->Size = System::Drawing::Size(121, 16);
+			this->label_prix_ht_article->TabIndex = 13;
+			this->label_prix_ht_article->Text = L"Prix HT de l\'article :";
+			// 
+			// textBox_taux_tva_article
+			// 
+			this->textBox_taux_tva_article->Location = System::Drawing::Point(663, 463);
+			this->textBox_taux_tva_article->Name = L"textBox_taux_tva_article";
+			this->textBox_taux_tva_article->Size = System::Drawing::Size(100, 22);
+			this->textBox_taux_tva_article->TabIndex = 20;
+			// 
+			// label_taux_tva_article
+			// 
+			this->label_taux_tva_article->AutoSize = true;
+			this->label_taux_tva_article->Location = System::Drawing::Point(660, 434);
+			this->label_taux_tva_article->Name = L"label_taux_tva_article";
+			this->label_taux_tva_article->Size = System::Drawing::Size(156, 16);
+			this->label_taux_tva_article->TabIndex = 19;
+			this->label_taux_tva_article->Text = L"Taux de TVA de l\'article :";
+			// 
+			// textBox_seuil_reduction_article
+			// 
+			this->textBox_seuil_reduction_article->Location = System::Drawing::Point(663, 376);
+			this->textBox_seuil_reduction_article->Name = L"textBox_seuil_reduction_article";
+			this->textBox_seuil_reduction_article->Size = System::Drawing::Size(100, 22);
+			this->textBox_seuil_reduction_article->TabIndex = 18;
+			// 
+			// label_seuil_reduction_article
+			// 
+			this->label_seuil_reduction_article->AutoSize = true;
+			this->label_seuil_reduction_article->Location = System::Drawing::Point(660, 347);
+			this->label_seuil_reduction_article->Name = L"label_seuil_reduction_article";
+			this->label_seuil_reduction_article->Size = System::Drawing::Size(184, 16);
+			this->label_seuil_reduction_article->TabIndex = 17;
+			this->label_seuil_reduction_article->Text = L"Seuil de réduction de l\'article :";
+			// 
+			// textBox_couleur_article
+			// 
+			this->textBox_couleur_article->Location = System::Drawing::Point(663, 288);
+			this->textBox_couleur_article->Name = L"textBox_couleur_article";
+			this->textBox_couleur_article->Size = System::Drawing::Size(100, 22);
+			this->textBox_couleur_article->TabIndex = 16;
+			// 
+			// label_couleur_article
+			// 
+			this->label_couleur_article->AutoSize = true;
+			this->label_couleur_article->Location = System::Drawing::Point(660, 259);
+			this->label_couleur_article->Name = L"label_couleur_article";
+			this->label_couleur_article->Size = System::Drawing::Size(123, 16);
+			this->label_couleur_article->TabIndex = 15;
+			this->label_couleur_article->Text = L"Couleur de l\'article :";
+			// 
+			// MyForm4
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(750, 400);
-			this->Controls->Add(this->button1);
-			this->Controls->Add(this->radioButton4);
-			this->Controls->Add(this->radioButton3);
-			this->Controls->Add(this->radioButton2);
-			this->Controls->Add(this->radioButton1);
+			this->ClientSize = System::Drawing::Size(906, 538);
+			this->Controls->Add(this->textBox_taux_tva_article);
+			this->Controls->Add(this->label_taux_tva_article);
+			this->Controls->Add(this->textBox_seuil_reduction_article);
+			this->Controls->Add(this->label_seuil_reduction_article);
+			this->Controls->Add(this->textBox_couleur_article);
+			this->Controls->Add(this->label_couleur_article);
+			this->Controls->Add(this->textBox_prix_ht_article);
+			this->Controls->Add(this->label_prix_ht_article);
+			this->Controls->Add(this->textBox_seuil_reapprovisionnement_article);
+			this->Controls->Add(this->label_seuil_reapprovisionnement_article);
+			this->Controls->Add(this->textBox_nom_article);
+			this->Controls->Add(this->label_nom_article);
+			this->Controls->Add(this->button_ajouter_article);
+			this->Controls->Add(this->button_supprimer_article);
+			this->Controls->Add(this->button_modifier_article);
+			this->Controls->Add(this->dataGridView_stock);
+			this->Controls->Add(this->button_retour);
 			this->Name = L"MyForm4";
 			this->Text = L"Gestion du stock";
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView_stock))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
