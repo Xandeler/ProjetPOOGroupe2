@@ -3,9 +3,7 @@
 #include "Client.h"
 #include "Article.h"
 #include "Adresse.h"
-#include <cliext/list>
 
-using namespace System::Collections::Generic;
 using namespace System;
 
 ref class Commande
@@ -19,7 +17,6 @@ private:
 	String^ Reference;
 	String^ Date_Livraison;
 	String^ Date_Emission;
-	List<Paiement^>^ Liste_Paiements;
 	String^ Date_Fin_Paiement;
 	double^ Total_HT;
 	double^ Total_TTC;
@@ -29,7 +26,6 @@ private:
 	String^ Logo;
 	Adresse^ Adresse_Facturation;
 	Adresse^ Adresse_Livraison;
-	List<Article^>^ Liste_Articles;
 
 public:
 	Commande();
@@ -50,7 +46,6 @@ public:
 	void set_Date_Livraison(String^ date_livraison);
 	String^ get_Date_Emission();
 	void set_Date_Emission(String^ date_emission);
-	List<Paiement^>^ get_Liste_Paiements();
 	void ajouter_Paiement();
 	void supprimer_Paiement();
 	void modifier_Paiement();

@@ -1,15 +1,10 @@
 #pragma once
 #include "Personne.h"
 #include "Adresse.h"
-#include <cliext/list>
-
-using namespace System::Collections::Generic;
 
 ref class Client : public Personne
 {
 private:
-	List<Adresse^>^ Adresse_Facturation;
-	List<Adresse^>^ Adresse_Livraison;
 	String^ Date_Naissance;
 	String^ Date_Premier_Achat;
 

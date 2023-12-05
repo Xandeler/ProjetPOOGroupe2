@@ -1,51 +1,44 @@
 #include "Ville.h"
 
-List<Ville^>^ Ville::get_Liste_Ville()
+Ville::Ville()
 {
-	return this->Liste_Ville;
+	this->set_ID_Ville(1);
+	this->set_Nom("Rien");
+}
+
+Ville::Ville(int^ id, String^ nom)
+{
+	this->set_ID_Ville(id);
+	this->set_Nom(nom);
 }
 
 void Ville::ajouter()
 {
-	Ville^ ville = gcnew Ville();
-
-	Console::Write("Veuillez saisir le nom de la ville a ajouter : ");
-	ville->nom = Console::ReadLine();
-
-	this->Liste_Ville->Add(ville);
-}
-
-void Ville::supprimer(double^ ID)
-{
-
-}
-
-double^ Ville::get_ID_Ville()
-{
 	
 }
 
-void Ville::set_ID_Ville(double^ ID)
+void Ville::supprimer(int^ id)
 {
-	
+
 }
 
-String^ Ville::get_nom()
+int^ Ville::get_ID_Ville()
 {
-	
+	return this->ID_Ville;
 }
 
-void Ville::set_nom(String^ nom)
+void Ville::set_ID_Ville(int^ id)
 {
-	
+	this->ID_Ville = id;
 }
 
-Ville::Ville()
+String^ Ville::get_Nom()
 {
-	
+	return this->Nom;
 }
 
-Ville::Ville(double^ ID, String^ nom)
+void Ville::set_Nom(String^ nom)
 {
-	
+	this->Nom = nom;
 }
+
