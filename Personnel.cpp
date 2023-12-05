@@ -35,20 +35,16 @@ void Personnel::set_Superieur_Hierarchique(bool^ superieur_hierarchique)
 
 String^ Personnel::ajouter()
 {
-	return "INSERT INTO " + this->tableName + " (nom, prenom) VALUES('" + this->Nom + "','" + this->Prenom + "');";
 }
 
 String^ Personnel::supprimer()
 {
-	return "DELETE FROM " + this->tableName + " WHERE ID = " + this->ID_Personne;
 }
 
 String^ Personnel::modifier()
 {
-	return "UPDATE " + this->tableName + " SET [prenom] = '" + this->Prenom + "', [nom] = '" + this->Nom + "' WHERE [ID] = " + this->ID_Personne + ";";
 }
 
 String^ Personnel::afficher()
 {
-    return "SELECT * FROM " + this->tableName + " WHERE ID = " + this->ID_Personne + ";";
 }
