@@ -10,7 +10,7 @@ using namespace System;
 ref class Commande
 {
 private:
-	AccesBase^ AccesBase;
+	AccesBase^ Acces_Base;
 	int^ ID_Commande;
 	String^ Lettres_Nom;
 	String^ Lettres_Prenom;

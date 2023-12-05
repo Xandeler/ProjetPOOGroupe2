@@ -36,17 +36,39 @@ namespace ProjetPOOGroupe2 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::RadioButton^ radioButton1;
+	private: System::Windows::Forms::Button^ button_retour;
 	protected:
-	private: System::Windows::Forms::RadioButton^ radioButton2;
-	private: System::Windows::Forms::RadioButton^ radioButton3;
-	private: System::Windows::Forms::RadioButton^ radioButton4;
-	private: System::Windows::Forms::RadioButton^ radioButton5;
-	private: System::Windows::Forms::RadioButton^ radioButton6;
-	private: System::Windows::Forms::RadioButton^ radioButton7;
-	private: System::Windows::Forms::RadioButton^ radioButton8;
-	private: System::Windows::Forms::RadioButton^ radioButton9;
-	private: System::Windows::Forms::Button^ button1;
+
+	protected:
+
+
+
+
+
+
+
+
+
+	private: System::Windows::Forms::TextBox^ textBox_resultat;
+	private: System::Windows::Forms::Label^ label_resultat;
+	private: System::Windows::Forms::Button^ button_panier_moyen;
+	private: System::Windows::Forms::Button^ button_total_un_client;
+
+	private: System::Windows::Forms::Button^ button_articles_a_commander;
+
+	private: System::Windows::Forms::Button^ button_chiffre_affaires;
+	private: System::Windows::Forms::Button^ button_articles_moins_vendus;
+	private: System::Windows::Forms::Button^ button_valeur_commerciale;
+	private: System::Windows::Forms::Button^ button_achat_stock;
+
+
+
+
+	private: System::Windows::Forms::Button^ button_articles_plus_vendus;
+	private: System::Windows::Forms::TextBox^ textBox_ID_client;
+	private: System::Windows::Forms::Label^ label_ID_client;
+	private: System::Windows::Forms::Label^ label_statistiques;
+
 
 
 
@@ -70,143 +92,166 @@ namespace ProjetPOOGroupe2 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton3 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton4 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton5 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton6 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton7 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton8 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton9 = (gcnew System::Windows::Forms::RadioButton());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->button_retour = (gcnew System::Windows::Forms::Button());
+			this->textBox_resultat = (gcnew System::Windows::Forms::TextBox());
+			this->label_resultat = (gcnew System::Windows::Forms::Label());
+			this->button_panier_moyen = (gcnew System::Windows::Forms::Button());
+			this->button_total_un_client = (gcnew System::Windows::Forms::Button());
+			this->button_articles_a_commander = (gcnew System::Windows::Forms::Button());
+			this->button_chiffre_affaires = (gcnew System::Windows::Forms::Button());
+			this->button_articles_moins_vendus = (gcnew System::Windows::Forms::Button());
+			this->button_valeur_commerciale = (gcnew System::Windows::Forms::Button());
+			this->button_achat_stock = (gcnew System::Windows::Forms::Button());
+			this->button_articles_plus_vendus = (gcnew System::Windows::Forms::Button());
+			this->textBox_ID_client = (gcnew System::Windows::Forms::TextBox());
+			this->label_ID_client = (gcnew System::Windows::Forms::Label());
+			this->label_statistiques = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
-			// radioButton1
+			// button_retour
 			// 
-			this->radioButton1->AutoSize = true;
-			this->radioButton1->Location = System::Drawing::Point(508, 65);
-			this->radioButton1->Name = L"radioButton1";
-			this->radioButton1->Size = System::Drawing::Size(201, 20);
-			this->radioButton1->TabIndex = 0;
-			this->radioButton1->TabStop = true;
-			this->radioButton1->Text = L"Panier moyen (après remise)";
-			this->radioButton1->UseVisualStyleBackColor = true;
+			this->button_retour->Location = System::Drawing::Point(12, 363);
+			this->button_retour->Name = L"button_retour";
+			this->button_retour->Size = System::Drawing::Size(112, 36);
+			this->button_retour->TabIndex = 9;
+			this->button_retour->Text = L"RETOUR";
+			this->button_retour->UseVisualStyleBackColor = true;
+			this->button_retour->Click += gcnew System::EventHandler(this, &MyForm5::button1_Click);
 			// 
-			// radioButton2
+			// textBox_resultat
 			// 
-			this->radioButton2->AutoSize = true;
-			this->radioButton2->Location = System::Drawing::Point(508, 91);
-			this->radioButton2->Name = L"radioButton2";
-			this->radioButton2->Size = System::Drawing::Size(186, 20);
-			this->radioButton2->TabIndex = 1;
-			this->radioButton2->TabStop = true;
-			this->radioButton2->Text = L"Chiffre d\'affaire sur un mois";
-			this->radioButton2->UseVisualStyleBackColor = true;
+			this->textBox_resultat->Location = System::Drawing::Point(567, 43);
+			this->textBox_resultat->Multiline = true;
+			this->textBox_resultat->Name = L"textBox_resultat";
+			this->textBox_resultat->Size = System::Drawing::Size(356, 345);
+			this->textBox_resultat->TabIndex = 10;
 			// 
-			// radioButton3
+			// label_resultat
 			// 
-			this->radioButton3->AutoSize = true;
-			this->radioButton3->Location = System::Drawing::Point(508, 117);
-			this->radioButton3->Name = L"radioButton3";
-			this->radioButton3->Size = System::Drawing::Size(311, 20);
-			this->radioButton3->TabIndex = 2;
-			this->radioButton3->TabStop = true;
-			this->radioButton3->Text = L"Produit(s) sous le seuil de r�approvisionnement";
-			this->radioButton3->UseVisualStyleBackColor = true;
+			this->label_resultat->AutoSize = true;
+			this->label_resultat->Location = System::Drawing::Point(567, 13);
+			this->label_resultat->Name = L"label_resultat";
+			this->label_resultat->Size = System::Drawing::Size(62, 16);
+			this->label_resultat->TabIndex = 12;
+			this->label_resultat->Text = L"Résultat :";
 			// 
-			// radioButton4
+			// button_panier_moyen
 			// 
-			this->radioButton4->AutoSize = true;
-			this->radioButton4->Location = System::Drawing::Point(508, 143);
-			this->radioButton4->Name = L"radioButton4";
-			this->radioButton4->Size = System::Drawing::Size(234, 20);
-			this->radioButton4->TabIndex = 3;
-			this->radioButton4->TabStop = true;
-			this->radioButton4->Text = L"Montant total des achats d\'un client";
-			this->radioButton4->UseVisualStyleBackColor = true;
+			this->button_panier_moyen->Location = System::Drawing::Point(176, 66);
+			this->button_panier_moyen->Name = L"button_panier_moyen";
+			this->button_panier_moyen->Size = System::Drawing::Size(138, 55);
+			this->button_panier_moyen->TabIndex = 13;
+			this->button_panier_moyen->Text = L"Panier moyen";
+			this->button_panier_moyen->UseVisualStyleBackColor = true;
 			// 
-			// radioButton5
+			// button_total_un_client
 			// 
-			this->radioButton5->AutoSize = true;
-			this->radioButton5->Location = System::Drawing::Point(508, 169);
-			this->radioButton5->Name = L"radioButton5";
-			this->radioButton5->Size = System::Drawing::Size(241, 20);
-			this->radioButton5->TabIndex = 4;
-			this->radioButton5->TabStop = true;
-			this->radioButton5->Text = L"Liste des 10 articles les plus vendus";
-			this->radioButton5->UseVisualStyleBackColor = true;
+			this->button_total_un_client->Location = System::Drawing::Point(176, 297);
+			this->button_total_un_client->Name = L"button_total_un_client";
+			this->button_total_un_client->Size = System::Drawing::Size(138, 55);
+			this->button_total_un_client->TabIndex = 14;
+			this->button_total_un_client->Text = L"Montant total d\'un client";
+			this->button_total_un_client->UseVisualStyleBackColor = true;
 			// 
-			// radioButton6
+			// button_articles_a_commander
 			// 
-			this->radioButton6->AutoSize = true;
-			this->radioButton6->Location = System::Drawing::Point(508, 195);
-			this->radioButton6->Name = L"radioButton6";
-			this->radioButton6->Size = System::Drawing::Size(252, 20);
-			this->radioButton6->TabIndex = 5;
-			this->radioButton6->TabStop = true;
-			this->radioButton6->Text = L"Liste des 10 articles les moins vendus";
-			this->radioButton6->UseVisualStyleBackColor = true;
+			this->button_articles_a_commander->Location = System::Drawing::Point(176, 219);
+			this->button_articles_a_commander->Name = L"button_articles_a_commander";
+			this->button_articles_a_commander->Size = System::Drawing::Size(138, 55);
+			this->button_articles_a_commander->TabIndex = 15;
+			this->button_articles_a_commander->Text = L"Articles à commander";
+			this->button_articles_a_commander->UseVisualStyleBackColor = true;
 			// 
-			// radioButton7
+			// button_chiffre_affaires
 			// 
-			this->radioButton7->AutoSize = true;
-			this->radioButton7->Location = System::Drawing::Point(508, 221);
-			this->radioButton7->Name = L"radioButton7";
-			this->radioButton7->Size = System::Drawing::Size(201, 20);
-			this->radioButton7->TabIndex = 6;
-			this->radioButton7->TabStop = true;
-			this->radioButton7->Text = L"Valeur commerciale du stock";
-			this->radioButton7->UseVisualStyleBackColor = true;
+			this->button_chiffre_affaires->Location = System::Drawing::Point(176, 143);
+			this->button_chiffre_affaires->Name = L"button_chiffre_affaires";
+			this->button_chiffre_affaires->Size = System::Drawing::Size(138, 55);
+			this->button_chiffre_affaires->TabIndex = 16;
+			this->button_chiffre_affaires->Text = L"Chiffre d\'affaires de ce mois";
+			this->button_chiffre_affaires->UseVisualStyleBackColor = true;
 			// 
-			// radioButton8
+			// button_articles_moins_vendus
 			// 
-			this->radioButton8->AutoSize = true;
-			this->radioButton8->Location = System::Drawing::Point(508, 247);
-			this->radioButton8->Name = L"radioButton8";
-			this->radioButton8->Size = System::Drawing::Size(167, 20);
-			this->radioButton8->TabIndex = 7;
-			this->radioButton8->TabStop = true;
-			this->radioButton8->Text = L"Valeur d\'achat du stock";
-			this->radioButton8->UseVisualStyleBackColor = true;
+			this->button_articles_moins_vendus->Location = System::Drawing::Point(341, 143);
+			this->button_articles_moins_vendus->Name = L"button_articles_moins_vendus";
+			this->button_articles_moins_vendus->Size = System::Drawing::Size(138, 55);
+			this->button_articles_moins_vendus->TabIndex = 20;
+			this->button_articles_moins_vendus->Text = L"10 articles les moins vendus";
+			this->button_articles_moins_vendus->UseVisualStyleBackColor = true;
 			// 
-			// radioButton9
+			// button_valeur_commerciale
 			// 
-			this->radioButton9->AutoSize = true;
-			this->radioButton9->Location = System::Drawing::Point(508, 273);
-			this->radioButton9->Name = L"radioButton9";
-			this->radioButton9->Size = System::Drawing::Size(535, 20);
-			this->radioButton9->TabIndex = 8;
-			this->radioButton9->TabStop = true;
-			this->radioButton9->Text = L"Simulation des variations de valeurs commerciales pour en déduire la valeur du st"
-				L"ock";
-			this->radioButton9->UseVisualStyleBackColor = true;
+			this->button_valeur_commerciale->Location = System::Drawing::Point(341, 219);
+			this->button_valeur_commerciale->Name = L"button_valeur_commerciale";
+			this->button_valeur_commerciale->Size = System::Drawing::Size(138, 55);
+			this->button_valeur_commerciale->TabIndex = 19;
+			this->button_valeur_commerciale->Text = L"Valeur commerciale du stock";
+			this->button_valeur_commerciale->UseVisualStyleBackColor = true;
 			// 
-			// button1
+			// button_achat_stock
 			// 
-			this->button1->Location = System::Drawing::Point(12, 363);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(112, 36);
-			this->button1->TabIndex = 9;
-			this->button1->Text = L"RETOUR";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm5::button1_Click);
+			this->button_achat_stock->Location = System::Drawing::Point(341, 297);
+			this->button_achat_stock->Name = L"button_achat_stock";
+			this->button_achat_stock->Size = System::Drawing::Size(138, 55);
+			this->button_achat_stock->TabIndex = 18;
+			this->button_achat_stock->Text = L"Valeur d\'achat du stock";
+			this->button_achat_stock->UseVisualStyleBackColor = true;
+			// 
+			// button_articles_plus_vendus
+			// 
+			this->button_articles_plus_vendus->Location = System::Drawing::Point(341, 66);
+			this->button_articles_plus_vendus->Name = L"button_articles_plus_vendus";
+			this->button_articles_plus_vendus->Size = System::Drawing::Size(138, 55);
+			this->button_articles_plus_vendus->TabIndex = 17;
+			this->button_articles_plus_vendus->Text = L"10 articles les plus vendus";
+			this->button_articles_plus_vendus->UseVisualStyleBackColor = true;
+			// 
+			// textBox_ID_client
+			// 
+			this->textBox_ID_client->Location = System::Drawing::Point(47, 330);
+			this->textBox_ID_client->Name = L"textBox_ID_client";
+			this->textBox_ID_client->Size = System::Drawing::Size(100, 22);
+			this->textBox_ID_client->TabIndex = 21;
+			// 
+			// label_ID_client
+			// 
+			this->label_ID_client->AutoSize = true;
+			this->label_ID_client->Location = System::Drawing::Point(44, 297);
+			this->label_ID_client->Name = L"label_ID_client";
+			this->label_ID_client->Size = System::Drawing::Size(78, 16);
+			this->label_ID_client->TabIndex = 22;
+			this->label_ID_client->Text = L"ID du client :";
+			// 
+			// label_statistiques
+			// 
+			this->label_statistiques->AutoSize = true;
+			this->label_statistiques->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->label_statistiques->Location = System::Drawing::Point(19, 13);
+			this->label_statistiques->Name = L"label_statistiques";
+			this->label_statistiques->Size = System::Drawing::Size(107, 18);
+			this->label_statistiques->TabIndex = 24;
+			this->label_statistiques->Text = L"STATISTIQUES";
 			// 
 			// MyForm5
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1100, 400);
-			this->Controls->Add(this->button1);
-			this->Controls->Add(this->radioButton9);
-			this->Controls->Add(this->radioButton8);
-			this->Controls->Add(this->radioButton7);
-			this->Controls->Add(this->radioButton6);
-			this->Controls->Add(this->radioButton5);
-			this->Controls->Add(this->radioButton4);
-			this->Controls->Add(this->radioButton3);
-			this->Controls->Add(this->radioButton2);
-			this->Controls->Add(this->radioButton1);
+			this->ClientSize = System::Drawing::Size(935, 400);
+			this->Controls->Add(this->label_statistiques);
+			this->Controls->Add(this->label_ID_client);
+			this->Controls->Add(this->textBox_ID_client);
+			this->Controls->Add(this->button_articles_moins_vendus);
+			this->Controls->Add(this->button_valeur_commerciale);
+			this->Controls->Add(this->button_achat_stock);
+			this->Controls->Add(this->button_articles_plus_vendus);
+			this->Controls->Add(this->button_chiffre_affaires);
+			this->Controls->Add(this->button_articles_a_commander);
+			this->Controls->Add(this->button_total_un_client);
+			this->Controls->Add(this->button_panier_moyen);
+			this->Controls->Add(this->label_resultat);
+			this->Controls->Add(this->textBox_resultat);
+			this->Controls->Add(this->button_retour);
 			this->Name = L"MyForm5";
 			this->Text = L"Gestion des statistiques";
 			this->ResumeLayout(false);
