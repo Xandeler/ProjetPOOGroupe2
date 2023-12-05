@@ -70,7 +70,7 @@ void Adresse::set_Nature(String^ nature)
 
 bool^ Adresse::verifier_Ville()
 {
-	bool^ nom_ville;
+	bool^ nom_ville=true;
 
 	return nom_ville;
 }
