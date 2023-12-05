@@ -10,7 +10,7 @@ namespace ProjetPOOGroupe2 {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Description resume de MyForm5
+	/// Description r�sum�e de MyForm1
 	/// </summary>
 	public ref class MyForm5 : public System::Windows::Forms::Form
 	{
@@ -237,7 +237,10 @@ namespace ProjetPOOGroupe2 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(990, 419);
+			this->ClientSize = System::Drawing::Size(935, 400);
+			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->MaximumSize = System::Drawing::Size(935, 400);
+			this->MinimumSize = System::Drawing::Size(935, 400);
 			this->Controls->Add(this->label_statistiques);
 			this->Controls->Add(this->label_ID_client);
 			this->Controls->Add(this->textBox_ID_client);
