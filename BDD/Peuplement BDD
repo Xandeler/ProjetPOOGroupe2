@@ -190,7 +190,6 @@ VALUES
 ('1966-04-17', '2017-04-09', 45),
 ('1979-09-18', '2017-03-25', 46);
 
-
 INSERT INTO Article (Prix_HT_Article, Nom_Article, Seuil_Reduction_Article, Quantite_Stock_Article, Seuil_Reapprovisionnement_Article) VALUES
 	('246.4', 'Andalax', '30', '77', '34'),
 	('554.0', 'Y-find', '26', '226', '25'),
@@ -212,3 +211,9 @@ INSERT INTO Article (Prix_HT_Article, Nom_Article, Seuil_Reduction_Article, Quan
 	('448.9', 'Sonair', '12', '62', '28'),
 	('560.7', 'Bitchip', '11', '39', '95'),
 	('430.0', 'Quo Lux', '5', '71', '73');
+
+INSERT INTO Remise(Valeur_Remise)
+VALUES
+(0.95),
+(0.90);
+
