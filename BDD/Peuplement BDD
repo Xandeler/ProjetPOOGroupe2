@@ -225,3 +225,7 @@ VALUES
 ('MELE2023BOU4', '2023-12-14', '2023-12-05'),
 ('CEKI2023CLE5', '2023-12-15', '2023-12-06');
 
+
+INSERT INTO Modif (Taux_TVA_Modif, Taux_Reduction_Modif)
+VALUES
+  (1.2, 0.95);
