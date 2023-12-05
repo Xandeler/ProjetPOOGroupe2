@@ -70,7 +70,26 @@ void Adresse::set_Nature(String^ nature)
 
 bool^ Adresse::verifier_Ville()
 {
-	bool^ nom_ville=true;
+	bool verif_ville = false;  // Initialisez à false par défaut
 
-	return nom_ville;
+	// On fait une boucle pour recuperer les villes de la BDD 1 par 1 qu'on insert dans un tableau 
+	// On fait une boucle qui verifie la ville entree par l'utilisateur et chacune des villes du tableau 
+	/*String tab_ville[30] = {
+		"Paris", "Marseille", "Lyon", "Toulouse", "Nice", "Nantes",
+		"Strasbourg", "Montpellier", "Bordeaux", "Lille", "Rennes",
+		"Reims", "Le Havre", "Saint-Étienne", "Toulon", "Le Mans",
+		"Aix-en-Provence", "Amiens", "Perpignan", "Boulogne-Billancourt",
+		"Metz", "Besançon", "Grenoble", "Dijon", "Nîmes", "Angers",
+		"Villeurbanne", "Levallois-Perret", "Clermont-Ferrand", "Antibes"
+	};
+
+	for (int i = 0; i < 10; ++i) {
+		if (this->get_Nom_Ville() == tab_ville[i]) {
+			verif_ville = true;
+			break;  // Sortez de la boucle dès que la ville est trouvée
+		}
+	}
+	*/
+
+	return verif_ville;
 }
