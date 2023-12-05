@@ -341,7 +341,7 @@ namespace ProjetPOOGroupe2 {
 			this->MaximumSize = System::Drawing::Size(900, 600);
 			this->MinimumSize = System::Drawing::Size(900, 600);
 			this->Name = L"MyForm2";
-			this->Text = L"Gestion du personnel";
+			this->Text = L"Gestion des clients";
 			this->Load += gcnew System::EventHandler(this, &MyForm2::MyForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
