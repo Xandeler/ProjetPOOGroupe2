@@ -1,0 +1,43 @@
+INSERT INTO Ville (Id_Ville, Nom_ville, CodePostal_ville)
+VALUES
+  (1, 'Paris', '75000'),
+  (2, 'Marseille', '13000'),
+  (3, 'Lyon', '69000'),
+  (4, 'Toulouse', '31000'),
+  (5, 'Nice', '06000'),
+  (6, 'Nantes', '44000'),
+  (7, 'Strasbourg', '67000'),
+  (8, 'Montpellier', '34000'),
+  (9, 'Bordeaux', '33000'),
+  (10, 'Lille', '59000'),
+  (11, 'Rennes', '35000'),
+  (12, 'Reims', '51100'),
+  (13, 'Le Havre', '76600'),
+  (14, 'Saint-Étienne', '42000'),
+  (15, 'Toulon', '83000'),
+  (16, 'Le Mans', '72000'),
+  (17, 'Aix-en-Provence', '13090'),
+  (18, 'Amiens', '80000'),
+  (19, 'Perpignan', '66000'),
+  (20, 'Boulogne-Billancourt', '92100'),
+  (21, 'Metz', '57000'),
+  (22, 'Besançon', '25000'),
+  (23, 'Grenoble', '38000'),
+  (24, 'Dijon', '21000'),
+  (25, 'Nîmes', '30000'),
+  (26, 'Angers', '49000'),
+  (27, 'Villeurbanne', '69100'),
+  (28, 'Levallois-Perret', '92300'),
+  (29, 'Clermont-Ferrand', '63000'),
+  (30, 'Antibes', '06600');
+
+INSERT INTO Stock (Quantite_Stock, Seuil_Reapprovisionnement_Stock)
+SELECT TOP 100
+   Int((Rnd()*100) + 1) AS Quantite_Stock,
+   Int((Rnd()*50) + 1) AS Seuil_Reapprovisionnement_Stock
+FROM MSysObjects;
+
+
+
+
+
