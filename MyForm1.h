@@ -193,9 +193,9 @@ namespace ProjetPOOGroupe2 {
 			this->btn_ajouter->Location = System::Drawing::Point(144, 267);
 			this->btn_ajouter->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_ajouter->Name = L"btn_ajouter";
-			this->btn_ajouter->Size = System::Drawing::Size(112, 55);
+			this->btn_ajouter->Size = System::Drawing::Size(131, 55);
 			this->btn_ajouter->TabIndex = 2;
-			this->btn_ajouter->Text = L"AJOUTER";
+			this->btn_ajouter->Text = L"AJOUTER UN PERSONNEL";
 			this->btn_ajouter->UseVisualStyleBackColor = true;
 			this->btn_ajouter->Click += gcnew System::EventHandler(this, &MyForm1::btn_ajouter_Click);
 			// 
@@ -204,9 +204,9 @@ namespace ProjetPOOGroupe2 {
 			this->btn_supprimer->Location = System::Drawing::Point(144, 388);
 			this->btn_supprimer->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_supprimer->Name = L"btn_supprimer";
-			this->btn_supprimer->Size = System::Drawing::Size(112, 55);
+			this->btn_supprimer->Size = System::Drawing::Size(131, 55);
 			this->btn_supprimer->TabIndex = 3;
-			this->btn_supprimer->Text = L"SUPPRIMER";
+			this->btn_supprimer->Text = L"SUPPRIMER UN PERSONNEL";
 			this->btn_supprimer->UseVisualStyleBackColor = true;
 			this->btn_supprimer->Click += gcnew System::EventHandler(this, &MyForm1::btn_supprimer_Click);
 			// 
@@ -215,9 +215,9 @@ namespace ProjetPOOGroupe2 {
 			this->btn_modifier->Location = System::Drawing::Point(144, 328);
 			this->btn_modifier->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_modifier->Name = L"btn_modifier";
-			this->btn_modifier->Size = System::Drawing::Size(112, 55);
+			this->btn_modifier->Size = System::Drawing::Size(131, 55);
 			this->btn_modifier->TabIndex = 4;
-			this->btn_modifier->Text = L"MODIFIER";
+			this->btn_modifier->Text = L"MODIFIER UN PERSONNEL";
 			this->btn_modifier->UseVisualStyleBackColor = true;
 			this->btn_modifier->Click += gcnew System::EventHandler(this, &MyForm1::btn_modifier_Click);
 			// 
@@ -316,7 +316,7 @@ namespace ProjetPOOGroupe2 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 18);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(882, 553);
+			this->ClientSize = System::Drawing::Size(882, 518);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->lbl_resultats);

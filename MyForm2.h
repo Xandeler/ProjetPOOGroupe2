@@ -181,7 +181,7 @@ namespace ProjetPOOGroupe2 {
 			this->btn_ajouter->Name = L"btn_ajouter";
 			this->btn_ajouter->Size = System::Drawing::Size(112, 55);
 			this->btn_ajouter->TabIndex = 2;
-			this->btn_ajouter->Text = L"AJOUTER";
+			this->btn_ajouter->Text = L"AJOUTER UN CLIENT";
 			this->btn_ajouter->UseVisualStyleBackColor = true;
 			this->btn_ajouter->Click += gcnew System::EventHandler(this, &MyForm2::btn_ajouter_Click);
 			// 
@@ -192,7 +192,7 @@ namespace ProjetPOOGroupe2 {
 			this->btn_supprimer->Name = L"btn_supprimer";
 			this->btn_supprimer->Size = System::Drawing::Size(112, 55);
 			this->btn_supprimer->TabIndex = 3;
-			this->btn_supprimer->Text = L"SUPPRIMER";
+			this->btn_supprimer->Text = L"SUPPRIMER UN CLIENT";
 			this->btn_supprimer->UseVisualStyleBackColor = true;
 			this->btn_supprimer->Click += gcnew System::EventHandler(this, &MyForm2::btn_supprimer_Click);
 			// 
@@ -203,7 +203,7 @@ namespace ProjetPOOGroupe2 {
 			this->btn_modifier->Name = L"btn_modifier";
 			this->btn_modifier->Size = System::Drawing::Size(112, 55);
 			this->btn_modifier->TabIndex = 4;
-			this->btn_modifier->Text = L"MODIFIER";
+			this->btn_modifier->Text = L"MODIFIER UN CLIENT";
 			this->btn_modifier->UseVisualStyleBackColor = true;
 			this->btn_modifier->Click += gcnew System::EventHandler(this, &MyForm2::btn_modifier_Click);
 			// 
