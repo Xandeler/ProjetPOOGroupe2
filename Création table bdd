@@ -3,14 +3,14 @@ CREATE DATABASE Electronic;
 USE Electronic;
 
 CREATE TABLE Ville(
-   ID_Ville COUNTER,
+   ID_Ville INT PRIMARY KEY IDENTITY,
    Nom_ville VARCHAR(50),
    CodePostal_Ville INT,
    PRIMARY KEY(ID_Ville)
 );
 
 CREATE TABLE Dates_Utiles(
-   Id_Dates_Utiles COUNTER,
+   Id_Dates_Utiles INT PRIMARY KEY IDENTITY,
    Commande_Dates_Utiles DATE,
    Emission_Dates_Utiles DATE,
    Livraison_Prevue_Dates_Utiles DATE,
@@ -18,27 +18,27 @@ CREATE TABLE Dates_Utiles(
 );
 
 CREATE TABLE Remise(
-   ID_Remise COUNTER,
+   ID_Remise INT PRIMARY KEY IDENTITY,
    Valeur_Remise DOUBLE,
    PRIMARY KEY(ID_Remise)
 );
 
 CREATE TABLE Stock(
-   ID_Stock COUNTER,
+   ID_Stock INT PRIMARY KEY IDENTITY,
    Quantite_Stock INT,
    Seuil_Reapprovisionneent_Stock INT,
    PRIMARY KEY(ID_Stock)
 );
 
 CREATE TABLE Modif(
-   Id_Modif COUNTER,
+   Id_Modif INT PRIMARY KEY IDENTITY,
    Taux_TVA_Modif DOUBLE,
    Taux_Reduction_Modif DOUBLE,
    PRIMARY KEY(Id_Modif)
 );
 
 CREATE TABLE Adresse(
-   ID_Adresse COUNTER,
+   ID_Adresse INT PRIMARY KEY IDENTITY,
    Rue_Adresse VARCHAR(50),
    Numero_Maison_Adresse INT,
    Nature_Adresse VARCHAR(50),
@@ -48,6 +48,7 @@ CREATE TABLE Adresse(
 );
 
 CREATE TABLE Commande(
+   Id_Commande INT PRIMARY KEY IDENTITY,
    Reference_Commande VARCHAR(50),
    Id_Dates_Utiles INT NOT NULL,
    PRIMARY KEY(Reference_Commande),
@@ -55,18 +56,17 @@ CREATE TABLE Commande(
 );
 
 CREATE TABLE Article(
-   Reference_Article COUNTER,
+   Id_Article INT PRIMARY KEY IDENTITY,
    Prix_HT_Article CURRENCY,
    Nom_Article VARCHAR(50),
    Quantite_Article INT,
    SeuilReduction_Article VARCHAR(50),
    ID_Stock INT NOT NULL,
-   PRIMARY KEY(Reference_Article),
    FOREIGN KEY(ID_Stock) REFERENCES Stock(ID_Stock)
 );
 
 CREATE TABLE Paiement(
-   ID_Paiement COUNTER,
+   ID_Paiement INT PRIMARY KEY IDENTITY,
    Moyen_Paiement VARCHAR(50),
    Date_Paiement DATE,
    Date_Solde_Paiement DATE,
@@ -76,7 +76,7 @@ CREATE TABLE Paiement(
 );
 
 CREATE TABLE Personne(
-   ID_Personne COUNTER,
+   ID_Personne INT PRIMARY KEY IDENTITY,
    Nom_Personne VARCHAR(50),
    Prenom_Personne VARCHAR(50),
    ID_Adresse INT NOT NULL,
@@ -85,7 +85,7 @@ CREATE TABLE Personne(
 );
 
 CREATE TABLE Clients(
-   ID_Clients COUNTER,
+   ID_Clients INT PRIMARY KEY IDENTITY,
    Date_Naissance_Clients DATE,
    Date_Premier_Achat_Clients DATE,
    ID_Personne INT NOT NULL,
@@ -95,7 +95,7 @@ CREATE TABLE Clients(
 );
 
 CREATE TABLE SuperieurHierarchique(
-   ID_SuperieurHierarchique COUNTER,
+   ID_SuperieurHierarchique INT PRIMARY KEY IDENTITY,
    DateEmbauche_SuperieurHierarchique DATE,
    ID_Personne INT NOT NULL,
    PRIMARY KEY(ID_SuperieurHierarchique),
@@ -104,7 +104,7 @@ CREATE TABLE SuperieurHierarchique(
 );
 
 CREATE TABLE Personnel(
-   ID_Personnel COUNTER,
+   ID_Personnel INT PRIMARY KEY IDENTITY,
    DateEmbauche_personnel DATE,
    ID_SuperieurHierarchique INT NOT NULL,
    ID_Personne INT NOT NULL,
