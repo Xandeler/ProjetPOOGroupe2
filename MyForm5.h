@@ -254,7 +254,7 @@ namespace ProjetPOOGroupe2 {
 
 	private: System::Void bouton_retour_click(System::Object^ sender, System::EventArgs^ e)
 	{
-
+		this->Hide();
 	}
 
 	private: System::Void bouton_panier_moyen_click(System::Object^ sender, System::EventArgs^ e)

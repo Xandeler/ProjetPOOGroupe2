@@ -311,12 +311,12 @@ namespace ProjetPOOGroupe2 {
 
 	private: System::Void bouton_retour_click(System::Object^ sender, System::EventArgs^ e)
 	{
-
+		this->Hide();
 	}
 
 	private: System::Void bouton_ajouter_article_click(System::Object^ sender, System::EventArgs^ e)
 	{
-
+		this->stock->set_Article(this->textBox_nom_article->Text, Convert::ToInt32(this->textBox_quantite_article->Text), Convert::ToDouble(this->textBox_prix_ht_article->Text), Convert::ToDouble(this->textBox_taux_tva_article->Text), Convert::ToInt32(this->textBox_seuil_reapprovisionnement_article->Text), Convert::ToInt32(this->textBox_seuil_reduction_article->Text));
 	}
 
 	private: System::Void bouton_supprimer_article_click(System::Object^ sender, System::EventArgs^ e)
