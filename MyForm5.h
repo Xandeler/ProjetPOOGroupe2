@@ -39,11 +39,6 @@ namespace ProjetPOOGroupe2 {
 		}
 	private: System::Windows::Forms::Button^ button_retour;
 
-	protected:
-
-	protected:
-
-
 	private: System::Windows::Forms::TextBox^ textBox_resultat;
 	private: System::Windows::Forms::Label^ label_resultat;
 	private: System::Windows::Forms::Button^ button_panier_moyen;
@@ -300,15 +295,6 @@ namespace ProjetPOOGroupe2 {
 	private: System::Void bouton_valeur_achat_click(System::Object^ sender, System::EventArgs^ e)
 	{
 
-	}
-	private: System::Void InitializeComponent() {
-		this->SuspendLayout();
-		// 
-		// MyForm5
-		// 
-		this->ClientSize = System::Drawing::Size(506, 384);
-		this->Name = L"MyForm5";
-		this->ResumeLayout(false);
 	}
 	};
 }
