@@ -6,10 +6,11 @@ CREATE TABLE Ville(
 );
 
 CREATE TABLE Commande(
-   Reference_Commande VARCHAR(50) ,
+   ID_Commande INT IDENTITY,
+   Reference_Commande VARCHAR(50)  NOT NULL,
    Livraison_Prevue_Commande DATE,
    Emission_Commande DATE,
-   PRIMARY KEY(Reference_Commande)
+   PRIMARY KEY(ID_Commande)
 );
 
 CREATE TABLE Article(
@@ -33,9 +34,9 @@ CREATE TABLE Paiement(
    Moyen_Paiement VARCHAR(50) ,
    Date_Paiement DATE,
    Date_Solde_Paiement DATE,
-   Reference_Commande VARCHAR(50)  NOT NULL,
+   ID_Commande INT NOT NULL,
    PRIMARY KEY(ID_Paiement),
-   FOREIGN KEY(Reference_Commande) REFERENCES Commande(Reference_Commande)
+   FOREIGN KEY(ID_Commande) REFERENCES Commande(ID_Commande)
 );
 
 CREATE TABLE Modif(
@@ -86,7 +87,7 @@ CREATE TABLE SuperieurHierarchique(
 CREATE TABLE Personnel(
    ID_Personnel INT IDENTITY,
    DateEmbauche_personnel DATE,
-   ID_SuperieurHierarchique INT,
+   ID_SuperieurHierarchique INT NOT NULL,
    ID_Personne INT NOT NULL,
    PRIMARY KEY(ID_Personnel),
    UNIQUE(ID_Personne),
@@ -96,26 +97,26 @@ CREATE TABLE Personnel(
 
 CREATE TABLE Effectue(
    ID_Clients INT,
-   Reference_Commande VARCHAR(50) ,
-   PRIMARY KEY(ID_Clients, Reference_Commande),
+   ID_Commande INT,
+   PRIMARY KEY(ID_Clients, ID_Commande),
    FOREIGN KEY(ID_Clients) REFERENCES Clients(ID_Clients),
-   FOREIGN KEY(Reference_Commande) REFERENCES Commande(Reference_Commande)
+   FOREIGN KEY(ID_Commande) REFERENCES Commande(ID_Commande)
 );
 
 CREATE TABLE Composé(
-   Reference_Commande VARCHAR(50) ,
+   ID_Commande INT,
    Reference_Article INT,
    Quantite_Commande_Article INT,
-   PRIMARY KEY(Reference_Commande, Reference_Article),
-   FOREIGN KEY(Reference_Commande) REFERENCES Commande(Reference_Commande),
+   PRIMARY KEY(ID_Commande, Reference_Article),
+   FOREIGN KEY(ID_Commande) REFERENCES Commande(ID_Commande),
    FOREIGN KEY(Reference_Article) REFERENCES Article(Reference_Article)
 );
 
 CREATE TABLE Comprend(
-   Reference_Commande VARCHAR(50) ,
+   ID_Commande INT,
    ID_Remise INT,
-   PRIMARY KEY(Reference_Commande, ID_Remise),
-   FOREIGN KEY(Reference_Commande) REFERENCES Commande(Reference_Commande),
+   PRIMARY KEY(ID_Commande, ID_Remise),
+   FOREIGN KEY(ID_Commande) REFERENCES Commande(ID_Commande),
    FOREIGN KEY(ID_Remise) REFERENCES Remise(ID_Remise)
 );
 
