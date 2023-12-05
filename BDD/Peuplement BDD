@@ -127,6 +127,13 @@ VALUES
 ('Jung', 'Lisa', 1),
 ('Schaeffer', 'Leo', 6);
 
+INSERT INTO SuperieurHierarchique(DateEmbauche_SuperieurHierarchique, ID_Personne)
+VALUES
+('2015-03-03', 50),
+('2015-12-26', 49), 
+('2015-01-15', 48), 
+('2015-05-21', 47);
+
 INSERT INTO Stock (Quantite_Stock, Seuil_Reapprovisionnement_Stock)
 VALUES
     (751, 203),
