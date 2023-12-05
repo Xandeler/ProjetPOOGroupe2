@@ -11,12 +11,6 @@ CREATE TABLE Remise(
    Valeur_Remise FLOAT
 );
 
-CREATE TABLE Stock(
-   ID_Stock INT PRIMARY KEY IDENTITY,
-   Quantite_Stock INT,
-   Seuil_Reapprovisionnement_Stock INT
-);
-
 CREATE TABLE Modif(
    ID_Modif INT PRIMARY KEY IDENTITY,
    Taux_TVA_Modif FLOAT,
@@ -33,11 +27,11 @@ CREATE TABLE Adresse(
 );
 
 CREATE TABLE Commande(
-   ID_Commande INT PRIMARY KEY IDENTITY,
-   Reference_Commande VARCHAR(50) UNIQUE,
+   Reference_Commande VARCHAR(50) PRIMARY KEY,
    Livraison_Prevue_Commande DATE,
    Emission_Commande DATE,
 );
+
 
 CREATE TABLE Article(
    ID_Article INT PRIMARY KEY IDENTITY,
@@ -103,15 +97,16 @@ CREATE TABLE Effectue(
 );
 
 CREATE TABLE Compose(
-   Reference_Commande INT,
+   Reference_Commande VARCHAR(50),
    Reference_Article INT,
+   Quantite_Commande_Article INT,
    PRIMARY KEY(Reference_Commande, Reference_Article),
    FOREIGN KEY(Reference_Commande) REFERENCES Commande(ID_Commande),
    FOREIGN KEY(Reference_Article) REFERENCES Article(ID_Article)
 );
 
 CREATE TABLE Comprend(
-   Reference_Commande INT,
+   Reference_Commande VARCHAR(50),
    ID_Remise INT,
    PRIMARY KEY(Reference_Commande, ID_Remise),
    FOREIGN KEY(Reference_Commande) REFERENCES Commande(ID_Commande),
