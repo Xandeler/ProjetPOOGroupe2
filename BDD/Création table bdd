@@ -87,7 +87,7 @@ CREATE TABLE SuperieurHierarchique(
 CREATE TABLE Personnel(
    ID_Personnel INT IDENTITY,
    DateEmbauche_personnel DATE,
-   ID_SuperieurHierarchique INT NOT NULL,
+   ID_SuperieurHierarchique INT,
    ID_Personne INT NOT NULL,
    PRIMARY KEY(ID_Personnel),
    UNIQUE(ID_Personne),
