@@ -35,16 +35,20 @@ void Personnel::set_Superieur_Hierarchique(bool^ superieur_hierarchique)
 
 String^ Personnel::ajouter()
 {
+	return"a"; //a modifier
 }
 
 String^ Personnel::supprimer()
 {
+	return"a"; //a modifier
 }
 
 String^ Personnel::modifier()
 {
+	return"a"; //a modifier
 }
 
 String^ Personnel::afficher()
 {
+	return"a"; //a modifier
 }

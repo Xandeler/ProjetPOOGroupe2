@@ -37,7 +37,7 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	protected:
 
-	private: System::Windows::Forms::Button^ btn_load;
+
 	private: System::Windows::Forms::Button^ btn_retour;
 	private: System::Windows::Forms::Button^ btn_ajouter;
 	private: System::Windows::Forms::Button^ btn_supprimer;
@@ -92,7 +92,6 @@ namespace ProjetPOOGroupe2 {
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->btn_load = (gcnew System::Windows::Forms::Button());
 			this->btn_retour = (gcnew System::Windows::Forms::Button());
 			this->btn_ajouter = (gcnew System::Windows::Forms::Button());
 			this->btn_supprimer = (gcnew System::Windows::Forms::Button());
@@ -169,17 +168,6 @@ namespace ProjetPOOGroupe2 {
 			this->Column5->ReadOnly = true;
 			this->Column5->Width = 125;
 			// 
-			// btn_load
-			// 
-			this->btn_load->Location = System::Drawing::Point(13, 267);
-			this->btn_load->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->btn_load->Name = L"btn_load";
-			this->btn_load->Size = System::Drawing::Size(112, 176);
-			this->btn_load->TabIndex = 1;
-			this->btn_load->Text = L"Load DB";
-			this->btn_load->UseVisualStyleBackColor = true;
-			this->btn_load->Click += gcnew System::EventHandler(this, &MyForm3::btn_load_Click);
-			// 
 			// btn_retour
 			// 
 			this->btn_retour->Location = System::Drawing::Point(12, 477);
@@ -192,10 +180,10 @@ namespace ProjetPOOGroupe2 {
 			// 
 			// btn_ajouter
 			// 
-			this->btn_ajouter->Location = System::Drawing::Point(144, 267);
+			this->btn_ajouter->Location = System::Drawing::Point(85, 267);
 			this->btn_ajouter->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_ajouter->Name = L"btn_ajouter";
-			this->btn_ajouter->Size = System::Drawing::Size(112, 55);
+			this->btn_ajouter->Size = System::Drawing::Size(171, 55);
 			this->btn_ajouter->TabIndex = 2;
 			this->btn_ajouter->Text = L"AJOUTER";
 			this->btn_ajouter->UseVisualStyleBackColor = true;
@@ -203,10 +191,10 @@ namespace ProjetPOOGroupe2 {
 			// 
 			// btn_supprimer
 			// 
-			this->btn_supprimer->Location = System::Drawing::Point(144, 388);
+			this->btn_supprimer->Location = System::Drawing::Point(85, 388);
 			this->btn_supprimer->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_supprimer->Name = L"btn_supprimer";
-			this->btn_supprimer->Size = System::Drawing::Size(112, 55);
+			this->btn_supprimer->Size = System::Drawing::Size(171, 55);
 			this->btn_supprimer->TabIndex = 3;
 			this->btn_supprimer->Text = L"SUPPRIMER";
 			this->btn_supprimer->UseVisualStyleBackColor = true;
@@ -214,10 +202,10 @@ namespace ProjetPOOGroupe2 {
 			// 
 			// btn_modifier
 			// 
-			this->btn_modifier->Location = System::Drawing::Point(144, 328);
+			this->btn_modifier->Location = System::Drawing::Point(85, 328);
 			this->btn_modifier->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_modifier->Name = L"btn_modifier";
-			this->btn_modifier->Size = System::Drawing::Size(112, 55);
+			this->btn_modifier->Size = System::Drawing::Size(171, 55);
 			this->btn_modifier->TabIndex = 4;
 			this->btn_modifier->Text = L"MODIFIER";
 			this->btn_modifier->UseVisualStyleBackColor = true;
@@ -333,7 +321,6 @@ namespace ProjetPOOGroupe2 {
 			this->Controls->Add(this->btn_ajouter);
 			this->Controls->Add(this->btn_supprimer);
 			this->Controls->Add(this->btn_modifier);
-			this->Controls->Add(this->btn_load);
 			this->Controls->Add(this->dataGridView1);
 			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
