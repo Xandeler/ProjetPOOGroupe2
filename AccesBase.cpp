@@ -7,7 +7,8 @@ AccesBase::AccesBase(void)
 {
 
     ////FAIRE UN FICHIER DE CONFIGURATION POUR LA CONNEXION////
-    this->sCnx = "Data Source=PC-PORTABLE-LEO;Initial Catalog=BDP6;Persist Security Info=True;User ID=NOOOOOOOOOO;Password=NOOOOOOOOOO"; 
+    // Nom de la base de données : Electronic
+    this->sCnx = "Data Source=PC-PORTABLE-LEO;Initial Catalog=Electronic;Persist Security Info=True;User ID=PROJET_POO_GROUPE_2;Password=PROJET_POO_GROUPE_2"; 
 
     this->sSql = "Rien";  
 
