@@ -103,7 +103,7 @@ CREATE TABLE Effectue(
    FOREIGN KEY(ID_Commande) REFERENCES Commande(ID_Commande)
 );
 
-CREATE TABLE Composé(
+CREATE TABLE Compose(
    ID_Commande INT,
    Reference_Article INT,
    Quantite_Commande_Article INT,
