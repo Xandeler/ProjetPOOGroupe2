@@ -129,7 +129,7 @@ namespace ProjetPOOGroupe2 {
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView1->Size = System::Drawing::Size(681, 220);
 			this->dataGridView1->TabIndex = 0;
-			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm2::dataGridView1_CellContentClick);
+			
 			// 
 			// Column1
 			// 
@@ -238,7 +238,6 @@ namespace ProjetPOOGroupe2 {
 			this->label1->Size = System::Drawing::Size(61, 18);
 			this->label1->TabIndex = 8;
 			this->label1->Text = L"Prenom";
-			this->label1->Click += gcnew System::EventHandler(this, &MyForm2::label1_Click);
 			// 
 			// label2
 			// 
@@ -353,7 +352,7 @@ namespace ProjetPOOGroupe2 {
 		this->txt_results->Text = "Données générées";
 	}
 
-	private: int get_selected_ID()
+	private: int^ get_selected_ID()
 	{
 		String^ selectedIDstring = this->dataGridView1->SelectedRows[0]->Cells["id"]->Value->ToString();
 		return Convert::ToInt32(selectedIDstring);
@@ -384,6 +383,13 @@ namespace ProjetPOOGroupe2 {
 	{
 		try
 		{
+			this->client->set_Nom(this->tb_nom->Text);
+			this->client->set_Prenom(this->tb_prenom->Text);
+			this->client->set_Date_Naissance(this->textBox1->Text); //Vérifier si c'est la bonne textBox.
+			this->client->set_Date_Premier_Achat(this->textBox2->Text); //Vérifier si c'est la bonne textBox.
+
+			this->client->ajouter();
+
 			refresh_datagrid();
 
 			this->txt_results->Text = "Données entrées avec succès";
@@ -398,9 +404,14 @@ namespace ProjetPOOGroupe2 {
 		}
 	}
 
-	private: System::Void btn_supprimer_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void btn_supprimer_Click(System::Object^ sender, System::EventArgs^ e)
+	{
 		try
 		{
+			this->client->set_ID_Personne(get_selected_ID());
+
+			this->client->supprimer();
+
 			refresh_datagrid();
 
 			this->txt_results->Text = "Données supprimées avec succès";
@@ -417,6 +428,14 @@ namespace ProjetPOOGroupe2 {
 	private: System::Void btn_modifier_Click(System::Object^ sender, System::EventArgs^ e) {
 		try
 		{
+			this->client->set_ID_Personne(get_selected_ID());
+			this->client->set_Nom(this->tb_nom->Text);
+			this->client->set_Prenom(this->tb_prenom->Text);
+			this->client->set_Date_Naissance(this->textBox1->Text); //Vérifier si c'est la bonne textBox.
+			this->client->set_Date_Premier_Achat(this->textBox2->Text); //Vérifier si c'est la bonne textBox.
+
+			this->client->modifier();
+
 			refresh_datagrid();
 
 			this->txt_results->Text = "Données modifiées avec succès";
@@ -429,10 +448,5 @@ namespace ProjetPOOGroupe2 {
 		}
 	}
 
-	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-	}
-    private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-    }
-	
 };
 }
