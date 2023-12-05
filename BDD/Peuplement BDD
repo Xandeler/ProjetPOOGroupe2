@@ -294,7 +294,7 @@ VALUES
     (626, 201),
     (345, 125);
 
-INSERT INTO Article (Prix_HT_Article, Nom_Article, Quantite_Article, Sueil_Reduction_Article, ID_Stock) VALUES
+INSERT INTO Article (Prix_HT_Article, Nom_Article, Quantite_Article, Seuil_Reduction_Article, ID_Stock) VALUES
 	('385.3', 'Konklab', '36', '10', '69'),
 	('210.1', 'Pannier', '548', '10', '72'),
 	('657.7', 'Aerified', '971', '10', '92'),
