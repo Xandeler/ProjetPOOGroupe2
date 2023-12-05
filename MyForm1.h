@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <cstdlib>
+#include "Personnel.h"
 
 namespace ProjetPOOGroupe2 {
 
@@ -75,7 +76,8 @@ namespace ProjetPOOGroupe2 {
 		/// <summary>
 		/// Variable n�cessaire au concepteur.
 		/// </summary>
-		System::ComponentModel::Container^ components;
+	private: System::ComponentModel::Container^ components;
+	private: Personnel^ personnel;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -104,6 +106,7 @@ namespace ProjetPOOGroupe2 {
 			this->lbl_resultats = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->personnel = (gcnew Personnel());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -124,7 +127,7 @@ namespace ProjetPOOGroupe2 {
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView1->Size = System::Drawing::Size(681, 220);
 			this->dataGridView1->TabIndex = 0;
-			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm1::dataGridView1_CellContentClick);
+			
 			// 
 			// Column1
 			// 
@@ -233,7 +236,7 @@ namespace ProjetPOOGroupe2 {
 			this->label1->Size = System::Drawing::Size(61, 18);
 			this->label1->TabIndex = 8;
 			this->label1->Text = L"Prenom";
-			this->label1->Click += gcnew System::EventHandler(this, &MyForm1::label1_Click);
+			
 			// 
 			// label2
 			// 
@@ -348,7 +351,7 @@ namespace ProjetPOOGroupe2 {
 		this->txt_results->Text = "Données générées";
 	}
 
-	private: int get_selected_ID()
+	private: int^ get_selected_ID()
 	{
 		String^ selectedIDstring = this->dataGridView1->SelectedRows[0]->Cells["id"]->Value->ToString();
 		return Convert::ToInt32(selectedIDstring);
@@ -379,6 +382,13 @@ namespace ProjetPOOGroupe2 {
 	{
 		try
 		{
+			this->personnel->set_Nom(this->tb_nom->Text);
+			this->personnel->set_Prenom(this->tb_prenom->Text);
+			this->personnel->set_Date_Embauche(this->textBox1->Text); //Vérifier si c'est la bonne textBox.
+			this->personnel->set_Superieur_Hierarchique(Convert::ToBoolean(this->textBox2->Text)); //Vérifier si c'est la bonne textBox.
+
+			this->personnel->ajouter();
+
 			refresh_datagrid();
 
 			this->txt_results->Text = "Données entrées avec succès";
@@ -393,9 +403,14 @@ namespace ProjetPOOGroupe2 {
 		}
 	}
 
-	private: System::Void btn_supprimer_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void btn_supprimer_Click(System::Object^ sender, System::EventArgs^ e)
+	{
 		try
 		{
+			this->personnel->set_ID_Personne(this->get_selected_ID());
+
+			this->personnel->supprimer();
+
 			refresh_datagrid();
 
 			this->txt_results->Text = "Données supprimées avec succès";
@@ -412,6 +427,14 @@ namespace ProjetPOOGroupe2 {
 	private: System::Void btn_modifier_Click(System::Object^ sender, System::EventArgs^ e) {
 		try
 		{
+			this->personnel->set_ID_Personne(this->get_selected_ID());
+			this->personnel->set_Nom(this->tb_nom->Text);
+			this->personnel->set_Prenom(this->tb_prenom->Text);
+			this->personnel->set_Date_Embauche(this->textBox1->Text); //Vérifier si c'est la bonne textBox.
+			this->personnel->set_Superieur_Hierarchique(Convert::ToBoolean(this->textBox2->Text)); //Vérifier si c'est la bonne textBox.
+
+			this->personnel->modifier();
+
 			refresh_datagrid();
 
 			this->txt_results->Text = "Données modifiées avec succès";
@@ -424,9 +447,5 @@ namespace ProjetPOOGroupe2 {
 		}
 	}
 
-	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-	}
-private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
 };
 }
