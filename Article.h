@@ -13,11 +13,10 @@ private:
 	double^ Prix_TTC;
 	int^ Seuil_Reapprovisionnement;
 	int^ Seuil_Reduction;
-	String^ Couleur;
 
 public:
 	Article();
-	Article(int^ ID, String^ nom, int^ quantite, double^ prix_ht, double^ taux_tva, int^ seuil_reapprovisionnement, int^ seuil_reduction, String^ couleur);
+	Article(int^ ID, String^ nom, int^ quantite, double^ prix_ht, double^ taux_tva, int^ seuil_reapprovisionnement, int^ seuil_reduction);
 	int^ get_ID_Article();
 	void set_ID_Article(int^ ID);
 	String^ get_Nom();
@@ -34,6 +33,4 @@ public:
 	void set_Seuil_Reapprovisionnement(int^ seuil_reapprovisionnement);
 	int^ get_Seuil_Reduction();
 	void set_Seuil_Reduction(int^ seuil_reduction);
-	String^ get_Couleur();
-	void set_Couleur(String^ couleur);
 };
