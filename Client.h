@@ -1,12 +1,10 @@
 #pragma once
 #include "Personne.h"
 #include "Adresse.h"
-#include "AccesBase.h"
 
 ref class Client : public Personne
 {
 private:
-	AccesBase^ Acces_Base;
 	String^ Date_Naissance;
 	String^ Date_Premier_Achat;
 
