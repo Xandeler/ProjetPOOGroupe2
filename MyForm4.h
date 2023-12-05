@@ -10,7 +10,7 @@ namespace ProjetPOOGroupe2 {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Description r�sum�e de MyForm1
+	/// Description resume de MyForm1
 	/// </summary>
 	public ref class MyForm4 : public System::Windows::Forms::Form
 	{
@@ -47,14 +47,14 @@ namespace ProjetPOOGroupe2 {
 
 	private:
 		/// <summary>
-		/// Variable n�cessaire au concepteur.
+		/// Variable necessaire au concepteur.
 		/// </summary>
 		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
 		/// M�thode requise pour la prise en charge du concepteur - ne modifiez pas
-		/// le contenu de cette m�thode avec l'�diteur de code.
+		/// le contenu de cette methode avec l'editeur de code.
 		/// </summary>
 		void InitializeComponent(void)
 		{

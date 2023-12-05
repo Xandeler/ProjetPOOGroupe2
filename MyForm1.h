@@ -336,8 +336,8 @@ namespace ProjetPOOGroupe2 {
 			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->MaximumSize = System::Drawing::Size(900, 600);
-			this->MinimumSize = System::Drawing::Size(900, 600);
+			this->MaximumSize = System::Drawing::Size(900, 565);
+			this->MinimumSize = System::Drawing::Size(900, 565);
 			this->Name = L"MyForm1";
 			this->Text = L"Gestion du personnel";
 			this->Load += gcnew System::EventHandler(this, &MyForm1::MyForm_Load);
