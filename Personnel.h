@@ -1,9 +1,11 @@
 #pragma once
 #include "Personne.h"
+#include "AccesBase.h"
 
 ref class Personnel : public Personne
 {
 private:
+	AccesBase^ Acces_Base;
 	String^ Date_Embauche;
 	bool^ Superieur_Hierarchique;
 

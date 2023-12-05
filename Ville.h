@@ -1,10 +1,12 @@
 #pragma once
+#include "AccesBase.h"
 
 using namespace System;
 
 ref class Ville
 {
 private:
+	AccesBase^ Acces_Base;
 	int^ ID_Ville;
 	String^ Nom;
 
