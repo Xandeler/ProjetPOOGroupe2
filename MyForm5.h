@@ -41,14 +41,6 @@ namespace ProjetPOOGroupe2 {
 
 	protected:
 
-
-
-
-
-
-
-
-
 	private: System::Windows::Forms::TextBox^ textBox_resultat;
 	private: System::Windows::Forms::Label^ label_resultat;
 	private: System::Windows::Forms::Button^ button_panier_moyen;
@@ -61,21 +53,10 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::Button^ button_valeur_commerciale;
 	private: System::Windows::Forms::Button^ button_achat_stock;
 
-
-
-
 	private: System::Windows::Forms::Button^ button_articles_plus_vendus;
 	private: System::Windows::Forms::TextBox^ textBox_ID_client;
 	private: System::Windows::Forms::Label^ label_ID_client;
 	private: System::Windows::Forms::Label^ label_statistiques;
-
-
-
-
-
-
-
-
 
 	protected:
 
