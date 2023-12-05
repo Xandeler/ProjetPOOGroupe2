@@ -247,6 +247,18 @@ INSERT INTO Comporte (Reference_Article, ID_Modif) VALUES
 	('19', '1'),
 	('20', '1');
 
+INSERT INTO Compose (ID_Commande, Reference_Article, Quantite_Commande_Article)
+VALUES
+	(1, 8, 20),
+	(1, 9, 2),
+	(1, 11, 1),
+	(2, 7, 2),
+	(2, 11, 5),
+	(3, 17, 5),
+	(4, 20, 3),
+	(5, 5, 2),
+	(5, 4, 1);
+
 
 INSERT INTO Modif (Taux_TVA_Modif, Taux_Reduction_Modif)
 VALUES
