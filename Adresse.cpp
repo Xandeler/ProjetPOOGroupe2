@@ -72,21 +72,5 @@ bool^ Adresse::verifier_Ville()
 {
 	bool^ nom_ville;
 
-	List<Ville^>^ liste_ville = this->Liste_Ville->get_Liste_Ville();
-
-	for (int i = 0; i < liste_ville->Count; i++)
-	{
-		if (this->Nom_Ville == liste_ville[i]->get_nom())
-		{
-			nom_ville = true;
-			return nom_ville;
-		}
-
-		else if (this->Nom_Ville != liste_ville[i]->get_nom())
-		{
-			nom_ville = false;
-		}
-	}
-
 	return nom_ville;
 }
