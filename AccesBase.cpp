@@ -1,7 +1,7 @@
 #include "AccesBase.h"
 
 //voir comment fonctionne le fichier de configuration gitignore
-#include "nommachine.h"
+/*#include "nommachine.h" */
 
 AccesBase::AccesBase(void)
 {

@@ -37,12 +37,14 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	protected:
 
+	private: System::Windows::Forms::Button^ btn_load;
 	private: System::Windows::Forms::Button^ btn_retour;
 	private: System::Windows::Forms::Button^ btn_ajouter;
 	private: System::Windows::Forms::Button^ btn_supprimer;
 	private: System::Windows::Forms::Button^ btn_modifier;
 	private: System::Windows::Forms::TextBox^ tb_nom;
 	private: System::Windows::Forms::TextBox^ tb_prenom;
+	private: NS_Comp_Svc::CL_SQLservices^ SQLservices = gcnew NS_Comp_Svc::CL_SQLservices();;
 	private: System::Data::DataSet^ dataLoadedFromSQL;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
@@ -66,6 +68,7 @@ namespace ProjetPOOGroupe2 {
 		void InitializeComponent(void)
 		{
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->btn_load = (gcnew System::Windows::Forms::Button());
 			this->btn_retour = (gcnew System::Windows::Forms::Button());
 			this->btn_ajouter = (gcnew System::Windows::Forms::Button());
 			this->btn_supprimer = (gcnew System::Windows::Forms::Button());
@@ -92,6 +95,27 @@ namespace ProjetPOOGroupe2 {
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView1->Size = System::Drawing::Size(733, 220);
 			this->dataGridView1->TabIndex = 0;
+			// 
+			// btn_load
+			// 
+			this->btn_load->Location = System::Drawing::Point(22, 267);
+			this->btn_load->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->btn_load->Name = L"btn_load";
+			this->btn_load->Size = System::Drawing::Size(112, 123);
+			this->btn_load->TabIndex = 1;
+			this->btn_load->Text = L"Load DB";
+			this->btn_load->UseVisualStyleBackColor = true;
+			this->btn_load->Click += gcnew System::EventHandler(this, &MyForm1::btn_load_Click);
+			// 
+			// btn_retour
+			// 
+			this->btn_retour->Location = System::Drawing::Point(22, 420);
+			this->btn_retour->Name = L"btn_retour";
+			this->btn_retour->Size = System::Drawing::Size(112, 36);
+			this->btn_retour->TabIndex = 4;
+			this->btn_retour->Text = L"RETOUR";
+			this->btn_retour->UseVisualStyleBackColor = true;
+			this->btn_retour->Click += gcnew System::EventHandler(this, &MyForm1::btn_retour_Click);
 			// 
 			// btn_ajouter
 			// 
@@ -160,16 +184,6 @@ namespace ProjetPOOGroupe2 {
 			this->label2->TabIndex = 9;
 			this->label2->Text = L"Prenom";
 			// 
-			// btn_retour
-			// 
-			this->btn_retour->Location = System::Drawing::Point(13, 420);
-			this->btn_retour->Name = L"btn_retour";
-			this->btn_retour->Size = System::Drawing::Size(112, 36);
-			this->btn_retour->TabIndex = 4;
-			this->btn_retour->Text = L"RETOUR";
-			this->btn_retour->UseVisualStyleBackColor = true;
-			this->btn_retour->Click += gcnew System::EventHandler(this, &MyForm1::btn_retour_Click);
-			// 
 			// txt_results
 			// 
 			this->txt_results->Location = System::Drawing::Point(350, 359);
@@ -183,12 +197,12 @@ namespace ProjetPOOGroupe2 {
 			// lbl_resultats
 			// 
 			this->lbl_resultats->AutoSize = true;
-			this->lbl_resultats->Font = (gcnew System::Drawing::Font(L"Inter", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lbl_resultats->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lbl_resultats->Location = System::Drawing::Point(268, 362);
 			this->lbl_resultats->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lbl_resultats->Name = L"lbl_resultats";
-			this->lbl_resultats->Size = System::Drawing::Size(75, 19);
+			this->lbl_resultats->Size = System::Drawing::Size(70, 18);
 			this->lbl_resultats->TabIndex = 14;
 			this->lbl_resultats->Text = L"Resultats";
 			// 
@@ -207,6 +221,7 @@ namespace ProjetPOOGroupe2 {
 			this->Controls->Add(this->btn_ajouter);
 			this->Controls->Add(this->btn_supprimer);
 			this->Controls->Add(this->btn_modifier);
+			this->Controls->Add(this->btn_load);
 			this->Controls->Add(this->dataGridView1);
 			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -233,6 +248,7 @@ namespace ProjetPOOGroupe2 {
 	private: void refresh_datagrid()
 	{
 		this->dataGridView1->Refresh();
+		this->dataLoadedFromSQL = this->SQLservices->selectionnerToutesLesPersonnes("dataTable");
 		this->dataGridView1->DataSource = this->dataLoadedFromSQL;
 		this->dataGridView1->DataMember = "dataTable";
 
@@ -270,6 +286,8 @@ namespace ProjetPOOGroupe2 {
 	{
 		try
 		{
+			this->SQLservices->ajouterUnePersonne(this->tb_nom->Text, this->tb_prenom->Text);
+
 			refresh_datagrid();
 
 			this->txt_results->Text = "Données entrées avec succès";
@@ -279,6 +297,8 @@ namespace ProjetPOOGroupe2 {
 			this->txt_results->Text = execept->Message;
 			this->txt_results->Text += "\r\n";
 			this->txt_results->Text += execept->StackTrace;
+			this->SQLservices->fermerConnection();
+
 
 		}
 	}
@@ -286,6 +306,7 @@ namespace ProjetPOOGroupe2 {
 	private: System::Void btn_supprimer_Click(System::Object^ sender, System::EventArgs^ e) {
 		try
 		{
+			this->SQLservices->effacerUnePersonne(get_selected_ID());
 
 			refresh_datagrid();
 
@@ -297,11 +318,13 @@ namespace ProjetPOOGroupe2 {
 			this->txt_results->Text = execept->Message;
 			this->txt_results->Text += "\r\n";
 			this->txt_results->Text += execept->StackTrace;
+
 		}
 	}
 	private: System::Void btn_modifier_Click(System::Object^ sender, System::EventArgs^ e) {
 		try
 		{
+			this->SQLservices->modifierUnePersonne(get_selected_ID(), this->tb_nom->Text, this->tb_prenom->Text);
 
 			refresh_datagrid();
 
