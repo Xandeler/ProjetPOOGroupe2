@@ -319,7 +319,7 @@ namespace ProjetPOOGroupe2 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 18);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(882, 553);
+			this->ClientSize = System::Drawing::Size(900, 600);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->lbl_resultats);
@@ -357,7 +357,6 @@ namespace ProjetPOOGroupe2 {
 			this->Hide();
 
 		}
-		// Runs when the form loads
 	private: void refresh_datagrid()
 	{
 		this->dataGridView1->Refresh();

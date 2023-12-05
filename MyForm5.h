@@ -18,7 +18,7 @@ namespace ProjetPOOGroupe2 {
 		MyForm5(void)
 		{
 			InitializeComponent();
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm5::button1_Click); // Permet de lier le bouton � la fonction
+			this->button_retour->Click += gcnew System::EventHandler(this, &MyForm5::button1_Click); // Permet de lier le bouton � la fonction
 
 			//
 			//TODO: ajoutez ici le code du constructeur
@@ -238,6 +238,9 @@ namespace ProjetPOOGroupe2 {
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(935, 400);
+			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->MaximumSize = System::Drawing::Size(935, 400);
+			this->MinimumSize = System::Drawing::Size(935, 400);
 			this->Controls->Add(this->label_statistiques);
 			this->Controls->Add(this->label_ID_client);
 			this->Controls->Add(this->textBox_ID_client);
