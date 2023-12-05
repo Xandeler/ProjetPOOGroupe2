@@ -1,0 +1,2 @@
+// permet de réinitialiser l'auto incrémentation, il faut changer 'MaTable' par le nom de la table voulu
+DBCC CHECKIDENT ('MaTable', RESEED, 0);
