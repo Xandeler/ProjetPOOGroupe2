@@ -1,34 +1,75 @@
-SET IDENTITY_INSERT Ville ON;
-
-INSERT INTO Ville (Id_Ville, Nom_ville, CodePostal_ville)
+INSERT INTO Ville (Nom_ville, CodePostal_ville)
 VALUES
-  (1, 'Paris', '75000'),
-  (2, 'Marseille', '13000'),
-  (3, 'Lyon', '69000'),
-  (4, 'Toulouse', '31000'),
-  (5, 'Nice', '06000'),
-  (6, 'Nantes', '44000'),
-  (7, 'Strasbourg', '67000'),
-  (8, 'Montpellier', '34000'),
-  (9, 'Bordeaux', '33000'),
-  (10, 'Lille', '59000'),
-  (11, 'Rennes', '35000'),
-  (12, 'Reims', '51100'),
-  (13, 'Le Havre', '76600'),
-  (14, 'Saint-Étienne', '42000'),
-  (15, 'Toulon', '83000'),
-  (16, 'Le Mans', '72000'),
-  (17, 'Aix-en-Provence', '13090'),
-  (18, 'Amiens', '80000'),
-  (19, 'Perpignan', '66000'),
-  (20, 'Boulogne-Billancourt', '92100'),
-  (21, 'Metz', '57000'),
-  (22, 'Besançon', '25000'),
-  (23, 'Grenoble', '38000'),
-  (24, 'Dijon', '21000'),
-  (25, 'Nîmes', '30000'),
-  (26, 'Angers', '49000'),
-  (27, 'Villeurbanne', '69100'),
-  (28, 'Levallois-Perret', '92300'),
-  (29, 'Clermont-Ferrand', '63000'),
-  (30, 'Antibes', '06600');
+  ('Paris', '75000'),
+  ('Marseille', '13000'),
+  ('Lyon', '69000'),
+  ('Toulouse', '31000'),
+  ('Nice', '06000'),
+  ('Nantes', '44000'),
+  ('Strasbourg', '67000'),
+  ('Montpellier', '34000'),
+  ('Bordeaux', '33000'),
+  ('Lille', '59000'),
+  ('Rennes', '35000'),
+  ('Reims', '51100'),
+  ('Le Havre', '76600'),
+  ('Saint-Étienne', '42000'),
+  ('Toulon', '83000'),
+  ('Le Mans', '72000'),
+  ('Aix-en-Provence', '13090'),
+  ('Amiens', '80000'),
+  ('Perpignan', '66000'),
+  ('Boulogne-Billancourt', '92100'),
+  ('Metz', '57000'),
+  ('Besançon', '25000'),
+  ('Grenoble', '38000'),
+  ('Dijon', '21000'),
+  ('Nîmes', '30000'),
+  ('Angers', '49000'),
+  ('Villeurbanne', '69100'),
+  ('Levallois-Perret', '92300'),
+  ('Clermont-Ferrand', '63000'),
+  ('Antibes', '06600');
+
+INSERT INTO Adresse (Rue_Adresse, Numero_Maison_Adresse, Nature_Adresse, ID_Ville)
+VALUES
+('Rue de la Paix', 10, 'Maison', 1), -- Paris
+('Avenue des Champs-Élysées', 25, 'Appartement', 1), -- Paris
+('Boulevard Haussmann', 30, 'Bureau', 1), -- Paris
+('Rue du Faubourg Saint-Honoré', 15, 'Maison', 1), -- Paris
+('Avenue Montaigne', 20, 'Bureau', 1), -- Paris
+('Rue Royale', 35, 'Appartement', 1), -- Paris
+('Boulevard Saint-Germain', 45, 'Maison', 1), -- Paris
+('Rue de la République', 12, 'Maison', 2), -- Marseille
+('Avenue du Prado', 8, 'Appartement', 2), -- Marseille
+('Rue Paradis', 18, 'Bureau', 2), -- Marseille
+('Rue de Rivoli', 22, 'Bureau', 1), -- Paris
+('Place Bellecour', 5, 'Appartement', 3), -- Lyon
+('Quai des Grands Augustins', 17, 'Maison', 1), -- Paris
+('Rue de la Liberté', 14, 'Maison', 4), -- Toulouse
+('Avenue Jean Médecin', 28, 'Bureau', 5), -- Nice
+('Boulevard de Strasbourg', 40, 'Appartement', 6), -- Nantes
+('Rue Nationale', 7, 'Maison', 7), -- Strasbourg
+('Rue Foch', 19, 'Bureau', 8), -- Montpellier
+('Place de la Bourse', 2, 'Appartement', 9), -- Bordeaux
+('Avenue du Peuple Belge', 11, 'Maison', 10), -- Lille
+('Rue Nationale', 9, 'Bureau', 11), -- Rennes
+('Rue de Vesle', 13, 'Maison', 12), -- Reims
+('Avenue Foch', 16, 'Appartement', 13), -- Le Havre
+('Boulevard Jules Janin', 23, 'Bureau', 14), -- Saint-Étienne
+('Rue Jean Jaurès', 6, 'Maison', 15), -- Toulon
+('Rue de la Mariette', 21, 'Appartement', 16), -- Le Mans
+('Boulevard des Anglais', 3, 'Bureau', 17), -- Aix-en-Provence
+('Rue des Jacobins', 4, 'Maison', 18), -- Amiens
+('Avenue de Grande-Bretagne', 27, 'Appartement', 19), -- Perpignan
+('Rue du Point du Jour', 36, 'Bureau', 20), -- Boulogne-Billancourt
+('Avenue Foch', 31, 'Maison', 21), -- Metz
+('Rue Battant', 33, 'Appartement', 22), -- Besançon
+('Boulevard Gambetta', 26, 'Bureau', 23), -- Grenoble
+('Rue de la Liberté', 29, 'Maison', 24), -- Dijon
+('Avenue Jean-Jaurès', 37, 'Appartement', 25), -- Nîmes
+('Boulevard du Doyenné', 38, 'Bureau', 26), -- Angers
+('Rue des Martyrs', 41, 'Maison', 27), -- Villeurbanne
+('Avenue Georges Pompidou', 39, 'Appartement', 28), -- Levallois-Perret
+('Boulevard François Mitterrand', 32, 'Bureau', 29), -- Clermont-Ferrand
+('Rue de la République', 34, 'Maison', 30); -- Antibes
