@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <cstdlib>
+#include "Client.h"
 
 namespace ProjetPOOGroupe2 {
 
@@ -77,7 +78,8 @@ namespace ProjetPOOGroupe2 {
 		/// <summary>
 		/// Variable n�cessaire au concepteur.
 		/// </summary>
-		System::ComponentModel::Container^ components;
+	private: System::ComponentModel::Container^ components;
+	private: Client^ client;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -106,6 +108,7 @@ namespace ProjetPOOGroupe2 {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->client = (gcnew Client());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
