@@ -1,253 +1,129 @@
-INSERT INTO Ville (Nom_ville, CodePostal_ville)
-VALUES
-  ('Paris', '75000'),
-  ('Marseille', '13000'),
-  ('Lyon', '69000'),
-  ('Toulouse', '31000'),
-  ('Nice', '06000'),
-  ('Nantes', '44000'),
-  ('Strasbourg', '67000'),
-  ('Montpellier', '34000'),
-  ('Bordeaux', '33000'),
-  ('Lille', '59000'),
-  ('Rennes', '35000'),
-  ('Reims', '51100'),
-  ('Le Havre', '76600'),
-  ('Saint-Étienne', '42000'),
-  ('Toulon', '83000'),
-  ('Le Mans', '72000'),
-  ('Aix-en-Provence', '13090'),
-  ('Amiens', '80000'),
-  ('Perpignan', '66000'),
-  ('Boulogne-Billancourt', '92100'),
-  ('Metz', '57000'),
-  ('Besançon', '25000'),
-  ('Grenoble', '38000'),
-  ('Dijon', '21000'),
-  ('Nîmes', '30000'),
-  ('Angers', '49000'),
-  ('Villeurbanne', '69100'),
-  ('Levallois-Perret', '92300'),
-  ('Clermont-Ferrand', '63000'),
-  ('Antibes', '06600');
+CREATE TABLE Ville(
+   ID_Ville INT IDENTITY,
+   Nom_ville VARCHAR(50) ,
+   CodePostal_Ville INT,
+   PRIMARY KEY(ID_Ville)
+);
 
-INSERT INTO Adresse (Rue_Adresse, Numero_Maison_Adresse, Nature_Adresse, ID_Ville)
-VALUES
-('Rue de la Paix', 10, 'Maison', 1), -- Paris
-('Avenue des Champs-Élysées', 25, 'Appartement', 1), -- Paris
-('Boulevard Haussmann', 30, 'Bureau', 1), -- Paris
-('Rue du Faubourg Saint-Honoré', 15, 'Maison', 1), -- Paris
-('Avenue Montaigne', 20, 'Bureau', 1), -- Paris
-('Rue Royale', 35, 'Appartement', 1), -- Paris
-('Boulevard Saint-Germain', 45, 'Maison', 1), -- Paris
-('Rue de la République', 12, 'Maison', 2), -- Marseille
-('Avenue du Prado', 8, 'Appartement', 2), -- Marseille
-('Rue Paradis', 18, 'Bureau', 2), -- Marseille
-('Rue de Rivoli', 22, 'Bureau', 1), -- Paris
-('Place Bellecour', 5, 'Appartement', 3), -- Lyon
-('Quai des Grands Augustins', 17, 'Maison', 1), -- Paris
-('Rue de la Liberté', 14, 'Maison', 4), -- Toulouse
-('Avenue Jean Médecin', 28, 'Bureau', 5), -- Nice
-('Boulevard de Strasbourg', 40, 'Appartement', 6), -- Nantes
-('Rue Nationale', 7, 'Maison', 7), -- Strasbourg
-('Rue Foch', 19, 'Bureau', 8), -- Montpellier
-('Place de la Bourse', 2, 'Appartement', 9), -- Bordeaux
-('Avenue du Peuple Belge', 11, 'Maison', 10), -- Lille
-('Rue Nationale', 9, 'Bureau', 11), -- Rennes
-('Rue de Vesle', 13, 'Maison', 12), -- Reims
-('Avenue Foch', 16, 'Appartement', 13), -- Le Havre
-('Boulevard Jules Janin', 23, 'Bureau', 14), -- Saint-Étienne
-('Rue Jean Jaurès', 6, 'Maison', 15), -- Toulon
-('Rue de la Mariette', 21, 'Appartement', 16), -- Le Mans
-('Boulevard des Anglais', 3, 'Bureau', 17), -- Aix-en-Provence
-('Rue des Jacobins', 4, 'Maison', 18), -- Amiens
-('Avenue de Grande-Bretagne', 27, 'Appartement', 19), -- Perpignan
-('Rue du Point du Jour', 36, 'Bureau', 20), -- Boulogne-Billancourt
-('Avenue Foch', 31, 'Maison', 21), -- Metz
-('Rue Battant', 33, 'Appartement', 22), -- Besançon
-('Boulevard Gambetta', 26, 'Bureau', 23), -- Grenoble
-('Rue de la Liberté', 29, 'Maison', 24), -- Dijon
-('Avenue Jean-Jaurès', 37, 'Appartement', 25), -- Nîmes
-('Boulevard du Doyenné', 38, 'Bureau', 26), -- Angers
-('Rue des Martyrs', 41, 'Maison', 27), -- Villeurbanne
-('Avenue Georges Pompidou', 39, 'Appartement', 28), -- Levallois-Perret
-('Boulevard François Mitterrand', 32, 'Bureau', 29), -- Clermont-Ferrand
-('Rue de la République', 34, 'Maison', 30); -- Antibes
+CREATE TABLE Commande(
+   ID_Commande INT IDENTITY,
+   Reference_Commande VARCHAR(50)  NOT NULL,
+   Livraison_Prevue_Commande DATE,
+   Emission_Commande DATE,
+   PRIMARY KEY(ID_Commande)
+);
 
-INSERT INTO Personne (Nom_Personne, Prenom_Personne, ID_Adresse)
-VALUES
-('McCerery', 'Annotee', 1),
-('Coggins', 'Melissandre', 2),
-('Lowrie', 'Angelique', 3),
-('Cocks', 'Lorene', 4),
-('Macewan', 'Andre', 5),
-('Masson', 'Meline', 6),
-('Florence', 'Almerinda', 7),
-('Abdie', 'Cecilia', 8),
-('Galletly', 'Lai', 9),
-('Spurgin', 'Dafnee', 10),
-('Tribbeck', 'Venus', 11),
-('Boosey', 'Maella', 12),
-('Steckings', 'Cloe', 13),
-('Sage', 'Oceanne', 14),
-('Kneller', 'Maella', 15),
-('Seedull', 'Simplifies', 16),
-('Kupis', 'Esteve', 17),
-('Reoch', 'Meng', 18),
-('Skrines', 'Clelia', 19),
-('McQuillen', 'Borje', 20),
-('Beckworth', 'Melodie', 21),
-('Ginnell', 'Naeva', 22),
-('Ellul', 'Lie', 23),
-('Guyot', 'Yáo', 24),
-('Bustard', 'Methode', 25),
-('Salvin', 'Meryl', 26),
-('Royds', 'Geraldine', 27),
-('Asif', 'Mylene', 28),
-('Bolan', 'Naeva', 29),
-('Leyband', 'Megane', 30),
-('Josey', 'Clelia', 31),
-('Bending', 'Valerie', 32),
-('Dachey', 'Maelle', 33),
-('Goundrill', 'Melina', 34),
-('Siggs', 'Marlene', 35),
-('Dinsey', 'Aslog', 36),
-('Widdowson', 'Elies', 37),
-('Bearman', 'Oceane', 38),
-('Kinset', 'Cecile', 39),
-('Feehely', 'Maeline', 40),
-('Hickisson', 'Noella', 37),
-('Bore', 'Leone', 36),
-('Phant', 'Laurene', 20),
-('Melling', 'Maite', 34),
-('Tresler', 'Loica', 14),
-('Schnieder', 'Felicie', 5),
-('Rinaldi', 'Johan', 19),
-('Grasser', 'Alexandre', 40),
-('Jung', 'Lisa', 1),
-('Schaeffer', 'Leo', 6);
+CREATE TABLE Article(
+   Reference_Article INT IDENTITY,
+   Prix_HT_Article MONEY,
+   Nom_Article VARCHAR(50) ,
+   Seuil_Reduction_Article VARCHAR(50) ,
+   Quantite_Stock_Article INT,
+   Seuil_Reapprovisionnement_Article INT,
+   PRIMARY KEY(Reference_Article)
+);
 
-INSERT INTO SuperieurHierarchique(DateEmbauche_SuperieurHierarchique, ID_Personne)
-VALUES
-('2015-03-03', 50),
-('2015-12-26', 49), 
-('2015-01-15', 48), 
-('2015-05-21', 47);
+CREATE TABLE Remise(
+   ID_Remise INT IDENTITY,
+   Valeur_Remise FLOAT,
+   PRIMARY KEY(ID_Remise)
+);
 
-INSERT INTO Personnel(DateEmbauche_personnel, ID_SuperieurHierarchique, ID_Personne)
-VALUES
-('2015-03-03', NULL, 50),
-('2015-12-26', NULL, 49),
-('2015-01-15', NULL, 48),
-('2015-05-21', NULL, 47),
-('2016-09-29', 3, 1),
-('2016-08-25', 4, 2),
-('2016-08-25', 1, 3),
-('2016-04-05', 3, 4),
-('2016-04-24', 1, 5),
-('2016-02-16', 1, 6),
-('2016-09-14', 1, 7),
-('2016-11-22', 4, 8),
-('2016-01-10', 4, 9),
-('2016-04-12', 3, 10),
-('2016-09-05', 2, 11),
-('2016-08-17', 2, 12),
-('2016-06-27', 4, 13),
-('2016-08-30', 4, 14),
-('2016-01-16', 2, 15),
-('2016-07-10', 4, 16);
+CREATE TABLE Paiement(
+   ID_Paiement INT IDENTITY,
+   Moyen_Paiement VARCHAR(50) ,
+   Date_Paiement DATE,
+   Date_Solde_Paiement DATE,
+   ID_Commande INT NOT NULL,
+   PRIMARY KEY(ID_Paiement),
+   FOREIGN KEY(ID_Commande) REFERENCES Commande(ID_Commande)
+);
 
-INSERT INTO Clients(Date_Naissance_Clients, Date_Premier_Achat_Clients, ID_Personne)
-VALUES
-('1981-09-04', '2017-03-09', 17),
-('1997-07-24', '2017-08-08', 18),
-('1982-03-19', '2017-02-10', 19),
-('1983-11-14', '2017-06-18', 20),
-('1980-02-21', '2017-04-06', 21),
-('1991-06-04', '2017-09-22', 22),
-('1970-03-29', '2017-04-02', 23),
-('1965-09-14', '2017-09-21', 24),
-('1980-02-20', '2017-05-19', 25),
-('1987-08-14', '2017-07-04', 26),
-('1999-09-22', '2017-07-01', 27),
-('1975-09-24', '2017-03-15', 28),
-('1969-04-21', '2017-04-07', 29),
-('1973-06-13', '2017-04-04', 30),
-('1994-01-30', '2017-09-10', 31),
-('1965-07-11', '2017-12-04', 32),
-('1983-03-03', '2017-07-01', 33),
-('1988-02-28', '2017-03-12', 34),
-('1972-12-07', '2017-09-04', 35),
-('1990-10-02', '2017-08-06', 36),
-('1985-10-26', '2017-02-15', 37),
-('1978-02-28', '2017-01-14', 38),
-('1976-07-07', '2017-03-05', 39),
-('1996-11-13', '2017-10-23', 40),
-('1983-05-26', '2017-12-05', 41),
-('1995-04-02', '2017-08-09', 42),
-('1997-01-12', '2017-01-20', 43),
-('1979-09-27', '2017-10-24', 44),
-('1966-04-17', '2017-04-09', 45),
-('1979-09-18', '2017-03-25', 46);
+CREATE TABLE Modif(
+   ID_Modif INT IDENTITY,
+   Taux_TVA_Modif FLOAT,
+   Taux_Reduction_Modif FLOAT,
+   PRIMARY KEY(ID_Modif)
+);
 
-INSERT INTO Article (Prix_HT_Article, Nom_Article, Seuil_Reduction_Article, Quantite_Stock_Article, Seuil_Reapprovisionnement_Article) VALUES
-	('246.4', 'Andalax', '30', '77', '34'),
-	('554.0', 'Y-find', '26', '226', '25'),
-	('166.7', 'Namfix', '46', '183', '74'),
-	('638.2', 'Gembucket', '18', '78', '98'),
-	('583.7', 'Stringtough', '38', '195', '71'),
-	('501.7', 'Opela', '40', '56', '26'),
-	('568.9', 'Fix San', '23', '143', '54'),
-	('21.0', 'Kanlam', '28', '52', '69'),
-	('80.5', 'Opela', '13', '139', '34'),
-	('510.2', 'Lotlux', '18', '148', '89'),
-	('39.6', 'Biodex', '26', '241', '85'),
-	('721.8', 'Zontrax', '12', '238', '76'),
-	('776.7', 'Konklab', '16', '43', '58'),
-	('615.5', 'Bitchip', '40', '124', '48'),
-	('650.2', 'Cardify', '45', '199', '97'),
-	('707.2', 'Tresom', '33', '67', '57'),
-	('55.6', 'Solarbreeze', '9', '151', '12'),
-	('448.9', 'Sonair', '12', '62', '28'),
-	('560.7', 'Bitchip', '11', '39', '95'),
-	('430.0', 'Quo Lux', '5', '71', '73');
+CREATE TABLE Adresse(
+   ID_Adresse INT IDENTITY,
+   Rue_Adresse VARCHAR(50) ,
+   Numero_Maison_Adresse INT,
+   Nature_Adresse VARCHAR(50) ,
+   ID_Ville INT NOT NULL,
+   PRIMARY KEY(ID_Adresse),
+   FOREIGN KEY(ID_Ville) REFERENCES Ville(ID_Ville)
+);
 
-INSERT INTO Remise(Valeur_Remise)
-VALUES
-(0.95),
-(0.90);
+CREATE TABLE Personne(
+   ID_Personne INT IDENTITY,
+   Nom_Personne VARCHAR(50) ,
+   Prenom_Personne VARCHAR(50) ,
+   ID_Adresse INT NOT NULL,
+   PRIMARY KEY(ID_Personne),
+   FOREIGN KEY(ID_Adresse) REFERENCES Adresse(ID_Adresse)
+);
 
-INSERT INTO Commande(Reference_Commande, Livraison_Prevue_Commande, Emission_Commande)
-VALUES
-('ESKU2023STR1', '2023-12-11', '2023-12-02'),
-('MEGO2023DIJ2', '2023-12-12', '2023-12-03'),
-('CLJO2023MET3', '2023-12-13', '2023-12-04'),
-('MELE2023BOU4', '2023-12-14', '2023-12-05'),
-('CEKI2023CLE5', '2023-12-15', '2023-12-06');
+CREATE TABLE Clients(
+   ID_Clients INT IDENTITY,
+   Date_Naissance_Clients DATE,
+   Date_Premier_Achat_Clients DATE,
+   ID_Personne INT NOT NULL,
+   PRIMARY KEY(ID_Clients),
+   UNIQUE(ID_Personne),
+   FOREIGN KEY(ID_Personne) REFERENCES Personne(ID_Personne)
+);
 
-INSERT INTO Comporte (Reference_Article, ID_Modif) VALUES
-	('1', '1'),
-	('2', '1'),
-	('3', '1'),
-	('4', '1'),
-	('5', '1'),
-	('6', '1'),
-	('7', '1'),
-	('8', '1'),
-	('9', '1'),
-	('10', '1'),
-	('11', '1'),
-	('12', '1'),
-	('13', '1'),
-	('14', '1'),
-	('15', '1'),
-	('16', '1'),
-	('17', '1'),
-	('18', '1'),
-	('19', '1'),
-	('20', '1');
+CREATE TABLE SuperieurHierarchique(
+   ID_SuperieurHierarchique INT IDENTITY,
+   DateEmbauche_SuperieurHierarchique DATE,
+   ID_Personne INT NOT NULL,
+   PRIMARY KEY(ID_SuperieurHierarchique),
+   UNIQUE(ID_Personne),
+   FOREIGN KEY(ID_Personne) REFERENCES Personne(ID_Personne)
+);
 
+CREATE TABLE Personnel(
+   ID_Personnel INT IDENTITY,
+   DateEmbauche_personnel DATE,
+   ID_SuperieurHierarchique INT,
+   ID_Personne INT NOT NULL,
+   PRIMARY KEY(ID_Personnel),
+   UNIQUE(ID_Personne),
+   FOREIGN KEY(ID_SuperieurHierarchique) REFERENCES SuperieurHierarchique(ID_SuperieurHierarchique),
+   FOREIGN KEY(ID_Personne) REFERENCES Personne(ID_Personne)
+);
 
-INSERT INTO Modif (Taux_TVA_Modif, Taux_Reduction_Modif)
-VALUES
-  (1.2, 0.95);
+CREATE TABLE Effectue(
+   ID_Clients INT,
+   ID_Commande INT,
+   PRIMARY KEY(ID_Clients, ID_Commande),
+   FOREIGN KEY(ID_Clients) REFERENCES Clients(ID_Clients),
+   FOREIGN KEY(ID_Commande) REFERENCES Commande(ID_Commande)
+);
+
+CREATE TABLE Composé(
+   ID_Commande INT,
+   Reference_Article INT,
+   Quantite_Commande_Article INT,
+   PRIMARY KEY(ID_Commande, Reference_Article),
+   FOREIGN KEY(ID_Commande) REFERENCES Commande(ID_Commande),
+   FOREIGN KEY(Reference_Article) REFERENCES Article(Reference_Article)
+);
+
+CREATE TABLE Comprend(
+   ID_Commande INT,
+   ID_Remise INT,
+   PRIMARY KEY(ID_Commande, ID_Remise),
+   FOREIGN KEY(ID_Commande) REFERENCES Commande(ID_Commande),
+   FOREIGN KEY(ID_Remise) REFERENCES Remise(ID_Remise)
+);
+
+CREATE TABLE Comporte(
+   Reference_Article INT,
+   ID_Modif INT,
+   PRIMARY KEY(Reference_Article, ID_Modif),
+   FOREIGN KEY(Reference_Article) REFERENCES Article(Reference_Article),
+   FOREIGN KEY(ID_Modif) REFERENCES Modif(ID_Modif)
+);
