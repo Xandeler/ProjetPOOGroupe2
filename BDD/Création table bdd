@@ -44,7 +44,7 @@ CREATE TABLE Article(
    Prix_HT_Article MONEY,
    Nom_Article VARCHAR(50),
    Quantite_Article INT,
-   SeuilReduction_Article VARCHAR(50),
+   Seuil_Reduction_Article VARCHAR(50),
    ID_Stock INT NOT NULL,
    FOREIGN KEY(ID_Stock) REFERENCES Stock(ID_Stock)
 );
