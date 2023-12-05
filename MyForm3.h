@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <cstdlib>
 
 namespace ProjetPOOGroupe2 {
 
@@ -10,7 +11,7 @@ namespace ProjetPOOGroupe2 {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Description r�sum�e de MyForm1
+	/// Description résumé de MyForm
 	/// </summary>
 	public ref class MyForm3 : public System::Windows::Forms::Form
 	{
@@ -18,16 +19,13 @@ namespace ProjetPOOGroupe2 {
 		MyForm3(void)
 		{
 			InitializeComponent();
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm3::button1_Click); // Permet de lier le bouton � la fonction
+			this->btn_retour->Click += gcnew System::EventHandler(this, &MyForm3::btn_retour_Click); // Permet de lier le bouton � la fonction
 
-			//
-			//TODO: ajoutez ici le code du constructeur
-			//
 		}
 
 	protected:
 		/// <summary>
-		/// Nettoyage des ressources utilis�es.
+		/// Nettoyage des ressources utilisées.
 		/// </summary>
 		~MyForm3()
 		{
@@ -36,12 +34,42 @@ namespace ProjetPOOGroupe2 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::RadioButton^ radioButton1;
+	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	protected:
-	private: System::Windows::Forms::RadioButton^ radioButton2;
-	private: System::Windows::Forms::RadioButton^ radioButton3;
-	private: System::Windows::Forms::RadioButton^ radioButton4;
-	private: System::Windows::Forms::Button^ button1;
+
+	private: System::Windows::Forms::Button^ btn_load;
+	private: System::Windows::Forms::Button^ btn_retour;
+	private: System::Windows::Forms::Button^ btn_ajouter;
+	private: System::Windows::Forms::Button^ btn_supprimer;
+	private: System::Windows::Forms::Button^ btn_modifier;
+	private: System::Windows::Forms::TextBox^ tb_nom;
+	private: System::Windows::Forms::TextBox^ tb_prenom;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::TextBox^ txt_results;
+
+	private: System::Windows::Forms::Label^ lbl_resultats;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::TextBox^ textBox2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
+
+
+
+
+
+
+
+
+
+
+
+
 
 	protected:
 
@@ -58,90 +86,363 @@ namespace ProjetPOOGroupe2 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton3 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton4 = (gcnew System::Windows::Forms::RadioButton());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->btn_load = (gcnew System::Windows::Forms::Button());
+			this->btn_retour = (gcnew System::Windows::Forms::Button());
+			this->btn_ajouter = (gcnew System::Windows::Forms::Button());
+			this->btn_supprimer = (gcnew System::Windows::Forms::Button());
+			this->btn_modifier = (gcnew System::Windows::Forms::Button());
+			this->tb_nom = (gcnew System::Windows::Forms::TextBox());
+			this->tb_prenom = (gcnew System::Windows::Forms::TextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->txt_results = (gcnew System::Windows::Forms::TextBox());
+			this->lbl_resultats = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// radioButton1
+			// dataGridView1
 			// 
-			this->radioButton1->AutoSize = true;
-			this->radioButton1->Location = System::Drawing::Point(508, 65);
-			this->radioButton1->Name = L"radioButton1";
-			this->radioButton1->Size = System::Drawing::Size(61, 20);
-			this->radioButton1->TabIndex = 0;
-			this->radioButton1->TabStop = true;
-			this->radioButton1->Text = L"Creer une commande";
-			this->radioButton1->UseVisualStyleBackColor = true;
+			this->dataGridView1->AllowUserToAddRows = false;
+			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
+				this->Column1,
+					this->Column2, this->Column3, this->Column4, this->Column5
+			});
+			this->dataGridView1->Location = System::Drawing::Point(85, 14);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->dataGridView1->MultiSelect = false;
+			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->ReadOnly = true;
+			this->dataGridView1->RowHeadersWidth = 51;
+			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
+			this->dataGridView1->Size = System::Drawing::Size(681, 220);
+			this->dataGridView1->TabIndex = 0;
+			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm3::dataGridView1_CellContentClick);
 			// 
-			// radioButton2
+			// Column1
 			// 
-			this->radioButton2->AutoSize = true;
-			this->radioButton2->Location = System::Drawing::Point(508, 91);
-			this->radioButton2->Name = L"radioButton2";
-			this->radioButton2->Size = System::Drawing::Size(76, 20);
-			this->radioButton2->TabIndex = 1;
-			this->radioButton2->TabStop = true;
-			this->radioButton2->Text = L"Modifier une commande";
-			this->radioButton2->UseVisualStyleBackColor = true;
+			this->Column1->HeaderText = L"ID";
+			this->Column1->MinimumWidth = 6;
+			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
+			this->Column1->Width = 125;
 			// 
-			// radioButton3
+			// Column2
 			// 
-			this->radioButton3->AutoSize = true;
-			this->radioButton3->Location = System::Drawing::Point(508, 117);
-			this->radioButton3->Name = L"radioButton3";
-			this->radioButton3->Size = System::Drawing::Size(90, 20);
-			this->radioButton3->TabIndex = 2;
-			this->radioButton3->TabStop = true;
-			this->radioButton3->Text = L"Supprimer une commande";
-			this->radioButton3->UseVisualStyleBackColor = true;
+			this->Column2->HeaderText = L"Reference";
+			this->Column2->MinimumWidth = 6;
+			this->Column2->Name = L"Column2";
+			this->Column2->ReadOnly = true;
+			this->Column2->Width = 125;
 			// 
-			// radioButton4
+			// Column3
 			// 
-			this->radioButton4->AutoSize = true;
-			this->radioButton4->Location = System::Drawing::Point(508, 143);
-			this->radioButton4->Name = L"radioButton4";
-			this->radioButton4->Size = System::Drawing::Size(72, 20);
-			this->radioButton4->TabIndex = 3;
-			this->radioButton4->TabStop = true;
-			this->radioButton4->Text = L"Afficher une commande";
-			this->radioButton4->UseVisualStyleBackColor = true;
+			this->Column3->HeaderText = L"Date commande";
+			this->Column3->MinimumWidth = 6;
+			this->Column3->Name = L"Column3";
+			this->Column3->ReadOnly = true;
+			this->Column3->Width = 125;
 			// 
-			// button1
+			// Column4
 			// 
-			this->button1->Location = System::Drawing::Point(12, 363);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(112, 36);
-			this->button1->TabIndex = 4;
-			this->button1->Text = L"RETOUR";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm3::button1_Click);
+			this->Column4->HeaderText = L"Date de livraison prevue";
+			this->Column4->MinimumWidth = 6;
+			this->Column4->Name = L"Column4";
+			this->Column4->ReadOnly = true;
+			this->Column4->Width = 125;
 			// 
-			// MyForm1
+			// Column5
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->Column5->HeaderText = L"Contenu";
+			this->Column5->MinimumWidth = 6;
+			this->Column5->Name = L"Column5";
+			this->Column5->ReadOnly = true;
+			this->Column5->Width = 125;
+			// 
+			// btn_load
+			// 
+			this->btn_load->Location = System::Drawing::Point(13, 267);
+			this->btn_load->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->btn_load->Name = L"btn_load";
+			this->btn_load->Size = System::Drawing::Size(112, 176);
+			this->btn_load->TabIndex = 1;
+			this->btn_load->Text = L"Load DB";
+			this->btn_load->UseVisualStyleBackColor = true;
+			this->btn_load->Click += gcnew System::EventHandler(this, &MyForm3::btn_load_Click);
+			// 
+			// btn_retour
+			// 
+			this->btn_retour->Location = System::Drawing::Point(12, 477);
+			this->btn_retour->Name = L"btn_retour";
+			this->btn_retour->Size = System::Drawing::Size(112, 36);
+			this->btn_retour->TabIndex = 4;
+			this->btn_retour->Text = L"RETOUR";
+			this->btn_retour->UseVisualStyleBackColor = true;
+			this->btn_retour->Click += gcnew System::EventHandler(this, &MyForm3::btn_retour_Click);
+			// 
+			// btn_ajouter
+			// 
+			this->btn_ajouter->Location = System::Drawing::Point(144, 267);
+			this->btn_ajouter->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->btn_ajouter->Name = L"btn_ajouter";
+			this->btn_ajouter->Size = System::Drawing::Size(112, 55);
+			this->btn_ajouter->TabIndex = 2;
+			this->btn_ajouter->Text = L"AJOUTER";
+			this->btn_ajouter->UseVisualStyleBackColor = true;
+			this->btn_ajouter->Click += gcnew System::EventHandler(this, &MyForm3::btn_ajouter_Click);
+			// 
+			// btn_supprimer
+			// 
+			this->btn_supprimer->Location = System::Drawing::Point(144, 388);
+			this->btn_supprimer->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->btn_supprimer->Name = L"btn_supprimer";
+			this->btn_supprimer->Size = System::Drawing::Size(112, 55);
+			this->btn_supprimer->TabIndex = 3;
+			this->btn_supprimer->Text = L"SUPPRIMER";
+			this->btn_supprimer->UseVisualStyleBackColor = true;
+			this->btn_supprimer->Click += gcnew System::EventHandler(this, &MyForm3::btn_supprimer_Click);
+			// 
+			// btn_modifier
+			// 
+			this->btn_modifier->Location = System::Drawing::Point(144, 328);
+			this->btn_modifier->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->btn_modifier->Name = L"btn_modifier";
+			this->btn_modifier->Size = System::Drawing::Size(112, 55);
+			this->btn_modifier->TabIndex = 4;
+			this->btn_modifier->Text = L"MODIFIER";
+			this->btn_modifier->UseVisualStyleBackColor = true;
+			this->btn_modifier->Click += gcnew System::EventHandler(this, &MyForm3::btn_modifier_Click);
+			// 
+			// tb_nom
+			// 
+			this->tb_nom->Location = System::Drawing::Point(557, 293);
+			this->tb_nom->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->tb_nom->Name = L"tb_nom";
+			this->tb_nom->Size = System::Drawing::Size(284, 24);
+			this->tb_nom->TabIndex = 6;
+			// 
+			// tb_prenom
+			// 
+			this->tb_prenom->Location = System::Drawing::Point(557, 256);
+			this->tb_prenom->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->tb_prenom->Name = L"tb_prenom";
+			this->tb_prenom->Size = System::Drawing::Size(284, 24);
+			this->tb_prenom->TabIndex = 7;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(474, 296);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(76, 18);
+			this->label1->TabIndex = 8;
+			this->label1->Text = L"Reference";
+			this->label1->Click += gcnew System::EventHandler(this, &MyForm3::label1_Click);
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(432, 259);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(118, 18);
+			this->label2->TabIndex = 9;
+			this->label2->Text = L"Date commande";
+			// 
+			// txt_results
+			// 
+			this->txt_results->Location = System::Drawing::Point(473, 416);
+			this->txt_results->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->txt_results->Multiline = true;
+			this->txt_results->Name = L"txt_results";
+			this->txt_results->ReadOnly = true;
+			this->txt_results->Size = System::Drawing::Size(397, 97);
+			this->txt_results->TabIndex = 10;
+			// 
+			// lbl_resultats
+			// 
+			this->lbl_resultats->AutoSize = true;
+			this->lbl_resultats->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lbl_resultats->Location = System::Drawing::Point(396, 416);
+			this->lbl_resultats->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbl_resultats->Name = L"lbl_resultats";
+			this->lbl_resultats->Size = System::Drawing::Size(70, 18);
+			this->lbl_resultats->TabIndex = 14;
+			this->lbl_resultats->Text = L"Resultats";
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(385, 330);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(165, 18);
+			this->label3->TabIndex = 15;
+			this->label3->Text = L"Date de livraison prevue";
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(485, 367);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(64, 18);
+			this->label4->TabIndex = 16;
+			this->label4->Text = L"Contenu";
+			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(556, 361);
+			this->textBox1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(284, 24);
+			this->textBox1->TabIndex = 17;
+			// 
+			// textBox2
+			// 
+			this->textBox2->Location = System::Drawing::Point(557, 327);
+			this->textBox2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(284, 24);
+			this->textBox2->TabIndex = 18;
+			// 
+			// MyForm3
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(9, 18);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(750, 400);
-			this->Controls->Add(this->button1);
-			this->Controls->Add(this->radioButton4);
-			this->Controls->Add(this->radioButton3);
-			this->Controls->Add(this->radioButton2);
-			this->Controls->Add(this->radioButton1);
-			this->Name = L"MyForm1";
+			this->ClientSize = System::Drawing::Size(882, 518);
+			this->Controls->Add(this->textBox2);
+			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->lbl_resultats);
+			this->Controls->Add(this->txt_results);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->btn_retour);
+			this->Controls->Add(this->tb_prenom);
+			this->Controls->Add(this->tb_nom);
+			this->Controls->Add(this->btn_ajouter);
+			this->Controls->Add(this->btn_supprimer);
+			this->Controls->Add(this->btn_modifier);
+			this->Controls->Add(this->btn_load);
+			this->Controls->Add(this->dataGridView1);
+			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->MaximumSize = System::Drawing::Size(900, 565);
+			this->MinimumSize = System::Drawing::Size(900, 565);
+			this->Name = L"MyForm3";
 			this->Text = L"Gestion des commandes";
+			this->Load += gcnew System::EventHandler(this, &MyForm3::MyForm_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
+
 #pragma endregion
 
-
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
+	private: System::Void btn_retour_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		this->Hide();
 
 	}
+	private: void refresh_datagrid()
+	{
+		this->dataGridView1->Refresh();
+
+		this->txt_results->Text = "Données générées";
+	}
+
+	private: int get_selected_ID()
+	{
+		String^ selectedIDstring = this->dataGridView1->SelectedRows[0]->Cells["id"]->Value->ToString();
+		return Convert::ToInt32(selectedIDstring);
+
+	}
+
+	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
+	{
+		refresh_datagrid();
+	}
+
+
+	private: System::Void btn_load_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		try
+		{
+			refresh_datagrid();
+		}
+		catch (Exception^ execept)
+		{
+			this->txt_results->Text = execept->Message;
+			this->txt_results->Text += "\r\n";
+			this->txt_results->Text += execept->StackTrace;
+		}
+	}
+
+	private: System::Void btn_ajouter_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		try
+		{
+			refresh_datagrid();
+
+			this->txt_results->Text = "Données entrées avec succès";
+		}
+		catch (Exception^ execept)
+		{
+			this->txt_results->Text = execept->Message;
+			this->txt_results->Text += "\r\n";
+			this->txt_results->Text += execept->StackTrace;
+
+
+		}
+	}
+
+	private: System::Void btn_supprimer_Click(System::Object^ sender, System::EventArgs^ e) {
+		try
+		{
+			refresh_datagrid();
+
+			this->txt_results->Text = "Données supprimées avec succès";
+
+		}
+		catch (Exception^ execept)
+		{
+			this->txt_results->Text = execept->Message;
+			this->txt_results->Text += "\r\n";
+			this->txt_results->Text += execept->StackTrace;
+
+		}
+	}
+	private: System::Void btn_modifier_Click(System::Object^ sender, System::EventArgs^ e) {
+		try
+		{
+			refresh_datagrid();
+
+			this->txt_results->Text = "Données modifiées avec succès";
+		}
+		catch (Exception^ execept)
+		{
+			this->txt_results->Text = execept->Message;
+			this->txt_results->Text += "\r\n";
+			this->txt_results->Text += execept->StackTrace;
+		}
+	}
+
+	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	}
+	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+
 	};
 }
