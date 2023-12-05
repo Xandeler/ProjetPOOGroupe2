@@ -5,47 +5,47 @@ Statistiques::Statistiques()
     
 }
 
-void Statistiques::Calcul_Panier_Moyen(StockageCommandes^ commandes)
+String^ Statistiques::Calcul_Panier_Moyen()
 {
     
 }
 
-void Statistiques::Calcul_Chiffre_Affaires(StockageCommandes^ commandes, Stock^ articles)
+String^ Statistiques::Calcul_Chiffre_Affaires()
 {
     
 }
 
-void Statistiques::Produit_A_Commander(Stock^ articles)
+String^ Statistiques::Produit_A_Commander()
 {
     
 }
 
-void Statistiques::Calcul_Montant_Client(StockageCommandes commandes)
+String^ Statistiques::Calcul_Montant_Client(int^ id)
 {
     
 }
 
-void Statistiques::Articles_Plus_Vendus(StockageCommandes commandes)
+String^ Statistiques::Articles_Plus_Vendus()
 {
     
 }
 
-void Statistiques::Articles_Moins_Vendus(StockageCommandes commandes)
+String^ Statistiques::Articles_Moins_Vendus()
 {
     
 }
 
-void Statistiques::Calcul_Valeur_Commerciale_Stock(Stock^ articles)
+String^ Statistiques::Calcul_Valeur_Commerciale_Stock()
 {
     
 }
 
-void Statistiques::Calcul_Valeur_Achat_Stock(Stock^ articles)
+String^ Statistiques::Calcul_Valeur_Achat_Stock()
 {
     
 }
 
-void Statistiques::Simulation_Variations()
+String^ Statistiques::Simulation_Variations()
 {
     
 }

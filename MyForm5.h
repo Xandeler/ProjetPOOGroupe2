@@ -259,42 +259,76 @@ namespace ProjetPOOGroupe2 {
 
 	private: System::Void bouton_panier_moyen_click(System::Object^ sender, System::EventArgs^ e)
 	{
+		this->textBox_resultat->Clear();
 
+		this->textBox_resultat->Text += "Le panier moyen est de : ";
+		this->textBox_resultat->Text += this->statistiques->Calcul_Panier_Moyen();
+		this->textBox_resultat->Text += " euros.";
 	}
 
 	private: System::Void bouton_chiffre_affaires_click(System::Object^ sender, System::EventArgs^ e)
 	{
+		this->textBox_resultat->Clear();
 
+		this->textBox_resultat->Text += "Le chiffre d'affaires du mois en cours est de : ";
+		this->textBox_resultat->Text += this->statistiques->Calcul_Chiffre_Affaires();
+		this->textBox_resultat->Text += " euros.";
 	}
 
 	private: System::Void bouton_articles_a_commander_click(System::Object^ sender, System::EventArgs^ e)
 	{
+		this->textBox_resultat->Clear();
 
+		this->textBox_resultat->Text += "Les articles sous le seuil de reapprovisionnement sont les suivants : ";
+		this->textBox_resultat->Text += this->statistiques->Produit_A_Commander();
+		this->textBox_resultat->Text += ".";
 	}
 
 	private: System::Void bouton_montant_client_click(System::Object^ sender, System::EventArgs^ e)
 	{
+		this->textBox_resultat->Clear();
 
+		this->textBox_resultat->Text += "Le montant total de tous les achats effectues par le client ";
+		this->textBox_resultat->Text += this->textBox_ID_client->Text;
+		this->textBox_resultat->Text += " est de : ";
+		this->textBox_resultat->Text += this->statistiques->Calcul_Montant_Client(Convert::ToInt32(this->textBox_ID_client->Text));
+		this->textBox_resultat->Text += " euros.";
 	}
 
 	private: System::Void bouton_articles_plus_vendus_click(System::Object^ sender, System::EventArgs^ e)
 	{
+		this->textBox_resultat->Clear();
 
+		this->textBox_resultat->Text += "Les dix articles les plus vendus sont : ";
+		this->textBox_resultat->Text += this->statistiques->Articles_Plus_Vendus();
+		this->textBox_resultat->Text += ".";
 	}
 
 	private: System::Void bouton_articles_moins_vendus_click(System::Object^ sender, System::EventArgs^ e)
 	{
+		this->textBox_resultat->Clear();
 
+		this->textBox_resultat->Text += "Les dix articles les moins vendus sont : ";
+		this->textBox_resultat->Text += this->statistiques->Articles_Moins_Vendus();
+		this->textBox_resultat->Text += ".";
 	}
 
 	private: System::Void bouton_valeur_commerciale_click(System::Object^ sender, System::EventArgs^ e)
 	{
+		this->textBox_resultat->Clear();
 
+		this->textBox_resultat->Text += "La valeur commerciale du stock est de : ";
+		this->textBox_resultat->Text += this->statistiques->Calcul_Valeur_Commerciale_Stock();
+		this->textBox_resultat->Text += " euros.";
 	}
 
 	private: System::Void bouton_valeur_achat_click(System::Object^ sender, System::EventArgs^ e)
 	{
+		this->textBox_resultat->Clear();
 
+		this->textBox_resultat->Text += "La valeur d'achat du stock est de : ";
+		this->textBox_resultat->Text += this->statistiques->Calcul_Valeur_Achat_Stock();
+		this->textBox_resultat->Text += "euros.";
 	}
 	};
 }
