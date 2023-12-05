@@ -106,11 +106,6 @@ void Commande::set_Date_Emission(String^ date_emission)
     this->Date_Emission = date_emission;
 }
 
-List<Paiement^>^ Commande::get_Liste_Paiements()
-{
-    return this->Liste_Paiements;
-}
-
 void Commande::ajouter_Paiement()
 {
     

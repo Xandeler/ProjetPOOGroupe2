@@ -12,16 +12,6 @@ Client::Client(String^ date_naissance, String^ date_premier_achat, int^ ID, Stri
     this->set_Date_Premier_Achat(date_premier_achat);
 }
 
-List<Adresse^>^ Client::get_Adresse_Facturation()
-{
-    return this->Adresse_Facturation;
-}
-
-List<Adresse^>^ Client::get_Adresse_Livraison()
-{
-    return this->Adresse_Livraison;
-}
-
 String^ Client::get_Date_Naissance()
 {
     return this->Date_Naissance;

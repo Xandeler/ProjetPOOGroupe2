@@ -24,3 +24,8 @@ void StockageCommandes::afficher()
 {
     
 }
+
+void StockageCommandes::imprimer()
+{
+    
+}
