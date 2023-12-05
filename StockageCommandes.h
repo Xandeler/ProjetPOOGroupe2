@@ -2,6 +2,7 @@
 #include "Commande.h"
 
 using namespace System;
+using namespace System::IO;
 
 ref class StockageCommandes
 {

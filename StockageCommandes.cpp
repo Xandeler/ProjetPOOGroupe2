@@ -27,5 +27,9 @@ void StockageCommandes::afficher()
 
 void StockageCommandes::imprimer()
 {
-    
+    String^ chemin_acces = "";
+
+    StreamWriter^ ecriture = gcnew StreamWriter(chemin_acces);
+
+    ecriture->WriteLine("Ce que l'on souhaite ecrire.");
 }
