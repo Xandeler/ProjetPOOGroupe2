@@ -6,13 +6,6 @@ CREATE TABLE Ville(
    CodePostal_Ville INT
 );
 
-CREATE TABLE Dates_Utiles(
-   ID_Dates_Utiles INT PRIMARY KEY IDENTITY,
-   Commande_Dates_Utiles DATE,
-   Emission_Dates_Utiles DATE,
-   Livraison_Prevue_Dates_Utiles DATE
-);
-
 CREATE TABLE Remise(
    ID_Remise INT PRIMARY KEY IDENTITY,
    Valeur_Remise FLOAT
@@ -42,8 +35,8 @@ CREATE TABLE Adresse(
 CREATE TABLE Commande(
    ID_Commande INT PRIMARY KEY IDENTITY,
    Reference_Commande VARCHAR(50) UNIQUE,
-   ID_Dates_Utiles INT NOT NULL,
-   FOREIGN KEY(ID_Dates_Utiles) REFERENCES Dates_Utiles(ID_Dates_Utiles)
+   Livraison_Prevue_Commande DATE,
+   Emission_Commande DATE,
 );
 
 CREATE TABLE Article(
