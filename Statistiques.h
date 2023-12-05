@@ -1,10 +1,14 @@
 #pragma once
 #include "Stock.h"
 #include "StockageCommandes.h"
+#include "AccesBase.h"
 
 
 ref class Statistiques
 {
+private:
+	AccesBase^ Acces_Base;
+
 public:
 	Statistiques();
 	void Calcul_Panier_Moyen(StockageCommandes^ commandes);

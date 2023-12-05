@@ -3,12 +3,14 @@
 #include "Client.h"
 #include "Article.h"
 #include "Adresse.h"
+#include "AccesBase.h"
 
 using namespace System;
 
 ref class Commande
 {
 private:
+	AccesBase^ AccesBase;
 	int^ ID_Commande;
 	String^ Lettres_Nom;
 	String^ Lettres_Prenom;

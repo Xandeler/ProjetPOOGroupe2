@@ -1,19 +1,18 @@
 #pragma once
 #include "Ville.h"
-#include <cliext/list>
+#include "AccesBase.h"
 
-using namespace System::Collections::Generic;
 using namespace System;
 
 ref class Adresse
 {
 private:
+	AccesBase^ Acces_Base;
 	int^ Code_Postal;
 	String^ Nom_Ville;
 	String^ Rue;
 	String^ Numero_Maison;
 	String^ Nature;
-	Ville^ Liste_Ville;
 
 public:
 	Adresse();

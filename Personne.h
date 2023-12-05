@@ -1,10 +1,12 @@
 #pragma once
+#include "AccesBase.h"
 
 using namespace System;
 
 ref class Personne
 {
 protected:
+	AccesBase^ Acces_Base;
 	int^ ID_Personne;
 	String^ Nom;
 	String^ Prenom;

@@ -1,35 +1,33 @@
-CREATE DATABASE Electronic;
-
 USE Electronic;
 
 CREATE TABLE Ville(
    ID_Ville INT PRIMARY KEY IDENTITY,
    Nom_ville VARCHAR(50),
-   CodePostal_Ville INT,
+   CodePostal_Ville INT
 );
 
 CREATE TABLE Dates_Utiles(
-   Id_Dates_Utiles INT PRIMARY KEY IDENTITY,
+   ID_Dates_Utiles INT PRIMARY KEY IDENTITY,
    Commande_Dates_Utiles DATE,
    Emission_Dates_Utiles DATE,
-   Livraison_Prevue_Dates_Utiles DATE,
+   Livraison_Prevue_Dates_Utiles DATE
 );
 
 CREATE TABLE Remise(
    ID_Remise INT PRIMARY KEY IDENTITY,
-   Valeur_Remise DOUBLE,
+   Valeur_Remise FLOAT
 );
 
 CREATE TABLE Stock(
    ID_Stock INT PRIMARY KEY IDENTITY,
    Quantite_Stock INT,
-   Seuil_Reapprovisionneent_Stock INT,
+   Seuil_Reapprovisionnement_Stock INT
 );
 
 CREATE TABLE Modif(
-   Id_Modif INT PRIMARY KEY IDENTITY,
-   Taux_TVA_Modif DOUBLE,
-   Taux_Reduction_Modif DOUBLE,
+   ID_Modif INT PRIMARY KEY IDENTITY,
+   Taux_TVA_Modif FLOAT,
+   Taux_Reduction_Modif FLOAT
 );
 
 CREATE TABLE Adresse(
@@ -42,15 +40,15 @@ CREATE TABLE Adresse(
 );
 
 CREATE TABLE Commande(
-   Id_Commande INT PRIMARY KEY IDENTITY,
-   Reference_Commande VARCHAR(50),
-   Id_Dates_Utiles INT NOT NULL,
-   FOREIGN KEY(Id_Dates_Utiles) REFERENCES Dates_Utiles(Id_Dates_Utiles)
+   ID_Commande INT PRIMARY KEY IDENTITY,
+   Reference_Commande VARCHAR(50) UNIQUE,
+   ID_Dates_Utiles INT NOT NULL,
+   FOREIGN KEY(ID_Dates_Utiles) REFERENCES Dates_Utiles(ID_Dates_Utiles)
 );
 
 CREATE TABLE Article(
-   Id_Article INT PRIMARY KEY IDENTITY,
-   Prix_HT_Article CURRENCY,
+   ID_Article INT PRIMARY KEY IDENTITY,
+   Prix_HT_Article MONEY,
    Nom_Article VARCHAR(50),
    Quantite_Article INT,
    SeuilReduction_Article VARCHAR(50),
@@ -66,6 +64,7 @@ CREATE TABLE Paiement(
    Reference_Commande VARCHAR(50) NOT NULL,
    FOREIGN KEY(Reference_Commande) REFERENCES Commande(Reference_Commande)
 );
+
 
 CREATE TABLE Personne(
    ID_Personne INT PRIMARY KEY IDENTITY,
@@ -104,32 +103,32 @@ CREATE TABLE Personnel(
 
 CREATE TABLE Effectue(
    ID_Clients INT,
-   Reference_Commande VARCHAR(50),
+   Reference_Commande INT,
    PRIMARY KEY(ID_Clients, Reference_Commande),
    FOREIGN KEY(ID_Clients) REFERENCES Clients(ID_Clients),
-   FOREIGN KEY(Reference_Commande) REFERENCES Commande(Reference_Commande)
+   FOREIGN KEY(Reference_Commande) REFERENCES Commande(ID_Commande)
 );
 
-CREATE TABLE Composé(
-   Reference_Commande VARCHAR(50),
+CREATE TABLE Compose(
+   Reference_Commande INT,
    Reference_Article INT,
    PRIMARY KEY(Reference_Commande, Reference_Article),
-   FOREIGN KEY(Reference_Commande) REFERENCES Commande(Reference_Commande),
-   FOREIGN KEY(Reference_Article) REFERENCES Article(Reference_Article)
+   FOREIGN KEY(Reference_Commande) REFERENCES Commande(ID_Commande),
+   FOREIGN KEY(Reference_Article) REFERENCES Article(ID_Article)
 );
 
 CREATE TABLE Comprend(
-   Reference_Commande VARCHAR(50),
+   Reference_Commande INT,
    ID_Remise INT,
    PRIMARY KEY(Reference_Commande, ID_Remise),
-   FOREIGN KEY(Reference_Commande) REFERENCES Commande(Reference_Commande),
+   FOREIGN KEY(Reference_Commande) REFERENCES Commande(ID_Commande),
    FOREIGN KEY(ID_Remise) REFERENCES Remise(ID_Remise)
 );
 
 CREATE TABLE Comporte(
    Reference_Article INT,
-   Id_Modif INT,
-   PRIMARY KEY(Reference_Article, Id_Modif),
-   FOREIGN KEY(Reference_Article) REFERENCES Article(Reference_Article),
-   FOREIGN KEY(Id_Modif) REFERENCES Modif(Id_Modif)
+   ID_Modif INT,
+   PRIMARY KEY(Reference_Article, ID_Modif),
+   FOREIGN KEY(Reference_Article) REFERENCES Article(ID_Article),
+   FOREIGN KEY(ID_Modif) REFERENCES Modif(ID_Modif)
 );
