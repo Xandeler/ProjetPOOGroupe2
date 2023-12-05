@@ -64,6 +64,7 @@ namespace ProjetPOOGroupe2 {
 
 
 	private: System::Windows::Forms::Label^ label_couleur_article;
+	private: System::Windows::Forms::Label^ label_stock;
 
 
 	protected:
@@ -106,6 +107,7 @@ namespace ProjetPOOGroupe2 {
 			this->label_seuil_reduction_article = (gcnew System::Windows::Forms::Label());
 			this->textBox_couleur_article = (gcnew System::Windows::Forms::TextBox());
 			this->label_couleur_article = (gcnew System::Windows::Forms::Label());
+			this->label_stock = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView_stock))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -252,11 +254,22 @@ namespace ProjetPOOGroupe2 {
 			this->label_couleur_article->TabIndex = 15;
 			this->label_couleur_article->Text = L"Couleur de l\'article :";
 			// 
+			// label_stock
+			// 
+			this->label_stock->AutoSize = true;
+			this->label_stock->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->label_stock->Location = System::Drawing::Point(12, 9);
+			this->label_stock->Name = L"label_stock";
+			this->label_stock->Size = System::Drawing::Size(54, 18);
+			this->label_stock->TabIndex = 21;
+			this->label_stock->Text = L"STOCK";
+			// 
 			// MyForm4
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(906, 538);
+			this->ClientSize = System::Drawing::Size(904, 538);
+			this->Controls->Add(this->label_stock);
 			this->Controls->Add(this->textBox_taux_tva_article);
 			this->Controls->Add(this->label_taux_tva_article);
 			this->Controls->Add(this->textBox_seuil_reduction_article);
