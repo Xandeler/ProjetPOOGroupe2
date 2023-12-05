@@ -237,10 +237,7 @@ namespace ProjetPOOGroupe2 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(935, 400);
-			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->MaximumSize = System::Drawing::Size(935, 400);
-			this->MinimumSize = System::Drawing::Size(935, 400);
+			this->ClientSize = System::Drawing::Size(960, 402);
 			this->Controls->Add(this->label_statistiques);
 			this->Controls->Add(this->label_ID_client);
 			this->Controls->Add(this->textBox_ID_client);
