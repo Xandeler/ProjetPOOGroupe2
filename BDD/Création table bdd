@@ -94,7 +94,7 @@ CREATE TABLE SuperieurHierarchique(
 CREATE TABLE Personnel(
    ID_Personnel INT PRIMARY KEY IDENTITY,
    DateEmbauche_personnel DATE,
-   ID_SuperieurHierarchique INT NOT NULL,
+   ID_SuperieurHierarchique INT,
    ID_Personne INT NOT NULL,
    UNIQUE(ID_Personne),
    FOREIGN KEY(ID_SuperieurHierarchique) REFERENCES SuperieurHierarchique(ID_SuperieurHierarchique),
