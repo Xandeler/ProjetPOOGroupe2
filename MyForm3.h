@@ -80,7 +80,7 @@ namespace ProjetPOOGroupe2 {
 		/// Variable n�cessaire au concepteur.
 		/// </summary>
 		System::ComponentModel::Container^ components;
-		AccesBase^ acces_base;
+		AB::AccesBase^ acces_base;
 		StockageCommandes^ commandes;
 
 

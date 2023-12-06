@@ -5,7 +5,7 @@
 ref class SuperieurHierarchique : public Personne
 {
 private:
-	Personnel^ personnel;
+	PE::Personnel^ personnel;
 
 public:
 	SuperieurHierarchique();

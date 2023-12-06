@@ -7,7 +7,7 @@ using namespace System;
 ref class Stock
 {
 private:
-	AccesBase^ Acces_Base;
+	AB::AccesBase^ Acces_Base;
 	Article^ article;
 
 public:
