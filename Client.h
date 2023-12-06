@@ -2,6 +2,7 @@
 #include "Personne.h"
 #include "Adresse.h"
 
+namespace CL {
 ref class Client : public Personne
 {
 protected:
@@ -26,3 +27,4 @@ public:
 	void modifier();
 	String^ afficher();
 };
+}
