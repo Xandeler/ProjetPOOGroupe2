@@ -8,7 +8,7 @@ FROM
   INNER JOIN Comporte ON Comporte.Reference_Article = Article.Reference_Article
   INNER JOIN Modif ON Modif.ID_Modif = Comporte.ID_Modif
 WHERE
-  Commande.ID_Commande = 1;
+  Commande.ID_Commande = 1; // Ajouter un getId_commande dans le code sur visual studio
 
 
 //Calcul_Chiffre_Affaires
@@ -66,6 +66,36 @@ ORDER BY Total_Ventes ASC;
 SELECT Nom_Article, Quantite_Stock_Article, Seuil_Reapprovisionnement_Article
 FROM Article
 WHERE Quantite_Stock_Article < Seuil_Reapprovisionnement_Article;
+
+//Calcul montant total client
+SELECT
+    SUM(
+        Prix_HT_Article * 
+        Taux_TVA_Modif * 
+        Quantite_Commande_Article * 
+        CASE 
+            WHEN ISNULL(Modif.Taux_Reduction_Modif, 0) = 0 THEN 1 
+            WHEN Article.Sueil_Reduction_Article <= Compose.Quantite_Commande_Article 
+            THEN (Modif.Taux_Reduction_Modif)
+            ELSE 1
+        END
+    ) AS MontantTotalClient
+FROM
+    Article
+    INNER JOIN 
+        Compose ON Article.Reference_Article = Compose.Reference_Article
+    INNER JOIN 
+        Commande ON Compose.ID_Commande = Commande.ID_Commande
+    INNER JOIN 
+        Comporte ON Comporte.Reference_Article = Article.Reference_Article
+    INNER JOIN 
+        Modif ON Modif.ID_Modif = Comporte.ID_Modif
+    INNER JOIN 
+        Effectue ON Commande.ID_Commande = Effectue.ID_Commande
+    INNER JOIN 
+        Clients ON Effectue.ID_Clients = Clients.ID_Clients
+WHERE
+    Clients.ID_Clients = 1; // Ajouter un getId_commande dans le code sur visual studio
 
 
 
