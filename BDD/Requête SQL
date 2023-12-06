@@ -153,3 +153,15 @@ WHERE ID_Personne = 30;
 //Supprimer un client (VS code)
 "DELETE FROM Possede WHERE ID_Personne = " + this->get_ID_Personne() + "; DELETE FROM Possede WHERE ID_Commande = (SELECT ID_Commande FROM Effectue WHERE ID_Clients = (SELECT ID_Clients FROM Clients WHERE ID_Personne = " + this->get_ID_Personne() + "));" + "DELETE FROM Effectue WHERE ID_Clients = (SELECT ID_Clients FROM Clients WHERE ID_Personne = " + this->get_ID_Personne() + ");" + "DELETE FROM Clients WHERE ID_Personne = " + this->get_ID_Personne() + ";" + "DELETE FROM Personne WHERE ID_Personne = " + this->get_ID_Personne() + ";";
 
+//Modifier un client (SQL)
+UPDATE Personne
+SET Nom_Personne = 'Mouse', Prenom_Personne = 'Mickey'
+WHERE ID_Personne = 24;
+
+UPDATE Clients
+SET Date_Naissance_Clients = '13/06/1964', Date_Premier_Achat_Clients = '07/07/2000'
+WHERE ID_Personne = 24;
+
+//Modifier un client (VS code)
+"UPDATE Personne SET Nom_Personne = '" + this->get_Nom() + "', Prenom_Personne = '" + this->get_Prenom() + "' WHERE ID_Personne = " + this->get_ID_Personne() + "; UPDATE Clients SET Date_Naissance_Clients = '" + this->get_Date_Naissance() + "', Date_Premier_Achat_Clients = '" + this->get_Date_Premier_Achat() + "' WHERE ID_Personne = " + this->get_ID_Personne() + ";";
+
