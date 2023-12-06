@@ -49,15 +49,15 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::TextBox^ txt_results;
 
 	private: System::Windows::Forms::Label^ lbl_resultats;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
+
+
+
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::TextBox^ textBox2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
+
+
 
 
 
@@ -87,11 +87,6 @@ namespace ProjetPOOGroupe2 {
 		void InitializeComponent(void)
 		{
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->btn_retour = (gcnew System::Windows::Forms::Button());
 			this->btn_ajouter = (gcnew System::Windows::Forms::Button());
 			this->btn_supprimer = (gcnew System::Windows::Forms::Button());
@@ -113,10 +108,6 @@ namespace ProjetPOOGroupe2 {
 			// 
 			this->dataGridView1->AllowUserToAddRows = false;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
-				this->Column1,
-					this->Column2, this->Column3, this->Column4, this->Column5
-			});
 			this->dataGridView1->Location = System::Drawing::Point(85, 14);
 			this->dataGridView1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->dataGridView1->MultiSelect = false;
@@ -127,46 +118,6 @@ namespace ProjetPOOGroupe2 {
 			this->dataGridView1->Size = System::Drawing::Size(681, 220);
 			this->dataGridView1->TabIndex = 0;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm3::dataGridView1_CellContentClick);
-			// 
-			// Column1
-			// 
-			this->Column1->HeaderText = L"ID";
-			this->Column1->MinimumWidth = 6;
-			this->Column1->Name = L"Column1";
-			this->Column1->ReadOnly = true;
-			this->Column1->Width = 125;
-			// 
-			// Column2
-			// 
-			this->Column2->HeaderText = L"Reference";
-			this->Column2->MinimumWidth = 6;
-			this->Column2->Name = L"Column2";
-			this->Column2->ReadOnly = true;
-			this->Column2->Width = 125;
-			// 
-			// Column3
-			// 
-			this->Column3->HeaderText = L"Date commande";
-			this->Column3->MinimumWidth = 6;
-			this->Column3->Name = L"Column3";
-			this->Column3->ReadOnly = true;
-			this->Column3->Width = 125;
-			// 
-			// Column4
-			// 
-			this->Column4->HeaderText = L"Date de livraison prevue";
-			this->Column4->MinimumWidth = 6;
-			this->Column4->Name = L"Column4";
-			this->Column4->ReadOnly = true;
-			this->Column4->Width = 125;
-			// 
-			// Column5
-			// 
-			this->Column5->HeaderText = L"Contenu";
-			this->Column5->MinimumWidth = 6;
-			this->Column5->Name = L"Column5";
-			this->Column5->ReadOnly = true;
-			this->Column5->Width = 125;
 			// 
 			// btn_retour
 			// 

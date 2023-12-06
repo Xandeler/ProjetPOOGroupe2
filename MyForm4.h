@@ -85,14 +85,14 @@ namespace ProjetPOOGroupe2 {
 		/// Variable necessaire au concepteur.
 		/// </summary>
 	private: System::ComponentModel::Container^ components;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ID_article;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Nom_article;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Quantite_article;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Seuil_Reapprovisionnement_article;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Seuil_Reduction_article;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Prix_HT_article;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Taux_TVA_article;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Prix_TTC_article;
+
+
+
+
+
+
+
+
 	private: Stock^ stock;
 
 #pragma region Windows Form Designer generated code
@@ -120,15 +120,6 @@ namespace ProjetPOOGroupe2 {
 			   this->textBox_quantite_article = (gcnew System::Windows::Forms::TextBox());
 			   this->label_quantite_article = (gcnew System::Windows::Forms::Label());
 			   this->label_stock = (gcnew System::Windows::Forms::Label());
-			   this->ID_article = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			   this->Nom_article = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			   this->Quantite_article = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			   this->Seuil_Reapprovisionnement_article = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			   this->Seuil_Reduction_article = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			   this->Prix_HT_article = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			   this->Taux_TVA_article = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			   this->Prix_TTC_article = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			   this->stock = (gcnew Stock());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView_stock))->BeginInit();
 			   this->SuspendLayout();
 			   // 
@@ -145,11 +136,6 @@ namespace ProjetPOOGroupe2 {
 			   // dataGridView_stock
 			   // 
 			   this->dataGridView_stock->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			   this->dataGridView_stock->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(8) {
-				   this->ID_article,
-					   this->Nom_article, this->Quantite_article, this->Seuil_Reapprovisionnement_article, this->Seuil_Reduction_article, this->Prix_HT_article,
-					   this->Taux_TVA_article, this->Prix_TTC_article
-			   });
 			   this->dataGridView_stock->Location = System::Drawing::Point(179, 12);
 			   this->dataGridView_stock->Name = L"dataGridView_stock";
 			   this->dataGridView_stock->RowHeadersWidth = 51;
@@ -292,62 +278,6 @@ namespace ProjetPOOGroupe2 {
 			   this->label_stock->Size = System::Drawing::Size(54, 18);
 			   this->label_stock->TabIndex = 21;
 			   this->label_stock->Text = L"STOCK";
-			   // 
-			   // ID_article
-			   // 
-			   this->ID_article->HeaderText = L"ID";
-			   this->ID_article->MinimumWidth = 6;
-			   this->ID_article->Name = L"ID_article";
-			   this->ID_article->Width = 125;
-			   // 
-			   // Nom_article
-			   // 
-			   this->Nom_article->HeaderText = L"Nom";
-			   this->Nom_article->MinimumWidth = 6;
-			   this->Nom_article->Name = L"Nom_article";
-			   this->Nom_article->Width = 125;
-			   // 
-			   // Quantite_article
-			   // 
-			   this->Quantite_article->HeaderText = L"Quantité";
-			   this->Quantite_article->MinimumWidth = 6;
-			   this->Quantite_article->Name = L"Quantite_article";
-			   this->Quantite_article->Width = 125;
-			   // 
-			   // Seuil_Reapprovisionnement_article
-			   // 
-			   this->Seuil_Reapprovisionnement_article->HeaderText = L"Seuil de réapprovisionnement";
-			   this->Seuil_Reapprovisionnement_article->MinimumWidth = 6;
-			   this->Seuil_Reapprovisionnement_article->Name = L"Seuil_Reapprovisionnement_article";
-			   this->Seuil_Reapprovisionnement_article->Width = 125;
-			   // 
-			   // Seuil_Reduction_article
-			   // 
-			   this->Seuil_Reduction_article->HeaderText = L"Seuil de réduction";
-			   this->Seuil_Reduction_article->MinimumWidth = 6;
-			   this->Seuil_Reduction_article->Name = L"Seuil_Reduction_article";
-			   this->Seuil_Reduction_article->Width = 125;
-			   // 
-			   // Prix_HT_article
-			   // 
-			   this->Prix_HT_article->HeaderText = L"Prix HT";
-			   this->Prix_HT_article->MinimumWidth = 6;
-			   this->Prix_HT_article->Name = L"Prix_HT_article";
-			   this->Prix_HT_article->Width = 125;
-			   // 
-			   // Taux_TVA_article
-			   // 
-			   this->Taux_TVA_article->HeaderText = L"Taux TVA";
-			   this->Taux_TVA_article->MinimumWidth = 6;
-			   this->Taux_TVA_article->Name = L"Taux_TVA_article";
-			   this->Taux_TVA_article->Width = 125;
-			   // 
-			   // Prix_TTC_article
-			   // 
-			   this->Prix_TTC_article->HeaderText = L"Prix TTC";
-			   this->Prix_TTC_article->MinimumWidth = 6;
-			   this->Prix_TTC_article->Name = L"Prix_TTC_article";
-			   this->Prix_TTC_article->Width = 125;
 			   // 
 			   // MyForm4
 			   // 

@@ -52,11 +52,11 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::TextBox^ txt_results;
 
 	private: System::Windows::Forms::Label^ lbl_resultats;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
+
+
+
+
+
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::TextBox^ textBox2;
 
@@ -77,7 +77,7 @@ namespace ProjetPOOGroupe2 {
 		/// Variable n�cessaire au concepteur.
 		/// </summary>
 	private: System::ComponentModel::Container^ components;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6;
+
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::TextBox^ textBox3;
 	private: Personnel^ personnel;
@@ -91,12 +91,6 @@ namespace ProjetPOOGroupe2 {
 		void InitializeComponent(void)
 		{
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->btn_retour = (gcnew System::Windows::Forms::Button());
 			this->btn_ajouter = (gcnew System::Windows::Forms::Button());
 			this->btn_supprimer = (gcnew System::Windows::Forms::Button());
@@ -120,10 +114,6 @@ namespace ProjetPOOGroupe2 {
 			// 
 			this->dataGridView1->AllowUserToAddRows = false;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
-				this->Column1,
-					this->Column2, this->Column3, this->Column4, this->Column5, this->Column6
-			});
 			this->dataGridView1->Location = System::Drawing::Point(36, 14);
 			this->dataGridView1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->dataGridView1->MultiSelect = false;
@@ -133,54 +123,6 @@ namespace ProjetPOOGroupe2 {
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView1->Size = System::Drawing::Size(805, 220);
 			this->dataGridView1->TabIndex = 0;
-			// 
-			// Column1
-			// 
-			this->Column1->HeaderText = L"ID";
-			this->Column1->MinimumWidth = 6;
-			this->Column1->Name = L"Column1";
-			this->Column1->ReadOnly = true;
-			this->Column1->Width = 125;
-			// 
-			// Column2
-			// 
-			this->Column2->HeaderText = L"Nom";
-			this->Column2->MinimumWidth = 6;
-			this->Column2->Name = L"Column2";
-			this->Column2->ReadOnly = true;
-			this->Column2->Width = 125;
-			// 
-			// Column3
-			// 
-			this->Column3->HeaderText = L"Prenom";
-			this->Column3->MinimumWidth = 6;
-			this->Column3->Name = L"Column3";
-			this->Column3->ReadOnly = true;
-			this->Column3->Width = 125;
-			// 
-			// Column4
-			// 
-			this->Column4->HeaderText = L"DateEmbauche";
-			this->Column4->MinimumWidth = 6;
-			this->Column4->Name = L"Column4";
-			this->Column4->ReadOnly = true;
-			this->Column4->Width = 125;
-			// 
-			// Column5
-			// 
-			this->Column5->HeaderText = L"Superieur";
-			this->Column5->MinimumWidth = 6;
-			this->Column5->Name = L"Column5";
-			this->Column5->ReadOnly = true;
-			this->Column5->Width = 125;
-			// 
-			// Column6
-			// 
-			this->Column6->HeaderText = L"Adresse";
-			this->Column6->MinimumWidth = 6;
-			this->Column6->Name = L"Column6";
-			this->Column6->ReadOnly = true;
-			this->Column6->Width = 125;
 			// 
 			// btn_retour
 			// 
