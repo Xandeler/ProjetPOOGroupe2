@@ -357,19 +357,6 @@ namespace ProjetPOOGroupe2 {
 
 	}
 
-	 private: System::Void btn_load_Click(System::Object^ sender, System::EventArgs^ e)
-	 {
-		 try
-		 {
-			 refresh_datagrid();
-		 }
-		 catch (Exception^ execept)
-		 {
-			 this->txt_results->Text = execept->Message;
-			 this->txt_results->Text += "\r\n";
-			 this->txt_results->Text += execept->StackTrace;
-		 }
-	 }
 
 
 	private: void refresh_datagrid()

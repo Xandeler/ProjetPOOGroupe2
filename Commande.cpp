@@ -222,7 +222,7 @@ void Commande::modifier_Article()
     
 }
 
-void Commande::afficher_Article()
+String^ Commande::afficher_Article()
 {
-    
+    return 'a';
 }
