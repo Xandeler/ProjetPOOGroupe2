@@ -72,7 +72,8 @@ void Client::modifier()
     this->Acces_Base->actionRows(requete);
 }
 
-String^ Client::afficher()
+void Client::afficher()
 {
-    return "SELECT" + "FROM;"; //compléter
+    String^ requete =  "SELECT Clients.ID_Clients, Clients.ID_Personne, Personne.Nom_Personne, Personne.Prenom_Personne, Clients.Date_Naissance_Clients, Clients.Date_Premier_Achat_Clients FROM Clients INNER JOIN Personne ON Clients.ID_Personne = Personne.ID_Personne;";
+    this->Acces_Base->actionRows(requete);
 }
