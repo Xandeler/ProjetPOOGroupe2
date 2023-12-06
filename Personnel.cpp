@@ -7,10 +7,11 @@ Personnel::Personnel()
 	this->set_Superieur_Hierarchique(false);
 }
 
-Personnel::Personnel(String^ date_embauche, bool^ superieur_hierarchique, int^ ID, String^ nom, String^ prenom) : Personne::Personne(ID, nom, prenom)
+Personnel::Personnel(String^ date_embauche, bool^ superieur_hierarchique, int^ ID, String^ nom, String^ prenom, Adresse^ adresse_habitation) : Personne::Personne(ID, nom, prenom)
 {
 	this->set_Date_Embauche(date_embauche);
 	this->set_Superieur_Hierarchique(superieur_hierarchique);
+	this->set_Adresse_Habitation(adresse_habitation);
 }
 
 String^ Personnel::get_Date_Embauche()
@@ -31,6 +32,16 @@ bool^ Personnel::get_Superieur_Hierarchique()
 void Personnel::set_Superieur_Hierarchique(bool^ superieur_hierarchique)
 {
 	this->Superieur_Hierarchique = superieur_hierarchique;
+}
+
+Adresse^ Personnel::get_Adresse_Habitation()
+{
+	return this->Adresse_Habitation;
+}
+
+void Personnel::set_Adresse_Habitation(Adresse^ adresse_habitation)
+{
+	this->Adresse_Habitation = adresse_habitation;
 }
 
 String^ Personnel::ajouter()

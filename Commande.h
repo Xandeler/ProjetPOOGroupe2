@@ -1,5 +1,4 @@
 #pragma once
-#include "Paiement.h"
 #include "Client.h"
 #include "Article.h"
 #include "Adresse.h"
@@ -19,7 +18,8 @@ private:
 	String^ Reference;
 	String^ Date_Livraison;
 	String^ Date_Emission;
-	String^ Date_Fin_Paiement;
+	String^ Date_Paiement;
+	String^ Moyen_Paiement;
 	double^ Total_HT;
 	double^ Total_TTC;
 	String^ Nom_Societe;
@@ -31,7 +31,7 @@ private:
 
 public:
 	Commande();
-	Commande(int^ id, String^ lettres_nom, String^ lettres_prenom, int^ annee, String^ lettres_ville, String^ date_livraison, String^ date_emission, String^ date_fin_paiement, double^ total_ht, double^ total_ttc, String^ nom_societe, Adresse^ adresse_societe, int^ numero_service_clients, String^ logo, Adresse^ adresse_facturation, Adresse^ adresse_livraison);
+	Commande(int^ id, String^ lettres_nom, String^ lettres_prenom, int^ annee, String^ lettres_ville, String^ date_livraison, String^ date_emission, String^ date_paiement, String^ moyen_paiement, double^ total_ht, double^ total_ttc, String^ nom_societe, Adresse^ adresse_societe, int^ numero_service_clients, String^ logo, Adresse^ adresse_facturation, Adresse^ adresse_livraison);
 	int^ get_ID_Commande();
 	void set_ID_Commande(int^ id);
 	String^ get_Lettres_Nom();
@@ -48,12 +48,10 @@ public:
 	void set_Date_Livraison(String^ date_livraison);
 	String^ get_Date_Emission();
 	void set_Date_Emission(String^ date_emission);
-	void ajouter_Paiement();
-	void supprimer_Paiement();
-	void modifier_Paiement();
-	void afficher_Paiement();
-	String^ get_Date_Fin_Paiement();
-	void set_Date_Fin_Paiement(String^ date_fin_paiement);
+	String^ get_Date_Paiement();
+	void set_Date_Paiement(String^ date_paiement);
+	String^ get_Moyen_Paiement();
+	void set_Moyen_Paiement(String^ moyen_paiement);
 	double^ get_Total_HT();
 	void set_Total_HT(double^ total_ht);
 	double^ get_Total_TTC();

@@ -5,7 +5,7 @@ Commande::Commande()
 
 }
 
-Commande::Commande(int^ id, String^ lettres_nom, String^ lettres_prenom, int^ annee, String^ lettres_ville, String^ date_livraison, String^ date_emission, String^ date_fin_paiement, double^ total_ht, double^ total_ttc, String^ nom_societe, Adresse^ adresse_societe, int^ numero_service_clients, String^ logo, Adresse^ adresse_facturation, Adresse^ adresse_livraison)
+Commande::Commande(int^ id, String^ lettres_nom, String^ lettres_prenom, int^ annee, String^ lettres_ville, String^ date_livraison, String^ date_emission, String^ date_paiement, String^ moyen_paiement, double^ total_ht, double^ total_ttc, String^ nom_societe, Adresse^ adresse_societe, int^ numero_service_clients, String^ logo, Adresse^ adresse_facturation, Adresse^ adresse_livraison)
 {
     this->set_ID_Commande(id);
     this->set_Lettres_Nom(lettres_nom);
@@ -15,7 +15,8 @@ Commande::Commande(int^ id, String^ lettres_nom, String^ lettres_prenom, int^ an
     this->set_Reference(id, lettres_nom, lettres_prenom, lettres_ville, annee);
     this->set_Date_Livraison(date_livraison);
     this->set_Date_Emission(date_emission);
-    this->set_Date_Fin_Paiement(date_fin_paiement);
+    this->set_Date_Paiement(date_paiement);
+    this->set_Moyen_Paiement(moyen_paiement);
     this->set_Total_HT(total_ht);
     this->set_Total_TTC(total_ttc);
     this->set_Nom_Societe(nom_societe);
@@ -106,34 +107,24 @@ void Commande::set_Date_Emission(String^ date_emission)
     this->Date_Emission = date_emission;
 }
 
-void Commande::ajouter_Paiement()
+String^ Commande::get_Date_Paiement()
 {
-    
+    return this->Date_Paiement;
 }
 
-void Commande::supprimer_Paiement()
+void Commande::set_Date_Paiement(String^ date_paiement)
 {
-    
+    this->Date_Paiement = date_paiement;
 }
 
-void Commande::modifier_Paiement()
+String^ Commande::get_Moyen_Paiement()
 {
-    
+    return this->Moyen_Paiement;
 }
 
-void Commande::afficher_Paiement()
+void Commande::set_Moyen_Paiement(String^ moyen_paiement)
 {
-    
-}
-
-String^ Commande::get_Date_Fin_Paiement()
-{
-    return this->Date_Fin_Paiement;
-}
-
-void Commande::set_Date_Fin_Paiement(String^ date_fin_paiement)
-{
-    this->Date_Fin_Paiement = date_fin_paiement;
+    this->Moyen_Paiement = moyen_paiement;
 }
 
 double^ Commande::get_Total_HT()

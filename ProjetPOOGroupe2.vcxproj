@@ -131,7 +131,6 @@
     <ClCompile Include="MyForm3.cpp" />
     <ClCompile Include="MyForm4.cpp" />
     <ClCompile Include="MyForm5.cpp" />
-    <ClCompile Include="Paiement.cpp" />
     <ClCompile Include="Personne.cpp" />
     <ClCompile Include="Personnel.cpp" />
     <ClCompile Include="Statistiques.cpp" />
@@ -164,7 +163,6 @@
     <ClInclude Include="MyForm5.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Paiement.h" />
     <ClInclude Include="Personne.h" />
     <ClInclude Include="Personnel.h" />
     <ClInclude Include="Statistiques.h" />
