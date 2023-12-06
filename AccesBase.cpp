@@ -1,14 +1,11 @@
 #include "AccesBase.h"
 
-//voir comment fonctionne le fichier de configuration gitignore
-/*#include "nommachine.h" */
-
 AccesBase::AccesBase(void)
 {
 
     ////FAIRE UN FICHIER DE CONFIGURATION POUR LA CONNEXION////
     // Nom de la base de données : Electronic
-    this->sCnx = "Data Source=PC-PORTABLE-LEO;Initial Catalog=Electronic;Persist Security Info=True;User ID=PROJET_POO_GROUPE_2;Password=PROJET_POO_GROUPE_2"; 
+    this->sCnx = "Data Source=PC-PORTABLE-LEO; Initial Catalog = Electronic; Persist Security Info = True; User ID = PROJET_POO_GROUPE_2; Password = PROJET_POO_GROUPE_2"; 
 
     this->sSql = "Rien";  
 
