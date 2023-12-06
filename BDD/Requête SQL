@@ -242,3 +242,7 @@ WHERE ID_Personne = 1;
  "DELETE FROM Personne WHERE ID_Personne = " + this->get_ID_Personne() + ";"
 + "DELETE FROM Personnel WHERE ID_Personne = " + this->get_ID_Personne() + ";"
 + "DELETE FROM Possede WHERE ID_Personne = " + this->get_ID_Personne() + ";";
+
+
+//SELECT Article
+SELECT Reference_Article, Nom_Article, Quantite_Stock_Article, Prix_HT_Article, Seuil_Reduction_Article, Seuil_Reapprovisionnement_Article FROM Article;
