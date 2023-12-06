@@ -60,6 +60,17 @@ LEFT JOIN Compose ON Article.Reference_Article = Compose.Reference_Article
 GROUP BY Article.Reference_Article, Article.Nom_Article
 ORDER BY Total_Ventes ASC;
 
+//Produit_A_Commander
+SELECT Nom_Article, Quantite_Stock_Article, Seuil_Reapprovisionnement_Article
+FROM Article
+WHERE Quantite_Stock_Article < Seuil_Reapprovisionnement_Article;
+
+
+
+
+
+
+
 //Ajouter un client (ici c'est un exemple de client avec des adresses)
 INSERT INTO Personne (Nom_Personne, Prenom_Personne)
 VALUES ('A', 'a');
