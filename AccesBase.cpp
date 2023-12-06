@@ -37,3 +37,13 @@ void AccesBase::actionRows(System::String^ sSql)
     this->command->ExecuteNonQuery();
     this->connection->Close();
 }
+
+void AccesBase::set_oDs(System::Data::DataSet^ ods)
+{
+    this->oDs = ods;
+}
+
+System::Data::DataSet^ AccesBase::get_oDs()
+{
+    return this->oDs;
+}

@@ -6,6 +6,8 @@ public:
     AccesBase();
     System::Data::DataSet^ getRows(System::String^, System::String^);
     void actionRows(System::String^);
+    void set_oDs(System::Data::DataSet^ ods);
+    System::Data::DataSet^ get_oDs();
 
 protected:
     System::String^ sSql;

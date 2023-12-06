@@ -86,6 +86,7 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::TextBox^ textBox3;
 	private: System::Windows::Forms::TextBox^ textBox4;
 	private: Client^ client;
+	private: AccesBase^ acces_base;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -280,7 +281,7 @@ namespace ProjetPOOGroupe2 {
 			this->label6->Size = System::Drawing::Size(140, 18);
 			this->label6->TabIndex = 20;
 			this->label6->Text = L"Adresse de livraison";
-			this->label6->Click += gcnew System::EventHandler(this, &MyForm2::label6_Click);
+			
 			// 
 			// textBox3
 			// 
@@ -345,6 +346,11 @@ namespace ProjetPOOGroupe2 {
 	}
 	private: void refresh_datagrid()
 	{
+		this->dataGridView1->Refresh();
+
+		this->acces_base->set_oDs(this->acces_base->getRows(this->client->afficher(), "Liste_des_clients"));
+		this->dataGridView1->DataSource = this->acces_base->get_oDs();
+		this->dataGridView1->DataMember = "Liste_des_clients";
 		this->dataGridView1->Refresh();
 
 		this->txt_results->Text = "Données générées";
@@ -446,7 +452,5 @@ namespace ProjetPOOGroupe2 {
 		}
 	}
 
-private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
-}
 };
 }
