@@ -37,7 +37,7 @@ LEFT JOIN
 
 
 //Calcul_Valeur_Commerciale_Stock
-SELECT SUM((Prix_HT_Article * (1 + Modif.Taux_TVA_Modif)) * Quantite_Stock_Article) AS Valeur_Commerciale_Stock
+SELECT SUM((Prix_HT_Article * (Modif.Taux_TVA_Modif)) * Quantite_Stock_Article) AS Valeur_Commerciale_Stock
 FROM Article
 INNER JOIN Comporte ON Article.Reference_Article = Comporte.Reference_Article
 INNER JOIN Modif ON Comporte.ID_Modif = Modif.ID_Modif;
