@@ -182,6 +182,12 @@ VALUES ('2016-07-12', '4', 1);
 INSERT INTO Adresse (Numero_Maison_Adresse, Rue_Adresse, Nature_Adresse, ID_Ville)
 VALUES (43, 'Rue Amira', 'Habitation', 2);
 
+//Ajouter un personnel (VS) 
+"INSERT INTO Personne (Nom_Personne, Prenom_Personne) VALUES ('" + this->get_Nom() + "', '" + this->get_Prenom() + "');"
++ "INSERT INTO Personnel (DateEmbauche_Personnel, ID_SuperieurHierarchique) VALUES ('" + this->get_Date_Embauche() + "', '" + this->get_Superieur_Hierarchique() + "');"
++ "INSERT INTO Adresse (Numero_Maison_Adresse, Rue_Adresse, Nature_Adresse, ID_Ville) VALUES ('" + this->get_Adresse_Habitation()->get_Numero_Maison() + "', '" + this->get_Adresse_Habitation()->get_Rue() + "', '" + this->get_Adresse_Habitation()->get_Nature() + "', '" + this->get_Adresse_Habitation()->verifier_Ville() + "');";
+}
+
 /*Modifier un personnel*/
 UPDATE Personne
 SET Prenom_Personne = 'Tommy', Nom_Personne = 'Duponts'
