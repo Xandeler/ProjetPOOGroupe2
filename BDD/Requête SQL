@@ -59,3 +59,26 @@ FROM Article
 LEFT JOIN Compose ON Article.Reference_Article = Compose.Reference_Article
 GROUP BY Article.Reference_Article, Article.Nom_Article
 ORDER BY Total_Ventes ASC;
+
+//Ajouter un client (ici c'est un exemple de client avec des adresses)
+INSERT INTO Personne (Nom_Personne, Prenom_Personne)
+VALUES ('A', 'a');
+
+INSERT INTO Adresse (Rue_Adresse, Numero_Maison_Adresse, Nature_Adresse, ID_Ville)
+VALUES ('bb', 1, 'Facturation', 1);
+
+INSERT INTO Adresse (Rue_Adresse, Numero_Maison_Adresse, Nature_Adresse, ID_Ville)
+VALUES ('cc', 2, 'Livraison', 2);
+
+INSERT INTO Clients (Date_Naissance_Clients, Date_Premier_Achat_Clients, ID_Personne)
+Values ('00/00/0000', '11/11/1111', 1);
+
+INSERT INTO Possede (ID_Personne, ID_Adresse)
+VALUES (1, (SELECT ID_Adresse FROM Adresse WHERE Rue_Adresse = 'cc' AND Numero_Maison_Adresse = 2 AND Nature_Adresse = 'Livraison'));
+
+INSERT INTO Possede (ID_Personne, ID_Adresse)
+VALUES (1, (SELECT ID_Adresse FROM Adresse WHERE Rue_Adresse = 'bb' AND Numero_Maison_Adresse = 1 AND Nature_Adresse = 'Facturation'));
+
+//Ajouter un client (version VS code)
+"INSERT INTO Personne (Nom_Personne, Prenom_Personne)" + "VALUES ('" + this->get_Nom() + "', '" + this->get_Prenom() + "');" + "INSERT INTO Adresse (Rue_Adresse, Numero_Maison_Adresse, Nature_Adresse, ID_Ville) VALUES ('" + this->Adresse_Facturation->get_Rue() + "', " + this->Adresse_Facturation->get_Numero_Maison() + ", '" + this->Adresse_Facturation->get_Nature() + "', " + this->Adresse_Facturation->verifier_Ville() + ");" + "INSERT INTO Adresse (Rue_Adresse, Numero_Maison_Adresse, Nature_Adresse, ID_Ville) VALUES ('" + this->Adresse_Livraison->get_Rue() + "', " + this->Adresse_Livraison->get_Numero_Maison() + ", '" + this->Adresse_Livraison->get_Nature() + "', " + this->Adresse_Livraison->verifier_Ville() + ");" + "INSERT INTO Clients (Date_Naissance_Clients, Date_Premier_Achat_Clients, ID_Personne) Values ('" + this->get_Date_Naissance() + "', '" + this->get_Date_Premier_Achat() + "', " + this->get_ID_Personne() + ");" + "INSERT INTO Possede (ID_Personne, ID_Adresse) VALUES (" + this->get_ID_Personne() + ", (SELECT ID_Adresse FROM Adresse WHERE Rue_Adresse = '" + this->Adresse_Livraison->get_Rue() + "', AND Numero_Maison_Adresse = " + this->Adresse_Livraison->get_Numero_Maison() + ", AND Nature_Adresse = '" + this->Adresse_Livraison->get_Nature() + "'));" + "INSERT INTO Possede (ID_Personne, ID_Adresse) VALUES (" + this->get_ID_Personne() + ", (SELECT ID_Adresse FROM Adresse WHERE Rue_Adresse = '" + this->Adresse_Facturation->get_Rue() + "', AND Numero_Maison_Adresse = " + this->Adresse_Facturation->get_Numero_Maison() + ", AND Nature_Adresse = '" + this->Adresse_Facturation->get_Nature() + "'));";
+
