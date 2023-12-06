@@ -351,7 +351,6 @@ namespace ProjetPOOGroupe2 {
 		this->acces_base->set_oDs(this->acces_base->getRows(this->client->afficher(), "Liste_des_clients"));
 		this->dataGridView1->DataSource = this->acces_base->get_oDs();
 		this->dataGridView1->DataMember = "Liste_des_clients";
-		this->dataGridView1->Refresh();
 
 		this->txt_results->Text = "Données générées";
 	}

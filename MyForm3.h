@@ -1,5 +1,7 @@
 ﻿#pragma once
 #include <cstdlib>
+#include "AccesBase.h"
+#include "StockageCommandes.h"
 
 namespace ProjetPOOGroupe2 {
 
@@ -78,6 +80,9 @@ namespace ProjetPOOGroupe2 {
 		/// Variable n�cessaire au concepteur.
 		/// </summary>
 		System::ComponentModel::Container^ components;
+		AccesBase^ acces_base;
+		StockageCommandes^ commandes;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -117,7 +122,6 @@ namespace ProjetPOOGroupe2 {
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView1->Size = System::Drawing::Size(681, 220);
 			this->dataGridView1->TabIndex = 0;
-			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm3::dataGridView1_CellContentClick);
 			// 
 			// btn_retour
 			// 
@@ -186,7 +190,6 @@ namespace ProjetPOOGroupe2 {
 			this->label1->Size = System::Drawing::Size(76, 18);
 			this->label1->TabIndex = 8;
 			this->label1->Text = L"Reference";
-			this->label1->Click += gcnew System::EventHandler(this, &MyForm3::label1_Click);
 			// 
 			// label2
 			// 
@@ -298,6 +301,10 @@ namespace ProjetPOOGroupe2 {
 	{
 		this->dataGridView1->Refresh();
 
+		this->acces_base->set_oDs(this->acces_base->getRows(this->commandes->afficher(), "Liste_des_commandes"));
+		this->dataGridView1->DataSource = this->acces_base->get_oDs();
+		this->dataGridView1->DataMember = "Liste_des_commandes";
+
 		this->txt_results->Text = "Données générées";
 	}
 
@@ -375,11 +382,6 @@ namespace ProjetPOOGroupe2 {
 			this->txt_results->Text += "\r\n";
 			this->txt_results->Text += execept->StackTrace;
 		}
-	}
-
-	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-	}
-	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 
 	};
