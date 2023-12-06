@@ -46,17 +46,18 @@ void Personnel::set_Adresse_Habitation(Adresse^ adresse_habitation)
 
 String^ Personnel::ajouter()
 {
-	return "INSERT INTO Personnel" + " (Nom, Prenom, DateEmbauche, Superieur, Adresse_Habitation) VALUES('" + this->get_Nom() + "','" + this->get_Prenom() + "','" + this->get_Date_Embauche() + "','" + this->get_Superieur_Hierarchique() + "','" + this->get_Adresse_Habitation() + "');";
+	return "INSERT INTO Personne (Nom_Personne, Prenom_Personne) VALUES ('" + this->get_Nom() + "', '" + this->get_Prenom() + "');"
+		+ "INSERT INTO Personnel (DateEmbauche_Personnel) VALUES ('" + this->get_Date_Embauche() + "');"; // A completer
 }
 
 String^ Personnel::supprimer()
 {
-	return "DELETE FROM Personnel WHERE ID = " + get_ID_Personne();
+	return "DELETE FROM Personnel WHERE ID = " + this->get_ID_Personne() + ";";
 }
 
 String^ Personnel::modifier()
 {
-	return "UPDATE Personnel SET [Prenom] = '" + this->get_Prenom() + "', [Nom] = '" + this->get_Nom() + "', [Prenom] = '" + this->get_Prenom() + "', [DateEmbauche] = '" + this->get_Date_Embauche() + "', [Superieur] = '" + this->get_Superieur_Hierarchique() + "', [Adresse_Habitation] = '" + this->get_Adresse_Habitation() + "' WHERE [ID] = " + this->get_ID_Personne() + ";";
+    return "UPDATE Personnel SET Nom = '" + this->get_Nom() + "', Prenom = '" + this->get_Prenom() + "', DateEmbauche = '" + this->get_Date_Embauche() + "', Superieur = '" + this->get_Superieur_Hierarchique() + "', Adresse_Habitation = '" + this->get_Adresse_Habitation() + "' WHERE ID = " + this->get_ID_Personne() + ";";
 }
 
 String^ Personnel::afficher()
