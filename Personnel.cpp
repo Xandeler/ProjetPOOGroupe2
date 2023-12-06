@@ -46,7 +46,8 @@ void Personnel::set_Adresse_Habitation(Adresse^ adresse_habitation)
 
 String^ Personnel::ajouter()
 {
-	return"a"; //a modifier
+	return "INSERT INTO PROJET_POO_GROUPE_2" + " (Nom, Prenom, DateEmbauche, Superieur) VALUES('" + this->get_Nom() + "','" + this->get_Prenom() + "','" + this->get_Date_Embauche() + "','" + this->get_Superieur_Hierarchique() + "');";
+
 }
 
 String^ Personnel::supprimer()

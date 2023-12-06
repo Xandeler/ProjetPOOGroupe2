@@ -1,10 +1,36 @@
 USE Electronic;
 
+CREATE TABLE Personne(
+   ID_Personne INT IDENTITY,
+   Nom_Personne VARCHAR(50) ,
+   Prenom_Personne VARCHAR(50) ,
+   PRIMARY KEY(ID_Personne)
+);
+
 CREATE TABLE Ville(
    ID_Ville INT IDENTITY,
    Nom_ville VARCHAR(50) ,
    CodePostal_Ville INT,
    PRIMARY KEY(ID_Ville)
+);
+
+CREATE TABLE Clients(
+   ID_Clients INT IDENTITY,
+   Date_Naissance_Clients DATE,
+   Date_Premier_Achat_Clients DATE,
+   ID_Personne INT NOT NULL,
+   PRIMARY KEY(ID_Clients),
+   UNIQUE(ID_Personne),
+   FOREIGN KEY(ID_Personne) REFERENCES Personne(ID_Personne)
+);
+
+CREATE TABLE SuperieurHierarchique(
+   ID_SuperieurHierarchique INT IDENTITY,
+   DateEmbauche_SuperieurHierarchique DATE,
+   ID_Personne INT NOT NULL,
+   PRIMARY KEY(ID_SuperieurHierarchique),
+   UNIQUE(ID_Personne),
+   FOREIGN KEY(ID_Personne) REFERENCES Personne(ID_Personne)
 );
 
 CREATE TABLE Commande(
@@ -48,6 +74,17 @@ CREATE TABLE Modif(
    PRIMARY KEY(ID_Modif)
 );
 
+CREATE TABLE Personnel(
+   ID_Personnel INT IDENTITY,
+   DateEmbauche_personnel DATE,
+   ID_SuperieurHierarchique INT,
+   ID_Personne INT NOT NULL,
+   PRIMARY KEY(ID_Personnel),
+   UNIQUE(ID_Personne),
+   FOREIGN KEY(ID_SuperieurHierarchique) REFERENCES SuperieurHierarchique(ID_SuperieurHierarchique),
+   FOREIGN KEY(ID_Personne) REFERENCES Personne(ID_Personne)
+);
+
 CREATE TABLE Adresse(
    ID_Adresse INT IDENTITY,
    Rue_Adresse VARCHAR(50) ,
@@ -58,43 +95,12 @@ CREATE TABLE Adresse(
    FOREIGN KEY(ID_Ville) REFERENCES Ville(ID_Ville)
 );
 
-CREATE TABLE Personne(
-   ID_Personne INT IDENTITY,
-   Nom_Personne VARCHAR(50) ,
-   Prenom_Personne VARCHAR(50) ,
-   ID_Adresse INT NOT NULL,
-   PRIMARY KEY(ID_Personne),
+CREATE TABLE Habite(
+   ID_Personne INT,
+   ID_Adresse INT,
+   PRIMARY KEY(ID_Personne, ID_Adresse),
+   FOREIGN KEY(ID_Personne) REFERENCES Personne(ID_Personne),
    FOREIGN KEY(ID_Adresse) REFERENCES Adresse(ID_Adresse)
-);
-
-CREATE TABLE Clients(
-   ID_Clients INT IDENTITY,
-   Date_Naissance_Clients DATE,
-   Date_Premier_Achat_Clients DATE,
-   ID_Personne INT NOT NULL,
-   PRIMARY KEY(ID_Clients),
-   UNIQUE(ID_Personne),
-   FOREIGN KEY(ID_Personne) REFERENCES Personne(ID_Personne)
-);
-
-CREATE TABLE SuperieurHierarchique(
-   ID_SuperieurHierarchique INT IDENTITY,
-   DateEmbauche_SuperieurHierarchique DATE,
-   ID_Personne INT NOT NULL,
-   PRIMARY KEY(ID_SuperieurHierarchique),
-   UNIQUE(ID_Personne),
-   FOREIGN KEY(ID_Personne) REFERENCES Personne(ID_Personne)
-);
-
-CREATE TABLE Personnel(
-   ID_Personnel INT IDENTITY,
-   DateEmbauche_personnel DATE,
-   ID_SuperieurHierarchique INT,
-   ID_Personne INT NOT NULL,
-   PRIMARY KEY(ID_Personnel),
-   UNIQUE(ID_Personne),
-   FOREIGN KEY(ID_SuperieurHierarchique) REFERENCES SuperieurHierarchique(ID_SuperieurHierarchique),
-   FOREIGN KEY(ID_Personne) REFERENCES Personne(ID_Personne)
 );
 
 CREATE TABLE Effectue(
@@ -129,3 +135,4 @@ CREATE TABLE Comporte(
    FOREIGN KEY(Reference_Article) REFERENCES Article(Reference_Article),
    FOREIGN KEY(ID_Modif) REFERENCES Modif(ID_Modif)
 );
+

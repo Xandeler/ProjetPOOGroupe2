@@ -79,6 +79,12 @@ namespace ProjetPOOGroupe2 {
 		/// Variable n�cessaire au concepteur.
 		/// </summary>
 	private: System::ComponentModel::Container^ components;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column7;
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::TextBox^ textBox3;
+	private: System::Windows::Forms::TextBox^ textBox4;
 	private: Client^ client;
 
 #pragma region Windows Form Designer generated code
@@ -94,6 +100,8 @@ namespace ProjetPOOGroupe2 {
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column7 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->btn_retour = (gcnew System::Windows::Forms::Button());
 			this->btn_ajouter = (gcnew System::Windows::Forms::Button());
 			this->btn_supprimer = (gcnew System::Windows::Forms::Button());
@@ -108,6 +116,10 @@ namespace ProjetPOOGroupe2 {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -115,20 +127,19 @@ namespace ProjetPOOGroupe2 {
 			// 
 			this->dataGridView1->AllowUserToAddRows = false;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
 				this->Column1,
-					this->Column2, this->Column3, this->Column4, this->Column5
+					this->Column2, this->Column3, this->Column4, this->Column5, this->Column6, this->Column7
 			});
-			this->dataGridView1->Location = System::Drawing::Point(85, 14);
+			this->dataGridView1->Location = System::Drawing::Point(13, 14);
 			this->dataGridView1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(681, 220);
+			this->dataGridView1->Size = System::Drawing::Size(928, 220);
 			this->dataGridView1->TabIndex = 0;
-			
 			// 
 			// Column1
 			// 
@@ -170,9 +181,25 @@ namespace ProjetPOOGroupe2 {
 			this->Column5->ReadOnly = true;
 			this->Column5->Width = 125;
 			// 
+			// Column6
+			// 
+			this->Column6->HeaderText = L"Adresse de facturation";
+			this->Column6->MinimumWidth = 6;
+			this->Column6->Name = L"Column6";
+			this->Column6->ReadOnly = true;
+			this->Column6->Width = 125;
+			// 
+			// Column7
+			// 
+			this->Column7->HeaderText = L"Adresse de livraison";
+			this->Column7->MinimumWidth = 6;
+			this->Column7->Name = L"Column7";
+			this->Column7->ReadOnly = true;
+			this->Column7->Width = 125;
+			// 
 			// btn_retour
 			// 
-			this->btn_retour->Location = System::Drawing::Point(12, 477);
+			this->btn_retour->Location = System::Drawing::Point(13, 544);
 			this->btn_retour->Name = L"btn_retour";
 			this->btn_retour->Size = System::Drawing::Size(112, 36);
 			this->btn_retour->TabIndex = 4;
@@ -249,7 +276,7 @@ namespace ProjetPOOGroupe2 {
 			// 
 			// txt_results
 			// 
-			this->txt_results->Location = System::Drawing::Point(473, 416);
+			this->txt_results->Location = System::Drawing::Point(544, 483);
 			this->txt_results->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->txt_results->Multiline = true;
 			this->txt_results->Name = L"txt_results";
@@ -262,7 +289,7 @@ namespace ProjetPOOGroupe2 {
 			this->lbl_resultats->AutoSize = true;
 			this->lbl_resultats->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lbl_resultats->Location = System::Drawing::Point(396, 416);
+			this->lbl_resultats->Location = System::Drawing::Point(448, 483);
 			this->lbl_resultats->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lbl_resultats->Name = L"lbl_resultats";
 			this->lbl_resultats->Size = System::Drawing::Size(70, 18);
@@ -303,11 +330,50 @@ namespace ProjetPOOGroupe2 {
 			this->textBox2->Size = System::Drawing::Size(284, 24);
 			this->textBox2->TabIndex = 18;
 			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(395, 444);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(155, 18);
+			this->label5->TabIndex = 19;
+			this->label5->Text = L"Adresse de facturation";
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Location = System::Drawing::Point(410, 406);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(140, 18);
+			this->label6->TabIndex = 20;
+			this->label6->Text = L"Adresse de livraison";
+			this->label6->Click += gcnew System::EventHandler(this, &MyForm2::label6_Click);
+			// 
+			// textBox3
+			// 
+			this->textBox3->Location = System::Drawing::Point(557, 441);
+			this->textBox3->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->textBox3->Name = L"textBox3";
+			this->textBox3->Size = System::Drawing::Size(284, 24);
+			this->textBox3->TabIndex = 21;
+			// 
+			// textBox4
+			// 
+			this->textBox4->Location = System::Drawing::Point(557, 400);
+			this->textBox4->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->textBox4->Name = L"textBox4";
+			this->textBox4->Size = System::Drawing::Size(284, 24);
+			this->textBox4->TabIndex = 22;
+			// 
 			// MyForm2
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 18);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(882, 518);
+			this->ClientSize = System::Drawing::Size(982, 603);
+			this->Controls->Add(this->textBox4);
+			this->Controls->Add(this->textBox3);
+			this->Controls->Add(this->label6);
+			this->Controls->Add(this->label5);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label4);
@@ -326,8 +392,8 @@ namespace ProjetPOOGroupe2 {
 			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->MaximumSize = System::Drawing::Size(900, 565);
-			this->MinimumSize = System::Drawing::Size(900, 565);
+			this->MaximumSize = System::Drawing::Size(1000, 650);
+			this->MinimumSize = System::Drawing::Size(1000, 650);
 			this->Name = L"MyForm2";
 			this->Text = L"Gestion des clients";
 			this->Load += gcnew System::EventHandler(this, &MyForm2::MyForm_Load);
@@ -447,5 +513,7 @@ namespace ProjetPOOGroupe2 {
 		}
 	}
 
+private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
