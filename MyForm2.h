@@ -38,7 +38,7 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	protected:
 
-
+	private: System::Windows::Forms::Button^ btn_load;
 	private: System::Windows::Forms::Button^ btn_retour;
 	private: System::Windows::Forms::Button^ btn_ajouter;
 	private: System::Windows::Forms::Button^ btn_supprimer;
@@ -96,6 +96,7 @@ namespace ProjetPOOGroupe2 {
 		void InitializeComponent(void)
 		{
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->btn_load = (gcnew System::Windows::Forms::Button());
 			this->btn_retour = (gcnew System::Windows::Forms::Button());
 			this->btn_ajouter = (gcnew System::Windows::Forms::Button());
 			this->btn_supprimer = (gcnew System::Windows::Forms::Button());
@@ -131,6 +132,17 @@ namespace ProjetPOOGroupe2 {
 			this->dataGridView1->Size = System::Drawing::Size(928, 220);
 			this->dataGridView1->TabIndex = 0;
 			// 
+			// btn_load
+			// 
+			this->btn_load->Location = System::Drawing::Point(22, 267);
+			this->btn_load->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->btn_load->Name = L"btn_load";
+			this->btn_load->Size = System::Drawing::Size(94, 176);
+			this->btn_load->TabIndex = 1;
+			this->btn_load->Text = L"Load DB";
+			this->btn_load->UseVisualStyleBackColor = true;
+			this->btn_load->Click += gcnew System::EventHandler(this, &MyForm2::btn_load_Click);
+			// 
 			// btn_retour
 			// 
 			this->btn_retour->Location = System::Drawing::Point(13, 544);
@@ -143,7 +155,7 @@ namespace ProjetPOOGroupe2 {
 			// 
 			// btn_ajouter
 			// 
-			this->btn_ajouter->Location = System::Drawing::Point(85, 267);
+			this->btn_ajouter->Location = System::Drawing::Point(124, 267);
 			this->btn_ajouter->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_ajouter->Name = L"btn_ajouter";
 			this->btn_ajouter->Size = System::Drawing::Size(171, 55);
@@ -154,7 +166,7 @@ namespace ProjetPOOGroupe2 {
 			// 
 			// btn_supprimer
 			// 
-			this->btn_supprimer->Location = System::Drawing::Point(85, 388);
+			this->btn_supprimer->Location = System::Drawing::Point(124, 388);
 			this->btn_supprimer->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_supprimer->Name = L"btn_supprimer";
 			this->btn_supprimer->Size = System::Drawing::Size(171, 55);
@@ -165,7 +177,7 @@ namespace ProjetPOOGroupe2 {
 			// 
 			// btn_modifier
 			// 
-			this->btn_modifier->Location = System::Drawing::Point(85, 328);
+			this->btn_modifier->Location = System::Drawing::Point(124, 330);
 			this->btn_modifier->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_modifier->Name = L"btn_modifier";
 			this->btn_modifier->Size = System::Drawing::Size(171, 55);
@@ -281,7 +293,6 @@ namespace ProjetPOOGroupe2 {
 			this->label6->Size = System::Drawing::Size(140, 18);
 			this->label6->TabIndex = 20;
 			this->label6->Text = L"Adresse de livraison";
-			
 			// 
 			// textBox3
 			// 
@@ -306,6 +317,7 @@ namespace ProjetPOOGroupe2 {
 			this->ClientSize = System::Drawing::Size(982, 603);
 			this->Controls->Add(this->textBox4);
 			this->Controls->Add(this->textBox3);
+			this->Controls->Add(this->btn_load);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->textBox2);
@@ -344,6 +356,22 @@ namespace ProjetPOOGroupe2 {
 		this->Hide();
 
 	}
+
+	 private: System::Void btn_load_Click(System::Object^ sender, System::EventArgs^ e)
+	 {
+		 try
+		 {
+			 refresh_datagrid();
+		 }
+		 catch (Exception^ execept)
+		 {
+			 this->txt_results->Text = execept->Message;
+			 this->txt_results->Text += "\r\n";
+			 this->txt_results->Text += execept->StackTrace;
+		 }
+	 }
+
+
 	private: void refresh_datagrid()
 	{
 		this->dataGridView1->Refresh();
