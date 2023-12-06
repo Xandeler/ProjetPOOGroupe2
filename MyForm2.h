@@ -86,6 +86,8 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::TextBox^ textBox3;
+	private: System::Windows::Forms::TextBox^ textBox5;
+	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::TextBox^ textBox4;
 
 
@@ -116,6 +118,8 @@ namespace ProjetPOOGroupe2 {
 			   this->label6 = (gcnew System::Windows::Forms::Label());
 			   this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			   this->textBox4 = (gcnew System::Windows::Forms::TextBox());
+			   this->textBox5 = (gcnew System::Windows::Forms::TextBox());
+			   this->label7 = (gcnew System::Windows::Forms::Label());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			   this->SuspendLayout();
 			   // 
@@ -187,19 +191,19 @@ namespace ProjetPOOGroupe2 {
 			   this->btn_modifier->UseVisualStyleBackColor = true;
 			   this->btn_modifier->Click += gcnew System::EventHandler(this, &MyForm2::btn_modifier_Click);
 			   // 
-			   // tb_nom
+			   // tb_prenom
 			   // 
 			   this->tb_nom->Location = System::Drawing::Point(557, 293);
 			   this->tb_nom->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			   this->tb_nom->Name = L"tb_nom";
+			   this->tb_nom->Name = L"tb_prenom";
 			   this->tb_nom->Size = System::Drawing::Size(284, 24);
 			   this->tb_nom->TabIndex = 6;
 			   // 
-			   // tb_prenom
+			   // tb_nom
 			   // 
 			   this->tb_prenom->Location = System::Drawing::Point(557, 256);
 			   this->tb_prenom->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			   this->tb_prenom->Name = L"tb_prenom";
+			   this->tb_prenom->Name = L"tb_nom";
 			   this->tb_prenom->Size = System::Drawing::Size(284, 24);
 			   this->tb_prenom->TabIndex = 7;
 			   // 
@@ -311,11 +315,30 @@ namespace ProjetPOOGroupe2 {
 			   this->textBox4->Size = System::Drawing::Size(284, 24);
 			   this->textBox4->TabIndex = 22;
 			   // 
+			   // textBox5
+			   // 
+			   this->textBox5->Location = System::Drawing::Point(885, 345);
+			   this->textBox5->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			   this->textBox5->Name = L"textBox5";
+			   this->textBox5->Size = System::Drawing::Size(56, 24);
+			   this->textBox5->TabIndex = 23;
+			   // 
+			   // label7
+			   // 
+			   this->label7->AutoSize = true;
+			   this->label7->Location = System::Drawing::Point(891, 322);
+			   this->label7->Name = L"label7";
+			   this->label7->Size = System::Drawing::Size(41, 18);
+			   this->label7->TabIndex = 24;
+			   this->label7->Text = L"ID";
+			   // 
 			   // MyForm2
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(9, 18);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->ClientSize = System::Drawing::Size(982, 603);
+			   this->Controls->Add(this->label7);
+			   this->Controls->Add(this->textBox5);
 			   this->Controls->Add(this->textBox4);
 			   this->Controls->Add(this->textBox3);
 			   this->Controls->Add(this->btn_load);
@@ -372,8 +395,17 @@ namespace ProjetPOOGroupe2 {
 
 	private: int get_selected_ID()
 	{
-		String^ selectedIDstring = this->dataGridView1->SelectedRows[0]->Cells["id"]->Value->ToString();
-		return Convert::ToInt32(selectedIDstring);
+		try
+		{
+			return Convert::ToInt32(textBox5->Text);
+		}
+		catch (Exception^ except)
+		{
+			this->txt_results->Text = except->Message;
+			this->txt_results->Text += "\r\n";
+			this->txt_results->Text += except->StackTrace;
+			return 0;
+		}
 
 	}
 
@@ -389,11 +421,11 @@ namespace ProjetPOOGroupe2 {
 		{
 			refresh_datagrid();
 		}
-		catch (Exception^ execept)
+		catch (Exception^ except)
 		{
-			this->txt_results->Text = execept->Message;
+			this->txt_results->Text = except->Message;
 			this->txt_results->Text += "\r\n";
-			this->txt_results->Text += execept->StackTrace;
+			this->txt_results->Text += except->StackTrace;
 		}
 	}
 
@@ -407,11 +439,11 @@ namespace ProjetPOOGroupe2 {
 
 			this->txt_results->Text = "Données entrées avec succès";
 		}
-		catch (Exception^ execept)
+		catch (Exception^ except)
 		{
-			this->txt_results->Text = execept->Message;
+			this->txt_results->Text = except->Message;
 			this->txt_results->Text += "\r\n";
-			this->txt_results->Text += execept->StackTrace;
+			this->txt_results->Text += except->StackTrace;
 
 		}
 	}
@@ -427,11 +459,11 @@ namespace ProjetPOOGroupe2 {
 			this->txt_results->Text = "Données supprimées avec succès";
 
 		}
-		catch (Exception^ execept)
+		catch (Exception^ except)
 		{
-			this->txt_results->Text = execept->Message;
+			this->txt_results->Text = except->Message;
 			this->txt_results->Text += "\r\n";
-			this->txt_results->Text += execept->StackTrace;
+			this->txt_results->Text += except->StackTrace;
 
 		}
 	}
@@ -444,11 +476,11 @@ namespace ProjetPOOGroupe2 {
 
 			this->txt_results->Text = "Données modifiées avec succès";
 		}
-		catch (Exception^ execept)
+		catch (Exception^ except)
 		{
-			this->txt_results->Text = execept->Message;
+			this->txt_results->Text = except->Message;
 			this->txt_results->Text += "\r\n";
-			this->txt_results->Text += execept->StackTrace;
+			this->txt_results->Text += except->StackTrace;
 		}
 	}
 
