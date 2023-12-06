@@ -171,23 +171,23 @@ INSERT INTO Personne (Nom_Personne, Prenom_Personne)
 VALUES ('Tom', 'Dupont');
 
 INSERT INTO Personnel (DateEmbauche_personnel, ID_SuperieurHierarchique, ID_Personne)
-VALUES ('2016-07-12', '4',1);
+VALUES ('2016-07-12', '4', 1);
 
-INSERT INTO Adresse (Numero_Maison_Adresse, Rue_Adresse,Nature_Adresse, ID_Ville)
-VALUES (43, 'Rue Amira','Habitation',2);
+INSERT INTO Adresse (Numero_Maison_Adresse, Rue_Adresse, Nature_Adresse, ID_Ville)
+VALUES (43, 'Rue Amira', 'Habitation', 2);
 
 /*Modifier un personnel*/
 UPDATE Personne
 SET Prenom_Personne = 'Tommy', Nom_Personne = 'Duponts'
-WHERE ID_Personne = 17;
+WHERE ID_Personne = 1;
 
 UPDATE Personnel
 SET DateEmbauche_personnel = '2017-07-12', ID_SuperieurHierarchique = 3
-WHERE ID_Personne = 17;
+WHERE ID_Personne = 1;
 
 UPDATE Adresse
 SET Numero_Maison_Adresse = 44, Rue_Adresse = 'Rue Amiras'
-WHERE ID_Ville = 1;
+WHERE ID_Ville = 2;
 
 /*Afficher un personnel*/
 SELECT 
@@ -196,7 +196,7 @@ SELECT
     Prenom_Personne,
     DateEmbauche_Personnel,
     ID_SuperieurHierarchique,
-CONCAT(Numero_Maison_Adresse, '  ', Rue_Adresse) AS Adresse
+    CONCAT(Numero_Maison_Adresse, '  ', Rue_Adresse) AS Adresse
 FROM 
     Personnel
 INNER JOIN 
@@ -205,13 +205,14 @@ INNER JOIN
     Possede ON Personne.ID_Personne = Possede.ID_Personne
 INNER JOIN
     Adresse ON Possede.ID_Adresse = Adresse.ID_Adresse
-	WHERE Personne.ID_Personne = 17;
+WHERE Personne.ID_Personne = 1;
 
 /*Supprimer un personnel*/
 DELETE FROM Personnel 
-WHERE ID_Personnel = 17;
-DELETE FROM Adresse 
-WHERE Rue_Adresse = 'Rue Amira';
-DELETE FROM Personne
-WHERE Nom_Personne = 'Tom';
+WHERE ID_Personne = 1;
 
+DELETE FROM Adresse 
+WHERE ID_Ville = 2;
+
+DELETE FROM Personne
+WHERE ID_Personne = 1;
