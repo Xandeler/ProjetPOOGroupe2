@@ -75,7 +75,7 @@ SELECT Nom_Article, Quantite_Stock_Article, Seuil_Reapprovisionnement_Article
 FROM Article
 WHERE Quantite_Stock_Article < Seuil_Reapprovisionnement_Article;
 
-//Calcul montant total client
+//Calcul montant total achats d'un client
 SELECT
     SUM(
         Prix_HT_Article * 
@@ -83,7 +83,7 @@ SELECT
         Quantite_Commande_Article * 
         CASE 
             WHEN ISNULL(Modif.Taux_Reduction_Modif, 0) = 0 THEN 1 
-            WHEN Article.Sueil_Reduction_Article <= Compose.Quantite_Commande_Article 
+            WHEN Article.Seuil_Reduction_Article <= Compose.Quantite_Commande_Article 
             THEN (Modif.Taux_Reduction_Modif)
             ELSE 1
         END
@@ -103,7 +103,7 @@ FROM
     INNER JOIN 
         Clients ON Effectue.ID_Clients = Clients.ID_Clients
 WHERE
-    Clients.ID_Clients = 1; // Ajouter un getId_commande dans le code sur visual studio
+    Clients.ID_Clients = 1;// Ajouter un getId_commande dans le code sur visual studio
 
 
 
