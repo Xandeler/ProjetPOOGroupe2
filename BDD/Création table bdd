@@ -1,3 +1,5 @@
+USE Electronic;
+
 CREATE TABLE Ville(
    ID_Ville INT IDENTITY,
    Nom_ville VARCHAR(50) ,
