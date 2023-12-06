@@ -119,5 +119,5 @@ String^ Statistiques::Calcul_Valeur_Achat_Stock() // FAIT
 
 String^ Statistiques::Simulation_Variations()
 {
-    
+    return 0; // A completer
 }
