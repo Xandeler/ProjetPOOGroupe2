@@ -1,15 +1,15 @@
 #include "AccesBase.h"
 
-AccesBase::AccesBase(void)
+AB::AccesBase::AccesBase(void)
 {
 
     ////FAIRE UN FICHIER DE CONFIGURATION POUR LA CONNEXION////
     // Nom de la base de données : Electronic
-    this->sCnx = "Data Source=DESKTOP-3VA0KG9; Initial Catalog = Electronic; Persist Security Info = True; User ID = PROJET_POO_GROUPE_2; Password = PROJET_POO_GROUPE_2"; 
+    this->sCnx = "Data Source=PC-PORTABLE-LÉO;Initial Catalog=Electronic;Persist Security Info=True;User ID=PROJET_POO_GROUPE_2;Password=PROJET_POO_GROUPE_2";
     // <this->sCnx = System::String::Format("Data Source={0}; Initial Catalog = Electronic; Persist Security Info = True; User ID = PROJET_POO_GROUPE_2; Password = PROJET_POO_GROUPE_2", System::Environment::MachineName);
 
 
-    this->sSql = "Rien";  
+    this->sSql = "Rien";
 
     this->connection = gcnew System::Data::SqlClient::SqlConnection(this->sCnx);
     this->command = gcnew System::Data::SqlClient::SqlCommand(this->sSql, this->connection);
@@ -18,7 +18,7 @@ AccesBase::AccesBase(void)
 
     this->command->CommandType = System::Data::CommandType::Text;
 }
-System::Data::DataSet^ AccesBase::getRows(System::String^ sSql, System::String^ sDataTableName)
+System::Data::DataSet^ AB::AccesBase::getRows(System::String^ sSql, System::String^ sDataTableName)
 {
     this->oDs->Clear();
     this->sSql = sSql;
@@ -28,7 +28,7 @@ System::Data::DataSet^ AccesBase::getRows(System::String^ sSql, System::String^ 
 
     return this->oDs;
 }
-void AccesBase::actionRows(System::String^ sSql)
+void AB::AccesBase::actionRows(System::String^ sSql)
 {
     this->sSql = sSql;
     this->command->CommandText = this->sSql;
@@ -38,12 +38,12 @@ void AccesBase::actionRows(System::String^ sSql)
     this->connection->Close();
 }
 
-void AccesBase::set_oDs(System::Data::DataSet^ ods)
+void AB::AccesBase::set_oDs(System::Data::DataSet^ ods)
 {
     this->oDs = ods;
 }
 
-System::Data::DataSet^ AccesBase::get_oDs()
+System::Data::DataSet^ AB::AccesBase::get_oDs()
 {
     return this->oDs;
 }

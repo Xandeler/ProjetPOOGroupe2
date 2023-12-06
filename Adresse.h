@@ -7,7 +7,7 @@ using namespace System;
 ref class Adresse
 {
 private:
-	AccesBase^ Acces_Base;
+	AB::AccesBase^ Acces_Base;
 	int^ Code_Postal;
 	String^ Nom_Ville;
 	String^ Rue;

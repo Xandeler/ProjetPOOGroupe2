@@ -45,9 +45,6 @@
     <ClCompile Include="Article.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Paiement.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="Client.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
@@ -70,6 +67,9 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="AccesBase.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="servicePersonnel.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
@@ -110,9 +110,6 @@
     <ClInclude Include="SuperieurHierarchique.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Paiement.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Article.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -129,6 +126,9 @@
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="AccesBase.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="servicePersonnel.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>

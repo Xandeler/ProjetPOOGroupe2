@@ -6,15 +6,15 @@ using namespace System;
 ref class Ville
 {
 private:
-	AccesBase^ Acces_Base;
+	AB::AccesBase^ Acces_Base;
 	int^ ID_Ville;
 	String^ Nom;
 
 public:
 	Ville();
 	Ville(int^ id, String^ nom);
-	void ajouter();
-	void supprimer(int^id);
+	System::String^ ajouter();
+	System::String^ supprimer(int^ id);
 	int^ get_ID_Ville();
 	void set_ID_Ville(int^ id);
 	String^ get_Nom();

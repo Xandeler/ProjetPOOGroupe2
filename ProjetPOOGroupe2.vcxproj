@@ -133,6 +133,7 @@
     <ClCompile Include="MyForm5.cpp" />
     <ClCompile Include="Personne.cpp" />
     <ClCompile Include="Personnel.cpp" />
+    <ClCompile Include="servicePersonnel.cpp" />
     <ClCompile Include="Statistiques.cpp" />
     <ClCompile Include="Stock.cpp" />
     <ClCompile Include="StockageCommandes.cpp" />
@@ -165,6 +166,7 @@
     </ClInclude>
     <ClInclude Include="Personne.h" />
     <ClInclude Include="Personnel.h" />
+    <ClInclude Include="servicePersonnel.h" />
     <ClInclude Include="Statistiques.h" />
     <ClInclude Include="Stock.h" />
     <ClInclude Include="StockageCommandes.h" />
