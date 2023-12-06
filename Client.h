@@ -4,7 +4,7 @@
 
 ref class Client : public Personne
 {
-private:
+protected:
 	String^ Date_Naissance;
 	String^ Date_Premier_Achat;
 	Adresse^ Adresse_Facturation;

@@ -134,6 +134,8 @@
     <ClCompile Include="Personne.cpp" />
     <ClCompile Include="Personnel.cpp" />
     <ClCompile Include="servicePersonnel.cpp" />
+    <ClCompile Include="MapClient.cpp" />
+    <ClCompile Include="ServiceClient.cpp" />
     <ClCompile Include="Statistiques.cpp" />
     <ClCompile Include="Stock.cpp" />
     <ClCompile Include="StockageCommandes.cpp" />
@@ -146,6 +148,8 @@
     <ClInclude Include="Article.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="Commande.h" />
+    <ClInclude Include="ServiceClient.h" />
+    <ClInclude Include="MapClient.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
