@@ -1,6 +1,10 @@
 //Calculer le prix moyen d'un panier
 SELECT
-  SUM(Prix_HT_Article * Taux_TVA_Modif * Quantite_Commande_Article * Taux_Reduction_Modif) / SUM(Quantite_Commande_Article) AS PrixPanierMoyen
+  SUM(Prix_HT_Article * Taux_TVA_Modif * Quantite_Commande_Article * 
+	CASE 
+            WHEN ISNULL(Modif.Taux_Reduction_Modif, 0) = 0 THEN 1 
+            ELSE Modif.Taux_Reduction_Modif 
+        END) / SUM(Quantite_Commande_Article) AS PrixPanierMoyen
 FROM
   Article
   INNER JOIN Compose ON Article.Reference_Article = Compose.Reference_Article
