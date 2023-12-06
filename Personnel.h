@@ -18,8 +18,8 @@ public:
 	void set_Superieur_Hierarchique(bool^ superieur_hierarchique);
 	Adresse^ get_Adresse_Habitation();
 	void set_Adresse_Habitation(Adresse^ adresse_habitation);
-	String^ ajouter();
-	String^ supprimer();
-	String^ modifier();
-	String^ afficher();
+	void ajouter();
+	void supprimer();
+	void modifier();
+	void afficher();
 };
