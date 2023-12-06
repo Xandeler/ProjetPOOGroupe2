@@ -9,6 +9,7 @@ ref class StockageCommandes
 {
 private:
 	AccesBase^ Acces_Base;
+	Commande^ comande;
 
 public:
 	StockageCommandes();
