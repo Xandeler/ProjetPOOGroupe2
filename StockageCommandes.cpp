@@ -20,7 +20,7 @@ void StockageCommandes::modifier()
     
 }
 
-void StockageCommandes::afficher()
+String^ StockageCommandes::afficher()
 {
     
 }
