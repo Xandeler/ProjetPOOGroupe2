@@ -80,6 +80,8 @@ namespace ProjetPOOGroupe2 {
 
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::TextBox^ textBox3;
+	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::TextBox^ textBox4;
 	private: Personnel^ personnel;
 
 
@@ -107,6 +109,8 @@ namespace ProjetPOOGroupe2 {
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -221,12 +225,12 @@ namespace ProjetPOOGroupe2 {
 			// 
 			// txt_results
 			// 
-			this->txt_results->Location = System::Drawing::Point(473, 416);
+			this->txt_results->Location = System::Drawing::Point(473, 442);
 			this->txt_results->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->txt_results->Multiline = true;
 			this->txt_results->Name = L"txt_results";
 			this->txt_results->ReadOnly = true;
-			this->txt_results->Size = System::Drawing::Size(397, 97);
+			this->txt_results->Size = System::Drawing::Size(397, 71);
 			this->txt_results->TabIndex = 10;
 			// 
 			// lbl_resultats
@@ -234,7 +238,7 @@ namespace ProjetPOOGroupe2 {
 			this->lbl_resultats->AutoSize = true;
 			this->lbl_resultats->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lbl_resultats->Location = System::Drawing::Point(396, 416);
+			this->lbl_resultats->Location = System::Drawing::Point(396, 442);
 			this->lbl_resultats->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lbl_resultats->Name = L"lbl_resultats";
 			this->lbl_resultats->Size = System::Drawing::Size(70, 18);
@@ -260,11 +264,11 @@ namespace ProjetPOOGroupe2 {
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(490, 377);
+			this->label5->Location = System::Drawing::Point(444, 377);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(62, 18);
+			this->label5->Size = System::Drawing::Size(107, 18);
 			this->label5->TabIndex = 17;
-			this->label5->Text = L"Adresse";
+			this->label5->Text = L"Numero de rue";
 			this->label5->Click += gcnew System::EventHandler(this, &MyForm1::label5_Click);
 			// 
 			// textBox3
@@ -275,11 +279,30 @@ namespace ProjetPOOGroupe2 {
 			this->textBox3->Size = System::Drawing::Size(284, 24);
 			this->textBox3->TabIndex = 18;
 			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Location = System::Drawing::Point(464, 413);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(86, 18);
+			this->label6->TabIndex = 19;
+			this->label6->Text = L"Nom de rue";
+			// 
+			// textBox4
+			// 
+			this->textBox4->Location = System::Drawing::Point(557, 410);
+			this->textBox4->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->textBox4->Name = L"textBox4";
+			this->textBox4->Size = System::Drawing::Size(284, 24);
+			this->textBox4->TabIndex = 20;
+			// 
 			// MyForm1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 18);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(882, 518);
+			this->Controls->Add(this->textBox4);
+			this->Controls->Add(this->label6);
 			this->Controls->Add(this->textBox3);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->textBox2);
