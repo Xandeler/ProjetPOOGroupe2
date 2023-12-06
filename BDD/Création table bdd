@@ -45,7 +45,7 @@ CREATE TABLE Article(
    Reference_Article INT IDENTITY,
    Prix_HT_Article MONEY,
    Nom_Article VARCHAR(50) ,
-   Seuil_Reduction_Article VARCHAR(50) ,
+   Seuil_Reduction_Article INT ,
    Quantite_Stock_Article INT,
    Seuil_Reapprovisionnement_Article INT,
    PRIMARY KEY(Reference_Article)
