@@ -7,10 +7,14 @@ SELECT
         END) / SUM(Quantite_Commande_Article) AS PrixPanierMoyen
 FROM
   Article
-  INNER JOIN Compose ON Article.Reference_Article = Compose.Reference_Article
-  INNER JOIN Commande ON Compose.ID_Commande = Commande.ID_Commande
-  INNER JOIN Comporte ON Comporte.Reference_Article = Article.Reference_Article
-  INNER JOIN Modif ON Modif.ID_Modif = Comporte.ID_Modif
+  INNER JOIN 
+	Compose ON Article.Reference_Article = Compose.Reference_Article
+  INNER JOIN 
+	Commande ON Compose.ID_Commande = Commande.ID_Commande
+  INNER JOIN 
+	Comporte ON Comporte.Reference_Article = Article.Reference_Article
+  INNER JOIN 
+	Modif ON Modif.ID_Modif = Comporte.ID_Modif
 WHERE
   Commande.ID_Commande = 1; // Ajouter un getId_commande dans le code sur visual studio
 
