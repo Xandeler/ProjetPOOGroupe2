@@ -165,6 +165,12 @@ WHERE ID_Personne = 24;
 //Modifier un client (VS code)
 "UPDATE Personne SET Nom_Personne = '" + this->get_Nom() + "', Prenom_Personne = '" + this->get_Prenom() + "' WHERE ID_Personne = " + this->get_ID_Personne() + "; UPDATE Clients SET Date_Naissance_Clients = '" + this->get_Date_Naissance() + "', Date_Premier_Achat_Clients = '" + this->get_Date_Premier_Achat() + "' WHERE ID_Personne = " + this->get_ID_Personne() + ";";
 
+//Afficher la liste des clients (SQL et VS code)
+SELECT Clients.ID_Clients, Clients.ID_Personne, Personne.Nom_Personne, Personne.Prenom_Personne, Clients.Date_Naissance_Clients, Clients.Date_Premier_Achat_Clients FROM Clients INNER JOIN Personne ON Clients.ID_Personne = Personne.ID_Personne;
+
+
+
+
 /*Ajouter un personnel*/
 DBCC CHECKIDENT (Personnel, RESEED, 20);
 INSERT INTO Personne (Nom_Personne, Prenom_Personne)
