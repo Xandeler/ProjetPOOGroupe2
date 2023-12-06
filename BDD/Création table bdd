@@ -95,7 +95,7 @@ CREATE TABLE Adresse(
    FOREIGN KEY(ID_Ville) REFERENCES Ville(ID_Ville)
 );
 
-CREATE TABLE Habite(
+CREATE TABLE Possede(
    ID_Personne INT,
    ID_Adresse INT,
    PRIMARY KEY(ID_Personne, ID_Adresse),
