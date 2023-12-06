@@ -65,7 +65,7 @@ void Personnel::modifier()
 		+ "UPDATE Adresse SET Numero_Maison_Adresse = '" + this->get_Adresse_Habitation()->get_Numero_Maison() + "', Rue_Adresse = '" + this->get_Adresse_Habitation()->get_Rue() + "', Nature_Adresse = '" + this->get_Adresse_Habitation()->get_Nature() + "', ID_Ville = '" + this->get_Adresse_Habitation()->verifier_Ville() + "' WHERE Numero_Adresse = " + this->get_Adresse_Habitation()->get_Numero_Maison() + ";";
 }
 
-void Personnel::afficher()
+String^ Personnel::afficher()
 {
-	 " SELECT Nom_Personne,Prenom_Personne,DateEmbauche_Personnel,ID_SuperieurHierarchique, CONCAT(Numero_Maison_Adresse, '  ', Rue_Adresse) AS Adresse FROM Personnel INNER JOIN Personne ON Personnel.ID_Personne = Personne.ID_Personne INNER JOIN Possede ON Personne.ID_Personne = Possede.ID_Personne INNER JOIN Adresse ON Possede.ID_Adresse = Adresse.ID_Adresse WHERE Personnel.ID_Personne =" + this->get_ID_Personne() + ";";
+	 return " SELECT Nom_Personne,Prenom_Personne,DateEmbauche_Personnel,ID_SuperieurHierarchique, CONCAT(Numero_Maison_Adresse, '  ', Rue_Adresse) AS Adresse FROM Personnel INNER JOIN Personne ON Personnel.ID_Personne = Personne.ID_Personne INNER JOIN Possede ON Personne.ID_Personne = Possede.ID_Personne INNER JOIN Adresse ON Possede.ID_Adresse = Adresse.ID_Adresse WHERE Personnel.ID_Personne =" + this->get_ID_Personne() + ";";
 }

@@ -15,6 +15,6 @@ public:
 	void ajouter();
 	void supprimer();
 	void modifier();
-	String^ afficher();
+	void afficher();
 	void imprimer();
 };

@@ -71,5 +71,5 @@ public:
 	void ajouter_Article();
 	void supprimer_Article();
 	void modifier_Article();
-	void afficher_Article();
+	String^ afficher_Article();
 };
