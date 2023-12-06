@@ -21,8 +21,8 @@ public:
 	void set_Adresse_Facturation(Adresse^ adresse_facturation);
 	Adresse^ get_Adresse_Livraison();
 	void set_Adresse_Livraison(Adresse^ adresse_livraison);
-	String^ ajouter();
-	String^ supprimer();
-	String^ modifier();
+	void ajouter();
+	void supprimer();
+	void modifier();
 	String^ afficher();
 };
