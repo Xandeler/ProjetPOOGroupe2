@@ -224,5 +224,5 @@ void Commande::modifier_Article()
 
 String^ Commande::afficher_Article()
 {
-    return 'a';
+    return "";
 }

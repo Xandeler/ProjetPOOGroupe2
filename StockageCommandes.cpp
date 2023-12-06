@@ -22,7 +22,7 @@ void StockageCommandes::modifier()
 
 String^ StockageCommandes::afficher()
 {
-    
+    return"";
 }
 
 void StockageCommandes::imprimer()
