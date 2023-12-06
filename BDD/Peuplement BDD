@@ -31,7 +31,7 @@ VALUES
   ('Clermont-Ferrand', '63000'),
   ('Antibes', '06600');
 
-INSERT INTO Adresse (Rue_Adresse, Numero_Livraison_Adresse, Nature_Adresse, ID_Ville)
+INSERT INTO Adresse (Rue_Adresse, Numero_Maison_Adresse, Nature_Adresse, ID_Ville)
 VALUES
 
 -- Personnel -> Juste Habitation
