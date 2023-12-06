@@ -46,21 +46,20 @@ void Personnel::set_Adresse_Habitation(Adresse^ adresse_habitation)
 
 String^ Personnel::ajouter()
 {
-	return "INSERT INTO PROJET_POO_GROUPE_2" + " (Nom, Prenom, DateEmbauche, Superieur) VALUES('" + this->get_Nom() + "','" + this->get_Prenom() + "','" + this->get_Date_Embauche() + "','" + this->get_Superieur_Hierarchique() + "');";
-
+	return "INSERT INTO Personnel" + " (Nom, Prenom, DateEmbauche, Superieur, Adresse_Habitation) VALUES('" + this->get_Nom() + "','" + this->get_Prenom() + "','" + this->get_Date_Embauche() + "','" + this->get_Superieur_Hierarchique() + "','" + this->get_Adresse_Habitation() + "');";
 }
 
 String^ Personnel::supprimer()
 {
-	return"a"; //a modifier
+	return "DELETE FROM Personnel WHERE ID = " + get_ID_Personne();
 }
 
 String^ Personnel::modifier()
 {
-	return"a"; //a modifier
+	return "UPDATE Personnel SET [Prenom] = '" + this->get_Prenom() + "', [Nom] = '" + this->get_Nom() + "', [Prenom] = '" + this->get_Prenom() + "', [DateEmbauche] = '" + this->get_Date_Embauche() + "', [Superieur] = '" + this->get_Superieur_Hierarchique() + "', [Adresse_Habitation] = '" + this->get_Adresse_Habitation() + "' WHERE [ID] = " + this->get_ID_Personne() + ";";
 }
 
 String^ Personnel::afficher()
 {
-	return"a"; //a modifier
+	return "SELECT * FROM Personnel WHERE ID = " + get_ID_Personne();
 }
