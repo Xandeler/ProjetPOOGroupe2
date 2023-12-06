@@ -31,101 +31,253 @@ VALUES
   ('Clermont-Ferrand', '63000'),
   ('Antibes', '06600');
 
-INSERT INTO Adresse (Rue_Adresse, Numero_Maison_Adresse, Nature_Adresse, ID_Ville)
+INSERT INTO Adresse (Rue_Adresse, Numero_Livraison_Adresse, Nature_Adresse, ID_Ville)
 VALUES
-('Rue de la Paix', 10, 'Maison', 1), -- Paris
-('Avenue des Champs-Élysées', 25, 'Appartement', 1), -- Paris
-('Boulevard Haussmann', 30, 'Bureau', 1), -- Paris
-('Rue du Faubourg Saint-Honoré', 15, 'Maison', 1), -- Paris
-('Avenue Montaigne', 20, 'Bureau', 1), -- Paris
-('Rue Royale', 35, 'Appartement', 1), -- Paris
-('Boulevard Saint-Germain', 45, 'Maison', 1), -- Paris
-('Rue de la République', 12, 'Maison', 2), -- Marseille
-('Avenue du Prado', 8, 'Appartement', 2), -- Marseille
-('Rue Paradis', 18, 'Bureau', 2), -- Marseille
-('Rue de Rivoli', 22, 'Bureau', 1), -- Paris
-('Place Bellecour', 5, 'Appartement', 3), -- Lyon
-('Quai des Grands Augustins', 17, 'Maison', 1), -- Paris
-('Rue de la Liberté', 14, 'Maison', 4), -- Toulouse
-('Avenue Jean Médecin', 28, 'Bureau', 5), -- Nice
-('Boulevard de Strasbourg', 40, 'Appartement', 6), -- Nantes
-('Rue Nationale', 7, 'Maison', 7), -- Strasbourg
-('Rue Foch', 19, 'Bureau', 8), -- Montpellier
-('Place de la Bourse', 2, 'Appartement', 9), -- Bordeaux
-('Avenue du Peuple Belge', 11, 'Maison', 10), -- Lille
-('Rue Nationale', 9, 'Bureau', 11), -- Rennes
-('Rue de Vesle', 13, 'Maison', 12), -- Reims
-('Avenue Foch', 16, 'Appartement', 13), -- Le Havre
-('Boulevard Jules Janin', 23, 'Bureau', 14), -- Saint-Étienne
-('Rue Jean Jaurès', 6, 'Maison', 15), -- Toulon
-('Rue de la Mariette', 21, 'Appartement', 16), -- Le Mans
-('Boulevard des Anglais', 3, 'Bureau', 17), -- Aix-en-Provence
-('Rue des Jacobins', 4, 'Maison', 18), -- Amiens
-('Avenue de Grande-Bretagne', 27, 'Appartement', 19), -- Perpignan
-('Rue du Point du Jour', 36, 'Bureau', 20), -- Boulogne-Billancourt
-('Avenue Foch', 31, 'Maison', 21), -- Metz
-('Rue Battant', 33, 'Appartement', 22), -- Besançon
-('Boulevard Gambetta', 26, 'Bureau', 23), -- Grenoble
-('Rue de la Liberté', 29, 'Maison', 24), -- Dijon
-('Avenue Jean-Jaurès', 37, 'Appartement', 25), -- Nîmes
-('Boulevard du Doyenné', 38, 'Bureau', 26), -- Angers
-('Rue des Martyrs', 41, 'Maison', 27), -- Villeurbanne
-('Avenue Georges Pompidou', 39, 'Appartement', 28), -- Levallois-Perret
-('Boulevard François Mitterrand', 32, 'Bureau', 29), -- Clermont-Ferrand
-('Rue de la République', 34, 'Maison', 30); -- Antibes
 
-INSERT INTO Personne (Nom_Personne, Prenom_Personne, ID_Adresse)
+-- Personnel -> Juste Habitation
+('Rue de la Paix', 10, 'Habitation', 1), -- Paris
+('Avenue des Champs-Élysées', 25, 'Habitation', 1), -- Paris
+('Boulevard Haussmann', 30, 'Habitation', 1), -- Paris
+('Rue du Faubourg Saint-Honoré', 15, 'Habitation', 1), -- Paris
+('Avenue Montaigne', 20, 'Habitation', 1), -- Paris
+('Rue Royale', 35, 'Habitation', 1), -- Paris
+('Boulevard Saint-Germain', 45, 'Habitation', 1), -- Paris
+('Rue de la République', 12, 'Habitation', 2), -- Marseille
+('Avenue du Prado', 8, 'Habitation', 2), -- Marseille
+('Rue Paradis', 18, 'Habitation', 2), -- Marseille
+('Rue de Rivoli', 22, 'Habitation', 1), -- Paris
+('Place Bellecour', 5, 'Habitation', 3), -- Lyon
+('Quai des Grands Augustins', 17, 'Habitation', 1), -- Paris
+('Rue de la Liberté', 14, 'Habitation', 4), -- Toulouse
+('Avenue Jean Médecin', 28, 'Habitation', 5), -- Nice
+('Boulevard de Strasbourg', 40, 'Habitation', 6), -- Nantes
+
+-- Clients -> Livraison + Facturation
+('Rue Nationale', 7, 'Livraison', 7), -- Strasbourg
+('Rue Nationale', 7, 'Facturation', 7), -- Strasbourg
+
+('Rue Foch', 19, 'Livraison', 8), -- Montpellier
+('Rue Foch', 19, 'Facturation', 8), -- Montpellier
+
+('Place de la Bourse', 2, 'Livraison', 9), -- Bordeaux
+('Place de la Bourse', 2, 'Facturation', 9), -- Bordeaux
+
+('Avenue du Peuple Belge', 11, 'Livraison', 10), -- Lille
+('Avenue du Peuple Belge', 11, 'Facturation', 10), -- Lille
+
+('Rue Nationale', 9, 'Livraison', 11), -- Rennes
+('Rue Nationale', 9, 'Facturation', 11), -- Rennes
+
+('Rue de Vesle', 13, 'Livraison', 12), -- Reims
+('Rue de Vesle', 13, 'Facturation', 12), -- Reims
+
+('Avenue Foch', 16, 'Livraison', 13), -- Le Havre
+('Avenue Foch', 16, 'Facturation', 13), -- Le Havre
+
+('Boulevard Jules Janin', 23, 'Livraison', 14), -- Saint-Étienne
+('Boulevard Jules Janin', 23, 'Facturation', 14), -- Saint-Étienne
+
+('Rue Jean Jaurès', 6, 'Livraison', 15), -- Toulon
+('Rue Jean Jaurès', 6, 'Facturation', 15), -- Toulon
+
+('Rue de la Mariette', 21, 'Livraison', 16), -- Le Mans
+('Rue de la Mariette', 21, 'Facturation', 16), -- Le Mans
+
+('Boulevard des Anglais', 3, 'Livraison', 17), -- Aix-en-Provence
+('Boulevard des Anglais', 3, 'Facturation', 17), -- Aix-en-Provence
+
+('Rue des Jacobins', 4, 'Livraison', 18), -- Amiens
+('Rue des Jacobins', 4, 'Facturation', 18), -- Amiens
+
+('Avenue de Grande-Bretagne', 27, 'Livraison', 19), -- Perpignan
+('Avenue de Grande-Bretagne', 27, 'Facturation', 19), -- Perpignan
+
+('Rue du Point du Jour', 36, 'Livraison', 20), -- Boulogne-Billancourt
+('Rue du Point du Jour', 36, 'Facturation', 20), -- Boulogne-Billancourt
+
+('Avenue Foch', 31, 'Livraison', 21), -- Metz
+('Avenue Foch', 31, 'Facturation', 21), -- Metz
+
+('Rue Battant', 33, 'Livraison', 22), -- Besançon
+('Rue Battant', 33, 'Facturation', 22), -- Besançon
+
+('Boulevard Gambetta', 26, 'Livraison', 23), -- Grenoble
+('Boulevard Gambetta', 26, 'Facturation', 23), -- Grenoble
+
+('Rue de la Liberté', 29, 'Livraison', 24), -- Dijon
+('Rue de la Liberté', 29, 'Facturation', 24), -- Dijon
+
+('Avenue Jean-Jaurès', 37, 'Livraison', 25), -- Nîmes
+('Avenue Jean-Jaurès', 37, 'Facturation', 25), -- Nîmes
+
+('Boulevard du Doyenné', 38, 'Livraison', 26), -- Angers
+('Boulevard du Doyenné', 38, 'Facturation', 26), -- Angers
+
+('Rue des Martyrs', 41, 'Livraison', 27), -- Villeurbanne
+('Rue des Martyrs', 41, 'Facturation', 27), -- Villeurbanne
+
+('Avenue Georges Pompidou', 39, 'Livraison', 28), -- Levallois-Perret
+('Avenue Georges Pompidou', 39, 'Facturation', 28), -- Levallois-Perret
+
+('Boulevard François Mitterrand', 32, 'Livraison', 29), -- Clermont-Ferrand
+('Boulevard François Mitterrand', 32, 'Facturation', 29), -- Clermont-Ferrand
+
+('Rue de la République', 34, 'Livraison', 30), -- Antibes
+('Rue de la République', 34, 'Facturation', 30), -- Antibes
+
+-- SUPERIEUR -> Strasbourg que habitation
+('Rue du github', 3, 'Habitation', 7),
+('Rue du codage', 6, 'Habitation', 7),
+('Rue du C++', 8, 'Habitation', 7),
+('Rue de la BDD', 12, 'Habitation', 7);
+
+INSERT INTO Personne (Nom_Personne, Prenom_Personne)
 VALUES
-('McCerery', 'Annotee', 1),
-('Coggins', 'Melissandre', 2),
-('Lowrie', 'Angelique', 3),
-('Cocks', 'Lorene', 4),
-('Macewan', 'Andre', 5),
-('Masson', 'Meline', 6),
-('Florence', 'Almerinda', 7),
-('Abdie', 'Cecilia', 8),
-('Galletly', 'Lai', 9),
-('Spurgin', 'Dafnee', 10),
-('Tribbeck', 'Venus', 11),
-('Boosey', 'Maella', 12),
-('Steckings', 'Cloe', 13),
-('Sage', 'Oceanne', 14),
-('Kneller', 'Maella', 15),
-('Seedull', 'Simplifies', 16),
-('Kupis', 'Esteve', 17),
-('Reoch', 'Meng', 18),
-('Skrines', 'Clelia', 19),
-('McQuillen', 'Borje', 20),
-('Beckworth', 'Melodie', 21),
-('Ginnell', 'Naeva', 22),
-('Ellul', 'Lie', 23),
-('Guyot', 'Yáo', 24),
-('Bustard', 'Methode', 25),
-('Salvin', 'Meryl', 26),
-('Royds', 'Geraldine', 27),
-('Asif', 'Mylene', 28),
-('Bolan', 'Naeva', 29),
-('Leyband', 'Megane', 30),
-('Josey', 'Clelia', 31),
-('Bending', 'Valerie', 32),
-('Dachey', 'Maelle', 33),
-('Goundrill', 'Melina', 34),
-('Siggs', 'Marlene', 35),
-('Dinsey', 'Aslog', 36),
-('Widdowson', 'Elies', 37),
-('Bearman', 'Oceane', 38),
-('Kinset', 'Cecile', 39),
-('Feehely', 'Maeline', 40),
-('Hickisson', 'Noella', 37),
-('Bore', 'Leone', 36),
-('Phant', 'Laurene', 20),
-('Melling', 'Maite', 34),
-('Tresler', 'Loica', 14),
-('Schnieder', 'Felicie', 5),
-('Rinaldi', 'Johan', 19),
-('Grasser', 'Alexandre', 40),
-('Jung', 'Lisa', 1),
-('Schaeffer', 'Leo', 6);
+
+-- PERSONNELS
+('McCerery', 'Annotee'),
+('Coggins', 'Melissandre'),
+('Lowrie', 'Angelique'),
+('Cocks', 'Lorene'),
+('Macewan', 'Andre'),
+('Masson', 'Meline'),
+('Florence', 'Almerinda'),
+('Abdie', 'Cecilia'),
+('Galletly', 'Lai'),
+('Spurgin', 'Dafnee'),
+('Tribbeck', 'Venus'),
+('Boosey', 'Maella'),
+('Steckings', 'Cloe'),
+('Sage', 'Oceanne'),
+('Kneller', 'Maella'),
+('Seedull', 'Simplifies'),
+
+-- CLIENTS
+('Kupis', 'Esteve'),
+('Reoch', 'Meng'),
+('Skrines', 'Clelia'),
+('McQuillen', 'Borje'),
+('Beckworth', 'Melodie'),
+('Ginnell', 'Naeva'),
+('Ellul', 'Lie'),
+('Guyot', 'Yáo'),
+('Bustard', 'Methode'),
+('Salvin', 'Meryl'),
+('Royds', 'Geraldine'),
+('Asif', 'Mylene'),
+('Bolan', 'Naeva'),
+('Leyband', 'Megane'),
+('Josey', 'Clelia'),
+('Bending', 'Valerie'),
+('Dachey', 'Maelle'),
+('Goundrill', 'Melina'),
+('Siggs', 'Marlene'),
+('Dinsey', 'Aslog'),
+('Widdowson', 'Elies'),
+('Bearman', 'Oceane'),
+('Kinset', 'Cecile'),
+('Feehely', 'Maeline'),
+('Hickisson', 'Noella'),
+('Bore', 'Leone'),
+('Phant', 'Laurene'),
+('Melling', 'Maite'),
+('Tresler', 'Loica'),
+('Schnieder', 'Felicie'),
+
+-- SUPERIEUR + PERSONNEL
+('Rinaldi', 'Johan'),
+('Grasser', 'Alexandre'),
+('Jung', 'Lisa'),
+('Schaeffer', 'Leo');
+
+INSERT INTO Possede (ID_Personne, ID_Adresse)
+VALUES
+
+-- Personnel (qu'une adresse -> habitation)
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6),
+(7, 7),
+(8, 8),
+(9, 9),
+(10, 10),
+(11, 11),
+(12, 12),
+(13, 13),
+(14, 14),
+(15, 15),
+(16, 16),
+
+-- Clients (2 adresses -> Livraison + Facturation)
+(17, 17),
+(17, 18),
+(18, 19),
+(18, 20),
+(19, 21),
+(19, 22),
+(20, 23),
+(20, 24),
+(21, 25),
+(21, 26),
+(22, 27),
+(22, 28),
+(23, 29),
+(23, 30),
+(24, 31),
+(24, 32),
+(25, 33),
+(25, 34),
+(26, 35),
+(26, 36),
+(27, 37),
+(27, 38),
+(28, 39),
+(28, 40),
+(29, 41),
+(29, 42),
+(30, 43),
+(30, 44),
+(31, 45),
+(31, 46),
+(32, 47),
+(32, 48),
+(33, 49),
+(33, 50),
+(34, 51),
+(34, 52),
+(35, 53),
+(35, 54),
+(36, 55),
+(36, 56),
+(37, 57),
+(37, 58),
+(38, 59),
+(38, 60),
+(39, 61),
+(39, 62),
+(40, 63),
+(40, 64),
+(41, 64),
+(41, 63),
+(42, 62),
+(42, 61),
+(43, 60),
+(43, 59),
+(44, 58),
+(44, 57),
+(45, 56),
+(45, 55),
+(46, 54),
+(46, 53),
+
+-- Superieur (qu'une adresse -> habitation)
+(47, 65),
+(48, 66),
+(49, 67),
+(50, 68);
 
 INSERT INTO SuperieurHierarchique(DateEmbauche_SuperieurHierarchique, ID_Personne)
 VALUES
