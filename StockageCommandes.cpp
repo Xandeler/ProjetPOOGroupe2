@@ -2,7 +2,7 @@
 
 StockageCommandes::StockageCommandes()
 {
-   
+    
 }
 
 void StockageCommandes::ajouter()
