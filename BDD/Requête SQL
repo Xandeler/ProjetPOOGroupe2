@@ -34,8 +34,6 @@ LEFT JOIN
     Comprend cr ON co.ID_Commande = cr.ID_Commande
 LEFT JOIN 
     Remise r ON cr.ID_Remise = r.ID_Remise
-GROUP BY 
-    co.ID_Commande;
 
 
 //Calcul_Valeur_Commerciale_Stock
