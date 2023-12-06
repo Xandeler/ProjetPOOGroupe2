@@ -258,3 +258,13 @@ VALUES (13.99, 'Tada', 15, 368, 10);
 UPDATE Article
 SET Prix_HT_Article = 15.99, Nom_Article = 'Ajout' , Seuil_Reduction_Article = 26, Quantite_Stock_Article = 265, Seuil_Reapprovisionnement_Article = 12
 WHERE Reference_Article = 21;
+
+//DELETE Article
+DELETE FROM Compose
+WHERE Reference_Article = 9;
+
+DELETE FROM Comporte
+WHERE Reference_Article = 9;
+
+DELETE FROM Article
+WHERE Reference_Article = 9;
