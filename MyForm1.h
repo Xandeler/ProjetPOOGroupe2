@@ -1,6 +1,9 @@
 ﻿#pragma once
 #include <cstdlib>
 #include "servicePersonnel.h"
+#include "Personne.h"
+#include "Personnel.h"
+#include "Adresse.h"
 
 namespace ProjetPOOGroupe2 {
 
@@ -52,13 +55,15 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::TextBox^ txt_results;
 
 	private: System::Windows::Forms::Label^ lbl_resultats;
+	private: System::Windows::Forms::TextBox^ tb_superieur;
 
 
 
 
 
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::TextBox^ textBox2;
+
+	private: System::Windows::Forms::TextBox^ tb_date;
+
 
 	private: servPers::CLservices^ pe;
 	private: System::Data::DataSet^ oDs;
@@ -72,11 +77,14 @@ namespace ProjetPOOGroupe2 {
 	private: System::ComponentModel::Container^ components;
 
 	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::TextBox^ textBox3;
+	private: System::Windows::Forms::TextBox^ tb_numrue;
+
 	private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::TextBox^ textBox4;
+	private: System::Windows::Forms::TextBox^ tb_nomrue;
+
 	private: System::Windows::Forms::Button^ button1;
 	private: PE::Personnel^ personnel;
+	private: AD::Adresse^ Adresse;
 
 
 #pragma region Windows Form Designer generated code
@@ -99,12 +107,12 @@ namespace ProjetPOOGroupe2 {
 			   this->label4 = (gcnew System::Windows::Forms::Label());
 			   this->txt_results = (gcnew System::Windows::Forms::TextBox());
 			   this->lbl_resultats = (gcnew System::Windows::Forms::Label());
-			   this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			   this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			   this->tb_superieur = (gcnew System::Windows::Forms::TextBox());
+			   this->tb_date = (gcnew System::Windows::Forms::TextBox());
 			   this->label5 = (gcnew System::Windows::Forms::Label());
-			   this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			   this->tb_numrue = (gcnew System::Windows::Forms::TextBox());
 			   this->label6 = (gcnew System::Windows::Forms::Label());
-			   this->textBox4 = (gcnew System::Windows::Forms::TextBox());
+			   this->tb_nomrue = (gcnew System::Windows::Forms::TextBox());
 			   this->button1 = (gcnew System::Windows::Forms::Button());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			   this->SuspendLayout();
@@ -240,21 +248,22 @@ namespace ProjetPOOGroupe2 {
 			   this->lbl_resultats->TabIndex = 14;
 			   this->lbl_resultats->Text = L"Resultats";
 			   // 
-			   // textBox1
+			   // tb_superieur
 			   // 
-			   this->textBox1->Location = System::Drawing::Point(557, 340);
-			   this->textBox1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			   this->textBox1->Name = L"textBox1";
-			   this->textBox1->Size = System::Drawing::Size(284, 24);
-			   this->textBox1->TabIndex = 15;
+			   this->tb_superieur->Location = System::Drawing::Point(557, 340);
+			   this->tb_superieur->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			   this->tb_superieur->Name = L"tb_superieur";
+			   this->tb_superieur->Size = System::Drawing::Size(284, 24);
+			   this->tb_superieur->TabIndex = 15;
+
 			   // 
-			   // textBox2
+			   // tb_date
 			   // 
-			   this->textBox2->Location = System::Drawing::Point(557, 306);
-			   this->textBox2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			   this->textBox2->Name = L"textBox2";
-			   this->textBox2->Size = System::Drawing::Size(284, 24);
-			   this->textBox2->TabIndex = 16;
+			   this->tb_date->Location = System::Drawing::Point(557, 306);
+			   this->tb_date->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			   this->tb_date->Name = L"tb_date";
+			   this->tb_date->Size = System::Drawing::Size(284, 24);
+			   this->tb_date->TabIndex = 16;
 			   // 
 			   // label5
 			   // 
@@ -266,13 +275,13 @@ namespace ProjetPOOGroupe2 {
 			   this->label5->Text = L"Numero de rue";
 			   this->label5->Click += gcnew System::EventHandler(this, &MyForm1::label5_Click);
 			   // 
-			   // textBox3
+			   // tb_numrue
 			   // 
-			   this->textBox3->Location = System::Drawing::Point(557, 374);
-			   this->textBox3->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			   this->textBox3->Name = L"textBox3";
-			   this->textBox3->Size = System::Drawing::Size(284, 24);
-			   this->textBox3->TabIndex = 18;
+			   this->tb_numrue->Location = System::Drawing::Point(557, 374);
+			   this->tb_numrue->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			   this->tb_numrue->Name = L"tb_numrue";
+			   this->tb_numrue->Size = System::Drawing::Size(284, 24);
+			   this->tb_numrue->TabIndex = 18;
 			   // 
 			   // label6
 			   // 
@@ -283,13 +292,14 @@ namespace ProjetPOOGroupe2 {
 			   this->label6->TabIndex = 19;
 			   this->label6->Text = L"Nom de rue";
 			   // 
-			   // textBox4
+			   // tb_nomrue
 			   // 
-			   this->textBox4->Location = System::Drawing::Point(557, 410);
-			   this->textBox4->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			   this->textBox4->Name = L"textBox4";
-			   this->textBox4->Size = System::Drawing::Size(284, 24);
-			   this->textBox4->TabIndex = 20;
+			   this->tb_nomrue->Location = System::Drawing::Point(557, 410);
+			   this->tb_nomrue->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			   this->tb_nomrue->Name = L"tb_nomrue";
+			   this->tb_nomrue->Size = System::Drawing::Size(284, 24);
+			   this->tb_nomrue->TabIndex = 20;
+
 			   // 
 			   // button1
 			   // 
@@ -308,12 +318,12 @@ namespace ProjetPOOGroupe2 {
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->ClientSize = System::Drawing::Size(882, 518);
 			   this->Controls->Add(this->button1);
-			   this->Controls->Add(this->textBox4);
+			   this->Controls->Add(this->tb_nomrue);
 			   this->Controls->Add(this->label6);
-			   this->Controls->Add(this->textBox3);
+			   this->Controls->Add(this->tb_numrue);
 			   this->Controls->Add(this->label5);
-			   this->Controls->Add(this->textBox2);
-			   this->Controls->Add(this->textBox1);
+			   this->Controls->Add(this->tb_date);
+			   this->Controls->Add(this->tb_superieur);
 			   this->Controls->Add(this->lbl_resultats);
 			   this->Controls->Add(this->txt_results);
 			   this->Controls->Add(this->label2);
@@ -370,27 +380,41 @@ namespace ProjetPOOGroupe2 {
 
 	private: System::Void btn_ajouter_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		try
+		// initialiser un objet personne avec les valeurs des textbox
+		// ajouter la personne dans la base de données
+		// rafraichir le datagridview
+		// afficher un message de confirmation
+
+		if (this->tb_nom->Text == "" || this->tb_prenom->Text == "" || this->tb_superieur->Text == "" || this->tb_nomrue->Text == "")
 		{
+			this->txt_results->Text = "Veuillez remplir tous les champs";
+		}
+		else
+		{
+			this->personnel = gcnew PE::Personnel();
 			this->personnel->set_Nom(this->tb_nom->Text);
 			this->personnel->set_Prenom(this->tb_prenom->Text);
-			this->personnel->set_Date_Embauche(this->textBox1->Text); //Vérifier si c'est la bonne textBox.
-			this->personnel->set_Superieur_Hierarchique(Convert::ToBoolean(this->textBox2->Text)); //Vérifier si c'est la bonne textBox.
+			this->personnel->set_Date_Embauche(this->tb_date->Text); //Vérifier si c'est la bonne textBox.
+			this->personnel->set_Superieur_Hierarchique(Convert::ToInt32(this->tb_superieur->Text));
 
-			this->personnel->ajouter();
+			this->Adresse = gcnew AD::Adresse();
+			this->Adresse->set_Numero_Maison(Convert::ToInt32(this->tb_superieur->Text));
+			this->Adresse->set_Rue(this->tb_nomrue->Text);
+			this->Adresse->set_Nature("Habitation");
+			this->personnel->set_Adresse_Habitation(this->Adresse);
+
+
+
+
+			this->pe->ajouterUnePersonne(this->personnel->get_Nom(), this->personnel->get_Prenom());
 
 			refresh_datagrid();
 
 			this->txt_results->Text = "Données entrées avec succès";
 		}
-		catch (Exception^ execept)
-		{
-			this->txt_results->Text = execept->Message;
-			this->txt_results->Text += "\r\n";
-			this->txt_results->Text += execept->StackTrace;
 
 
-		}
+
 	}
 
 	private: System::Void btn_supprimer_Click(System::Object^ sender, System::EventArgs^ e)
@@ -420,8 +444,10 @@ namespace ProjetPOOGroupe2 {
 			this->personnel->set_ID_Personne(this->get_selected_ID());
 			this->personnel->set_Nom(this->tb_nom->Text);
 			this->personnel->set_Prenom(this->tb_prenom->Text);
-			this->personnel->set_Date_Embauche(this->textBox1->Text); //Vérifier si c'est la bonne textBox.
-			this->personnel->set_Superieur_Hierarchique(Convert::ToBoolean(this->textBox2->Text)); //Vérifier si c'est la bonne textBox.
+			this->personnel->set_Date_Embauche(this->tb_date->Text); //Vérifier si c'est la bonne textBox.
+
+			//this->personnel->set_Superieur_Hierarchique(conthis->tb_superieur->Text)); //Vérifier si c'est la bonne textBox.
+
 
 			this->personnel->modifier();
 
@@ -445,5 +471,6 @@ namespace ProjetPOOGroupe2 {
 		this->dataGridView1->DataSource = this->oDs;
 		this->dataGridView1->DataMember = "Rsl";
 	}
+
 	};
 }

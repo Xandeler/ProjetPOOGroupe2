@@ -4,10 +4,10 @@
 PE::Personnel::Personnel()
 {
 	this->set_Date_Embauche("00/00/0000");
-	this->set_Superieur_Hierarchique(false);
+	this->set_Superieur_Hierarchique(1);
 }
 
-PE::Personnel::Personnel(String^ date_embauche, bool^ superieur_hierarchique, int^ ID, String^ nom, String^ prenom, Adresse^ adresse_habitation) : Personne::Personne(ID, nom, prenom)
+PE::Personnel::Personnel(String^ date_embauche, int^ superieur_hierarchique, int^ ID, String^ nom, String^ prenom, AD::Adresse^ adresse_habitation) : Personne::Personne(ID, nom, prenom)
 {
 	this->set_Date_Embauche(date_embauche);
 	this->set_Superieur_Hierarchique(superieur_hierarchique);
@@ -24,22 +24,22 @@ void PE::Personnel::set_Date_Embauche(String^ date_embauche)
 	this->Date_Embauche = date_embauche;
 }
 
-bool^ PE::Personnel::get_Superieur_Hierarchique()
+int^ PE::Personnel::get_Superieur_Hierarchique()
 {
 	return this->Superieur_Hierarchique;
 }
 
-void PE::Personnel::set_Superieur_Hierarchique(bool^ superieur_hierarchique)
+void PE::Personnel::set_Superieur_Hierarchique(int^ superieur_hierarchique)
 {
 	this->Superieur_Hierarchique = superieur_hierarchique;
 }
 
-Adresse^ PE::Personnel::get_Adresse_Habitation()
+AD::Adresse^ PE::Personnel::get_Adresse_Habitation()
 {
 	return this->Adresse_Habitation;
 }
 
-void PE::Personnel::set_Adresse_Habitation(Adresse^ adresse_habitation)
+void PE::Personnel::set_Adresse_Habitation(AD::Adresse^ adresse_habitation)
 {
 	this->Adresse_Habitation = adresse_habitation;
 }

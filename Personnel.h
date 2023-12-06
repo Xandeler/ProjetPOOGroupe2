@@ -7,18 +7,18 @@ namespace PE {
 	{
 	private:
 		String^ Date_Embauche;
-		bool^ Superieur_Hierarchique;
-		Adresse^ Adresse_Habitation;
+		int^ Superieur_Hierarchique;
+		AD::Adresse^ Adresse_Habitation;
 
 	public:
 		Personnel();
-		Personnel(String^ date_embauche, bool^ superieur_hierarchique, int^ ID, String^ nom, String^ prenom, Adresse^ adresse_habitation);
+		Personnel(String^ date_embauche, int^ superieur_hierarchique, int^ ID, String^ nom, String^ prenom, AD::Adresse^ adresse_habitation);
 		String^ get_Date_Embauche();
 		void set_Date_Embauche(String^ date_embauche);
-		bool^ get_Superieur_Hierarchique();
-		void set_Superieur_Hierarchique(bool^ superieur_hierarchique);
-		Adresse^ get_Adresse_Habitation();
-		void set_Adresse_Habitation(Adresse^ adresse_habitation);
+		int^ get_Superieur_Hierarchique();
+		void set_Superieur_Hierarchique(int^ superieur_hierarchique);
+		AD::Adresse^ get_Adresse_Habitation();
+		void set_Adresse_Habitation(AD::Adresse^ adresse_habitation);
 		System::String^ ajouter();
 		System::String^ supprimer();
 		System::String^ modifier();
