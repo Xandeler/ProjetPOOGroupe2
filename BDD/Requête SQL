@@ -201,6 +201,11 @@ UPDATE Adresse
 SET Numero_Maison_Adresse = 44, Rue_Adresse = 'Rue Amiras'
 WHERE ID_Ville = 2;
 
+//Modifier personnel (VS)
+  "UPDATE Personne SET Nom_Personne = '" + this->get_Nom() + "', Prenom_Personne = '" + this->get_Prenom() + "' WHERE ID_Personne = " + this->get_ID_Personne() + ";"
++ "UPDATE Personnel SET DateEmbauche_Personnel = '" + this->get_Date_Embauche() + "', ID_SuperieurHierarchique = '" + this->get_Superieur_Hierarchique() + "' WHERE ID_Personne = " + this->get_ID_Personne() + ";"
++ "UPDATE Adresse SET Numero_Maison_Adresse = '" + this->get_Adresse_Habitation()->get_Numero_Maison() + "', Rue_Adresse = '" + this->get_Adresse_Habitation()->get_Rue() + "', Nature_Adresse = '" + this->get_Adresse_Habitation()->get_Nature() + "', ID_Ville = '" + this->get_Adresse_Habitation()->verifier_Ville() + "' WHERE Numero_Adresse = " + this->get_Adresse_Habitation()->get_Numero_Maison() + ";";
+
 /*Afficher un personnel*/
 SELECT 
     Personne.ID_Personne,
@@ -219,6 +224,10 @@ INNER JOIN
     Adresse ON Possede.ID_Adresse = Adresse.ID_Adresse
 WHERE Personne.ID_Personne = 1;
 
+//Afficher personnel (VS) 
+	 " SELECT	Nom_Personne,Prenom_Personne,DateEmbauche_Personnel,ID_SuperieurHierarchique, CONCAT(Numero_Maison_Adresse, '  ', Rue_Adresse) AS Adresse FROM Personnel INNER JOIN Personne ON Personnel.ID_Personne = Personne.ID_Personne INNER JOIN Possede ON Personne.ID_Personne = Possede.ID_Personne INNER JOIN Adresse ON Possede.ID_Adresse = Adresse.ID_Adresse WHERE Personnel.ID_Personne =" + this->get_ID_Personne() + ";";
+
+
 /*Supprimer un personnel*/
 DELETE FROM Personnel 
 WHERE ID_Personne = 1;
@@ -228,3 +237,8 @@ WHERE ID_Ville = 2;
 
 DELETE FROM Personne
 WHERE ID_Personne = 1;
+
+// Supprimer personnel (VS)
+ "DELETE FROM Personne WHERE ID_Personne = " + this->get_ID_Personne() + ";"
++ "DELETE FROM Personnel WHERE ID_Personne = " + this->get_ID_Personne() + ";"
++ "DELETE FROM Possede WHERE ID_Personne = " + this->get_ID_Personne() + ";";
