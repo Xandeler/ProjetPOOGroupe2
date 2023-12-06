@@ -2,6 +2,7 @@
 
 AccesBase::AccesBase(void)
 {
+    /////////////  TEEEEEST  /////////////
 
     ////FAIRE UN FICHIER DE CONFIGURATION POUR LA CONNEXION////
     // Nom de la base de données : Electronic
