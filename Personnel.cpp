@@ -61,5 +61,5 @@ String^ Personnel::modifier()
 
 String^ Personnel::afficher()
 {
-	return "SELECT * FROM Personnel WHERE ID = " + get_ID_Personne();
+	return " SELECT	Nom_Personne,Prenom_Personne,DateEmbauche_Personnel,ID_SuperieurHierarchique, CONCAT(Numero_Maison_Adresse, '  ', Rue_Adresse) AS Adresse FROM Personnel INNER JOIN Personne ON Personnel.ID_Personne = Personne.ID_Personne INNER JOIN Possede ON Personne.ID_Personne = Possede.ID_Personne INNER JOIN Adresse ON Possede.ID_Adresse = Adresse.ID_Adresse WHERE Personnel.ID_Personne =" + this->get_ID_Personne() + ";";
 }
