@@ -7,7 +7,7 @@
 ref class Statistiques
 {
 private:
-	AccesBase^ Acces_Base;
+	AB::AccesBase^ Acces_Base;
 
 public:
 	Statistiques();
