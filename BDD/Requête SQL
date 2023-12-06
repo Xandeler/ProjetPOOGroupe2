@@ -42,6 +42,10 @@ FROM Article
 INNER JOIN Comporte ON Article.Reference_Article = Comporte.Reference_Article
 INNER JOIN Modif ON Comporte.ID_Modif = Modif.ID_Modif;
 
+//Calcul_Valeur_Achat_Stock
+SELECT SUM(Prix_HT_Article * Quantite_Stock_Article) AS Valeur_Commerciale_Stock
+FROM Article
+
 
 //Articles_Plus_Vendus
 SELECT TOP 10 Article.Nom_Article, SUM(Quantite_Commande_Article) AS Total_Ventes
