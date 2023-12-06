@@ -82,6 +82,7 @@ namespace ProjetPOOGroupe2 {
 			this->radioButton1->TabStop = true;
 			this->radioButton1->Text = L"Personnel";
 			this->radioButton1->UseVisualStyleBackColor = true;
+			this->radioButton1->CheckedChanged += gcnew System::EventHandler(this, &MyForm::radioButton1_CheckedChanged);
 			// 
 			// radioButton2
 			// 
@@ -196,7 +197,9 @@ namespace ProjetPOOGroupe2 {
 
 		*/
 	}
-	};
+	private: System::Void radioButton1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }
 
 

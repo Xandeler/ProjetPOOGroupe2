@@ -79,6 +79,7 @@ namespace ProjetPOOGroupe2 {
 	private: System::ComponentModel::Container^ components;
 	private: Personnel^ personnel;
 
+
 #pragma region Windows Form Designer generated code
 		/// <summary>
 		/// M�thode requise pour la prise en charge du concepteur - ne modifiez pas
@@ -106,7 +107,6 @@ namespace ProjetPOOGroupe2 {
 			this->lbl_resultats = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->personnel = (gcnew Personnel());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
