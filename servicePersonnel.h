@@ -12,9 +12,9 @@ namespace servPers
 	public:
 		CLservices(void);
 		System::Data::DataSet^ selectionnerToutesLesPersonnes(System::String^);
-		void ajouterUnePersonne(System::String^, System::String^);
+		void ajouterUnePersonne(PE::Personnel^);
 		void supprimerUnePersonne(int);
-		void modifierUnePersonne(int, System::String^, System::String^);
+		void modifierUnePersonne(int, PE::Personnel^);
 
 	};
 }

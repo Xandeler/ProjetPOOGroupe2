@@ -1,5 +1,5 @@
 #include "servicePersonnel.h"
-
+#include "Personnel.h"
 servPers::CLservices::CLservices(void)
 {
 	this->acc = gcnew AB::AccesBase();
@@ -12,12 +12,11 @@ System::Data::DataSet^ servPers::CLservices::selectionnerToutesLesPersonnes(Syst
 	sql = this->pe->afficher();
 	return this->acc->getRows(sql, dataTableName);
 }
-void servPers::CLservices::ajouterUnePersonne(System::String^ nom, System::String^ prenom)
+void servPers::CLservices::ajouterUnePersonne(PE::Personnel^ personnel)
 {
 	System::String^ sql;
 
-	this->pe->set_Nom(nom);
-	this->pe->set_Prenom(prenom);
+	this->pe = personnel;
 	sql = this->pe->ajouter();
 
 	this->acc->actionRows(sql);
@@ -33,13 +32,12 @@ void servPers::CLservices::supprimerUnePersonne(int id)
 	this->acc->actionRows(sql);
 }
 
-void servPers::CLservices::modifierUnePersonne(int id, System::String^ nom, System::String^ prenom)
+void servPers::CLservices::modifierUnePersonne(int id, PE::Personnel^ personnel)
 {
 	System::String^ sql;
 
 	this->pe->set_ID_Personne(id);
-	this->pe->set_Nom(nom);
-	this->pe->set_Prenom(prenom);
+
 	sql = this->pe->modifier();
 
 	this->acc->actionRows(sql);
