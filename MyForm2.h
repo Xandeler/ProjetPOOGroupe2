@@ -57,9 +57,10 @@ namespace ProjetPOOGroupe2 {
 
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label4;
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::TextBox^ textBox2;
+	private: System::Windows::Forms::TextBox^ tb_datepa;
+	private: System::Windows::Forms::TextBox^ tb_datena;
 	private: CL::Client^ client;
+	private: AD::Adresse^ Adresse;
 
 
 
@@ -87,10 +88,14 @@ namespace ProjetPOOGroupe2 {
 
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::TextBox^ textBox3;
+	private: System::Windows::Forms::TextBox^ tb_facnu;
 	private: System::Windows::Forms::TextBox^ textBox5;
 	private: System::Windows::Forms::Label^ label7;
-	private: System::Windows::Forms::TextBox^ textBox4;
+	private: System::Windows::Forms::TextBox^ tb_livru;
+	private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::TextBox^ tb_facru;
+	private: System::Windows::Forms::Label^ label9;
+	private: System::Windows::Forms::TextBox^ tb_livnu;
 
 
 #pragma region Windows Form Designer generated code
@@ -114,14 +119,18 @@ namespace ProjetPOOGroupe2 {
 			   this->lbl_resultats = (gcnew System::Windows::Forms::Label());
 			   this->label3 = (gcnew System::Windows::Forms::Label());
 			   this->label4 = (gcnew System::Windows::Forms::Label());
-			   this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			   this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			   this->tb_datepa = (gcnew System::Windows::Forms::TextBox());
+			   this->tb_datena = (gcnew System::Windows::Forms::TextBox());
 			   this->label5 = (gcnew System::Windows::Forms::Label());
 			   this->label6 = (gcnew System::Windows::Forms::Label());
-			   this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-			   this->textBox4 = (gcnew System::Windows::Forms::TextBox());
+			   this->tb_facnu = (gcnew System::Windows::Forms::TextBox());
+			   this->tb_livnu = (gcnew System::Windows::Forms::TextBox());
 			   this->textBox5 = (gcnew System::Windows::Forms::TextBox());
 			   this->label7 = (gcnew System::Windows::Forms::Label());
+			   this->tb_livru = (gcnew System::Windows::Forms::TextBox());
+			   this->label8 = (gcnew System::Windows::Forms::Label());
+			   this->tb_facru = (gcnew System::Windows::Forms::TextBox());
+			   this->label9 = (gcnew System::Windows::Forms::Label());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			   this->SuspendLayout();
 			   // 
@@ -267,55 +276,55 @@ namespace ProjetPOOGroupe2 {
 			   this->label4->TabIndex = 16;
 			   this->label4->Text = L"Date du premier achat";
 			   // 
-			   // textBox1
+			   // tb_datepa
 			   // 
-			   this->textBox1->Location = System::Drawing::Point(556, 361);
-			   this->textBox1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			   this->textBox1->Name = L"textBox1";
-			   this->textBox1->Size = System::Drawing::Size(284, 24);
-			   this->textBox1->TabIndex = 17;
+			   this->tb_datepa->Location = System::Drawing::Point(556, 361);
+			   this->tb_datepa->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			   this->tb_datepa->Name = L"tb_datepa";
+			   this->tb_datepa->Size = System::Drawing::Size(284, 24);
+			   this->tb_datepa->TabIndex = 17;
 			   // 
-			   // textBox2
+			   // tb_datena
 			   // 
-			   this->textBox2->Location = System::Drawing::Point(557, 327);
-			   this->textBox2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			   this->textBox2->Name = L"textBox2";
-			   this->textBox2->Size = System::Drawing::Size(284, 24);
-			   this->textBox2->TabIndex = 18;
+			   this->tb_datena->Location = System::Drawing::Point(557, 327);
+			   this->tb_datena->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			   this->tb_datena->Name = L"tb_datena";
+			   this->tb_datena->Size = System::Drawing::Size(284, 24);
+			   this->tb_datena->TabIndex = 18;
 			   // 
 			   // label5
 			   // 
 			   this->label5->AutoSize = true;
-			   this->label5->Location = System::Drawing::Point(395, 444);
+			   this->label5->Location = System::Drawing::Point(332, 444);
 			   this->label5->Name = L"label5";
-			   this->label5->Size = System::Drawing::Size(155, 18);
+			   this->label5->Size = System::Drawing::Size(218, 18);
 			   this->label5->TabIndex = 19;
-			   this->label5->Text = L"Adresse de facturation";
+			   this->label5->Text = L"Facturation : numero de maison";
 			   // 
 			   // label6
 			   // 
 			   this->label6->AutoSize = true;
-			   this->label6->Location = System::Drawing::Point(410, 406);
+			   this->label6->Location = System::Drawing::Point(347, 403);
 			   this->label6->Name = L"label6";
-			   this->label6->Size = System::Drawing::Size(140, 18);
+			   this->label6->Size = System::Drawing::Size(203, 18);
 			   this->label6->TabIndex = 20;
-			   this->label6->Text = L"Adresse de livraison";
+			   this->label6->Text = L"Livraison : numero de maison";
 			   // 
-			   // textBox3
+			   // tb_facnu
 			   // 
-			   this->textBox3->Location = System::Drawing::Point(557, 441);
-			   this->textBox3->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			   this->textBox3->Name = L"textBox3";
-			   this->textBox3->Size = System::Drawing::Size(284, 24);
-			   this->textBox3->TabIndex = 21;
+			   this->tb_facnu->Location = System::Drawing::Point(557, 441);
+			   this->tb_facnu->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			   this->tb_facnu->Name = L"tb_facnu";
+			   this->tb_facnu->Size = System::Drawing::Size(110, 24);
+			   this->tb_facnu->TabIndex = 21;
 			   // 
-			   // textBox4
+			   // tb_livnu
 			   // 
-			   this->textBox4->Location = System::Drawing::Point(557, 400);
-			   this->textBox4->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			   this->textBox4->Name = L"textBox4";
-			   this->textBox4->Size = System::Drawing::Size(284, 24);
-			   this->textBox4->TabIndex = 22;
+			   this->tb_livnu->Location = System::Drawing::Point(557, 400);
+			   this->tb_livnu->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			   this->tb_livnu->Name = L"tb_livnu";
+			   this->tb_livnu->Size = System::Drawing::Size(110, 24);
+			   this->tb_livnu->TabIndex = 22;
 			   // 
 			   // textBox5
 			   // 
@@ -334,20 +343,58 @@ namespace ProjetPOOGroupe2 {
 			   this->label7->TabIndex = 24;
 			   this->label7->Text = L"ID";
 			   // 
+			   // tb_livru
+			   // 
+			   this->tb_livru->Location = System::Drawing::Point(730, 400);
+			   this->tb_livru->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			   this->tb_livru->Name = L"tb_livru";
+			   this->tb_livru->Size = System::Drawing::Size(110, 24);
+			   this->tb_livru->TabIndex = 25;
+			   // 
+			   // label8
+			   // 
+			   this->label8->AutoSize = true;
+			   this->label8->Location = System::Drawing::Point(688, 406);
+			   this->label8->Name = L"label8";
+			   this->label8->Size = System::Drawing::Size(35, 18);
+			   this->label8->TabIndex = 26;
+			   this->label8->Text = L"Rue";
+			   // 
+			   // tb_facru
+			   // 
+			   this->tb_facru->Location = System::Drawing::Point(730, 441);
+			   this->tb_facru->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			   this->tb_facru->Name = L"tb_facru";
+			   this->tb_facru->Size = System::Drawing::Size(110, 24);
+			   this->tb_facru->TabIndex = 27;
+			   // 
+			   // label9
+			   // 
+			   this->label9->AutoSize = true;
+			   this->label9->Location = System::Drawing::Point(688, 444);
+			   this->label9->Name = L"label9";
+			   this->label9->Size = System::Drawing::Size(35, 18);
+			   this->label9->TabIndex = 28;
+			   this->label9->Text = L"Rue";
+			   // 
 			   // MyForm2
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(9, 18);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->ClientSize = System::Drawing::Size(982, 603);
+			   this->Controls->Add(this->label9);
+			   this->Controls->Add(this->tb_facru);
+			   this->Controls->Add(this->label8);
+			   this->Controls->Add(this->tb_livru);
 			   this->Controls->Add(this->label7);
 			   this->Controls->Add(this->textBox5);
-			   this->Controls->Add(this->textBox4);
-			   this->Controls->Add(this->textBox3);
+			   this->Controls->Add(this->tb_livnu);
+			   this->Controls->Add(this->tb_facnu);
 			   this->Controls->Add(this->btn_load);
 			   this->Controls->Add(this->label6);
 			   this->Controls->Add(this->label5);
-			   this->Controls->Add(this->textBox2);
-			   this->Controls->Add(this->textBox1);
+			   this->Controls->Add(this->tb_datena);
+			   this->Controls->Add(this->tb_datepa);
 			   this->Controls->Add(this->label4);
 			   this->Controls->Add(this->label3);
 			   this->Controls->Add(this->lbl_resultats);
@@ -433,27 +480,33 @@ namespace ProjetPOOGroupe2 {
 
 	private: System::Void btn_ajouter_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		try
+		if (this->tb_nom->Text == "" || this->tb_prenom->Text == "" || this->tb_datena->Text == "" || this->tb_facnu->Text == "" || this->tb_facru->Text == "" || this->tb_datepa->Text == "")
 		{
+			this->txt_results->Text = "Veuillez remplir tous les champs";
+		}
+		else {
+			this->client = gcnew CL::Client();
 			this->client->set_Nom(this->tb_nom->Text);
 			this->client->set_Prenom(this->tb_prenom->Text);
-			this->client->set_Date_Naissance(this->textBox2->Text); 
-			this->client->set_Date_Premier_Achat(this->textBox1->Text);
-			this->client->set_Adresse_Livraison(this->textBox4->Text);
-			this->client->set_Adresse_Facturation(this->textBox3->Text);
+			this->client->set_Date_Naissance(this->tb_datena->Text);
+			this->client->set_Date_Premier_Achat(this->tb_datepa->Text);
+
+			this->Adresse = gcnew AD::Adresse();
+			this->Adresse->set_Numero_Maison(Convert::ToInt32(this->tb_facnu->Text));
+			this->Adresse->set_Rue(this->tb_facru->Text);
+			this->Adresse->set_Nature("Livraison");
+			this->Adresse->set_Numero_Maison(Convert::ToInt32(this->tb_livnu->Text));
+			this->Adresse->set_Rue(this->tb_livru->Text);
+			this->Adresse->set_Nature("Facturation");
 			this->SQLservices->ajouterUnePersonne(this->tb_nom->Text, this->tb_prenom->Text);
 
 			refresh_datagrid();
 
 			this->txt_results->Text = "Données entrées avec succès";
 		}
-		catch (Exception^ except)
-		{
-			this->txt_results->Text = except->Message;
-			this->txt_results->Text += "\r\n";
-			this->txt_results->Text += except->StackTrace;
-
-		}
+		
+		
+			
 	}
 
 	private: System::Void btn_supprimer_Click(System::Object^ sender, System::EventArgs^ e)
@@ -491,6 +544,13 @@ namespace ProjetPOOGroupe2 {
 			this->txt_results->Text += except->StackTrace;
 		}
 	}
+
+
+
+
+
+
+
 
 
 
