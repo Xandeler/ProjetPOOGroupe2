@@ -1,42 +1,50 @@
 #include "Stock.h"
 
-Stock::Stock()
+NS_Stock::Stock::Stock()
 {
-    
+	this->map = gcnew NS_mapStock::mapStock();
+	this->article = gcnew NS_Article::Article();
+	this->Acces_Base = gcnew AB::AccesBase();
 }
 
-void Stock::set_Article(String^ nom, int^ quantite, double^ prix_ht, double^ taux_tva, int^ seuil_reapprovisionnement, int^ seuil_reduction)
+void NS_Stock::Stock::ajouter(int^ id, String^ nom, int^ quantite, float^ prix_ht, float^ taux_tva, int^ seuil_reapprovisionnement, int^ seuil_reduction)
 {
-    this->article->set_Nom(nom);
-    this->article->set_Quantite(quantite);
-    this->article->set_Prix_HT(prix_ht);
-    this->article->set_Taux_TVA(taux_tva);
-    this->article->set_Prix_TTC();
-    this->article->set_Seuil_Reapprovisionnement(seuil_reapprovisionnement);
-    this->article->set_Seuil_Reduction(seuil_reduction);
+	String^ requete;
+
+	this->map = gcnew NS_mapStock::mapStock(id, nom, quantite, prix_ht, taux_tva, seuil_reapprovisionnement, seuil_reduction);
+
+	requete = this->map->INSERT();
+
+	this->Acces_Base->actionRows(requete);
 }
 
-Article^ Stock::get_Article()
+void NS_Stock::Stock::supprimer(int^ id, String^ nom, int^ quantite, float^ prix_ht, float^ taux_tva, int^ seuil_reapprovisionnement, int^ seuil_reduction)
 {
-    return this->article;
+	String^ requete;
+
+	this->map = gcnew NS_mapStock::mapStock(id, nom, quantite, prix_ht, taux_tva, seuil_reapprovisionnement, seuil_reduction);
+
+	requete = this->map->DELETE();
+
+	this->Acces_Base->actionRows(requete);
 }
 
-void Stock::ajouter()
+void NS_Stock::Stock::modifier(int^ id, String^ nom, int^ quantite, float^ prix_ht, float^ taux_tva, int^ seuil_reapprovisionnement, int^ seuil_reduction, int^ id_m, String^ nom_m, int^ quantite_m, float^ prix_ht_m, float^ taux_tva_m, int^ seuil_reapprovisionnement_m, int^ seuil_reduction_m)
 {
-    
+	String^ requete;
+
+	this->map = gcnew NS_mapStock::mapStock(id, nom, quantite, prix_ht, taux_tva, seuil_reapprovisionnement, seuil_reduction);
+
+	requete = this->map->UPDATE(id_m, nom_m, quantite_m, prix_ht_m, taux_tva_m, seuil_reapprovisionnement_m, seuil_reduction_m);
+
+	this->Acces_Base->actionRows(requete);
 }
 
-void Stock::supprimer(int^ id)
+Data::DataSet^ NS_Stock::Stock::afficher(String^ NomTable)
 {
-    
-}
+	String^ requete;
 
-void Stock::modifier(int^ id)
-{
-    
-}
+	requete = this->map->SELECT();
 
-void Stock::afficher()
-{
-    
+	return this->Acces_Base->getRows(requete, NomTable);
 }

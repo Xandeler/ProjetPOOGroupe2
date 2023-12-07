@@ -268,3 +268,34 @@ WHERE Reference_Article = 9;
 
 DELETE FROM Article
 WHERE Reference_Article = 9;
+
+//Affiche une Commande
+SELECT
+    C.ID_Commande,
+    Cl.ID_Clients,
+    C.Reference_Commande,
+    C.Livraison_Prevue_Commande,
+    C.Emission_Commande,
+    A.Nom_Article,
+    Co.Quantite_Commande_Article,
+    P.Moyen_Paiement,
+    P.Date_Paiement,
+    P.Date_Solde_Paiement
+FROM
+    Commande C
+JOIN
+    Effectue E ON C.ID_Commande = E.ID_Commande
+JOIN
+    Clients Cl ON E.ID_Clients = Cl.ID_Clients
+JOIN
+    Compose Co ON C.ID_Commande = Co.ID_Commande
+JOIN
+    Article A ON Co.Reference_Article = A.Reference_Article
+LEFT JOIN
+    Paiement P ON C.ID_Commande = P.ID_Commande
+WHERE C.ID_Commande = 5;
+
+//Insérer une commande
+//Supprimer une commande
+//Modifier une commande
+
