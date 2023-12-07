@@ -528,7 +528,7 @@ namespace ProjetPOOGroupe2 {
 			this->txt_results->Text = "Veuillez renseigner l'ID du client que vous souhaitez modifier";
 		}
 		else {
-			this->SQLservices->modifierUnclient(get_selected_ID(), this->tb_nom->Text, this->tb_prenom->Text);
+			this->SQLservices->modifierUnclient(get_selected_ID(), this->tb_nom->Text, this->tb_prenom->Text, this->tb_datena->Text, this->tb_datepa->Text, this->tb_facnu->Text, this->tb_facru->Text, this->tb_livnu->Text, this->tb_livru->Text);
 
 			refresh_datagrid();
 

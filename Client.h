@@ -19,8 +19,10 @@ public:
 	String^ get_Date_Premier_Achat();
 	void set_Date_Premier_Achat(String^ date_premier_achat);
 	AD::Adresse^ get_Adresse_Facturation();
+	void set_Adresse_FacturationI(int numeroMaison, System::String^ nomRue);
 	void set_Adresse_Facturation(AD::Adresse^ adresse_facturation);
 	AD::Adresse^ get_Adresse_Livraison();
+	void set_Adresse_LivraisonI(int numeroMaison, System::String^ nomRue);
 	void set_Adresse_Livraison(AD::Adresse^ adresse_livraison);
 	void ajouter();
 	void supprimer();
