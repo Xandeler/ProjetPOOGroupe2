@@ -12,7 +12,7 @@ NS_mapStock::mapStock::mapStock(int^ id, String^ nom, int^ quantite, float^ prix
 
 String^ NS_mapStock::mapStock::SELECT()
 {
-	return "SELECT Reference_Article, Nom_Article, Quantite_Stock_Article, Prix_HT_Article, Seuil_Reduction_Article, Seuil_Reapprovisionnement_Article FROM Article;";
+	return "SELECT Article.Reference_Article, Article.Nom_Article, Article.Quantite_Stock_Article, Article.Prix_HT_Article, Modif.Taux_TVA_Modif, Article.Seuil_Reduction_Article, Article.Seuil_Reapprovisionnement_Article FROM Article INNER JOIN Comporte ON Article.Reference_Article = Comporte.Reference_Article INNER JOIN Modif ON Comporte.ID_Modif = Modif.ID_Modif; ";
 }
 
 String^ NS_mapStock::mapStock::INSERT()
