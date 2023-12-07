@@ -296,6 +296,15 @@ LEFT JOIN
 WHERE C.ID_Commande = 5;
 
 //Insérer une commande
+
+
 //Supprimer une commande
+DELETE FROM Effectue WHERE ID_Commande = 5;
+DELETE FROM Compose WHERE ID_Commande = 5;
+DELETE FROM Comprend WHERE ID_Commande = 5;
+DELETE FROM Comporte WHERE Reference_Article IN (SELECT Reference_Article FROM Compose WHERE ID_Commande = 5);
+DELETE FROM Paiement WHERE ID_Commande = 5;
+DELETE FROM Commande WHERE ID_Commande = 5;
+
 //Modifier une commande
 
