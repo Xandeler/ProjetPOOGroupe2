@@ -61,6 +61,8 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::TextBox^ tb_datena;
 	private: CL::Client^ client;
 	private: AD::Adresse^ Adresse;
+	private: NS_Comp_Svc::CL_SQLservices^ pe;
+	private: System::Data::DataSet^ oDs;
 
 
 
@@ -460,27 +462,21 @@ namespace ProjetPOOGroupe2 {
 
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{
-		refresh_datagrid();
+		this->pe = gcnew NS_Comp_Svc::CL_SQLservices();
+		this->dataGridView1->Refresh();
 	}
 
 
-	private: System::Void btn_load_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		try
-		{
-			refresh_datagrid();
-		}
-		catch (Exception^ except)
-		{
-			this->txt_results->Text = except->Message;
-			this->txt_results->Text += "\r\n";
-			this->txt_results->Text += except->StackTrace;
-		}
+	private: System::Void btn_load_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->dataGridView1->Refresh();
+		this->oDs = this->pe->selectionnerTousLesClients("Rsl");
+		this->dataGridView1->DataSource = this->oDs;
+		this->dataGridView1->DataMember = "Rsl";
 	}
 
 	private: System::Void btn_ajouter_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		if (this->tb_nom->Text == "" || this->tb_prenom->Text == "" || this->tb_datena->Text == "" || this->tb_facnu->Text == "" || this->tb_facru->Text == "" || this->tb_datepa->Text == "")
+		if (this->tb_nom->Text == "" || this->tb_prenom->Text == "" || this->tb_datena->Text == "" || this->tb_datepa->Text == "" || this->tb_facnu->Text == "" || this->tb_facru->Text == "" || this->tb_livnu->Text == "" || this->tb_livru->Text == "")
 		{
 			this->txt_results->Text = "Veuillez remplir tous les champs";
 		}
