@@ -62,18 +62,17 @@ namespace ProjetPOOGroupe2 {
 
 
 
+
+
 	private: System::Windows::Forms::TextBox^ tb_date;
 
 
 	private: servPers::CLservices^ pe;
 	private: System::Data::DataSet^ oDs;
 
-	protected:
 
-	private:
-		/// <summary>
-		/// Variable n?cessaire au concepteur.
-		/// </summary>
+
+
 	private: System::ComponentModel::Container^ components;
 
 	private: System::Windows::Forms::Label^ label5;
@@ -404,16 +403,18 @@ namespace ProjetPOOGroupe2 {
 	private: void refresh_datagrid()
 	{
 		this->dataGridView1->Refresh();
-
 		this->txt_results->Text = "Données générées";
 	}
 
-	private: int^ get_selected_ID()
+	public:	 void actualiser()
 	{
-		String^ selectedIDstring = this->dataGridView1->SelectedRows[0]->Cells["id"]->Value->ToString();
-		return Convert::ToInt32(selectedIDstring);
-
+		this->dataGridView1->Refresh();
+		this->oDs = this->pe->selectionnerToutesLesPersonnes("Rsl");
+		this->dataGridView1->DataSource = this->oDs;
+		this->dataGridView1->DataMember = "Rsl";
 	}
+
+
 
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{
@@ -428,7 +429,7 @@ namespace ProjetPOOGroupe2 {
 		// rafraichir le datagridview
 		// afficher un message de confirmation
 
-		if (this->tb_nom->Text == "" || this->tb_prenom->Text == "" || this->tb_superieur->Text == "" || this->tb_nomrue->Text == "")
+		if (this->tb_nom->Text == "" || this->tb_prenom->Text == "" || this->tb_superieur->Text == "" || this->tb_nomrue->Text == "" || this->tb_date->Text == "" || this->tb_date->Text == "" || this->tb_ville->Text == "")
 		{
 			this->txt_results->Text = "Veuillez remplir tous les champs";
 		}
@@ -448,6 +449,14 @@ namespace ProjetPOOGroupe2 {
 			this->Adresse->set_Nom_Ville(this->tb_ville->Text);
 
 			this->pe->ajouterUnePersonne(this->personnel);
+			this->tb_nom->Text = "";
+			this->tb_prenom->Text = "";
+			this->tb_date->Text = "";
+			this->tb_superieur->Text = "";
+			this->tb_nomrue->Text = "";
+			this->tb_numrue->Text = "";
+			this->tb_ville->Text = "";
+
 			refresh_datagrid();
 
 			this->txt_results->Text = "Données entrées avec succès";
@@ -459,29 +468,14 @@ namespace ProjetPOOGroupe2 {
 
 	private: System::Void btn_supprimer_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		try
-		{
-			this->personnel->set_ID_Personne(this->get_selected_ID());
-
-			this->personnel->supprimer();
-
-			refresh_datagrid();
-
-			this->txt_results->Text = "Données supprimées avec succès";
-
-		}
-		catch (Exception^ execept)
-		{
-			this->txt_results->Text = execept->Message;
-			this->txt_results->Text += "\r\n";
-			this->txt_results->Text += execept->StackTrace;
-
-		}
+		this->pe->supprimerUnePersonne(Convert::ToInt32(this->tb_ID->Text));
+		this->tb_ID->Text = "";
+		refresh_datagrid();
 	}
 	private: System::Void btn_modifier_Click(System::Object^ sender, System::EventArgs^ e) {
 		try
 		{
-			this->personnel->set_ID_Personne(this->get_selected_ID());
+			this->personnel->set_ID_Personne(Convert::ToInt32(this->tb_ID->Text));
 			this->personnel->set_Nom(this->tb_nom->Text);
 			this->personnel->set_Prenom(this->tb_prenom->Text);
 			this->personnel->set_Date_Embauche(this->tb_date->Text); //Vérifier si c'est la bonne textBox.
@@ -506,10 +500,7 @@ namespace ProjetPOOGroupe2 {
 	private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		this->dataGridView1->Refresh();
-		this->oDs = this->pe->selectionnerToutesLesPersonnes("Rsl");
-		this->dataGridView1->DataSource = this->oDs;
-		this->dataGridView1->DataMember = "Rsl";
+		actualiser();
 	}
 
 	};

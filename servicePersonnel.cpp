@@ -26,7 +26,8 @@ void servPers::CLservices::supprimerUnePersonne(int id)
 {
 	System::String^ sql;
 
-	this->pe->set_ID_Personne(id);
+	this->pe->set_ID_personnel(id);
+
 	sql = this->pe->supprimer();
 
 	this->acc->actionRows(sql);

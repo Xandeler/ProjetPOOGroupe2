@@ -17,17 +17,17 @@ namespace AD {
 
 	public:
 		Adresse();
-		Adresse(int code_postal, String^ nom_ville, String^ rue, int numero_maison, String^ nature);
+		Adresse(int, String^, String^, int, String^);
 		int get_Code_Postal();
-		void set_Code_Postal(int code_postal);
+		void set_Code_Postal(int);
 		String^ get_Nom_Ville();
-		void set_Nom_Ville(String^ nom_ville);
+		void set_Nom_Ville(String^);
 		String^ get_Rue();
-		void set_Rue(String^ rue);
+		void set_Rue(String^);
 		int get_Numero_Maison();
-		void set_Numero_Maison(int numero_maison);
+		void set_Numero_Maison(int);
 		String^ get_Nature();
-		void set_Nature(String^ nature);
-		bool verifier_Ville();
+		void set_Nature(String^);
+		int verifier_Ville(String^);
 	};
 }

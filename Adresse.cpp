@@ -1,11 +1,14 @@
 #include "Adresse.h"
+#include <string>
+
+
 
 AD::Adresse::Adresse()
 {
 	this->set_Code_Postal(00000);
 	this->set_Nom_Ville("Rien");
 	this->set_Rue("Rien");
-	this->set_Numero_Maison(0);
+	this->set_Numero_Maison(1);
 	this->set_Nature("Rien");
 }
 
@@ -48,14 +51,14 @@ void AD::Adresse::set_Rue(String^ rue)
 	this->Rue = rue;
 }
 
-int AD::Adresse::get_Numero_Maison()
-{
-	return this->Numero_Maison;
-}
-
 void AD::Adresse::set_Numero_Maison(int numero_maison)
 {
 	this->Numero_Maison = numero_maison;
+
+}
+int AD::Adresse::get_Numero_Maison()
+{
+	return this->Numero_Maison;
 }
 
 String^ AD::Adresse::get_Nature()
@@ -68,28 +71,70 @@ void AD::Adresse::set_Nature(String^ nature)
 	this->Nature = nature;
 }
 
-bool AD::Adresse::verifier_Ville()
+int AD::Adresse::verifier_Ville(String^ add)
 {
-	bool verif_ville = false;  // Initialisez à false par défaut
 
-	// On fait une boucle pour recuperer les villes de la BDD 1 par 1 qu'on insert dans un tableau 
-	// On fait une boucle qui verifie la ville entree par l'utilisateur et chacune des villes du tableau 
-	/*String tab_ville[30] = {
-		"Paris", "Marseille", "Lyon", "Toulouse", "Nice", "Nantes",
-		"Strasbourg", "Montpellier", "Bordeaux", "Lille", "Rennes",
-		"Reims", "Le Havre", "Saint-Étienne", "Toulon", "Le Mans",
-		"Aix-en-Provence", "Amiens", "Perpignan", "Boulogne-Billancourt",
-		"Metz", "Besançon", "Grenoble", "Dijon", "Nîmes", "Angers",
-		"Villeurbanne", "Levallois-Perret", "Clermont-Ferrand", "Antibes"
-	};
-
-	for (int i = 0; i < 10; ++i) {
-		if (this->get_Nom_Ville() == tab_ville[i]) {
-			verif_ville = true;
-			break;  // Sortez de la boucle dès que la ville est trouvée
-		}
-	}
-	*/
-
-	return verif_ville;
+	int id_ville = 31;
+	if (add == "Paris")
+		return 1;
+	else if (add == "Marseille")
+		return 2;
+	else if (add == "Lyon")
+		return 3;
+	else if (add == "Toulouse")
+		return 4;
+	else if (add == "Nice")
+		return 5;
+	else if (add == "Nantes")
+		return 6;
+	else if (add == "Strasbourg")
+		return 7;
+	else if (add == "Montpellier")
+		return 8;
+	else if (add == "Bordeaux")
+		return 9;
+	else if (add == "Lille")
+		return 10;
+	else if (add == "Rennes")
+		return 11;
+	else if (add == "Reims")
+		return 12;
+	else if (add == "Le Havre")
+		return 13;
+	else if (add == "Saint-Étienne")
+		return 14;
+	else if (add == "Toulon")
+		return 15;
+	else if (add == "Le Mans")
+		return 16;
+	else if (add == "Aix-en-Provence")
+		return 17;
+	else if (add == "Amiens")
+		return 18;
+	else if (add == "Perpignan")
+		return 19;
+	else if (add == "Boulogne-Billancourt")
+		return 20;
+	else if (add == "Metz")
+		return 21;
+	else if (add == "Besançon")
+		return 22;
+	else if (add == "Grenoble")
+		return 23;
+	else if (add == "Dijon")
+		return 24;
+	else if (add == "Nîmes")
+		return 25;
+	else if (add == "Angers")
+		return 26;
+	else if (add == "Villeurbanne")
+		return 27;
+	else if (add == "Levallois-Perret")
+		return 28;
+	else if (add == "Clermont-Ferrand")
+		return 29;
+	else if (add == "Antibes")
+		return 30;
+	else
+		return id_ville;
 }
