@@ -1,29 +1,61 @@
 #include "MapClient.h"
 
 
-System::String^ NS_Comp_Mappage::CLgenerateSQLcmds::SQL_SelectCommandGenerator(void)
+NS_Comp_Mappage::CLgenerateSQLcmds::CLgenerateSQLcmds(void)
 {
-	return "SELECT Clients.ID_Clients, Clients.ID_Personne, Personne.Nom_Personne, Personne.Prenom_Personne, Clients.Date_Naissance_Clients, Clients.Date_Premier_Achat_Clients FROM Clients INNER JOIN Personne ON Clients.ID_Personne = Personne.ID_Personne;";
-}
-System::String^ NS_Comp_Mappage::CLgenerateSQLcmds::SQL_InsertCommandGenerator(void)
-{
-	return "INSERT INTO Personne (Nom_Personne, Prenom_Personne)" + "VALUES ('" + this->get_Nom() + "', '" + this->get_Prenom() + "');" + "INSERT INTO Adresse (Rue_Adresse, Numero_Maison_Adresse, Nature_Adresse, ID_Ville) VALUES ('" + this->Adresse_Facturation->get_Rue() + "', " + this->Adresse_Facturation->get_Numero_Maison() + ", '" + this->Adresse_Facturation->get_Nature() + "', " + this->Adresse_Facturation->verifier_Ville() + ");" + "INSERT INTO Adresse (Rue_Adresse, Numero_Maison_Adresse, Nature_Adresse, ID_Ville) VALUES ('" + this->Adresse_Livraison->get_Rue() + "', " + this->Adresse_Livraison->get_Numero_Maison() + ", '" + this->Adresse_Livraison->get_Nature() + "', " + this->Adresse_Livraison->verifier_Ville() + ");" + "INSERT INTO Clients (Date_Naissance_Clients, Date_Premier_Achat_Clients, ID_Personne) Values ('" + this->get_Date_Naissance() + "', '" + this->get_Date_Premier_Achat() + "', " + this->get_ID_Personne() + ");" + "INSERT INTO Possede (ID_Personne, ID_Adresse) VALUES (" + this->get_ID_Personne() + ", (SELECT ID_Adresse FROM Adresse WHERE Rue_Adresse = '" + this->Adresse_Livraison->get_Rue() + "', AND Numero_Maison_Adresse = " + this->Adresse_Livraison->get_Numero_Maison() + ", AND Nature_Adresse = '" + this->Adresse_Livraison->get_Nature() + "'));" + "INSERT INTO Possede (ID_Personne, ID_Adresse) VALUES (" + this->get_ID_Personne() + ", (SELECT ID_Adresse FROM Adresse WHERE Rue_Adresse = '" + this->Adresse_Facturation->get_Rue() + "', AND Numero_Maison_Adresse = " + this->Adresse_Facturation->get_Numero_Maison() + ", AND Nature_Adresse = '" + this->Adresse_Facturation->get_Nature() + "'));";
-	
+	this->adressef = gcnew AD::Adresse();
+	this->adressel = gcnew AD::Adresse();
+	this->client = gcnew CL::Client();
+	this->accesB = gcnew AB::AccesBase();
 }
 
-System::String^ NS_Comp_Mappage::CLgenerateSQLcmds::SQL_DeleteCommandGenerator(void)
+void NS_Comp_Mappage::CLgenerateSQLcmds::set_Adresse_FacturationI(String^ numero_maison, String^ rue)
 {
-	return "DELETE FROM Possede WHERE ID_Personne = " + this->get_ID_Personne() + "; " +
-		"DELETE FROM Possede WHERE ID_Commande IN (SELECT ID_Commande FROM Effectue WHERE ID_Clients IN (SELECT ID_Clients FROM Clients WHERE ID_Personne = " + this->get_ID_Personne() + ")); " +
-		"DELETE FROM Effectue WHERE ID_Clients IN (SELECT ID_Clients FROM Clients WHERE ID_Personne = " + this->get_ID_Personne() + "); " +
-		"DELETE FROM Clients WHERE ID_Personne = " + this->get_ID_Personne() + "; " +
-		"DELETE FROM Personne WHERE ID_Personne = " + this->get_ID_Personne() + ";";
-
-}
-System::String^ NS_Comp_Mappage::CLgenerateSQLcmds::SQL_UpdateCommandGenerator(void)
-{
-	return "UPDATE Personne SET Nom_Personne = '" + this->get_Nom() + "', Prenom_Personne = '" + this->get_Prenom() + "' WHERE ID_Personne = " + this->get_ID_Personne() + "; UPDATE Clients SET Date_Naissance_Clients = '" + this->get_Date_Naissance() + "', Date_Premier_Achat_Clients = '" + this->get_Date_Premier_Achat() + "' WHERE ID_Personne = " + this->get_ID_Personne() + ";";
-	
+	this->adressef->set_Numero_Maison(Convert::ToInt32(numero_maison));
+	this->adressef->set_Rue(rue);
 }
 
+void NS_Comp_Mappage::CLgenerateSQLcmds::set_Adresse_LivraisonI(String^ numero_maison, String^ rue)
+{
+	this->adressel->set_Numero_Maison(Convert::ToInt32(numero_maison));
+	this->adressel->set_Rue(rue);
+}
+
+System::Data::DataSet^ NS_Comp_Mappage::CLgenerateSQLcmds::selectionnerToutesLesPersonnes(System::String^ dataTableName)
+{
+	System::String^ sql;
+
+	sql = this->client->afficher_client();
+	return this->accesB->getRows(sql, dataTableName);
+}
+void NS_Comp_Mappage::CLgenerateSQLcmds::ajouterUnePersonne(CL::Client^ client)
+{
+	System::String^ sql;
+
+	this->client = client;
+	sql = this->client->ajouter_client();
+
+	this->accesB->actionRows(sql);
+}
+
+void NS_Comp_Mappage::CLgenerateSQLcmds::supprimerUnePersonne(int id)
+{
+	System::String^ sql;
+
+	this->client->set_ID_Personne(id);
+	sql = this->client->supprimer_client();
+
+	this->accesB->actionRows(sql);
+}
+
+void NS_Comp_Mappage::CLgenerateSQLcmds::modifierUnePersonne(int id, CL::Client^ personnel)
+{
+	System::String^ sql;
+
+	this->client->set_ID_Personne(id);
+
+	sql = this->client->modifier_client();
+
+	this->accesB->actionRows(sql);
+}
 

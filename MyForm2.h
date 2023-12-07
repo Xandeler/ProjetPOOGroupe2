@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include <cstdlib>
-#include "ServiceClient.h"
+#include "MapClient.h"
 
 namespace ProjetPOOGroupe2 {
 
@@ -45,7 +45,6 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::Button^ btn_modifier;
 	private: System::Windows::Forms::TextBox^ tb_nom;
 	private: System::Windows::Forms::TextBox^ tb_prenom;
-	private: NS_Comp_Svc::CL_SQLservices^ SQLservices = gcnew NS_Comp_Svc::CL_SQLservices();;
 	private: System::Data::DataSet^ dataLoadedFromSQL;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
@@ -60,9 +59,10 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::TextBox^ tb_datepa;
 	private: System::Windows::Forms::TextBox^ tb_datena;
 	private: CL::Client^ client;
-	private: AD::Adresse^ Adresse;
-	private: NS_Comp_Svc::CL_SQLservices^ pe;
+	private: AD::Adresse^ Adressel;
+	private: AD::Adresse^ Adressef;
 	private: System::Data::DataSet^ oDs;
+	private: NS_Comp_Mappage::CLgenerateSQLcmds^ mC;
 
 
 
@@ -433,43 +433,87 @@ namespace ProjetPOOGroupe2 {
 	}
 
 
-
 	private: void refresh_datagrid()
 	{
 		this->dataGridView1->Refresh();
-		this->dataLoadedFromSQL = this->SQLservices->selectionnerTousLesClients("Liste_des_clients");
-		this->dataGridView1->DataSource = this->dataLoadedFromSQL;
-		this->dataGridView1->DataMember = "Liste_des_clients";
 
 		this->txt_results->Text = "Données générées";
 	}
 
-	private: int get_selected_ID()
+	private: int^ get_selected_id_client()
 	{
-		try
-		{
-			return Convert::ToInt32(tb_id->Text);
-		}
-		catch (Exception^ except)
-		{
-			this->txt_results->Text = except->Message;
-			this->txt_results->Text += "\r\n";
-			this->txt_results->Text += except->StackTrace;
-			return 0;
-		}
-
+		int^ id_client = Convert::ToInt32(this->dataGridView1->SelectedRows[0]->Cells[0]->Value);
+		return id_client;
 	}
+
+	private: String^ get_selected_id_personne()
+	{
+		String^ id_personne = Convert::ToString(this->dataGridView1->SelectedRows[0]->Cells[1]->Value);
+		return id_personne;
+	}
+
+	private: String^ get_selected_nom()
+	{
+		String^ nom = Convert::ToString(this->dataGridView1->SelectedRows[0]->Cells[1]->Value);
+		return nom;
+	}
+
+	private: String^ get_selected_prenom()
+	{
+		String^ prenom = Convert::ToString(this->dataGridView1->SelectedRows[0]->Cells[1]->Value);
+		return prenom;
+	}
+
+	private: String^ get_selected_date_naissance()
+	{
+		String^ date_naissance = Convert::ToString(this->dataGridView1->SelectedRows[0]->Cells[1]->Value);
+		return date_naissance;
+	}
+
+	private: String^ get_selected_date_premier_achat()
+	{
+		String^ date_premier_achat = Convert::ToString(this->dataGridView1->SelectedRows[0]->Cells[1]->Value);
+		return date_premier_achat;
+	}
+
+	private: String^ get_selected_numero_maison_facturation()
+	{
+		String^ numero_maison_facturation = Convert::ToString(this->dataGridView1->SelectedRows[0]->Cells[1]->Value);
+		return numero_maison_facturation;
+	}
+
+	private: String^ get_selected_rue_facturation()
+	{
+		String^ rue_facturation = Convert::ToString(this->dataGridView1->SelectedRows[0]->Cells[1]->Value);
+		return rue_facturation;
+	}
+
+	private: String^ get_selected_numero_maison_livraison()
+	{
+		String^ numero_maison_livraison = Convert::ToString(this->dataGridView1->SelectedRows[0]->Cells[1]->Value);
+		return numero_maison_livraison;
+	}
+
+	private: String^ get_selected_rue_livraison()
+	{
+		String^ rue_livraison = Convert::ToString(this->dataGridView1->SelectedRows[0]->Cells[1]->Value);
+		return rue_livraison;
+	}
+
+
+
+
 
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{
-		this->pe = gcnew NS_Comp_Svc::CL_SQLservices();
+		this->client = gcnew CL::Client();
 		this->dataGridView1->Refresh();
 	}
 
 
 	private: System::Void btn_load_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->dataGridView1->Refresh();
-		this->oDs = this->pe->selectionnerTousLesClients("Rsl");
+		this->oDs = this->mC->selectionnerToutesLesPersonnes("Rsl");
 		this->dataGridView1->DataSource = this->oDs;
 		this->dataGridView1->DataMember = "Rsl";
 	}
@@ -482,20 +526,20 @@ namespace ProjetPOOGroupe2 {
 		}
 		else {
 			this->client = gcnew CL::Client();
+		    this->Adressel = gcnew AD::Adresse();
+            this->Adressef = gcnew AD::Adresse();
+
 			this->client->set_Nom(this->tb_nom->Text);
-			this->client->set_Prenom(this->tb_prenom->Text);
+            this->client->set_Prenom(this->tb_prenom->Text);
 			this->client->set_Date_Naissance(this->tb_datena->Text);
 			this->client->set_Date_Premier_Achat(this->tb_datepa->Text);
 
-			this->Adresse = gcnew AD::Adresse();
-			this->Adresse->set_Numero_Maison(Convert::ToInt32(this->tb_facnu->Text));
-			this->Adresse->set_Rue(this->tb_facru->Text);
-			this->Adresse->set_Nature("Livraison");
-			this->Adresse->set_Numero_Maison(Convert::ToInt32(this->tb_livnu->Text));
-			this->Adresse->set_Rue(this->tb_livru->Text);
-			this->Adresse->set_Nature("Facturation");
-			this->SQLservices->ajouterUnClient(this->tb_nom->Text, this->tb_prenom->Text, this->tb_datena->Text, this->tb_datepa->Text, this->tb_facnu->Text, this->tb_facru->Text,this->tb_livnu->Text, this->tb_livru->Text);
+			this->Adressel->set_Numero_Maison(Convert::ToInt32(this->tb_facnu->Text));
+			this->Adressel->set_Rue(this->tb_facru->Text);
+			this->Adressef->set_Numero_Maison(Convert::ToInt32(this->tb_livnu->Text));
+			this->Adressef->set_Rue(this->tb_livru->Text);
 
+			this->mC->ajouterUnePersonne(this->client);
 			refresh_datagrid();
 
 			this->txt_results->Text = "Données entrées avec succès";
@@ -512,10 +556,11 @@ namespace ProjetPOOGroupe2 {
 			this->txt_results->Text = "Veuillez renseigner l'ID du client que vous souhaitez supprimer";
 		}
 		else {
-			int client_ID = get_selected_ID();
-
-			this->SQLservices->effacerUnClient(client_ID);
 			
+			this->client->set_ID_Personne(Convert::ToInt32(this->get_selected_id_personne()));
+
+			this->client->supprimer_client();
+
 			refresh_datagrid();
 
 			this->txt_results->Text = "Données supprimées avec succès";
@@ -528,7 +573,6 @@ namespace ProjetPOOGroupe2 {
 			this->txt_results->Text = "Veuillez renseigner l'ID du client que vous souhaitez modifier";
 		}
 		else {
-			this->SQLservices->modifierUnclient(get_selected_ID(), this->tb_nom->Text, this->tb_prenom->Text, this->tb_datena->Text, this->tb_datepa->Text, this->tb_facnu->Text, this->tb_facru->Text, this->tb_livnu->Text, this->tb_livru->Text);
 
 			refresh_datagrid();
 
