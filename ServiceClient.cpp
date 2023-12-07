@@ -37,20 +37,26 @@ void NS_Comp_Svc::CL_SQLservices::effacerUnClient(int ID)
 	this->SQLdataAccessController->actionRows(SQL_command);
 
 }
-
-void NS_Comp_Svc::CL_SQLservices::modifierUnclient(int^ ID, System::String^ nom, System::String^ prenom)
+void NS_Comp_Svc::CL_SQLservices::modifierUnclient(int ID, System::String^ nom, System::String^ prenom, System::String^ datena, System::String^ datepa, System::String^ facnu, System::String^ facru, System::String^ livnu, System::String^ livru)
 {
 	System::String^ SQL_command;
+	this->SQLcmdGenerator->set_ID_Personne(ID);
+	this->SQLcmdGenerator->set_Nom(nom);
+	this->SQLcmdGenerator->set_Prenom(prenom);
+	this->SQLcmdGenerator->set_Date_Naissance(datena);
+	this->SQLcmdGenerator->set_Date_Premier_Achat(datepa);
 
-	this->SQLcmdGenerator->get_Nom();
-	this->SQLcmdGenerator->get_Prenom();
-	this->SQLcmdGenerator->get_Date_Naissance();
-	this->SQLcmdGenerator->get_Date_Premier_Achat();
-
+	this->SQLcmdGenerator->set_Adresse_FacturationI(Convert::ToInt32(facnu), facru);
+	this->SQLcmdGenerator->set_Adresse_LivraisonI(Convert::ToInt32(livnu), livru);
 
 	SQL_command = this->SQLcmdGenerator->SQL_UpdateCommandGenerator();
 
 	this->SQLdataAccessController->actionRows(SQL_command);
 }
 
+
+void NS_Comp_Svc::CL_SQLservices::executerUneCommande(System::String^ commande)
+{
+	this->SQLdataAccessController->actionRows(commande);
+}
 

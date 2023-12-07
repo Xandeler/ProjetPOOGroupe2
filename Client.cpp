@@ -44,9 +44,26 @@ void CL::Client::set_Adresse_Facturation(AD::Adresse^ adresse_facturation)
     this->Adresse_Facturation = adresse_facturation;
 }
 
+void CL::Client::set_Adresse_FacturationI(int numeroMaison, System::String^ nomRue) {
+    AD::Adresse^ adresse_facturation = gcnew AD::Adresse();
+    adresse_facturation->set_Numero_Maison(numeroMaison);
+    adresse_facturation->set_Rue(nomRue);
+
+    this->set_Adresse_Facturation(adresse_facturation);
+}
+
 AD::Adresse^ CL::Client::get_Adresse_Livraison()
 {
     return this->Adresse_Livraison;
+}
+
+
+void CL::Client::set_Adresse_LivraisonI(int numeroMaison, System::String^ nomRue) {
+    AD::Adresse^ adresse_livraison = gcnew AD::Adresse();
+    adresse_livraison->set_Numero_Maison(numeroMaison);
+    adresse_livraison->set_Rue(nomRue);
+
+    this->set_Adresse_Livraison(adresse_livraison);
 }
 
 void CL::Client::set_Adresse_Livraison(AD::Adresse^ adresse_livraison)

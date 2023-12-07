@@ -507,30 +507,28 @@ namespace ProjetPOOGroupe2 {
 
 	private: System::Void btn_supprimer_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		try
+		if (this->tb_id->Text == "")
 		{
-			this->SQLservices->effacerUnClient(get_selected_ID());
+			this->txt_results->Text = "Veuillez renseigner l'ID du client que vous souhaitez supprimer";
+		}
+		else {
+			int client_ID = get_selected_ID();
 
+			this->SQLservices->effacerUnClient(client_ID);
+			
 			refresh_datagrid();
 
 			this->txt_results->Text = "Données supprimées avec succès";
-
 		}
-		catch (Exception^ except)
-		{
-			this->txt_results->Text = except->Message;
-			this->txt_results->Text += "\r\n";
-			this->txt_results->Text += except->StackTrace;
 
-		}
 	}
 	private: System::Void btn_modifier_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (this->tb_id->Text == "")
 		{
-			this->txt_results->Text = "Veuillez remplir tous les champs";
+			this->txt_results->Text = "Veuillez renseigner l'ID du client que vous souhaitez modifier";
 		}
 		else {
-			this->SQLservices->modifierUnclient(get_selected_ID(), this->tb_nom->Text, this->tb_prenom->Text);
+			this->SQLservices->modifierUnclient(get_selected_ID(), this->tb_nom->Text, this->tb_prenom->Text, this->tb_datena->Text, this->tb_datepa->Text, this->tb_facnu->Text, this->tb_facru->Text, this->tb_livnu->Text, this->tb_livru->Text);
 
 			refresh_datagrid();
 

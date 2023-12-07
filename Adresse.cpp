@@ -1,14 +1,11 @@
 #include "Adresse.h"
-#include <string>
-
-
 
 AD::Adresse::Adresse()
 {
 	this->set_Code_Postal(00000);
 	this->set_Nom_Ville("Rien");
 	this->set_Rue("Rien");
-	this->set_Numero_Maison(1);
+	this->set_Numero_Maison(0);
 	this->set_Nature("Rien");
 }
 
@@ -51,14 +48,14 @@ void AD::Adresse::set_Rue(String^ rue)
 	this->Rue = rue;
 }
 
-void AD::Adresse::set_Numero_Maison(int numero_maison)
-{
-	this->Numero_Maison = numero_maison;
-
-}
 int AD::Adresse::get_Numero_Maison()
 {
 	return this->Numero_Maison;
+}
+
+void AD::Adresse::set_Numero_Maison(int numero_maison)
+{
+	this->Numero_Maison = numero_maison;
 }
 
 String^ AD::Adresse::get_Nature()
@@ -71,13 +68,13 @@ void AD::Adresse::set_Nature(String^ nature)
 	this->Nature = nature;
 }
 
-int AD::Adresse::verifier_Ville()
+bool AD::Adresse::verifier_Ville()
 {
+	bool verif_ville = false;  // Initialisez à false par défaut
 
-	/*int verif_ville = 1;
-	int id_ville = 0;
-
-	std::string tab_ville[30] = {
+	// On fait une boucle pour recuperer les villes de la BDD 1 par 1 qu'on insert dans un tableau 
+	// On fait une boucle qui verifie la ville entree par l'utilisateur et chacune des villes du tableau 
+	/*String tab_ville[30] = {
 		"Paris", "Marseille", "Lyon", "Toulouse", "Nice", "Nantes",
 		"Strasbourg", "Montpellier", "Bordeaux", "Lille", "Rennes",
 		"Reims", "Le Havre", "Saint-Étienne", "Toulon", "Le Mans",
@@ -86,23 +83,13 @@ int AD::Adresse::verifier_Ville()
 		"Villeurbanne", "Levallois-Perret", "Clermont-Ferrand", "Antibes"
 	};
 
-	// Convertir System::String^ en std::string pour la comparaison
-
-
-	System::String^ managedString = this->get_Nom_Ville();
-	std::string nom_ville = msclr::interop::marshal_as<std::string>(managedString);
-
-
-	for (int i = 0; i < 30; ++i) {
-		if (nom_ville == tab_ville[i]) {
-			return id_ville = i;
-			break;  // Sortir de la boucle dès que la ville est trouvée
+	for (int i = 0; i < 10; ++i) {
+		if (this->get_Nom_Ville() == tab_ville[i]) {
+			verif_ville = true;
+			break;  // Sortez de la boucle dès que la ville est trouvée
 		}
-		else {
-			return id_ville = 31;
-		}
-	}	  */
+	}
+	*/
 
-
-	return 1;
+	return verif_ville;
 }
