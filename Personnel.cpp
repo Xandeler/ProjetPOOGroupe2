@@ -5,6 +5,7 @@ PE::Personnel::Personnel()
 {
 	this->set_Date_Embauche("00/00/0000");
 	this->set_Superieur_Hierarchique(1);
+	this->set_Adresse_Habitation(gcnew AD::Adresse());
 }
 
 PE::Personnel::Personnel(String^ date_embauche, int^ superieur_hierarchique, int^ ID, String^ nom, String^ prenom, AD::Adresse^ adresse_habitation) : Personne::Personne(ID, nom, prenom)
@@ -46,9 +47,20 @@ void PE::Personnel::set_Adresse_Habitation(AD::Adresse^ adresse_habitation)
 
 System::String^ PE::Personnel::ajouter()
 {
-	return "INSERT INTO Personne (Nom_Personne, Prenom_Personne) VALUES ('" + this->get_Nom() + "', '" + this->get_Prenom() + "');"
-		+ "INSERT INTO Personnel (DateEmbauche_Personnel, ID_SuperieurHierarchique) VALUES ('" + this->get_Date_Embauche() + "', '" + this->get_Superieur_Hierarchique() + "');"
-		+ "INSERT INTO Adresse (Numero_Maison_Adresse, Rue_Adresse, Nature_Adresse, ID_Ville) VALUES ('" + this->get_Adresse_Habitation()->get_Numero_Maison() + "', '" + this->get_Adresse_Habitation()->get_Rue() + "', '" + this->get_Adresse_Habitation()->get_Nature() + "', '" + this->get_Adresse_Habitation()->verifier_Ville() + "');";
+	String^ sqlQuery = "DECLARE @idCREER INT; DECLARE @idADRESSE INT;";
+
+	sqlQuery += "INSERT INTO Personne (Nom_Personne, Prenom_Personne) ";
+	sqlQuery += "VALUES ('" + get_Nom() + "', '" + get_Prenom() + "');";
+	sqlQuery += "SET @idCREER = SCOPE_IDENTITY();";
+	sqlQuery += "INSERT INTO Personnel (DateEmbauche_Personnel, ID_SuperieurHierarchique, ID_Personne) ";
+	sqlQuery += "VALUES ('" + get_Date_Embauche() + "', '" + get_Superieur_Hierarchique() + "', @idCREER);";
+	sqlQuery += "INSERT INTO Adresse (Numero_Maison_Adresse, Rue_Adresse, Nature_Adresse, ID_Ville) ";
+	sqlQuery += "VALUES ('" + get_Adresse_Habitation()->get_Numero_Maison() + "', '" + get_Adresse_Habitation()->get_Rue() + "', '";
+	sqlQuery += get_Adresse_Habitation()->get_Nature() + "', '" + get_Adresse_Habitation()->verifier_Ville() + "');";
+	sqlQuery += "SET @idADRESSE = SCOPE_IDENTITY();";
+	sqlQuery += "INSERT INTO Possede (ID_Personne, ID_Adresse) VALUES (@idCREER, @idADRESSE);";
+
+	return sqlQuery;
 }
 
 System::String^ PE::Personnel::supprimer()

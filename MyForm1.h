@@ -84,6 +84,11 @@ namespace ProjetPOOGroupe2 {
 
 	private: System::Windows::Forms::Button^ button1;
 	private: PE::Personnel^ personnel;
+	private: System::Windows::Forms::Label^ label_id;
+	private: System::Windows::Forms::TextBox^ tb_ID;
+	private: System::Windows::Forms::Label^ label_ville;
+	private: System::Windows::Forms::TextBox^ tb_ville;
+
 	private: AD::Adresse^ Adresse;
 
 
@@ -114,6 +119,10 @@ namespace ProjetPOOGroupe2 {
 			   this->label6 = (gcnew System::Windows::Forms::Label());
 			   this->tb_nomrue = (gcnew System::Windows::Forms::TextBox());
 			   this->button1 = (gcnew System::Windows::Forms::Button());
+			   this->label_id = (gcnew System::Windows::Forms::Label());
+			   this->tb_ID = (gcnew System::Windows::Forms::TextBox());
+			   this->label_ville = (gcnew System::Windows::Forms::Label());
+			   this->tb_ville = (gcnew System::Windows::Forms::TextBox());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			   this->SuspendLayout();
 			   // 
@@ -133,7 +142,7 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // btn_retour
 			   // 
-			   this->btn_retour->Location = System::Drawing::Point(12, 477);
+			   this->btn_retour->Location = System::Drawing::Point(36, 478);
 			   this->btn_retour->Name = L"btn_retour";
 			   this->btn_retour->Size = System::Drawing::Size(112, 36);
 			   this->btn_retour->TabIndex = 4;
@@ -176,7 +185,7 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // tb_nom
 			   // 
-			   this->tb_nom->Location = System::Drawing::Point(557, 275);
+			   this->tb_nom->Location = System::Drawing::Point(557, 320);
 			   this->tb_nom->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_nom->Name = L"tb_nom";
 			   this->tb_nom->Size = System::Drawing::Size(284, 24);
@@ -184,7 +193,7 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // tb_prenom
 			   // 
-			   this->tb_prenom->Location = System::Drawing::Point(557, 244);
+			   this->tb_prenom->Location = System::Drawing::Point(557, 289);
 			   this->tb_prenom->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_prenom->Name = L"tb_prenom";
 			   this->tb_prenom->Size = System::Drawing::Size(284, 24);
@@ -193,7 +202,7 @@ namespace ProjetPOOGroupe2 {
 			   // label1
 			   // 
 			   this->label1->AutoSize = true;
-			   this->label1->Location = System::Drawing::Point(490, 275);
+			   this->label1->Location = System::Drawing::Point(490, 320);
 			   this->label1->Name = L"label1";
 			   this->label1->Size = System::Drawing::Size(61, 18);
 			   this->label1->TabIndex = 8;
@@ -202,7 +211,7 @@ namespace ProjetPOOGroupe2 {
 			   // label2
 			   // 
 			   this->label2->AutoSize = true;
-			   this->label2->Location = System::Drawing::Point(509, 250);
+			   this->label2->Location = System::Drawing::Point(509, 295);
 			   this->label2->Name = L"label2";
 			   this->label2->Size = System::Drawing::Size(41, 18);
 			   this->label2->TabIndex = 9;
@@ -211,7 +220,7 @@ namespace ProjetPOOGroupe2 {
 			   // label3
 			   // 
 			   this->label3->AutoSize = true;
-			   this->label3->Location = System::Drawing::Point(428, 309);
+			   this->label3->Location = System::Drawing::Point(428, 354);
 			   this->label3->Name = L"label3";
 			   this->label3->Size = System::Drawing::Size(123, 18);
 			   this->label3->TabIndex = 8;
@@ -220,7 +229,7 @@ namespace ProjetPOOGroupe2 {
 			   // label4
 			   // 
 			   this->label4->AutoSize = true;
-			   this->label4->Location = System::Drawing::Point(479, 346);
+			   this->label4->Location = System::Drawing::Point(479, 391);
 			   this->label4->Name = L"label4";
 			   this->label4->Size = System::Drawing::Size(71, 18);
 			   this->label4->TabIndex = 8;
@@ -228,12 +237,12 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // txt_results
 			   // 
-			   this->txt_results->Location = System::Drawing::Point(473, 442);
+			   this->txt_results->Location = System::Drawing::Point(473, 552);
 			   this->txt_results->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			   this->txt_results->Multiline = true;
 			   this->txt_results->Name = L"txt_results";
 			   this->txt_results->ReadOnly = true;
-			   this->txt_results->Size = System::Drawing::Size(397, 71);
+			   this->txt_results->Size = System::Drawing::Size(397, 44);
 			   this->txt_results->TabIndex = 10;
 			   // 
 			   // lbl_resultats
@@ -241,7 +250,7 @@ namespace ProjetPOOGroupe2 {
 			   this->lbl_resultats->AutoSize = true;
 			   this->lbl_resultats->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->lbl_resultats->Location = System::Drawing::Point(396, 442);
+			   this->lbl_resultats->Location = System::Drawing::Point(396, 552);
 			   this->lbl_resultats->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			   this->lbl_resultats->Name = L"lbl_resultats";
 			   this->lbl_resultats->Size = System::Drawing::Size(70, 18);
@@ -250,16 +259,15 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // tb_superieur
 			   // 
-			   this->tb_superieur->Location = System::Drawing::Point(557, 340);
+			   this->tb_superieur->Location = System::Drawing::Point(557, 385);
 			   this->tb_superieur->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_superieur->Name = L"tb_superieur";
 			   this->tb_superieur->Size = System::Drawing::Size(284, 24);
 			   this->tb_superieur->TabIndex = 15;
-
 			   // 
 			   // tb_date
 			   // 
-			   this->tb_date->Location = System::Drawing::Point(557, 306);
+			   this->tb_date->Location = System::Drawing::Point(557, 351);
 			   this->tb_date->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_date->Name = L"tb_date";
 			   this->tb_date->Size = System::Drawing::Size(284, 24);
@@ -268,7 +276,7 @@ namespace ProjetPOOGroupe2 {
 			   // label5
 			   // 
 			   this->label5->AutoSize = true;
-			   this->label5->Location = System::Drawing::Point(444, 377);
+			   this->label5->Location = System::Drawing::Point(444, 422);
 			   this->label5->Name = L"label5";
 			   this->label5->Size = System::Drawing::Size(107, 18);
 			   this->label5->TabIndex = 17;
@@ -277,7 +285,7 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // tb_numrue
 			   // 
-			   this->tb_numrue->Location = System::Drawing::Point(557, 374);
+			   this->tb_numrue->Location = System::Drawing::Point(557, 419);
 			   this->tb_numrue->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_numrue->Name = L"tb_numrue";
 			   this->tb_numrue->Size = System::Drawing::Size(284, 24);
@@ -286,7 +294,7 @@ namespace ProjetPOOGroupe2 {
 			   // label6
 			   // 
 			   this->label6->AutoSize = true;
-			   this->label6->Location = System::Drawing::Point(464, 413);
+			   this->label6->Location = System::Drawing::Point(464, 458);
 			   this->label6->Name = L"label6";
 			   this->label6->Size = System::Drawing::Size(86, 18);
 			   this->label6->TabIndex = 19;
@@ -294,12 +302,11 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // tb_nomrue
 			   // 
-			   this->tb_nomrue->Location = System::Drawing::Point(557, 410);
+			   this->tb_nomrue->Location = System::Drawing::Point(557, 455);
 			   this->tb_nomrue->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_nomrue->Name = L"tb_nomrue";
 			   this->tb_nomrue->Size = System::Drawing::Size(284, 24);
 			   this->tb_nomrue->TabIndex = 20;
-
 			   // 
 			   // button1
 			   // 
@@ -312,11 +319,49 @@ namespace ProjetPOOGroupe2 {
 			   this->button1->UseVisualStyleBackColor = true;
 			   this->button1->Click += gcnew System::EventHandler(this, &MyForm1::button1_Click);
 			   // 
+			   // label_id
+			   // 
+			   this->label_id->AutoSize = true;
+			   this->label_id->Location = System::Drawing::Point(528, 265);
+			   this->label_id->Name = L"label_id";
+			   this->label_id->Size = System::Drawing::Size(22, 18);
+			   this->label_id->TabIndex = 22;
+			   this->label_id->Text = L"ID";
+			   // 
+			   // tb_ID
+			   // 
+			   this->tb_ID->Location = System::Drawing::Point(557, 259);
+			   this->tb_ID->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			   this->tb_ID->Name = L"tb_ID";
+			   this->tb_ID->Size = System::Drawing::Size(284, 24);
+			   this->tb_ID->TabIndex = 23;
+			   // 
+			   // label_ville
+			   // 
+			   this->label_ville->AutoSize = true;
+			   this->label_ville->Location = System::Drawing::Point(517, 492);
+			   this->label_ville->Name = L"label_ville";
+			   this->label_ville->Size = System::Drawing::Size(34, 18);
+			   this->label_ville->TabIndex = 24;
+			   this->label_ville->Text = L"Ville";
+			   // 
+			   // tb_ville
+			   // 
+			   this->tb_ville->Location = System::Drawing::Point(557, 489);
+			   this->tb_ville->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			   this->tb_ville->Name = L"tb_ville";
+			   this->tb_ville->Size = System::Drawing::Size(284, 24);
+			   this->tb_ville->TabIndex = 25;
+			   // 
 			   // MyForm1
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(9, 18);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			   this->ClientSize = System::Drawing::Size(882, 518);
+			   this->ClientSize = System::Drawing::Size(882, 609);
+			   this->Controls->Add(this->tb_ville);
+			   this->Controls->Add(this->label_ville);
+			   this->Controls->Add(this->tb_ID);
+			   this->Controls->Add(this->label_id);
 			   this->Controls->Add(this->button1);
 			   this->Controls->Add(this->tb_nomrue);
 			   this->Controls->Add(this->label6);
@@ -340,8 +385,6 @@ namespace ProjetPOOGroupe2 {
 			   this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			   this->MaximumSize = System::Drawing::Size(900, 565);
-			   this->MinimumSize = System::Drawing::Size(900, 565);
 			   this->Name = L"MyForm1";
 			   this->Text = L"Gestion du personnel";
 			   this->Load += gcnew System::EventHandler(this, &MyForm1::MyForm_Load);
@@ -398,16 +441,13 @@ namespace ProjetPOOGroupe2 {
 			this->personnel->set_Superieur_Hierarchique(Convert::ToInt32(this->tb_superieur->Text));
 
 			this->Adresse = gcnew AD::Adresse();
-			this->Adresse->set_Numero_Maison(Convert::ToInt32(this->tb_superieur->Text));
 			this->Adresse->set_Rue(this->tb_nomrue->Text);
+			this->Adresse->set_Numero_Maison(Convert::ToInt32(this->tb_numrue->Text));
 			this->Adresse->set_Nature("Habitation");
 			this->personnel->set_Adresse_Habitation(this->Adresse);
+			this->Adresse->set_Nom_Ville(this->tb_ville->Text);
 
-
-
-
-			this->pe->ajouterUnePersonne(this->personnel->get_Nom(), this->personnel->get_Prenom());
-
+			this->pe->ajouterUnePersonne(this->personnel);
 			refresh_datagrid();
 
 			this->txt_results->Text = "Données entrées avec succès";
