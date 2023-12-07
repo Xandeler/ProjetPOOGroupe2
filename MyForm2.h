@@ -89,7 +89,7 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::TextBox^ tb_facnu;
-	private: System::Windows::Forms::TextBox^ textBox5;
+	private: System::Windows::Forms::TextBox^ tb_id;
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::TextBox^ tb_livru;
 	private: System::Windows::Forms::Label^ label8;
@@ -125,7 +125,7 @@ namespace ProjetPOOGroupe2 {
 			   this->label6 = (gcnew System::Windows::Forms::Label());
 			   this->tb_facnu = (gcnew System::Windows::Forms::TextBox());
 			   this->tb_livnu = (gcnew System::Windows::Forms::TextBox());
-			   this->textBox5 = (gcnew System::Windows::Forms::TextBox());
+			   this->tb_id = (gcnew System::Windows::Forms::TextBox());
 			   this->label7 = (gcnew System::Windows::Forms::Label());
 			   this->tb_livru = (gcnew System::Windows::Forms::TextBox());
 			   this->label8 = (gcnew System::Windows::Forms::Label());
@@ -328,11 +328,11 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // textBox5
 			   // 
-			   this->textBox5->Location = System::Drawing::Point(885, 345);
-			   this->textBox5->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			   this->textBox5->Name = L"textBox5";
-			   this->textBox5->Size = System::Drawing::Size(56, 24);
-			   this->textBox5->TabIndex = 23;
+			   this->tb_id->Location = System::Drawing::Point(885, 345);
+			   this->tb_id->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			   this->tb_id->Name = L"tb_id";
+			   this->tb_id->Size = System::Drawing::Size(56, 24);
+			   this->tb_id->TabIndex = 23;
 			   // 
 			   // label7
 			   // 
@@ -387,7 +387,7 @@ namespace ProjetPOOGroupe2 {
 			   this->Controls->Add(this->label8);
 			   this->Controls->Add(this->tb_livru);
 			   this->Controls->Add(this->label7);
-			   this->Controls->Add(this->textBox5);
+			   this->Controls->Add(this->tb_id);
 			   this->Controls->Add(this->tb_livnu);
 			   this->Controls->Add(this->tb_facnu);
 			   this->Controls->Add(this->btn_load);
@@ -435,7 +435,7 @@ namespace ProjetPOOGroupe2 {
 	private: void refresh_datagrid()
 	{
 		this->dataGridView1->Refresh();
-		this->dataLoadedFromSQL = this->SQLservices->selectionnerToutesLesPersonnes("Liste_des_clients");
+		this->dataLoadedFromSQL = this->SQLservices->selectionnerTousLesClients("Liste_des_clients");
 		this->dataGridView1->DataSource = this->dataLoadedFromSQL;
 		this->dataGridView1->DataMember = "Liste_des_clients";
 
@@ -446,7 +446,7 @@ namespace ProjetPOOGroupe2 {
 	{
 		try
 		{
-			return Convert::ToInt32(textBox5->Text);
+			return Convert::ToInt32(tb_id->Text);
 		}
 		catch (Exception^ except)
 		{
@@ -498,7 +498,7 @@ namespace ProjetPOOGroupe2 {
 			this->Adresse->set_Numero_Maison(Convert::ToInt32(this->tb_livnu->Text));
 			this->Adresse->set_Rue(this->tb_livru->Text);
 			this->Adresse->set_Nature("Facturation");
-			this->SQLservices->ajouterUnePersonne(this->tb_nom->Text, this->tb_prenom->Text);
+			this->SQLservices->ajouterUnClient(this->tb_nom->Text, this->tb_prenom->Text, this->tb_datena->Text, this->tb_datepa->Text, this->tb_facnu->Text, this->tb_facru->Text,this->tb_livnu->Text, this->tb_livru->Text);
 
 			refresh_datagrid();
 
@@ -513,7 +513,7 @@ namespace ProjetPOOGroupe2 {
 	{
 		try
 		{
-			this->SQLservices->effacerUnePersonne(get_selected_ID());
+			this->SQLservices->effacerUnClient(get_selected_ID());
 
 			refresh_datagrid();
 
@@ -529,21 +529,20 @@ namespace ProjetPOOGroupe2 {
 		}
 	}
 	private: System::Void btn_modifier_Click(System::Object^ sender, System::EventArgs^ e) {
-		try
+		if (this->tb_id->Text == "")
 		{
-			this->SQLservices->modifierUnePersonne(get_selected_ID(), this->tb_nom->Text, this->tb_prenom->Text);
+			this->txt_results->Text = "Veuillez remplir tous les champs";
+		}
+		else {
+			this->SQLservices->modifierUnclient(get_selected_ID(), this->tb_nom->Text, this->tb_prenom->Text);
 
 			refresh_datagrid();
 
 			this->txt_results->Text = "Données modifiées avec succès";
 		}
-		catch (Exception^ except)
-		{
-			this->txt_results->Text = except->Message;
-			this->txt_results->Text += "\r\n";
-			this->txt_results->Text += except->StackTrace;
-		}
+		
 	}
+
 
 
 

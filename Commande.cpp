@@ -5,7 +5,7 @@ Commande::Commande()
 
 }
 
-Commande::Commande(int^ id, String^ lettres_nom, String^ lettres_prenom, int^ annee, String^ lettres_ville, String^ date_livraison, String^ date_emission, String^ date_paiement, String^ moyen_paiement, double^ total_ht, double^ total_ttc, String^ nom_societe, Adresse^ adresse_societe, int^ numero_service_clients, String^ logo, Adresse^ adresse_facturation, Adresse^ adresse_livraison)
+Commande::Commande(int^ id, String^ lettres_nom, String^ lettres_prenom, int^ annee, String^ lettres_ville, String^ date_livraison, String^ date_emission, String^ date_paiement, String^ moyen_paiement, double^ total_ht, double^ total_ttc, String^ nom_societe, AD::Adresse^ adresse_societe, int^ numero_service_clients, String^ logo, AD::Adresse^ adresse_facturation, AD::Adresse^ adresse_livraison)
 {
     this->set_ID_Commande(id);
     this->set_Lettres_Nom(lettres_nom);
@@ -157,12 +157,12 @@ void Commande::set_Nom_Societe(String^ nom_societe)
     this->Nom_Societe = nom_societe;
 }
 
-Adresse^ Commande::get_Adresse_Societe()
+AD::Adresse^ Commande::get_Adresse_Societe()
 {
     return this->Adresse_Societe;
 }
 
-void Commande::set_Adresse_Societe(Adresse^ adresse_societe)
+void Commande::set_Adresse_Societe(AD::Adresse^ adresse_societe)
 {
     this->Adresse_Societe = adresse_societe;
 }
@@ -187,22 +187,22 @@ void Commande::set_Logo(String^ logo)
     this->Logo = logo;
 }
 
-Adresse^ Commande::get_Adresse_Facturation()
+AD::Adresse^ Commande::get_Adresse_Facturation()
 {
     return this->Adresse_Facturation;
 }
 
-void Commande::set_Adresse_Facturation(Adresse^ adresse_facturation)
+void Commande::set_Adresse_Facturation(AD::Adresse^ adresse_facturation)
 {
     this->Adresse_Facturation = adresse_facturation;
 }
 
-Adresse^ Commande::get_Adresse_Livraison()
+AD::Adresse^ Commande::get_Adresse_Livraison()
 {
     return this->Adresse_Livraison;
 }
 
-void Commande::set_Adresse_Livraison(Adresse^ adresse_livraison)
+void Commande::set_Adresse_Livraison(AD::Adresse^ adresse_livraison)
 {
     this->Adresse_Livraison = adresse_livraison;
 }
