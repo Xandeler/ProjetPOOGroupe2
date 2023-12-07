@@ -27,7 +27,7 @@ namespace ProjetPOOGroupe2 {
 
 	protected:
 		/// <summary>
-		/// Nettoyage des ressources utilis�es.
+		/// Nettoyage des ressources utilis?es.
 		/// </summary>
 		~MyForm4()
 		{
@@ -70,13 +70,10 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::Label^ label_stock;
 
 
-	protected:
+	private: System::Windows::Forms::Button^ button_loadDB;
 
-	protected:
-
-
-
-
+	private: NS_Stock::Stock^ stock;
+	private: System::Data::DataSet^ dataset;
 
 	protected:
 
@@ -87,17 +84,9 @@ namespace ProjetPOOGroupe2 {
 	private: System::ComponentModel::Container^ components;
 
 
-
-
-
-
-
-
-	private: Stock^ stock;
-
 #pragma region Windows Form Designer generated code
 		   /// <summary>
-		   /// M�thode requise pour la prise en charge du concepteur - ne modifiez pas
+		   /// M?thode requise pour la prise en charge du concepteur - ne modifiez pas
 		   /// le contenu de cette methode avec l'editeur de code.
 		   /// </summary>
 		   void InitializeComponent(void)
@@ -120,6 +109,7 @@ namespace ProjetPOOGroupe2 {
 			   this->textBox_quantite_article = (gcnew System::Windows::Forms::TextBox());
 			   this->label_quantite_article = (gcnew System::Windows::Forms::Label());
 			   this->label_stock = (gcnew System::Windows::Forms::Label());
+			   this->button_loadDB = (gcnew System::Windows::Forms::Button());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView_stock))->BeginInit();
 			   this->SuspendLayout();
 			   // 
@@ -136,10 +126,12 @@ namespace ProjetPOOGroupe2 {
 			   // dataGridView_stock
 			   // 
 			   this->dataGridView_stock->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			   this->dataGridView_stock->GridColor = System::Drawing::SystemColors::HighlightText;
 			   this->dataGridView_stock->Location = System::Drawing::Point(179, 12);
 			   this->dataGridView_stock->Name = L"dataGridView_stock";
 			   this->dataGridView_stock->RowHeadersWidth = 51;
 			   this->dataGridView_stock->RowTemplate->Height = 24;
+			   this->dataGridView_stock->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			   this->dataGridView_stock->Size = System::Drawing::Size(713, 212);
 			   this->dataGridView_stock->TabIndex = 5;
 			   // 
@@ -279,11 +271,22 @@ namespace ProjetPOOGroupe2 {
 			   this->label_stock->TabIndex = 21;
 			   this->label_stock->Text = L"STOCK";
 			   // 
+			   // button_loadDB
+			   // 
+			   this->button_loadDB->Location = System::Drawing::Point(22, 52);
+			   this->button_loadDB->Name = L"button_loadDB";
+			   this->button_loadDB->Size = System::Drawing::Size(136, 145);
+			   this->button_loadDB->TabIndex = 22;
+			   this->button_loadDB->Text = L"Load DB";
+			   this->button_loadDB->UseVisualStyleBackColor = true;
+			   this->button_loadDB->Click += gcnew System::EventHandler(this, &MyForm4::bouton_load_click);
+			   // 
 			   // MyForm4
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->ClientSize = System::Drawing::Size(904, 538);
+			   this->Controls->Add(this->button_loadDB);
 			   this->Controls->Add(this->label_stock);
 			   this->Controls->Add(this->textBox_taux_tva_article);
 			   this->Controls->Add(this->label_taux_tva_article);
@@ -314,7 +317,57 @@ namespace ProjetPOOGroupe2 {
 
 	private: System::Void MyForm4_Load(System::Object^ sender, System::EventArgs^ e)
 	{
+		this->stock = gcnew NS_Stock::Stock();
+	}
 
+	private: void affichage()
+	{
+		this->dataGridView_stock->Refresh();
+
+		this->dataset = this->stock->afficher("Liste_Article");
+		this->dataGridView_stock->DataSource = this->dataset;
+		this->dataGridView_stock->DataMember = "Liste_Article";
+	}
+
+	private: int^ get_selected_id()
+	{
+		int^ id_article = Convert::ToInt32(this->dataGridView_stock->SelectedRows[0]->Cells[0]->Value);
+		return id_article;
+	}
+
+	private: String^ get_selected_nom()
+	{
+		String^ nom_article = Convert::ToString(this->dataGridView_stock->SelectedRows[0]->Cells[1]->Value);
+		return nom_article;
+	}
+
+	private: int^ get_selected_quantite()
+	{
+		int^ quantite_article = Convert::ToInt32(this->dataGridView_stock->SelectedRows[0]->Cells[2]->Value);
+		return quantite_article;
+	}
+
+	private: float^ get_selected_prixht()
+	{
+		float^ prixht_article = Convert::ToSingle(this->dataGridView_stock->SelectedRows[0]->Cells[3]->Value);
+		return prixht_article;
+	}
+
+	private: int^ get_selected_reapprovisionnement()
+	{
+		int^ reapprovisionnement_article = Convert::ToInt32(this->dataGridView_stock->SelectedRows[0]->Cells[4]->Value);
+		return reapprovisionnement_article;
+	}
+
+	private: int^ get_selected_reduction()
+	{
+		int^ reduction_article = Convert::ToInt32(this->dataGridView_stock->SelectedRows[0]->Cells[5]->Value);
+		return reduction_article;
+	}
+
+	private: System::Void bouton_load_click(System::Object^ sender, System::EventArgs^ e)
+	{
+		this->affichage();
 	}
 
 	private: System::Void bouton_retour_click(System::Object^ sender, System::EventArgs^ e)
@@ -324,23 +377,55 @@ namespace ProjetPOOGroupe2 {
 
 	private: System::Void bouton_ajouter_article_click(System::Object^ sender, System::EventArgs^ e)
 	{
-		this->stock->set_Article(this->textBox_nom_article->Text, Convert::ToInt32(this->textBox_quantite_article->Text), Convert::ToDouble(this->textBox_prix_ht_article->Text), Convert::ToDouble(this->textBox_taux_tva_article->Text), Convert::ToInt32(this->textBox_seuil_reapprovisionnement_article->Text), Convert::ToInt32(this->textBox_seuil_reduction_article->Text));
-		this->stock->ajouter();
-		//Ajouter un appel à la fonction permettant d'afficher les données dans la datagridview.
+		int^ id_article = 1;
+		String^ nom_article = this->textBox_nom_article->Text;
+		int^ quantite_article = Convert::ToInt32(this->textBox_quantite_article->Text);
+		float^ prixHT_article = Convert::ToSingle(this->textBox_prix_ht_article->Text);
+		float^ tauxTVA_article = Convert::ToSingle(this->textBox_taux_tva_article->Text);
+		int^ seuil_reapprovisionnement_article = Convert::ToInt32(this->textBox_seuil_reapprovisionnement_article->Text);
+		int^ seuil_reduction_article = Convert::ToInt32(this->textBox_seuil_reduction_article->Text);
+
+		this->stock->ajouter(id_article, nom_article, quantite_article, prixHT_article, tauxTVA_article, seuil_reapprovisionnement_article, seuil_reduction_article);
+
+		this->affichage();
 	}
 
 	private: System::Void bouton_supprimer_article_click(System::Object^ sender, System::EventArgs^ e)
 	{
-		int^ valeur_id = Convert::ToInt32(this->dataGridView_stock->SelectedRows[0]->Cells[0]->Value);
-		this->stock->supprimer(valeur_id);
-		//Ajouter un appel à la fonction permettant d'afficher les données dans la datagridview.
+		int^ id_article = this->get_selected_id();
+		String^ nom_article = this->get_selected_nom();
+		int^ quantite_article = this->get_selected_quantite();
+		float^ prixHT_article = this->get_selected_prixht();
+		float^ tauxTVA_article = 1.2f;
+		int^ seuil_reapprovisionnement_article = this->get_selected_reapprovisionnement();
+		int^ seuil_reduction_article = this->get_selected_reduction();
+
+		this->stock->supprimer(id_article, nom_article, quantite_article, prixHT_article, tauxTVA_article, seuil_reapprovisionnement_article, seuil_reduction_article);
+
+		this->affichage();
 	}
 
 	private: System::Void bouton_modifier_article_click(System::Object^ sender, System::EventArgs^ e)
 	{
-		int^ valeur_id = Convert::ToInt32(this->dataGridView_stock->SelectedRows[0]->Cells[0]->Value);
-		this->stock->modifier(valeur_id);
-		//Ajouter un appel à la fonction permettant d'afficher les données dans la datagridview.
+		int^ id_article = this->get_selected_id();
+		String^ nom_article = this->get_selected_nom();
+		int^ quantite_article = this->get_selected_quantite();
+		float^ prixHT_article = this->get_selected_prixht();
+		float^ tauxTVA_article = Convert::ToSingle(this->textBox_taux_tva_article->Text);
+		int^ seuil_reapprovisionnement_article = this->get_selected_reapprovisionnement();
+		int^ seuil_reduction_article = this->get_selected_reduction();
+
+		int^ id_article_m = 1;
+		String^ nom_article_m = this->textBox_nom_article->Text;
+		int^ quantite_article_m = Convert::ToInt32(this->textBox_quantite_article->Text);
+		float^ prixHT_article_m = Convert::ToSingle(this->textBox_prix_ht_article->Text);
+		float^ tauxTVA_article_m = Convert::ToSingle(this->textBox_taux_tva_article->Text);
+		int^ seuil_reapprovisionnement_article_m = Convert::ToInt32(this->textBox_seuil_reapprovisionnement_article->Text);
+		int^ seuil_reduction_article_m = Convert::ToInt32(this->textBox_seuil_reduction_article->Text);
+
+		this->stock->modifier(id_article, nom_article, quantite_article, prixHT_article, tauxTVA_article, seuil_reapprovisionnement_article, seuil_reduction_article, id_article_m, nom_article_m, quantite_article_m, prixHT_article_m, tauxTVA_article_m, seuil_reapprovisionnement_article_m, seuil_reduction_article_m);
+
+		this->affichage();
 	}
 	};
 }
