@@ -1,12 +1,14 @@
 #pragma once
-#include "Personne.h"
-#include "Client.h"
-#include "Adresse.h"
-#include "Ville.h"
+#include "StockageCommandes.h"
+#include "MapStockageCommande.h"
+#include "MapClient.h"
+#include "StockageCommandes.h"
+#include "AccesBase.h"
+#include "Commande.h"
 
-namespace NS_Comp_Mappage
+namespace StoCom
 {
-	ref class CLgenerateSQLcmds : public CL::Client
+	ref class CLgenerateSQLStoCom : public Commande
 	{
 	private:
 

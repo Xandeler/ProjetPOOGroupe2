@@ -6,7 +6,7 @@ CL::Client::Client()
     this->set_Date_Premier_Achat("00/00/0000");
 }
 
-CL::Client::Client(String^ date_naissance, String^ date_premier_achat, int^ ID, String^ nom, String^ prenom, Adresse^ adresse_facturation, Adresse^ adresse_livraison) : Personne::Personne(ID, nom, prenom)
+CL::Client::Client(String^ date_naissance, String^ date_premier_achat, int^ ID, String^ nom, String^ prenom, AD::Adresse^ adresse_facturation, AD::Adresse^ adresse_livraison) : Personne::Personne(ID, nom, prenom)
 {
     this->set_Date_Naissance(date_naissance);
     this->set_Date_Premier_Achat(date_premier_achat);
@@ -34,22 +34,22 @@ void CL::Client::set_Date_Premier_Achat(String^ date_premier_achat)
     this->Date_Premier_Achat = date_premier_achat;
 }
 
-Adresse^ CL::Client::get_Adresse_Facturation()
+AD::Adresse^ CL::Client::get_Adresse_Facturation()
 {
     return this->Adresse_Facturation;
 }
 
-void CL::Client::set_Adresse_Facturation(Adresse^ adresse_facturation)
+void CL::Client::set_Adresse_Facturation(AD::Adresse^ adresse_facturation)
 {
     this->Adresse_Facturation = adresse_facturation;
 }
 
-Adresse^ CL::Client::get_Adresse_Livraison()
+AD::Adresse^ CL::Client::get_Adresse_Livraison()
 {
     return this->Adresse_Livraison;
 }
 
-void CL::Client::set_Adresse_Livraison(Adresse^ adresse_livraison)
+void CL::Client::set_Adresse_Livraison(AD::Adresse^ adresse_livraison)
 {
     this->Adresse_Livraison = adresse_livraison;
 }

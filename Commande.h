@@ -23,15 +23,15 @@ private:
 	double^ Total_HT;
 	double^ Total_TTC;
 	String^ Nom_Societe;
-	Adresse^ Adresse_Societe;
+	AD::Adresse^ Adresse_Societe;
 	int^ Numero_Service_Clients;
 	String^ Logo;
-	Adresse^ Adresse_Facturation;
-	Adresse^ Adresse_Livraison;
+	AD::Adresse^ Adresse_Facturation;
+	AD::Adresse^ Adresse_Livraison;
 
 public:
 	Commande();
-	Commande(int^ id, String^ lettres_nom, String^ lettres_prenom, int^ annee, String^ lettres_ville, String^ date_livraison, String^ date_emission, String^ date_paiement, String^ moyen_paiement, double^ total_ht, double^ total_ttc, String^ nom_societe, Adresse^ adresse_societe, int^ numero_service_clients, String^ logo, Adresse^ adresse_facturation, Adresse^ adresse_livraison);
+	Commande(int^ id, String^ lettres_nom, String^ lettres_prenom, int^ annee, String^ lettres_ville, String^ date_livraison, String^ date_emission, String^ date_paiement, String^ moyen_paiement, double^ total_ht, double^ total_ttc, String^ nom_societe, AD::Adresse^ adresse_societe, int^ numero_service_clients, String^ logo, AD::Adresse^ adresse_facturation, AD::Adresse^ adresse_livraison);
 	int^ get_ID_Commande();
 	void set_ID_Commande(int^ id);
 	String^ get_Lettres_Nom();
@@ -58,16 +58,16 @@ public:
 	void set_Total_TTC(double^ total_ttc);
 	String^ get_Nom_Societe();
 	void set_Nom_Societe(String^ nom_societe);
-	Adresse^ get_Adresse_Societe();
-	void set_Adresse_Societe(Adresse^ adresse_societe);
+	AD::Adresse^ get_Adresse_Societe();
+	void set_Adresse_Societe(AD::Adresse^ adresse_societe);
 	int^ get_Numero_Service_Clients();
 	void set_Numero_Service_Clients(int^ numero_service_clients);
 	String^ get_Logo();
 	void set_Logo(String^ logo);
-	Adresse^ get_Adresse_Facturation();
-	void set_Adresse_Facturation(Adresse^ adresse_facturation);
-	Adresse^ get_Adresse_Livraison();
-	void set_Adresse_Livraison(Adresse^ adresse_livraison);
+	AD::Adresse^ get_Adresse_Facturation();
+	void set_Adresse_Facturation(AD::Adresse^ adresse_facturation);
+	AD::Adresse^ get_Adresse_Livraison();
+	void set_Adresse_Livraison(AD::Adresse^ adresse_livraison);
 	void ajouter_Article();
 	void supprimer_Article();
 	void modifier_Article();
