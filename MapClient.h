@@ -1,12 +1,10 @@
 #pragma once
-#include "Personne.h"
 #include "Client.h"
 #include "Adresse.h"
-#include "Ville.h"
 
 namespace NS_Comp_Mappage
 {
-	ref class CLgenerateSQLcmds : public Client
+	ref class CLgenerateSQLcmds : public CL::Client
 	{
 	private:
 
