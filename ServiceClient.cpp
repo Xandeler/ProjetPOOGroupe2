@@ -38,7 +38,7 @@ void NS_Comp_Svc::CL_SQLservices::effacerUnClient(int ID)
 
 }
 
-void NS_Comp_Svc::CL_SQLservices::modifierUnclient(int^ ID, System::String^ nom, System::String^ prenom)
+void NS_Comp_Svc::CL_SQLservices::modifierUnclient(int ID, System::String^ nom, System::String^ prenom)
 {
 	System::String^ SQL_command;
 
@@ -53,4 +53,8 @@ void NS_Comp_Svc::CL_SQLservices::modifierUnclient(int^ ID, System::String^ nom,
 	this->SQLdataAccessController->actionRows(SQL_command);
 }
 
+void NS_Comp_Svc::CL_SQLservices::executerUneCommande(System::String^ commande)
+{
+	this->SQLdataAccessController->actionRows(commande);
+}
 

@@ -9,7 +9,7 @@ AD::Adresse::Adresse()
 	this->set_Nature("Rien");
 }
 
-AD::Adresse::Adresse(int^ code_postal, String^ nom_ville, String^ rue, int^ numero_maison, String^ nature)
+AD::Adresse::Adresse(int code_postal, String^ nom_ville, String^ rue, int numero_maison, String^ nature)
 {
 	this->set_Code_Postal(code_postal);
 	this->set_Nom_Ville(nom_ville);
@@ -18,12 +18,12 @@ AD::Adresse::Adresse(int^ code_postal, String^ nom_ville, String^ rue, int^ nume
 	this->set_Nature(nature);
 }
 
-int^ AD::Adresse::get_Code_Postal()
+int AD::Adresse::get_Code_Postal()
 {
 	return this->Code_Postal;
 }
 
-void AD::Adresse::set_Code_Postal(int^ code_postal)
+void AD::Adresse::set_Code_Postal(int code_postal)
 {
 	this->Code_Postal = code_postal;
 }
@@ -48,12 +48,12 @@ void AD::Adresse::set_Rue(String^ rue)
 	this->Rue = rue;
 }
 
-int^ AD::Adresse::get_Numero_Maison()
+int AD::Adresse::get_Numero_Maison()
 {
 	return this->Numero_Maison;
 }
 
-void AD::Adresse::set_Numero_Maison(int^ numero_maison)
+void AD::Adresse::set_Numero_Maison(int numero_maison)
 {
 	this->Numero_Maison = numero_maison;
 }
@@ -68,7 +68,7 @@ void AD::Adresse::set_Nature(String^ nature)
 	this->Nature = nature;
 }
 
-bool^ AD::Adresse::verifier_Ville()
+bool AD::Adresse::verifier_Ville()
 {
 	bool verif_ville = false;  // Initialisez à false par défaut
 

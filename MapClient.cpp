@@ -13,8 +13,12 @@ System::String^ NS_Comp_Mappage::CLgenerateSQLcmds::SQL_InsertCommandGenerator(v
 
 System::String^ NS_Comp_Mappage::CLgenerateSQLcmds::SQL_DeleteCommandGenerator(void)
 {
-	return "DELETE FROM Possede WHERE ID_Personne = " + this->get_ID_Personne() + "; DELETE FROM Possede WHERE ID_Commande = (SELECT ID_Commande FROM Effectue WHERE ID_Clients = (SELECT ID_Clients FROM Clients WHERE ID_Personne = " + this->get_ID_Personne() + "));" + "DELETE FROM Effectue WHERE ID_Clients = (SELECT ID_Clients FROM Clients WHERE ID_Personne = " + this->get_ID_Personne() + ");" + "DELETE FROM Clients WHERE ID_Personne = " + this->get_ID_Personne() + ";" + "DELETE FROM Personne WHERE ID_Personne = " + this->get_ID_Personne() + ";";
-	
+	return "DELETE FROM Possede WHERE ID_Personne = " + this->get_ID_Personne() + "; " +
+		"DELETE FROM Possede WHERE ID_Commande IN (SELECT ID_Commande FROM Effectue WHERE ID_Clients IN (SELECT ID_Clients FROM Clients WHERE ID_Personne = " + this->get_ID_Personne() + ")); " +
+		"DELETE FROM Effectue WHERE ID_Clients IN (SELECT ID_Clients FROM Clients WHERE ID_Personne = " + this->get_ID_Personne() + "); " +
+		"DELETE FROM Clients WHERE ID_Personne = " + this->get_ID_Personne() + "; " +
+		"DELETE FROM Personne WHERE ID_Personne = " + this->get_ID_Personne() + ";";
+
 }
 System::String^ NS_Comp_Mappage::CLgenerateSQLcmds::SQL_UpdateCommandGenerator(void)
 {

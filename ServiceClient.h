@@ -16,7 +16,8 @@ namespace NS_Comp_Svc
 		System::Data::DataSet^ selectionnerTousLesClients(System::String^);
 		void ajouterUnClient(System::String^, System::String^, System::String^, System::String^, System::String^, System::String^, System::String^, System::String^);
 		void effacerUnClient(int);
-		void modifierUnclient(int^, System::String^, System::String^);
+		void modifierUnclient(int, System::String^, System::String^);
+		void executerUneCommande(System::String^);
 
 	};
 }
