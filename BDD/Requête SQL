@@ -248,11 +248,18 @@ WHERE ID_Personne = 1;
 
 
 //SELECT Article
-SELECT Reference_Article, Nom_Article, Quantite_Stock_Article, Prix_HT_Article, Seuil_Reduction_Article, Seuil_Reapprovisionnement_Article FROM Article;
+SELECT Article.Reference_Article, Article.Nom_Article, Article.Quantite_Stock_Article, Article.Prix_HT_Article, Modif.Taux_TVA_Modif, Article.Seuil_Reduction_Article, Article.Seuil_Reapprovisionnement_Article FROM Article
+INNER JOIN Comporte
+ON Article.Reference_Article = Comporte.Reference_Article
+INNER JOIN Modif
+ON Comporte.ID_Modif = Modif.ID_Modif;
 
 //INSERT Article
 INSERT INTO Article (Prix_HT_Article, Nom_Article, Seuil_Reduction_Article, Quantite_Stock_Article, Seuil_Reapprovisionnement_Article)
-VALUES (13.99, 'Tada', 15, 368, 10);
+VALUES (13.99, 'Celuila', 15, 368, 10);
+
+INSERT INTO Comporte (ID_Modif, Reference_Article)
+VALUES ((SELECT ID_Modif FROM Modif WHERE Taux_TVA_Modif = 1.2), (SELECT Reference_Article FROM Article WHERE Nom_Article = 'Celuila'));
 
 //UPDATE Article
 UPDATE Article
