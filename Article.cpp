@@ -1,18 +1,18 @@
 #include "Article.h"
 
-Article::Article()
+NS_Article::Article::Article()
 {
 	this->set_ID_Article(1);
 	this->set_Nom("Rien");
 	this->set_Quantite(1);
-	this->set_Prix_HT(0.0);
-	this->set_Taux_TVA(0.0);
+	this->set_Prix_HT(0.0f);
+	this->set_Taux_TVA(0.0f);
 	this->set_Prix_TTC();
 	this->set_Seuil_Reapprovisionnement(1);
 	this->set_Seuil_Reduction(1);
 }
 
-Article::Article(int^ ID, String^ nom, int^ quantite, double^ prix_ht, double^ taux_tva, int^ seuil_reapprovisionnement, int^ seuil_reduction)
+NS_Article::Article::Article(int^ ID, String^ nom, int^ quantite, float^ prix_ht, float^ taux_tva, int^ seuil_reapprovisionnement, int^ seuil_reduction)
 {
 	this->set_ID_Article(ID);
 	this->set_Nom(nom);
@@ -24,84 +24,84 @@ Article::Article(int^ ID, String^ nom, int^ quantite, double^ prix_ht, double^ t
 	this->set_Seuil_Reduction(seuil_reduction);
 }
 
-int^ Article::get_ID_Article()
+int^ NS_Article::Article::get_ID_Article()
 {
 	return this->ID_Article;
 }
 
-void Article::set_ID_Article(int^ ID)
+void NS_Article::Article::set_ID_Article(int^ ID)
 {
 	this->ID_Article = ID;
 }
 
-String^ Article::get_Nom()
+String^ NS_Article::Article::get_Nom()
 {
 	return this->Nom;
 }
 
-void Article::set_Nom(String^ nom)
+void NS_Article::Article::set_Nom(String^ nom)
 {
 	this->Nom = nom;
 }
 
-int^ Article::get_Quantite()
+int^ NS_Article::Article::get_Quantite()
 {
 	return this->Quantite;
 }
 
-void Article::set_Quantite(int^ quantite)
+void NS_Article::Article::set_Quantite(int^ quantite)
 {
 	this->Quantite = quantite;
 }
 
-double^ Article::get_Prix_HT()
+float^ NS_Article::Article::get_Prix_HT()
 {
 	return this->Prix_HT;
 }
 
-void Article::set_Prix_HT(double^ prix_ht)
+void NS_Article::Article::set_Prix_HT(float^ prix_ht)
 {
 	this->Prix_HT = prix_ht;
 }
 
-double^ Article::get_Taux_TVA()
+float^ NS_Article::Article::get_Taux_TVA()
 {
 	return this->Taux_TVA;
 }
 
-void Article::set_Taux_TVA(double^ taux_tva)
+void NS_Article::Article::set_Taux_TVA(float^ taux_tva)
 {
 	this->Taux_TVA = taux_tva;
 }
 
-double^ Article::get_Prix_TTC()
+float^ NS_Article::Article::get_Prix_TTC()
 {
 	return this->Prix_TTC;
 }
 
-void Article::set_Prix_TTC()
+void NS_Article::Article::set_Prix_TTC()
 {
-	double^ prix_ttc = (*this->get_Prix_HT()) + (((*this->get_Prix_HT()) / 100.0) * (*this->get_Taux_TVA()));
+	float^ prix_ttc = Convert::ToSingle((*this->get_Prix_HT()) + (((*this->get_Prix_HT()) / 100.0) * (*this->get_Taux_TVA())));
 
 	this->Prix_TTC = prix_ttc;
 }
 
-int^ Article::get_Seuil_Reapprovisionnement()
+int^ NS_Article::Article::get_Seuil_Reapprovisionnement()
 {
 	return this->Seuil_Reapprovisionnement;
 }
 
-void Article::set_Seuil_Reapprovisionnement(int^ seuil_reapprovisionnement)
+void NS_Article::Article::set_Seuil_Reapprovisionnement(int^ seuil_reapprovisionnement)
 {
 	this->Seuil_Reapprovisionnement = seuil_reapprovisionnement;
 }
 
-int^ Article::get_Seuil_Reduction()
+int^ NS_Article::Article::get_Seuil_Reduction()
 {
 	return this->Seuil_Reduction;
 }
 
-void Article::set_Seuil_Reduction(int^ seuil_reduction)
+void NS_Article::Article::set_Seuil_Reduction(int^ seuil_reduction)
 {
 	this->Seuil_Reduction = seuil_reduction;
 }
