@@ -10,6 +10,7 @@ protected:
 	String^ Date_Premier_Achat;
 	AD::Adresse^ Adresse_Facturation;
 	AD::Adresse^ Adresse_Livraison;
+	AB::AccesBase^ AccesBase;
 
 public:
 	Client();
@@ -24,9 +25,9 @@ public:
 	AD::Adresse^ get_Adresse_Livraison();
 	void set_Adresse_LivraisonI(int numeroMaison, System::String^ nomRue);
 	void set_Adresse_Livraison(AD::Adresse^ adresse_livraison);
-	void ajouter();
-	void supprimer();
-	void modifier();
-	String^ afficher();
+	System::String^ ajouter_client();
+	System::String^ supprimer_client();
+	System::String^ modifier_client();
+	System::String^ afficher_client();
 };
 }

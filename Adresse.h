@@ -28,6 +28,6 @@ namespace AD {
 		void set_Numero_Maison(int numero_maison);
 		String^ get_Nature();
 		void set_Nature(String^ nature);
-		bool^ verifier_Ville();
+		bool verifier_Ville();
 	};
 }
