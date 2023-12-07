@@ -6,19 +6,19 @@ NS_Article::Article::Article()
 	this->set_Nom("Rien");
 	this->set_Quantite(1);
 	this->set_Prix_HT(0.0f);
-	this->set_Taux_TVA(0.0f);
+	this->set_Taux_TVA(1.2f);
 	this->set_Prix_TTC();
 	this->set_Seuil_Reapprovisionnement(1);
 	this->set_Seuil_Reduction(1);
 }
 
-NS_Article::Article::Article(int^ ID, String^ nom, int^ quantite, float^ prix_ht, float^ taux_tva, int^ seuil_reapprovisionnement, int^ seuil_reduction)
+NS_Article::Article::Article(int^ ID, String^ nom, int^ quantite, float^ prix_ht, int^ seuil_reapprovisionnement, int^ seuil_reduction)
 {
 	this->set_ID_Article(ID);
 	this->set_Nom(nom);
 	this->set_Quantite(quantite);
 	this->set_Prix_HT(prix_ht);
-	this->set_Taux_TVA(taux_tva);
+	this->set_Taux_TVA(1.2f);
 	this->set_Prix_TTC();
 	this->set_Seuil_Reapprovisionnement(seuil_reapprovisionnement);
 	this->set_Seuil_Reduction(seuil_reduction);

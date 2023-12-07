@@ -18,7 +18,7 @@ namespace NS_Article
 
 	public:
 		Article();
-		Article(int^ ID, String^ nom, int^ quantite, float^ prix_ht, float^ taux_tva, int^ seuil_reapprovisionnement, int^ seuil_reduction);
+		Article(int^ ID, String^ nom, int^ quantite, float^ prix_ht, int^ seuil_reapprovisionnement, int^ seuil_reduction);
 		int^ get_ID_Article();
 		void set_ID_Article(int^ ID);
 		String^ get_Nom();

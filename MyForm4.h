@@ -53,10 +53,10 @@ namespace ProjetPOOGroupe2 {
 
 
 	private: System::Windows::Forms::Label^ label_prix_ht_article;
-	private: System::Windows::Forms::TextBox^ textBox_taux_tva_article;
 
 
-	private: System::Windows::Forms::Label^ label_taux_tva_article;
+
+
 	private: System::Windows::Forms::TextBox^ textBox_seuil_reduction_article;
 
 
@@ -102,8 +102,6 @@ namespace ProjetPOOGroupe2 {
 			   this->label_seuil_reapprovisionnement_article = (gcnew System::Windows::Forms::Label());
 			   this->textBox_prix_ht_article = (gcnew System::Windows::Forms::TextBox());
 			   this->label_prix_ht_article = (gcnew System::Windows::Forms::Label());
-			   this->textBox_taux_tva_article = (gcnew System::Windows::Forms::TextBox());
-			   this->label_taux_tva_article = (gcnew System::Windows::Forms::Label());
 			   this->textBox_seuil_reduction_article = (gcnew System::Windows::Forms::TextBox());
 			   this->label_seuil_reduction_article = (gcnew System::Windows::Forms::Label());
 			   this->textBox_quantite_article = (gcnew System::Windows::Forms::TextBox());
@@ -213,22 +211,6 @@ namespace ProjetPOOGroupe2 {
 			   this->label_prix_ht_article->TabIndex = 13;
 			   this->label_prix_ht_article->Text = L"Prix HT de l\'article :";
 			   // 
-			   // textBox_taux_tva_article
-			   // 
-			   this->textBox_taux_tva_article->Location = System::Drawing::Point(663, 463);
-			   this->textBox_taux_tva_article->Name = L"textBox_taux_tva_article";
-			   this->textBox_taux_tva_article->Size = System::Drawing::Size(100, 22);
-			   this->textBox_taux_tva_article->TabIndex = 20;
-			   // 
-			   // label_taux_tva_article
-			   // 
-			   this->label_taux_tva_article->AutoSize = true;
-			   this->label_taux_tva_article->Location = System::Drawing::Point(660, 434);
-			   this->label_taux_tva_article->Name = L"label_taux_tva_article";
-			   this->label_taux_tva_article->Size = System::Drawing::Size(156, 16);
-			   this->label_taux_tva_article->TabIndex = 19;
-			   this->label_taux_tva_article->Text = L"Taux de TVA de l\'article :";
-			   // 
 			   // textBox_seuil_reduction_article
 			   // 
 			   this->textBox_seuil_reduction_article->Location = System::Drawing::Point(663, 376);
@@ -288,8 +270,6 @@ namespace ProjetPOOGroupe2 {
 			   this->ClientSize = System::Drawing::Size(904, 538);
 			   this->Controls->Add(this->button_loadDB);
 			   this->Controls->Add(this->label_stock);
-			   this->Controls->Add(this->textBox_taux_tva_article);
-			   this->Controls->Add(this->label_taux_tva_article);
 			   this->Controls->Add(this->textBox_seuil_reduction_article);
 			   this->Controls->Add(this->label_seuil_reduction_article);
 			   this->Controls->Add(this->textBox_quantite_article);
@@ -381,11 +361,10 @@ namespace ProjetPOOGroupe2 {
 		String^ nom_article = this->textBox_nom_article->Text;
 		int^ quantite_article = Convert::ToInt32(this->textBox_quantite_article->Text);
 		float^ prixHT_article = Convert::ToSingle(this->textBox_prix_ht_article->Text);
-		float^ tauxTVA_article = Convert::ToSingle(this->textBox_taux_tva_article->Text);
 		int^ seuil_reapprovisionnement_article = Convert::ToInt32(this->textBox_seuil_reapprovisionnement_article->Text);
 		int^ seuil_reduction_article = Convert::ToInt32(this->textBox_seuil_reduction_article->Text);
 
-		this->stock->ajouter(id_article, nom_article, quantite_article, prixHT_article, tauxTVA_article, seuil_reapprovisionnement_article, seuil_reduction_article);
+		this->stock->ajouter(id_article, nom_article, quantite_article, prixHT_article, seuil_reapprovisionnement_article, seuil_reduction_article);
 
 		this->affichage();
 	}
@@ -396,11 +375,10 @@ namespace ProjetPOOGroupe2 {
 		String^ nom_article = this->get_selected_nom();
 		int^ quantite_article = this->get_selected_quantite();
 		float^ prixHT_article = this->get_selected_prixht();
-		float^ tauxTVA_article = 1.2f;
 		int^ seuil_reapprovisionnement_article = this->get_selected_reapprovisionnement();
 		int^ seuil_reduction_article = this->get_selected_reduction();
 
-		this->stock->supprimer(id_article, nom_article, quantite_article, prixHT_article, tauxTVA_article, seuil_reapprovisionnement_article, seuil_reduction_article);
+		this->stock->supprimer(id_article, nom_article, quantite_article, prixHT_article, seuil_reapprovisionnement_article, seuil_reduction_article);
 
 		this->affichage();
 	}
@@ -411,7 +389,6 @@ namespace ProjetPOOGroupe2 {
 		String^ nom_article = this->get_selected_nom();
 		int^ quantite_article = this->get_selected_quantite();
 		float^ prixHT_article = this->get_selected_prixht();
-		float^ tauxTVA_article = Convert::ToSingle(this->textBox_taux_tva_article->Text);
 		int^ seuil_reapprovisionnement_article = this->get_selected_reapprovisionnement();
 		int^ seuil_reduction_article = this->get_selected_reduction();
 
@@ -419,11 +396,10 @@ namespace ProjetPOOGroupe2 {
 		String^ nom_article_m = this->textBox_nom_article->Text;
 		int^ quantite_article_m = Convert::ToInt32(this->textBox_quantite_article->Text);
 		float^ prixHT_article_m = Convert::ToSingle(this->textBox_prix_ht_article->Text);
-		float^ tauxTVA_article_m = Convert::ToSingle(this->textBox_taux_tva_article->Text);
 		int^ seuil_reapprovisionnement_article_m = Convert::ToInt32(this->textBox_seuil_reapprovisionnement_article->Text);
 		int^ seuil_reduction_article_m = Convert::ToInt32(this->textBox_seuil_reduction_article->Text);
 
-		this->stock->modifier(id_article, nom_article, quantite_article, prixHT_article, tauxTVA_article, seuil_reapprovisionnement_article, seuil_reduction_article, id_article_m, nom_article_m, quantite_article_m, prixHT_article_m, tauxTVA_article_m, seuil_reapprovisionnement_article_m, seuil_reduction_article_m);
+		this->stock->modifier(id_article, nom_article, quantite_article, prixHT_article, seuil_reapprovisionnement_article, seuil_reduction_article, id_article_m, nom_article_m, quantite_article_m, prixHT_article_m, seuil_reapprovisionnement_article_m, seuil_reduction_article_m);
 
 		this->affichage();
 	}

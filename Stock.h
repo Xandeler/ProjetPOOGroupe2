@@ -16,9 +16,9 @@ namespace NS_Stock
 
 	public:
 		Stock();
-		void ajouter(int^ id, String^ nom, int^ quantite, float^ prix_ht, float^ taux_tva, int^ seuil_reapprovisionnement, int^ seuil_reduction);
-		void supprimer(int^ id, String^ nom, int^ quantite, float^ prix_ht, float^ taux_tva, int^ seuil_reapprovisionnement, int^ seuil_reduction);
-		void modifier(int^ id, String^ nom, int^ quantite, float^ prix_ht, float^ taux_tva, int^ seuil_reapprovisionnement, int^ seuil_reduction, int^ id_m, String^ nom_m, int^ quantite_m, float^ prix_ht_m, float^ taux_tva_m, int^ seuil_reapprovisionnement_m, int^ seuil_reduction_m);
+		void ajouter(int^ id, String^ nom, int^ quantite, float^ prix_ht, int^ seuil_reapprovisionnement, int^ seuil_reduction);
+		void supprimer(int^ id, String^ nom, int^ quantite, float^ prix_ht, int^ seuil_reapprovisionnement, int^ seuil_reduction);
+		void modifier(int^ id, String^ nom, int^ quantite, float^ prix_ht, int^ seuil_reapprovisionnement, int^ seuil_reduction, int^ id_m, String^ nom_m, int^ quantite_m, float^ prix_ht_m, int^ seuil_reapprovisionnement_m, int^ seuil_reduction_m);
 		Data::DataSet^ afficher(String^ NomTable);
 	};
 }
