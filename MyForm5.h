@@ -100,16 +100,16 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // textBox_resultat
 			   // 
-			   this->textBox_resultat->Location = System::Drawing::Point(567, 43);
+			   this->textBox_resultat->Location = System::Drawing::Point(512, 43);
 			   this->textBox_resultat->Multiline = true;
 			   this->textBox_resultat->Name = L"textBox_resultat";
-			   this->textBox_resultat->Size = System::Drawing::Size(356, 345);
+			   this->textBox_resultat->Size = System::Drawing::Size(411, 345);
 			   this->textBox_resultat->TabIndex = 10;
 			   // 
 			   // label_resultat
 			   // 
 			   this->label_resultat->AutoSize = true;
-			   this->label_resultat->Location = System::Drawing::Point(567, 13);
+			   this->label_resultat->Location = System::Drawing::Point(509, 15);
 			   this->label_resultat->Name = L"label_resultat";
 			   this->label_resultat->Size = System::Drawing::Size(62, 16);
 			   this->label_resultat->TabIndex = 12;

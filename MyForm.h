@@ -25,9 +25,7 @@ namespace ProjetPOOGroupe2 {
 		MyForm(void)
 		{
 			InitializeComponent();
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click); // Permet de lier le bouton � la fonction
-			//TODO: ajoutez ici le code du constructeur
-			//
+			
 		}
 
 	protected:
@@ -41,13 +39,28 @@ namespace ProjetPOOGroupe2 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::RadioButton^ radioButton1;
+	private: System::Windows::Forms::Button^ b_personnel;
+	private: System::Windows::Forms::Button^ b_client;
 	protected:
-	private: System::Windows::Forms::RadioButton^ radioButton2;
-	private: System::Windows::Forms::RadioButton^ radioButton3;
-	private: System::Windows::Forms::RadioButton^ radioButton4;
-	private: System::Windows::Forms::RadioButton^ radioButton5;
-	private: System::Windows::Forms::Button^ button1;
+
+	protected:
+
+
+
+
+
+
+
+	private: System::Windows::Forms::Button^ b_commandes;
+	private: System::Windows::Forms::Button^ b_stocks;
+
+
+	private: System::Windows::Forms::Button^ b_statistiques;
+
+
+
+
+
 
 	protected:
 
@@ -64,140 +77,120 @@ namespace ProjetPOOGroupe2 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton3 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton4 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton5 = (gcnew System::Windows::Forms::RadioButton());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
+			this->b_personnel = (gcnew System::Windows::Forms::Button());
+			this->b_client = (gcnew System::Windows::Forms::Button());
+			this->b_commandes = (gcnew System::Windows::Forms::Button());
+			this->b_stocks = (gcnew System::Windows::Forms::Button());
+			this->b_statistiques = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
-			// radioButton1
+			// b_personnel
 			// 
-			this->radioButton1->AutoSize = true;
-			this->radioButton1->Location = System::Drawing::Point(362, 46);
-			this->radioButton1->Name = L"radioButton1";
-			this->radioButton1->Size = System::Drawing::Size(89, 20);
-			this->radioButton1->TabIndex = 0;
-			this->radioButton1->TabStop = true;
-			this->radioButton1->Text = L"Personnel";
-			this->radioButton1->UseVisualStyleBackColor = true;
-			this->radioButton1->CheckedChanged += gcnew System::EventHandler(this, &MyForm::radioButton1_CheckedChanged);
+			this->b_personnel->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			this->b_personnel->ForeColor = System::Drawing::SystemColors::HotTrack;
+			this->b_personnel->Location = System::Drawing::Point(45, 93);
+			this->b_personnel->Name = L"b_personnel";
+			this->b_personnel->Size = System::Drawing::Size(176, 69);
+			this->b_personnel->TabIndex = 6;
+			this->b_personnel->Text = L"PERSONNEL";
+			this->b_personnel->UseVisualStyleBackColor = false;
+			this->b_personnel->Click += gcnew System::EventHandler(this, &MyForm::b_personnel_Click);
 			// 
-			// radioButton2
+			// b_client
 			// 
-			this->radioButton2->AutoSize = true;
-			this->radioButton2->Location = System::Drawing::Point(362, 72);
-			this->radioButton2->Name = L"radioButton2";
-			this->radioButton2->Size = System::Drawing::Size(61, 20);
-			this->radioButton2->TabIndex = 1;
-			this->radioButton2->TabStop = true;
-			this->radioButton2->Text = L"Client";
-			this->radioButton2->UseVisualStyleBackColor = true;
+			this->b_client->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			this->b_client->ForeColor = System::Drawing::SystemColors::HotTrack;
+			this->b_client->Location = System::Drawing::Point(277, 93);
+			this->b_client->Name = L"b_client";
+			this->b_client->Size = System::Drawing::Size(176, 69);
+			this->b_client->TabIndex = 7;
+			this->b_client->Text = L"CLIENT";
+			this->b_client->UseVisualStyleBackColor = false;
+			this->b_client->Click += gcnew System::EventHandler(this, &MyForm::b_client_Click);
 			// 
-			// radioButton3
+			// b_commandes
 			// 
-			this->radioButton3->AutoSize = true;
-			this->radioButton3->Location = System::Drawing::Point(362, 98);
-			this->radioButton3->Name = L"radioButton3";
-			this->radioButton3->Size = System::Drawing::Size(105, 20);
-			this->radioButton3->TabIndex = 2;
-			this->radioButton3->TabStop = true;
-			this->radioButton3->Text = L"Commandes";
-			this->radioButton3->UseVisualStyleBackColor = true;
+			this->b_commandes->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			this->b_commandes->ForeColor = System::Drawing::SystemColors::HotTrack;
+			this->b_commandes->Location = System::Drawing::Point(277, 203);
+			this->b_commandes->Name = L"b_commandes";
+			this->b_commandes->Size = System::Drawing::Size(176, 69);
+			this->b_commandes->TabIndex = 8;
+			this->b_commandes->Text = L"COMMANDES";
+			this->b_commandes->UseVisualStyleBackColor = false;
+			this->b_commandes->Click += gcnew System::EventHandler(this, &MyForm::b_commandes_Click);
 			// 
-			// radioButton4
+			// b_stocks
 			// 
-			this->radioButton4->AutoSize = true;
-			this->radioButton4->Location = System::Drawing::Point(362, 124);
-			this->radioButton4->Name = L"radioButton4";
-			this->radioButton4->Size = System::Drawing::Size(62, 20);
-			this->radioButton4->TabIndex = 3;
-			this->radioButton4->TabStop = true;
-			this->radioButton4->Text = L"Stock";
-			this->radioButton4->UseVisualStyleBackColor = true;
+			this->b_stocks->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			this->b_stocks->ForeColor = System::Drawing::SystemColors::HotTrack;
+			this->b_stocks->Location = System::Drawing::Point(45, 203);
+			this->b_stocks->Name = L"b_stocks";
+			this->b_stocks->Size = System::Drawing::Size(176, 69);
+			this->b_stocks->TabIndex = 9;
+			this->b_stocks->Text = L"STOCK";
+			this->b_stocks->UseVisualStyleBackColor = false;
+			this->b_stocks->Click += gcnew System::EventHandler(this, &MyForm::b_stocks_Click);
 			// 
-			// radioButton5
+			// b_statistiques
 			// 
-			this->radioButton5->AutoSize = true;
-			this->radioButton5->Location = System::Drawing::Point(362, 150);
-			this->radioButton5->Name = L"radioButton5";
-			this->radioButton5->Size = System::Drawing::Size(97, 20);
-			this->radioButton5->TabIndex = 4;
-			this->radioButton5->TabStop = true;
-			this->radioButton5->Text = L"Statistiques";
-			this->radioButton5->UseVisualStyleBackColor = true;
-			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(194, 251);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(176, 69);
-			this->button1->TabIndex = 5;
-			this->button1->Text = L"VALIDER";
-			this->button1->UseVisualStyleBackColor = true;
+			this->b_statistiques->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			this->b_statistiques->ForeColor = System::Drawing::SystemColors::HotTrack;
+			this->b_statistiques->Location = System::Drawing::Point(163, 300);
+			this->b_statistiques->Name = L"b_statistiques";
+			this->b_statistiques->Size = System::Drawing::Size(176, 69);
+			this->b_statistiques->TabIndex = 10;
+			this->b_statistiques->Text = L"STATISTIQUES";
+			this->b_statistiques->UseVisualStyleBackColor = false;
+			this->b_statistiques->Click += gcnew System::EventHandler(this, &MyForm::b_statistiques_Click);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(600, 400);
-			this->Controls->Add(this->button1);
-			this->Controls->Add(this->radioButton5);
-			this->Controls->Add(this->radioButton4);
-			this->Controls->Add(this->radioButton3);
-			this->Controls->Add(this->radioButton2);
-			this->Controls->Add(this->radioButton1);
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
+			this->ClientSize = System::Drawing::Size(499, 439);
+			this->Controls->Add(this->b_statistiques);
+			this->Controls->Add(this->b_stocks);
+			this->Controls->Add(this->b_commandes);
+			this->Controls->Add(this->b_client);
+			this->Controls->Add(this->b_personnel);
+			this->Cursor = System::Windows::Forms::Cursors::IBeam;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::SizableToolWindow;
 			this->Name = L"MyForm";
 			this->Text = L"Accueil";
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 
 
 #pragma endregion
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		if (radioButton1->Checked) // Permet de v�rifier si le bouton est coch�
-		{
-			// Permet de cr�er un objet de type MyForm1
-			MyForm1^ f1 = gcnew MyForm1();
-			f1->Show();							   // Permet d'afficher le nouveau formulaire
-		}
-		else if (radioButton2->Checked) // Permet de v�rifier si le bouton est coch�
-		{
-			// Permet de cr�er un objet de type MyForm2
-			MyForm2^ f2 = gcnew MyForm2();
-			f2->Show();							   // Permet d'afficher le nouveau formulaire
-		}
-		else if (radioButton3->Checked) // Permet de v�rifier si le bouton est coch�
-		{
-			// Permet de cr�er un objet de type MyForm3
-			MyForm3^ f3 = gcnew MyForm3();
-			f3->Show();							   // Permet d'afficher le nouveau formulaire
-		}
-		else if (radioButton4->Checked) // Permet de v�rifier si le bouton est coch�
-		{
-			// Permet de cr�er un objet de type MyForm4
-			MyForm4^ f4 = gcnew MyForm4();
-			f4->Show();							   // Permet d'afficher le nouveau formulaire
-		}
-		else if (radioButton5->Checked) // Permet de v�rifier si le bouton est coch�
-		{
-			// Permet de cr�er un objet de type MyForm5
-			MyForm5^ f5 = gcnew MyForm5();
-			f5->Show();							   // Permet d'afficher le nouveau formulaire
-		}
 
-		/*
-
-
-
-
-		*/
+	
+	private: System::Void b_personnel_Click(System::Object^ sender, System::EventArgs^ e) {
+		MyForm1^ f1 = gcnew MyForm1();
+		f1->Show();
 	}
-	private: System::Void radioButton1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+
+	private: System::Void b_client_Click(System::Object^ sender, System::EventArgs^ e) {
+		MyForm2^ f2 = gcnew MyForm2();	   
+		f2->Show();
+	}
+
+	private: System::Void b_commandes_Click(System::Object^ sender, System::EventArgs^ e) {
+		MyForm3^ f3 = gcnew MyForm3();
+		f3->Show();
+	}
+
+	private: System::Void b_stocks_Click(System::Object^ sender, System::EventArgs^ e) {
+		MyForm4^ f4 = gcnew MyForm4();
+		f4->Show();
+	}
+
+	private: System::Void b_statistiques_Click(System::Object^ sender, System::EventArgs^ e) {
+		MyForm5^ f5 = gcnew MyForm5();
+		f5->Show();
 	}
 };
 }
