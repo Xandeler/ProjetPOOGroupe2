@@ -133,6 +133,7 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   this->dataGridView1->AllowUserToAddRows = false;
 			   this->dataGridView1->Anchor = System::Windows::Forms::AnchorStyles::None;
+			   this->dataGridView1->BackgroundColor = System::Drawing::SystemColors::ButtonHighlight;
 			   this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			   this->dataGridView1->Location = System::Drawing::Point(36, 37);
 			   this->dataGridView1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);

@@ -125,6 +125,7 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // dataGridView_stock
 			   // 
+			   this->dataGridView_stock->BackgroundColor = System::Drawing::SystemColors::ButtonHighlight;
 			   this->dataGridView_stock->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			   this->dataGridView_stock->GridColor = System::Drawing::SystemColors::HighlightText;
 			   this->dataGridView_stock->Location = System::Drawing::Point(22, 30);

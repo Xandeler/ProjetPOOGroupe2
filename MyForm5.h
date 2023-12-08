@@ -102,7 +102,7 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // textBox_resultat
 			   // 
-			   this->textBox_resultat->BackColor = System::Drawing::SystemColors::AppWorkspace;
+			   this->textBox_resultat->BackColor = System::Drawing::SystemColors::ButtonHighlight;
 			   this->textBox_resultat->Location = System::Drawing::Point(8, 35);
 			   this->textBox_resultat->Multiline = true;
 			   this->textBox_resultat->Name = L"textBox_resultat";
