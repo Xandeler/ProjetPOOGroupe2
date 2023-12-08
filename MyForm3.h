@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <cstdlib>
-#include "AccesBase.h"
 #include "StockageCommandes.h"
+#include "Adresse.h"
 
 namespace ProjetPOOGroupe2 {
 
@@ -59,7 +59,8 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::TextBox^ textBox2;
 
-
+	private: StockageCommandes^ commandes = gcnew StockageCommandes();
+	private: DataSet^ dataset = gcnew DataSet();
 
 
 
@@ -80,7 +81,6 @@ namespace ProjetPOOGroupe2 {
 		/// Variable n cessaire au concepteur.
 		/// </summary>
 		System::ComponentModel::Container^ components;
-		AB::AccesBase^ acces_base;
 	private: System::Windows::Forms::Label^ label_stock;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Label^ label5;
@@ -91,7 +91,6 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::TextBox^ textBox5;
 	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::TextBox^ textBox6;
-		   StockageCommandes^ commandes;
 
 
 #pragma region Windows Form Designer generated code
@@ -222,7 +221,6 @@ namespace ProjetPOOGroupe2 {
 			   this->label1->Size = System::Drawing::Size(158, 18);
 			   this->label1->TabIndex = 8;
 			   this->label1->Text = L"Reference Commande";
-			   this->label1->Click += gcnew System::EventHandler(this, &MyForm3::label1_Click);
 			   // 
 			   // label2
 			   // 
@@ -450,65 +448,81 @@ namespace ProjetPOOGroupe2 {
 	private: void refresh_datagrid()
 	{
 		this->dataGridView1->Refresh();
-
-		this->acces_base->set_oDs(this->acces_base->getRows(this->commandes->afficher(), "Liste_des_commandes"));
-		this->dataGridView1->DataSource = this->acces_base->get_oDs();
-		this->dataGridView1->DataMember = "Liste_des_commandes";
-
-		this->txt_results->Text = "Données générées";
 	}
 
-	private: int get_selected_ID()
+	private: void affichage_tout()
 	{
-		String^ selectedIDstring = this->dataGridView1->SelectedRows[0]->Cells["id"]->Value->ToString();
-		return Convert::ToInt32(selectedIDstring);
+		this->dataGridView1->Refresh();
 
+		this->dataset = this->commandes->afficher_tout("Liste_Commandes");
+		this->dataGridView1->DataSource = this->dataset;
+		this->dataGridView1->DataMember = "Liste_Commandes";
 	}
 
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{
-		refresh_datagrid();
-	}
-
-
-	private: System::Void btn_load_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		try
-		{
-			refresh_datagrid();
-		}
-		catch (Exception^ execept)
-		{
-			this->txt_results->Text = execept->Message;
-			this->txt_results->Text += "\r\n";
-			this->txt_results->Text += execept->StackTrace;
-		}
+		affichage_tout();
 	}
 
 	private: System::Void btn_ajouter_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		try
 		{
-			refresh_datagrid();
+			int^ id = 0;
+			String^ reference = this->tb_nom->Text;
+			String^ date_livraison = this->textBox2->Text;
+			String^ date_emission = this->textBox1->Text;
+			String^ date_paiement = this->textBox3->Text;
+			String^ moyen_paiement = this->textBox4->Text;
+			double^ total_ht = 0.0;
+			double^ total_ttc = 0.0;
+			String^ nom = "rien";
+			AD::Adresse^ adresse = gcnew AD::Adresse();
+			int^ num = 0;
+			String^ logo = "rien";
+			AD::Adresse^ adresse_f = gcnew AD::Adresse();
+			AD::Adresse^ adresse_l = gcnew AD::Adresse();
+
+
+			this->commandes->ajouter(id, reference, date_livraison, date_emission, date_paiement, moyen_paiement, total_ht, total_ttc, nom, adresse, num, logo, adresse_f, adresse_l);
 
 			this->txt_results->Text = "Données entrées avec succès";
+
+			affichage_tout();
 		}
 		catch (Exception^ execept)
 		{
 			this->txt_results->Text = execept->Message;
 			this->txt_results->Text += "\r\n";
 			this->txt_results->Text += execept->StackTrace;
-
-
 		}
 	}
 
 	private: System::Void btn_supprimer_Click(System::Object^ sender, System::EventArgs^ e) {
 		try
 		{
-			refresh_datagrid();
+			int^ id = Convert::ToInt32(this->tb_prenom->Text);
+			String^ reference = this->tb_nom->Text;
+			String^ date_livraison = this->textBox2->Text;
+			String^ date_emission = this->textBox1->Text;
+			String^ date_paiement = this->textBox3->Text;
+			String^ moyen_paiement = this->textBox4->Text;
+			double^ total_ht = 0.0;
+			double^ total_ttc = 0.0;
+			String^ nom = "rien";
+			AD::Adresse^ adresse = gcnew AD::Adresse();
+			int^ num = 0;
+			String^ logo = "rien";
+			AD::Adresse^ adresse_f = gcnew AD::Adresse();
+			AD::Adresse^ adresse_l = gcnew AD::Adresse();
+
+
+			this->commandes->supprimer(id, reference, date_livraison, date_emission, date_paiement, moyen_paiement, total_ht, total_ttc, nom, adresse, num, logo, adresse_f, adresse_l);
+
 
 			this->txt_results->Text = "Données supprimées avec succès";
+
+			affichage_tout();
 
 		}
 		catch (Exception^ execept)
@@ -516,7 +530,6 @@ namespace ProjetPOOGroupe2 {
 			this->txt_results->Text = execept->Message;
 			this->txt_results->Text += "\r\n";
 			this->txt_results->Text += execept->StackTrace;
-
 		}
 	}
 	private: System::Void btn_modifier_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -524,7 +537,27 @@ namespace ProjetPOOGroupe2 {
 		{
 			refresh_datagrid();
 
+			int^ id = Convert::ToInt32(this->tb_prenom->Text);
+			String^ reference = this->tb_nom->Text;
+			String^ date_livraison = this->textBox2->Text;
+			String^ date_emission = this->textBox1->Text;
+			String^ date_paiement = this->textBox3->Text;
+			String^ moyen_paiement = this->textBox4->Text;
+			double^ total_ht = 0.0;
+			double^ total_ttc = 0.0;
+			String^ nom = "rien";
+			AD::Adresse^ adresse = gcnew AD::Adresse();
+			int^ num = 0;
+			String^ logo = "rien";
+			AD::Adresse^ adresse_f = gcnew AD::Adresse();
+			AD::Adresse^ adresse_l = gcnew AD::Adresse();
+
+
+			this->commandes->modifier(id, reference, date_livraison, date_emission, date_paiement, moyen_paiement, total_ht, total_ttc, nom, adresse, num, logo, adresse_f, adresse_l);
+
 			this->txt_results->Text = "Données modifiées avec succès";
+
+			affichage_tout();
 		}
 		catch (Exception^ execept)
 		{
@@ -534,7 +567,7 @@ namespace ProjetPOOGroupe2 {
 		}
 	}
 
-	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
+
+
 };
 }

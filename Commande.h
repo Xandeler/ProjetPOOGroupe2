@@ -11,10 +11,6 @@ ref class Commande
 private:
 	AB::AccesBase^ Acces_Base;
 	int^ ID_Commande;
-	String^ Lettres_Nom;
-	String^ Lettres_Prenom;
-	int^ Annee;
-	String^ Lettres_Ville;
 	String^ Reference;
 	String^ Date_Livraison;
 	String^ Date_Emission;
@@ -31,19 +27,11 @@ private:
 
 public:
 	Commande();
-	Commande(int^ id, String^ lettres_nom, String^ lettres_prenom, int^ annee, String^ lettres_ville, String^ date_livraison, String^ date_emission, String^ date_paiement, String^ moyen_paiement, double^ total_ht, double^ total_ttc, String^ nom_societe, AD::Adresse^ adresse_societe, int^ numero_service_clients, String^ logo, AD::Adresse^ adresse_facturation, AD::Adresse^ adresse_livraison);
+	Commande(int^ id, String^ reference, String^ date_livraison, String^ date_emission, String^ date_paiement, String^ moyen_paiement, double^ total_ht, double^ total_ttc, String^ nom_societe, AD::Adresse^ adresse_societe, int^ numero_service_clients, String^ logo, AD::Adresse^ adresse_facturation, AD::Adresse^ adresse_livraison);
 	int^ get_ID_Commande();
 	void set_ID_Commande(int^ id);
-	String^ get_Lettres_Nom();
-	void set_Lettres_Nom(String^ lettres_nom);
-	String^ get_Lettres_Prenom();
-	void set_Lettres_Prenom(String^ lettres_prenom);
-	int^ get_Annee();
-	void set_Annee(int^ annee);
-	String^ get_Lettres_Ville();
-	void set_Lettres_Ville(String^ lettres_ville);
 	String^ get_Reference();
-	void set_Reference(int^ id, String^ lettrres_nom, String^ lettres_prenom, String^ lettres_ville, int^ annee);
+	void set_Reference(String^ reference);
 	String^ get_Date_Livraison();
 	void set_Date_Livraison(String^ date_livraison);
 	String^ get_Date_Emission();

@@ -126,6 +126,7 @@
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Commande.cpp" />
     <ClCompile Include="mapStock.cpp" />
+    <ClCompile Include="MapStockageCommande.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="MyForm1.cpp" />
     <ClCompile Include="MyForm2.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="Commande.h" />
     <ClInclude Include="mapStock.h" />
     <ClInclude Include="MapClient.h" />
+    <ClInclude Include="MapStockageCommande.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>

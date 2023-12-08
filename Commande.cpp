@@ -5,14 +5,10 @@ Commande::Commande()
 
 }
 
-Commande::Commande(int^ id, String^ lettres_nom, String^ lettres_prenom, int^ annee, String^ lettres_ville, String^ date_livraison, String^ date_emission, String^ date_paiement, String^ moyen_paiement, double^ total_ht, double^ total_ttc, String^ nom_societe, AD::Adresse^ adresse_societe, int^ numero_service_clients, String^ logo, AD::Adresse^ adresse_facturation, AD::Adresse^ adresse_livraison)
+Commande::Commande(int^ id, String^ reference, String^ date_livraison, String^ date_emission, String^ date_paiement, String^ moyen_paiement, double^ total_ht, double^ total_ttc, String^ nom_societe, AD::Adresse^ adresse_societe, int^ numero_service_clients, String^ logo, AD::Adresse^ adresse_facturation, AD::Adresse^ adresse_livraison)
 {
     this->set_ID_Commande(id);
-    this->set_Lettres_Nom(lettres_nom);
-    this->set_Lettres_Prenom(lettres_prenom);
-    this->set_Annee(annee);
-    this->set_Lettres_Ville(lettres_ville);
-    this->set_Reference(id, lettres_nom, lettres_prenom, lettres_ville, annee);
+    this->set_Reference(reference);
     this->set_Date_Livraison(date_livraison);
     this->set_Date_Emission(date_emission);
     this->set_Date_Paiement(date_paiement);
@@ -37,54 +33,14 @@ void Commande::set_ID_Commande(int^ id)
     this->ID_Commande = id;
 }
 
-String^ Commande::get_Lettres_Nom()
-{
-    return this->Lettres_Nom;
-}
-
-void Commande::set_Lettres_Nom(String^ lettres_nom)
-{
-    this->Lettres_Nom = lettres_nom;
-}
-
-String^ Commande::get_Lettres_Prenom()
-{
-    return this->Lettres_Prenom;
-}
-
-void Commande::set_Lettres_Prenom(String^ lettres_prenom)
-{
-    this->Lettres_Prenom = lettres_prenom;
-}
-
-int^ Commande::get_Annee()
-{
-    return this->Annee;
-}
-
-void Commande::set_Annee(int^ annee)
-{
-    this->Annee = annee;
-}
-
-String^ Commande::get_Lettres_Ville()
-{
-    return this->Lettres_Ville;
-}
-
-void Commande::set_Lettres_Ville(String^ lettres_ville)
-{
-    this->Lettres_Ville = lettres_ville;
-}
-
 String^ Commande::get_Reference()
 {
     return this->Reference;
 }
 
-void Commande::set_Reference(int^ id, String^ lettres_nom, String^ lettres_prenom, String^ lettres_ville, int^ annee)
+void Commande::set_Reference(String^ reference)
 {
-    this->Reference = lettres_prenom + lettres_nom + Convert::ToString(annee) + lettres_ville + Convert::ToString(id);
+    this->Reference = reference;
 }
 
 String^ Commande::get_Date_Livraison()
@@ -214,12 +170,12 @@ void Commande::ajouter_Article()
 
 void Commande::supprimer_Article()
 {
-    
+
 }
 
 void Commande::modifier_Article()
 {
-    
+
 }
 
 String^ Commande::afficher_Article()
