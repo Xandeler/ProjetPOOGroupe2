@@ -11,13 +11,13 @@ private:
 
 public:
 	Statistiques();
-	void Calcul_Panier_Moyen();
-	void Calcul_Chiffre_Affaires();
-	void Produit_A_Commander();
-	void Calcul_Montant_Client(int^ id);
-	void Articles_Plus_Vendus();
-	void Articles_Moins_Vendus();
-	void Calcul_Valeur_Commerciale_Stock();
-	void Calcul_Valeur_Achat_Stock();
+	System::Data::DataSet^ Calcul_Panier_Moyen(String^ NomTable);
+	System::Data::DataSet^ Calcul_Chiffre_Affaires(String^ NomTable);
+	System::Data::DataSet^ Produit_A_Commander(String^ NomTable);
+	System::Data::DataSet^ Calcul_Montant_Client(int^ id, String^ NomTable);
+	System::Data::DataSet^ Articles_Plus_Vendus(String^ NomTable);
+	System::Data::DataSet^ Articles_Moins_Vendus(String^ NomTable);
+	System::Data::DataSet^ Calcul_Valeur_Commerciale_Stock(String^ NomTable);
+	System::Data::DataSet^ Calcul_Valeur_Achat_Stock(String^ NomTable);
 	//String^ Simulation_Variations();
 };

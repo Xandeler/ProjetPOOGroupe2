@@ -56,11 +56,14 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::Label^ label_ID_client;
 	private: System::Windows::Forms::Label^ label_statistiques;
 
+	private: Statistiques^ statistiques;
+	private: System::Data::DataSet^ dataset;
+
 		   /// <summary>
 		   /// Variable n cessaire au concepteur.
 		   /// </summary>
 	private: System::ComponentModel::Container^ components;
-	private: Statistiques^ statistiques;
+	
 
 #pragma region Windows Form Designer generated code
 		   /// <summary>
@@ -262,7 +265,7 @@ namespace ProjetPOOGroupe2 {
 		this->textBox_resultat->Clear();
 
 		this->textBox_resultat->Text += "Le panier moyen est de : ";
-		this->textBox_resultat->Text += this->statistiques->Calcul_Panier_Moyen();
+		this->textBox_resultat->Text += this->statistiques->Calcul_Panier_Moyen("PanierMoyen");
 		this->textBox_resultat->Text += " euros.";
 	}
 
@@ -271,7 +274,7 @@ namespace ProjetPOOGroupe2 {
 		this->textBox_resultat->Clear();
 
 		this->textBox_resultat->Text += "Le chiffre d'affaires du mois en cours est de : ";
-		this->textBox_resultat->Text += this->statistiques->Calcul_Chiffre_Affaires();
+		this->textBox_resultat->Text += this->statistiques->Calcul_Chiffre_Affaires("ChiffreAffaires");
 		this->textBox_resultat->Text += " euros.";
 	}
 
@@ -280,7 +283,7 @@ namespace ProjetPOOGroupe2 {
 		this->textBox_resultat->Clear();
 
 		this->textBox_resultat->Text += "Les articles sous le seuil de reapprovisionnement sont les suivants : ";
-		this->textBox_resultat->Text += this->statistiques->Produit_A_Commander();
+		this->textBox_resultat->Text += this->statistiques->Produit_A_Commander("ProduitCommander");
 		this->textBox_resultat->Text += ".";
 	}
 
@@ -291,7 +294,7 @@ namespace ProjetPOOGroupe2 {
 		this->textBox_resultat->Text += "Le montant total de tous les achats effectues par le client ";
 		this->textBox_resultat->Text += this->textBox_ID_client->Text;
 		this->textBox_resultat->Text += " est de : ";
-		this->textBox_resultat->Text += this->statistiques->Calcul_Montant_Client(Convert::ToInt32(this->textBox_ID_client->Text));
+		this->textBox_resultat->Text += this->statistiques->Calcul_Montant_Client(Convert::ToInt32(this->textBox_ID_client->Text), "MontantClient");
 		this->textBox_resultat->Text += " euros.";
 	}
 
@@ -300,7 +303,7 @@ namespace ProjetPOOGroupe2 {
 		this->textBox_resultat->Clear();
 
 		this->textBox_resultat->Text += "Les dix articles les plus vendus sont : ";
-		this->textBox_resultat->Text += this->statistiques->Articles_Plus_Vendus();
+		this->textBox_resultat->Text += this->statistiques->Articles_Plus_Vendus("ArticlesPlusVendus");
 		this->textBox_resultat->Text += ".";
 	}
 
@@ -309,7 +312,7 @@ namespace ProjetPOOGroupe2 {
 		this->textBox_resultat->Clear();
 
 		this->textBox_resultat->Text += "Les dix articles les moins vendus sont : ";
-		this->textBox_resultat->Text += this->statistiques->Articles_Moins_Vendus();
+		this->textBox_resultat->Text += this->statistiques->Articles_Moins_Vendus("ArticlesMoinsVendus");
 		this->textBox_resultat->Text += ".";
 	}
 
@@ -318,7 +321,7 @@ namespace ProjetPOOGroupe2 {
 		this->textBox_resultat->Clear();
 
 		this->textBox_resultat->Text += "La valeur commerciale du stock est de : ";
-		this->textBox_resultat->Text += this->statistiques->Calcul_Valeur_Commerciale_Stock();
+		this->textBox_resultat->Text += this->statistiques->Calcul_Valeur_Commerciale_Stock("ValeurCommercialeStock");
 		this->textBox_resultat->Text += " euros.";
 	}
 
@@ -327,7 +330,7 @@ namespace ProjetPOOGroupe2 {
 		this->textBox_resultat->Clear();
 
 		this->textBox_resultat->Text += "La valeur d'achat du stock est de : ";
-		this->textBox_resultat->Text += this->statistiques->Calcul_Valeur_Achat_Stock();
+		this->textBox_resultat->Text += this->statistiques->Calcul_Valeur_Achat_Stock("ValeurAchatStock");
 		this->textBox_resultat->Text += "euros.";
 	}
 	};
