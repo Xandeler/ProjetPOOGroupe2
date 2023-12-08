@@ -581,6 +581,14 @@ namespace ProjetPOOGroupe2 {
 	{
 		this->pe->supprimerUnePersonne(Convert::ToInt32(this->tb_ID->Text));
 		this->tb_ID->Text = "";
+		this->tb_nom->Text = "";
+		this->tb_prenom->Text = "";
+		this->tb_date->Text = "";
+		this->tb_superieur->Text = "";
+		this->tb_nomrue->Text = "";
+		this->tb_numrue->Text = "";
+		this->tb_ville->Text = "";
+
 		actualiser();
 	}
 	private: System::Void btn_modifier_Click(System::Object^ sender, System::EventArgs^ e) {

@@ -440,6 +440,12 @@ namespace ProjetPOOGroupe2 {
 		int^ seuil_reduction_article = this->get_selected_reduction();
 
 		this->stock->supprimer(id_article, nom_article, quantite_article, prixHT_article, seuil_reapprovisionnement_article, seuil_reduction_article);
+		this->textBox_nom_article->Text = "";
+		this->textBox_quantite_article->Text = "";
+		this->textBox_prix_ht_article->Text = "";
+		this->textBox_seuil_reapprovisionnement_article->Text = "";
+		this->textBox_seuil_reduction_article->Text = "";
+
 
 		this->affichage();
 	}
