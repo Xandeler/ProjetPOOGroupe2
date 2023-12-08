@@ -70,7 +70,7 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::Label^ label_stock;
 
 
-	private: System::Windows::Forms::Button^ button_loadDB;
+
 
 	private: NS_Stock::Stock^ stock;
 	private: System::Data::DataSet^ dataset;
@@ -91,6 +91,7 @@ namespace ProjetPOOGroupe2 {
 		   /// </summary>
 		   void InitializeComponent(void)
 		   {
+			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm4::typeid));
 			   this->button_retour = (gcnew System::Windows::Forms::Button());
 			   this->dataGridView_stock = (gcnew System::Windows::Forms::DataGridView());
 			   this->button_modifier_article = (gcnew System::Windows::Forms::Button());
@@ -107,66 +108,78 @@ namespace ProjetPOOGroupe2 {
 			   this->textBox_quantite_article = (gcnew System::Windows::Forms::TextBox());
 			   this->label_quantite_article = (gcnew System::Windows::Forms::Label());
 			   this->label_stock = (gcnew System::Windows::Forms::Label());
-			   this->button_loadDB = (gcnew System::Windows::Forms::Button());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView_stock))->BeginInit();
 			   this->SuspendLayout();
 			   // 
 			   // button_retour
 			   // 
-			   this->button_retour->Location = System::Drawing::Point(0, 501);
+			   this->button_retour->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			   this->button_retour->ForeColor = System::Drawing::SystemColors::HotTrack;
+			   this->button_retour->Location = System::Drawing::Point(22, 544);
 			   this->button_retour->Name = L"button_retour";
 			   this->button_retour->Size = System::Drawing::Size(112, 36);
 			   this->button_retour->TabIndex = 4;
 			   this->button_retour->Text = L"RETOUR";
-			   this->button_retour->UseVisualStyleBackColor = true;
+			   this->button_retour->UseVisualStyleBackColor = false;
 			   this->button_retour->Click += gcnew System::EventHandler(this, &MyForm4::bouton_retour_click);
 			   // 
 			   // dataGridView_stock
 			   // 
 			   this->dataGridView_stock->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			   this->dataGridView_stock->GridColor = System::Drawing::SystemColors::HighlightText;
-			   this->dataGridView_stock->Location = System::Drawing::Point(179, 12);
+			   this->dataGridView_stock->Location = System::Drawing::Point(22, 30);
 			   this->dataGridView_stock->Name = L"dataGridView_stock";
 			   this->dataGridView_stock->RowHeadersWidth = 51;
 			   this->dataGridView_stock->RowTemplate->Height = 24;
 			   this->dataGridView_stock->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			   this->dataGridView_stock->Size = System::Drawing::Size(713, 212);
+			   this->dataGridView_stock->Size = System::Drawing::Size(853, 212);
 			   this->dataGridView_stock->TabIndex = 5;
 			   // 
 			   // button_modifier_article
 			   // 
-			   this->button_modifier_article->Location = System::Drawing::Point(181, 433);
+			   this->button_modifier_article->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			   this->button_modifier_article->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9));
+			   this->button_modifier_article->ForeColor = System::Drawing::SystemColors::HotTrack;
+			   this->button_modifier_article->Location = System::Drawing::Point(22, 445);
 			   this->button_modifier_article->Name = L"button_modifier_article";
-			   this->button_modifier_article->Size = System::Drawing::Size(147, 52);
+			   this->button_modifier_article->Size = System::Drawing::Size(211, 67);
 			   this->button_modifier_article->TabIndex = 6;
-			   this->button_modifier_article->Text = L"Modifier l\'article :";
-			   this->button_modifier_article->UseVisualStyleBackColor = true;
+			   this->button_modifier_article->Text = L"MODIFIER L\'ARTICLE";
+			   this->button_modifier_article->UseVisualStyleBackColor = false;
 			   this->button_modifier_article->Click += gcnew System::EventHandler(this, &MyForm4::bouton_modifier_article_click);
 			   // 
 			   // button_supprimer_article
 			   // 
-			   this->button_supprimer_article->Location = System::Drawing::Point(181, 346);
+			   this->button_supprimer_article->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			   this->button_supprimer_article->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9));
+			   this->button_supprimer_article->ForeColor = System::Drawing::SystemColors::HotTrack;
+			   this->button_supprimer_article->Location = System::Drawing::Point(22, 356);
 			   this->button_supprimer_article->Name = L"button_supprimer_article";
-			   this->button_supprimer_article->Size = System::Drawing::Size(147, 52);
+			   this->button_supprimer_article->Size = System::Drawing::Size(211, 67);
 			   this->button_supprimer_article->TabIndex = 7;
-			   this->button_supprimer_article->Text = L"Supprimer l\'article :";
-			   this->button_supprimer_article->UseVisualStyleBackColor = true;
+			   this->button_supprimer_article->Text = L"SUPPRIMER L\'ARTICLE";
+			   this->button_supprimer_article->UseVisualStyleBackColor = false;
 			   this->button_supprimer_article->Click += gcnew System::EventHandler(this, &MyForm4::bouton_supprimer_article_click);
 			   // 
 			   // button_ajouter_article
 			   // 
-			   this->button_ajouter_article->Location = System::Drawing::Point(181, 259);
+			   this->button_ajouter_article->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			   this->button_ajouter_article->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9));
+			   this->button_ajouter_article->ForeColor = System::Drawing::SystemColors::HotTrack;
+			   this->button_ajouter_article->Location = System::Drawing::Point(22, 265);
 			   this->button_ajouter_article->Name = L"button_ajouter_article";
-			   this->button_ajouter_article->Size = System::Drawing::Size(147, 52);
+			   this->button_ajouter_article->Size = System::Drawing::Size(211, 67);
 			   this->button_ajouter_article->TabIndex = 8;
-			   this->button_ajouter_article->Text = L"Ajouter un article :";
-			   this->button_ajouter_article->UseVisualStyleBackColor = true;
+			   this->button_ajouter_article->Text = L"AJOUTER UN ARTICLE";
+			   this->button_ajouter_article->UseVisualStyleBackColor = false;
 			   this->button_ajouter_article->Click += gcnew System::EventHandler(this, &MyForm4::bouton_ajouter_article_click);
 			   // 
 			   // label_nom_article
 			   // 
 			   this->label_nom_article->AutoSize = true;
-			   this->label_nom_article->Location = System::Drawing::Point(366, 259);
+			   this->label_nom_article->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			   this->label_nom_article->Location = System::Drawing::Point(362, 280);
 			   this->label_nom_article->Name = L"label_nom_article";
 			   this->label_nom_article->Size = System::Drawing::Size(106, 16);
 			   this->label_nom_article->TabIndex = 9;
@@ -174,14 +187,14 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // textBox_nom_article
 			   // 
-			   this->textBox_nom_article->Location = System::Drawing::Point(369, 288);
+			   this->textBox_nom_article->Location = System::Drawing::Point(368, 310);
 			   this->textBox_nom_article->Name = L"textBox_nom_article";
 			   this->textBox_nom_article->Size = System::Drawing::Size(100, 22);
 			   this->textBox_nom_article->TabIndex = 10;
 			   // 
 			   // textBox_seuil_reapprovisionnement_article
 			   // 
-			   this->textBox_seuil_reapprovisionnement_article->Location = System::Drawing::Point(369, 376);
+			   this->textBox_seuil_reapprovisionnement_article->Location = System::Drawing::Point(368, 390);
 			   this->textBox_seuil_reapprovisionnement_article->Name = L"textBox_seuil_reapprovisionnement_article";
 			   this->textBox_seuil_reapprovisionnement_article->Size = System::Drawing::Size(100, 22);
 			   this->textBox_seuil_reapprovisionnement_article->TabIndex = 12;
@@ -189,7 +202,9 @@ namespace ProjetPOOGroupe2 {
 			   // label_seuil_reapprovisionnement_article
 			   // 
 			   this->label_seuil_reapprovisionnement_article->AutoSize = true;
-			   this->label_seuil_reapprovisionnement_article->Location = System::Drawing::Point(366, 347);
+			   this->label_seuil_reapprovisionnement_article->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			   this->label_seuil_reapprovisionnement_article->Location = System::Drawing::Point(286, 369);
 			   this->label_seuil_reapprovisionnement_article->Name = L"label_seuil_reapprovisionnement_article";
 			   this->label_seuil_reapprovisionnement_article->Size = System::Drawing::Size(256, 16);
 			   this->label_seuil_reapprovisionnement_article->TabIndex = 11;
@@ -197,7 +212,7 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // textBox_prix_ht_article
 			   // 
-			   this->textBox_prix_ht_article->Location = System::Drawing::Point(369, 463);
+			   this->textBox_prix_ht_article->Location = System::Drawing::Point(368, 474);
 			   this->textBox_prix_ht_article->Name = L"textBox_prix_ht_article";
 			   this->textBox_prix_ht_article->Size = System::Drawing::Size(100, 22);
 			   this->textBox_prix_ht_article->TabIndex = 14;
@@ -205,7 +220,9 @@ namespace ProjetPOOGroupe2 {
 			   // label_prix_ht_article
 			   // 
 			   this->label_prix_ht_article->AutoSize = true;
-			   this->label_prix_ht_article->Location = System::Drawing::Point(366, 434);
+			   this->label_prix_ht_article->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			   this->label_prix_ht_article->Location = System::Drawing::Point(358, 455);
 			   this->label_prix_ht_article->Name = L"label_prix_ht_article";
 			   this->label_prix_ht_article->Size = System::Drawing::Size(121, 16);
 			   this->label_prix_ht_article->TabIndex = 13;
@@ -213,7 +230,7 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // textBox_seuil_reduction_article
 			   // 
-			   this->textBox_seuil_reduction_article->Location = System::Drawing::Point(663, 376);
+			   this->textBox_seuil_reduction_article->Location = System::Drawing::Point(652, 388);
 			   this->textBox_seuil_reduction_article->Name = L"textBox_seuil_reduction_article";
 			   this->textBox_seuil_reduction_article->Size = System::Drawing::Size(100, 22);
 			   this->textBox_seuil_reduction_article->TabIndex = 18;
@@ -221,7 +238,9 @@ namespace ProjetPOOGroupe2 {
 			   // label_seuil_reduction_article
 			   // 
 			   this->label_seuil_reduction_article->AutoSize = true;
-			   this->label_seuil_reduction_article->Location = System::Drawing::Point(660, 347);
+			   this->label_seuil_reduction_article->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			   this->label_seuil_reduction_article->Location = System::Drawing::Point(614, 369);
 			   this->label_seuil_reduction_article->Name = L"label_seuil_reduction_article";
 			   this->label_seuil_reduction_article->Size = System::Drawing::Size(184, 16);
 			   this->label_seuil_reduction_article->TabIndex = 17;
@@ -229,7 +248,7 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // textBox_quantite_article
 			   // 
-			   this->textBox_quantite_article->Location = System::Drawing::Point(663, 288);
+			   this->textBox_quantite_article->Location = System::Drawing::Point(652, 310);
 			   this->textBox_quantite_article->Name = L"textBox_quantite_article";
 			   this->textBox_quantite_article->Size = System::Drawing::Size(100, 22);
 			   this->textBox_quantite_article->TabIndex = 16;
@@ -237,7 +256,9 @@ namespace ProjetPOOGroupe2 {
 			   // label_quantite_article
 			   // 
 			   this->label_quantite_article->AutoSize = true;
-			   this->label_quantite_article->Location = System::Drawing::Point(660, 259);
+			   this->label_quantite_article->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			   this->label_quantite_article->Location = System::Drawing::Point(636, 280);
 			   this->label_quantite_article->Name = L"label_quantite_article";
 			   this->label_quantite_article->Size = System::Drawing::Size(126, 16);
 			   this->label_quantite_article->TabIndex = 15;
@@ -246,29 +267,21 @@ namespace ProjetPOOGroupe2 {
 			   // label_stock
 			   // 
 			   this->label_stock->AutoSize = true;
+			   this->label_stock->BackColor = System::Drawing::SystemColors::InactiveCaption;
 			   this->label_stock->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			   this->label_stock->Location = System::Drawing::Point(12, 9);
+			   this->label_stock->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9));
+			   this->label_stock->Location = System::Drawing::Point(22, 8);
 			   this->label_stock->Name = L"label_stock";
-			   this->label_stock->Size = System::Drawing::Size(54, 18);
+			   this->label_stock->Size = System::Drawing::Size(62, 20);
 			   this->label_stock->TabIndex = 21;
 			   this->label_stock->Text = L"STOCK";
-			   // 
-			   // button_loadDB
-			   // 
-			   this->button_loadDB->Location = System::Drawing::Point(22, 52);
-			   this->button_loadDB->Name = L"button_loadDB";
-			   this->button_loadDB->Size = System::Drawing::Size(136, 145);
-			   this->button_loadDB->TabIndex = 22;
-			   this->button_loadDB->Text = L"Load DB";
-			   this->button_loadDB->UseVisualStyleBackColor = true;
-			   this->button_loadDB->Click += gcnew System::EventHandler(this, &MyForm4::bouton_load_click);
 			   // 
 			   // MyForm4
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			   this->ClientSize = System::Drawing::Size(904, 538);
-			   this->Controls->Add(this->button_loadDB);
+			   this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
+			   this->ClientSize = System::Drawing::Size(904, 592);
 			   this->Controls->Add(this->label_stock);
 			   this->Controls->Add(this->textBox_seuil_reduction_article);
 			   this->Controls->Add(this->label_seuil_reduction_article);
@@ -285,6 +298,8 @@ namespace ProjetPOOGroupe2 {
 			   this->Controls->Add(this->button_modifier_article);
 			   this->Controls->Add(this->dataGridView_stock);
 			   this->Controls->Add(this->button_retour);
+			   this->MaximumSize = System::Drawing::Size(922, 639);
+			   this->MinimumSize = System::Drawing::Size(922, 639);
 			   this->Name = L"MyForm4";
 			   this->Text = L"Gestion du stock";
 			   this->Load += gcnew System::EventHandler(this, &MyForm4::MyForm4_Load);
@@ -294,12 +309,6 @@ namespace ProjetPOOGroupe2 {
 
 		   }
 #pragma endregion
-
-	private: System::Void MyForm4_Load(System::Object^ sender, System::EventArgs^ e)
-	{
-		this->stock = gcnew NS_Stock::Stock();
-	}
-
 	private: void affichage()
 	{
 		this->dataGridView_stock->Refresh();
@@ -309,6 +318,13 @@ namespace ProjetPOOGroupe2 {
 		this->dataGridView_stock->DataMember = "Liste_Article";
 	}
 
+	private: System::Void MyForm4_Load(System::Object^ sender, System::EventArgs^ e)
+	{
+		this->stock = gcnew NS_Stock::Stock();
+		affichage();
+	}
+
+	
 	private: int^ get_selected_id()
 	{
 		int^ id_article = Convert::ToInt32(this->dataGridView_stock->SelectedRows[0]->Cells[0]->Value);
@@ -345,11 +361,6 @@ namespace ProjetPOOGroupe2 {
 		return reduction_article;
 	}
 
-	private: System::Void bouton_load_click(System::Object^ sender, System::EventArgs^ e)
-	{
-		this->affichage();
-	}
-
 	private: System::Void bouton_retour_click(System::Object^ sender, System::EventArgs^ e)
 	{
 		this->Hide();
@@ -365,6 +376,13 @@ namespace ProjetPOOGroupe2 {
 		int^ seuil_reduction_article = Convert::ToInt32(this->textBox_seuil_reduction_article->Text);
 
 		this->stock->ajouter(id_article, nom_article, quantite_article, prixHT_article, seuil_reapprovisionnement_article, seuil_reduction_article);
+
+		this->textBox_nom_article->Text = "";
+		this->textBox_quantite_article->Text = "";
+		this->textBox_prix_ht_article->Text = "";
+		this->textBox_seuil_reapprovisionnement_article->Text = "";
+		this->textBox_seuil_reduction_article->Text = "";
+
 
 		this->affichage();
 	}
@@ -400,7 +418,11 @@ namespace ProjetPOOGroupe2 {
 		int^ seuil_reduction_article_m = Convert::ToInt32(this->textBox_seuil_reduction_article->Text);
 
 		this->stock->modifier(id_article, nom_article, quantite_article, prixHT_article, seuil_reapprovisionnement_article, seuil_reduction_article, id_article_m, nom_article_m, quantite_article_m, prixHT_article_m, seuil_reapprovisionnement_article_m, seuil_reduction_article_m);
-
+		this->textBox_nom_article->Text = "";
+		this->textBox_quantite_article->Text = "";
+		this->textBox_prix_ht_article->Text = "";
+		this->textBox_seuil_reapprovisionnement_article->Text = "";
+		this->textBox_seuil_reduction_article->Text = "";
 		this->affichage();
 	}
 	};
