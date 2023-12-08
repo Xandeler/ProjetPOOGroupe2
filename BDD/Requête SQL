@@ -288,9 +288,14 @@ SELECT
     C.Emission_Commande,
     A.Nom_Article,
     Co.Quantite_Commande_Article,
-    P.Moyen_Paiement,
-    P.Date_Paiement,
-    P.Date_Solde_Paiement
+    C.Moyen_Paiement,
+    C.Date_Paiement,
+    SUM(Prix_HT_Article * Taux_TVA_Modif * Quantite_Commande_Article * 
+        CASE 
+            WHEN ISNULL(M.Taux_Reduction_Modif, 0) = 0 THEN 1 
+            ELSE M.Taux_Reduction_Modif 
+        END) AS Total_TTC,
+    SUM(Prix_HT_Article * Quantite_Commande_Article) AS Total_HT
 FROM
     Commande C
 JOIN
@@ -301,9 +306,22 @@ JOIN
     Compose Co ON C.ID_Commande = Co.ID_Commande
 JOIN
     Article A ON Co.Reference_Article = A.Reference_Article
-LEFT JOIN
-    Paiement P ON C.ID_Commande = P.ID_Commande
-WHERE C.ID_Commande = 5;
+JOIN 
+    Comporte Cp ON Cp.Reference_Article = A.Reference_Article
+JOIN
+    Modif M ON M.ID_Modif = Cp.ID_Modif
+WHERE C.ID_Commande = 5
+GROUP BY
+    C.ID_Commande,
+    Cl.ID_Clients,
+    C.Reference_Commande,
+    C.Livraison_Prevue_Commande,
+    C.Emission_Commande,
+    A.Nom_Article,
+    Co.Quantite_Commande_Article,
+    C.Moyen_Paiement,
+    C.Date_Paiement;
+
 
 //Insérer une commande
 
