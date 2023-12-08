@@ -123,29 +123,30 @@ System::String^ CL::Client::supprimer_client()
 
 }
 
-System::String^ CL::Client::modifier_client(String^ nom_villef, String^ nom_villel)
+System::String^ CL::Client::modifier_client(int id_client, String^ nom_villef, String^ nom_villel)
 {
-return
-    "DECLARE @ID_AdresseFacturation INT, @ID_AdresseLivraison INT; " +
-    "UPDATE [Electronic].[dbo].[Personne] SET Nom_Personne = '" + this->get_Nom() + "', Prenom_Personne = '" + this->get_Prenom() + "' WHERE ID_Personne = " + this->get_ID_Personne() + "; " +
-    "UPDATE [Electronic].[dbo].[Adresse] SET " +
-    "Rue_Adresse = '" + this->Adresse_Facturation->get_Rue() + "', " +
-    "Numero_Maison_Adresse = " + this->Adresse_Facturation->get_Numero_Maison() + ", " +
-    "Nature_Adresse = '" + this->Adresse_Facturation->get_Nature() + "', " +
-    "ID_Ville = " + this->Adresse_Facturation->verifier_Ville(nom_villef) + " " +
-    "WHERE ID_Adresse = (SELECT TOP 1 ID_Adresse FROM [Electronic].[dbo].[Possede] WHERE ID_Personne = " + this->get_ID_Personne() + " AND Nature_Adresse = 'Facturation'); " +
-    "UPDATE [Electronic].[dbo].[Adresse] SET " +
-    "Rue_Adresse = '" + this->Adresse_Livraison->get_Rue() + "', " +
-    "Numero_Maison_Adresse = " + this->Adresse_Livraison->get_Numero_Maison() + ", " +
-    "Nature_Adresse = '" + this->Adresse_Livraison->get_Nature() + "', " +
-    "ID_Ville = " + this->Adresse_Livraison->verifier_Ville(nom_villel) + " " +
-    "WHERE ID_Adresse = (SELECT TOP 1 ID_Adresse FROM [Electronic].[dbo].[Possede] WHERE ID_Personne = " + this->get_ID_Personne() + " AND Nature_Adresse = 'Livraison'); " +
-    "UPDATE [Electronic].[dbo].[Clients] SET " +
-    "Date_Naissance_Clients = '" + this->get_Date_Naissance() + "', " +
-    "Date_Premier_Achat_Clients = '" + this->get_Date_Premier_Achat() + "' " +
-    "WHERE ID_Personne = " + this->get_ID_Personne() + ";";
+	return
+		"UPDATE [Electronic].[dbo].[Personne] SET Nom_Personne = '" + this->get_Nom() + "', Prenom_Personne = '" + this->get_Prenom() + "' WHERE ID_Personne = (SELECT ID_Personne FROM [Electronic].[dbo].[Clients] WHERE ID_Clients = " + id_client + "); " +
+		"UPDATE [Electronic].[dbo].[Adresse] SET " +
+		"Rue_Adresse = '" + this->Adresse_Facturation->get_Rue() + "', " +
+		"Numero_Maison_Adresse = " + this->Adresse_Facturation->get_Numero_Maison() + ", " +
+		"Nature_Adresse = '" + this->Adresse_Facturation->get_Nature() + "', " +
+		"ID_Ville = " + this->Adresse_Facturation->verifier_Ville(nom_villef) + " " +
+		"WHERE ID_Adresse IN (SELECT ID_Adresse FROM [Electronic].[dbo].[Possede] WHERE ID_Personne = (SELECT ID_Personne FROM [Electronic].[dbo].[Clients] WHERE ID_Clients = " + id_client + ") AND Nature_Adresse = 'Facturation'); " +
+		"UPDATE [Electronic].[dbo].[Adresse] SET " +
+		"Rue_Adresse = '" + this->Adresse_Livraison->get_Rue() + "', " +
+		"Numero_Maison_Adresse = " + this->Adresse_Livraison->get_Numero_Maison() + ", " +
+		"Nature_Adresse = '" + this->Adresse_Livraison->get_Nature() + "', " +
+		"ID_Ville = " + this->Adresse_Livraison->verifier_Ville(nom_villel) + " " +
+		"WHERE ID_Adresse IN (SELECT ID_Adresse FROM [Electronic].[dbo].[Possede] WHERE ID_Personne = (SELECT ID_Personne FROM [Electronic].[dbo].[Clients] WHERE ID_Clients = " + id_client + ") AND Nature_Adresse = 'Livraison'); " +
+		"UPDATE [Electronic].[dbo].[Clients] SET " +
+		"Date_Naissance_Clients = '" + this->get_Date_Naissance() + "', " +
+		"Date_Premier_Achat_Clients = '" + this->get_Date_Premier_Achat() + "' " +
+		"WHERE ID_Clients = " + id_client + ";";
+
 
 }
+
 
 System::String^ CL::Client::afficher_client()
 {
