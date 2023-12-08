@@ -131,6 +131,31 @@ System::String^ CL::Client::modifier_client()
 
 System::String^ CL::Client::afficher_client()
 {
-	return "SELECT Clients.ID_Clients, Personne.Nom_Personne, Personne.Prenom_Personne, Clients.Date_Naissance_Clients, Clients.Date_Premier_Achat_Clients, Adresse.Numero_Maison_Adresse, Adresse.Rue_Adresse, Adresse.Nature_Adresse, Ville.Nom_ville FROM(((Ville INNER JOIN Adresse ON Ville.ID_Ville = Adresse.ID_Adresse) INNER JOIN Possede ON Adresse.ID_Adresse = Possede.ID_Adresse) INNER JOIN Personne ON Possede.ID_Personne = Personne.ID_Personne) INNER JOIN Clients ON Personne.ID_Personne = Clients.ID_Personne;";
-
+	String^ sqlQuery = "SELECT ";
+	sqlQuery += "Clients.ID_Clients, ";
+	sqlQuery += "Personne.Nom_Personne, ";
+	sqlQuery += "Personne.Prenom_Personne, ";
+	sqlQuery += "Clients.Date_Naissance_Clients, ";
+	sqlQuery += "Clients.Date_Premier_Achat_Clients, ";
+	sqlQuery += "MAX(CASE WHEN Adresse.Nature_Adresse = 'Livraison' THEN CONCAT(Adresse.Numero_Maison_Adresse, '  ', Adresse.Rue_Adresse) END) AS Adresse_Livraison, ";
+	sqlQuery += "MAX(CASE WHEN Adresse.Nature_Adresse = 'Livraison' THEN Ville.Nom_ville END) AS Ville_Livraison, ";
+	sqlQuery += "MAX(CASE WHEN Adresse.Nature_Adresse = 'Facturation' THEN CONCAT(Adresse.Numero_Maison_Adresse, '  ', Adresse.Rue_Adresse) END) AS Adresse_Facturation, ";
+	sqlQuery += "MAX(CASE WHEN Adresse.Nature_Adresse = 'Facturation' THEN Ville.Nom_ville END) AS Ville_Facturation ";
+	sqlQuery += "FROM ";
+	sqlQuery += "Clients ";
+	sqlQuery += "INNER JOIN ";
+	sqlQuery += "Personne ON Clients.ID_Personne = Personne.ID_Personne ";
+	sqlQuery += "INNER JOIN ";
+	sqlQuery += "Possede ON Personne.ID_Personne = Possede.ID_Personne ";
+	sqlQuery += "INNER JOIN ";
+	sqlQuery += "Adresse ON Possede.ID_Adresse = Adresse.ID_Adresse ";
+	sqlQuery += "INNER JOIN ";
+	sqlQuery += "Ville ON Adresse.ID_Ville = Ville.ID_Ville ";
+	sqlQuery += "GROUP BY ";
+	sqlQuery += "Clients.ID_Clients, ";
+	sqlQuery += "Personne.Nom_Personne, ";
+	sqlQuery += "Personne.Prenom_Personne, ";
+	sqlQuery += "Clients.Date_Naissance_Clients, ";
+	sqlQuery += "Clients.Date_Premier_Achat_Clients; ";
+	return sqlQuery;
 }

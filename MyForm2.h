@@ -100,6 +100,7 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::TextBox^ tb_nvf;
 	private: System::Windows::Forms::Label^ label11;
 	private: System::Windows::Forms::Button^ btn_clear;
+	private: System::Windows::Forms::Label^ label_stock;
 	private: System::Windows::Forms::TextBox^ tb_livnu;
 
 
@@ -110,6 +111,7 @@ namespace ProjetPOOGroupe2 {
 		   /// </summary>
 		   void InitializeComponent(void)
 		   {
+			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm2::typeid));
 			   this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			   this->btn_retour = (gcnew System::Windows::Forms::Button());
 			   this->btn_ajouter = (gcnew System::Windows::Forms::Button());
@@ -140,6 +142,7 @@ namespace ProjetPOOGroupe2 {
 			   this->tb_nvf = (gcnew System::Windows::Forms::TextBox());
 			   this->label11 = (gcnew System::Windows::Forms::Label());
 			   this->btn_clear = (gcnew System::Windows::Forms::Button());
+			   this->label_stock = (gcnew System::Windows::Forms::Label());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			   this->SuspendLayout();
 			   // 
@@ -147,7 +150,7 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   this->dataGridView1->AllowUserToAddRows = false;
 			   this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			   this->dataGridView1->Location = System::Drawing::Point(13, 14);
+			   this->dataGridView1->Location = System::Drawing::Point(13, 38);
 			   this->dataGridView1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->dataGridView1->MultiSelect = false;
 			   this->dataGridView1->Name = L"dataGridView1";
@@ -160,67 +163,77 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // btn_retour
 			   // 
-			   this->btn_retour->Location = System::Drawing::Point(13, 544);
+			   this->btn_retour->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			   this->btn_retour->ForeColor = System::Drawing::SystemColors::HotTrack;
+			   this->btn_retour->Location = System::Drawing::Point(13, 554);
 			   this->btn_retour->Name = L"btn_retour";
 			   this->btn_retour->Size = System::Drawing::Size(112, 36);
 			   this->btn_retour->TabIndex = 4;
 			   this->btn_retour->Text = L"RETOUR";
-			   this->btn_retour->UseVisualStyleBackColor = true;
+			   this->btn_retour->UseVisualStyleBackColor = false;
 			   this->btn_retour->Click += gcnew System::EventHandler(this, &MyForm2::btn_retour_Click);
 			   // 
 			   // btn_ajouter
 			   // 
-			   this->btn_ajouter->Location = System::Drawing::Point(24, 265);
+			   this->btn_ajouter->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			   this->btn_ajouter->ForeColor = System::Drawing::SystemColors::HotTrack;
+			   this->btn_ajouter->Location = System::Drawing::Point(13, 270);
 			   this->btn_ajouter->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->btn_ajouter->Name = L"btn_ajouter";
-			   this->btn_ajouter->Size = System::Drawing::Size(171, 55);
+			   this->btn_ajouter->Size = System::Drawing::Size(211, 67);
 			   this->btn_ajouter->TabIndex = 2;
 			   this->btn_ajouter->Text = L"AJOUTER UN CLIENT";
-			   this->btn_ajouter->UseVisualStyleBackColor = true;
+			   this->btn_ajouter->UseVisualStyleBackColor = false;
 			   this->btn_ajouter->Click += gcnew System::EventHandler(this, &MyForm2::btn_ajouter_Click);
 			   // 
 			   // btn_supprimer
 			   // 
-			   this->btn_supprimer->Location = System::Drawing::Point(24, 429);
+			   this->btn_supprimer->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			   this->btn_supprimer->ForeColor = System::Drawing::SystemColors::HotTrack;
+			   this->btn_supprimer->Location = System::Drawing::Point(13, 424);
 			   this->btn_supprimer->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->btn_supprimer->Name = L"btn_supprimer";
-			   this->btn_supprimer->Size = System::Drawing::Size(171, 55);
+			   this->btn_supprimer->Size = System::Drawing::Size(211, 67);
 			   this->btn_supprimer->TabIndex = 3;
-			   this->btn_supprimer->Text = L"SUPPRIMER UN CLIENT (renseignez l'ID)";
-			   this->btn_supprimer->UseVisualStyleBackColor = true;
+			   this->btn_supprimer->Text = L"SUPPRIMER UN CLIENT";
+			   this->btn_supprimer->UseVisualStyleBackColor = false;
 			   this->btn_supprimer->Click += gcnew System::EventHandler(this, &MyForm2::btn_supprimer_Click);
 			   // 
 			   // btn_modifier
 			   // 
-			   this->btn_modifier->Location = System::Drawing::Point(24, 345);
+			   this->btn_modifier->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			   this->btn_modifier->ForeColor = System::Drawing::SystemColors::HotTrack;
+			   this->btn_modifier->Location = System::Drawing::Point(13, 347);
 			   this->btn_modifier->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->btn_modifier->Name = L"btn_modifier";
-			   this->btn_modifier->Size = System::Drawing::Size(171, 55);
+			   this->btn_modifier->Size = System::Drawing::Size(211, 67);
 			   this->btn_modifier->TabIndex = 4;
-			   this->btn_modifier->Text = L"MODIFIER UN CLIENT (renseignez l'ID)";
-			   this->btn_modifier->UseVisualStyleBackColor = true;
+			   this->btn_modifier->Text = L"MODIFIER UN CLIENT";
+			   this->btn_modifier->UseVisualStyleBackColor = false;
 			   this->btn_modifier->Click += gcnew System::EventHandler(this, &MyForm2::btn_modifier_Click);
 			   // 
 			   // tb_nom
 			   // 
-			   this->tb_nom->Location = System::Drawing::Point(557, 293);
+			   this->tb_nom->Location = System::Drawing::Point(656, 307);
 			   this->tb_nom->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_nom->Name = L"tb_nom";
-			   this->tb_nom->Size = System::Drawing::Size(284, 24);
+			   this->tb_nom->Size = System::Drawing::Size(334, 24);
 			   this->tb_nom->TabIndex = 6;
 			   // 
 			   // tb_prenom
 			   // 
-			   this->tb_prenom->Location = System::Drawing::Point(557, 256);
+			   this->tb_prenom->Location = System::Drawing::Point(656, 270);
 			   this->tb_prenom->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_prenom->Name = L"tb_prenom";
-			   this->tb_prenom->Size = System::Drawing::Size(284, 24);
+			   this->tb_prenom->Size = System::Drawing::Size(334, 24);
 			   this->tb_prenom->TabIndex = 7;
 			   // 
 			   // label1
 			   // 
 			   this->label1->AutoSize = true;
-			   this->label1->Location = System::Drawing::Point(489, 293);
+			   this->label1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			   this->label1->Location = System::Drawing::Point(588, 307);
 			   this->label1->Name = L"label1";
 			   this->label1->Size = System::Drawing::Size(61, 18);
 			   this->label1->TabIndex = 8;
@@ -229,7 +242,9 @@ namespace ProjetPOOGroupe2 {
 			   // label2
 			   // 
 			   this->label2->AutoSize = true;
-			   this->label2->Location = System::Drawing::Point(509, 259);
+			   this->label2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			   this->label2->Location = System::Drawing::Point(608, 273);
 			   this->label2->Name = L"label2";
 			   this->label2->Size = System::Drawing::Size(41, 18);
 			   this->label2->TabIndex = 9;
@@ -237,20 +252,22 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // txt_results
 			   // 
-			   this->txt_results->Location = System::Drawing::Point(544, 483);
+			   this->txt_results->Location = System::Drawing::Point(499, 526);
 			   this->txt_results->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			   this->txt_results->Multiline = true;
 			   this->txt_results->Name = L"txt_results";
 			   this->txt_results->ReadOnly = true;
-			   this->txt_results->Size = System::Drawing::Size(397, 97);
+			   this->txt_results->Size = System::Drawing::Size(491, 64);
 			   this->txt_results->TabIndex = 10;
 			   // 
 			   // lbl_resultats
 			   // 
 			   this->lbl_resultats->AutoSize = true;
+			   this->lbl_resultats->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			   this->lbl_resultats->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->lbl_resultats->Location = System::Drawing::Point(448, 483);
+			   this->lbl_resultats->Location = System::Drawing::Point(496, 504);
 			   this->lbl_resultats->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			   this->lbl_resultats->Name = L"lbl_resultats";
 			   this->lbl_resultats->Size = System::Drawing::Size(70, 18);
@@ -260,7 +277,9 @@ namespace ProjetPOOGroupe2 {
 			   // label3
 			   // 
 			   this->label3->AutoSize = true;
-			   this->label3->Location = System::Drawing::Point(417, 327);
+			   this->label3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			   this->label3->Location = System::Drawing::Point(516, 341);
 			   this->label3->Name = L"label3";
 			   this->label3->Size = System::Drawing::Size(133, 18);
 			   this->label3->TabIndex = 15;
@@ -269,7 +288,9 @@ namespace ProjetPOOGroupe2 {
 			   // label4
 			   // 
 			   this->label4->AutoSize = true;
-			   this->label4->Location = System::Drawing::Point(397, 365);
+			   this->label4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			   this->label4->Location = System::Drawing::Point(496, 379);
 			   this->label4->Name = L"label4";
 			   this->label4->Size = System::Drawing::Size(153, 18);
 			   this->label4->TabIndex = 16;
@@ -277,24 +298,26 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // tb_datepa
 			   // 
-			   this->tb_datepa->Location = System::Drawing::Point(556, 361);
+			   this->tb_datepa->Location = System::Drawing::Point(656, 375);
 			   this->tb_datepa->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_datepa->Name = L"tb_datepa";
-			   this->tb_datepa->Size = System::Drawing::Size(284, 24);
+			   this->tb_datepa->Size = System::Drawing::Size(333, 24);
 			   this->tb_datepa->TabIndex = 17;
 			   // 
 			   // tb_datena
 			   // 
-			   this->tb_datena->Location = System::Drawing::Point(557, 327);
+			   this->tb_datena->Location = System::Drawing::Point(656, 341);
 			   this->tb_datena->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_datena->Name = L"tb_datena";
-			   this->tb_datena->Size = System::Drawing::Size(284, 24);
+			   this->tb_datena->Size = System::Drawing::Size(334, 24);
 			   this->tb_datena->TabIndex = 18;
 			   // 
 			   // label5
 			   // 
 			   this->label5->AutoSize = true;
-			   this->label5->Location = System::Drawing::Point(332, 444);
+			   this->label5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			   this->label5->Location = System::Drawing::Point(231, 455);
 			   this->label5->Name = L"label5";
 			   this->label5->Size = System::Drawing::Size(218, 18);
 			   this->label5->TabIndex = 19;
@@ -303,7 +326,9 @@ namespace ProjetPOOGroupe2 {
 			   // label6
 			   // 
 			   this->label6->AutoSize = true;
-			   this->label6->Location = System::Drawing::Point(347, 403);
+			   this->label6->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			   this->label6->Location = System::Drawing::Point(246, 414);
 			   this->label6->Name = L"label6";
 			   this->label6->Size = System::Drawing::Size(203, 18);
 			   this->label6->TabIndex = 20;
@@ -311,23 +336,23 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // tb_facnu
 			   // 
-			   this->tb_facnu->Location = System::Drawing::Point(557, 441);
+			   this->tb_facnu->Location = System::Drawing::Point(456, 452);
 			   this->tb_facnu->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_facnu->Name = L"tb_facnu";
-			   this->tb_facnu->Size = System::Drawing::Size(110, 24);
+			   this->tb_facnu->Size = System::Drawing::Size(61, 24);
 			   this->tb_facnu->TabIndex = 21;
 			   // 
 			   // tb_livnu
 			   // 
-			   this->tb_livnu->Location = System::Drawing::Point(557, 400);
+			   this->tb_livnu->Location = System::Drawing::Point(456, 411);
 			   this->tb_livnu->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_livnu->Name = L"tb_livnu";
-			   this->tb_livnu->Size = System::Drawing::Size(110, 24);
+			   this->tb_livnu->Size = System::Drawing::Size(61, 24);
 			   this->tb_livnu->TabIndex = 22;
 			   // 
 			   // tb_id
 			   // 
-			   this->tb_id->Location = System::Drawing::Point(364, 550);
+			   this->tb_id->Location = System::Drawing::Point(499, 273);
 			   this->tb_id->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_id->Name = L"tb_id";
 			   this->tb_id->Size = System::Drawing::Size(56, 24);
@@ -336,7 +361,9 @@ namespace ProjetPOOGroupe2 {
 			   // label7
 			   // 
 			   this->label7->AutoSize = true;
-			   this->label7->Location = System::Drawing::Point(335, 553);
+			   this->label7->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			   this->label7->Location = System::Drawing::Point(470, 276);
 			   this->label7->Name = L"label7";
 			   this->label7->Size = System::Drawing::Size(22, 18);
 			   this->label7->TabIndex = 24;
@@ -344,16 +371,18 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // tb_livru
 			   // 
-			   this->tb_livru->Location = System::Drawing::Point(730, 400);
+			   this->tb_livru->Location = System::Drawing::Point(590, 411);
 			   this->tb_livru->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_livru->Name = L"tb_livru";
-			   this->tb_livru->Size = System::Drawing::Size(110, 24);
+			   this->tb_livru->Size = System::Drawing::Size(220, 24);
 			   this->tb_livru->TabIndex = 25;
 			   // 
 			   // label8
 			   // 
 			   this->label8->AutoSize = true;
-			   this->label8->Location = System::Drawing::Point(688, 406);
+			   this->label8->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			   this->label8->Location = System::Drawing::Point(548, 414);
 			   this->label8->Name = L"label8";
 			   this->label8->Size = System::Drawing::Size(35, 18);
 			   this->label8->TabIndex = 26;
@@ -361,16 +390,18 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // tb_facru
 			   // 
-			   this->tb_facru->Location = System::Drawing::Point(730, 441);
+			   this->tb_facru->Location = System::Drawing::Point(590, 452);
 			   this->tb_facru->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_facru->Name = L"tb_facru";
-			   this->tb_facru->Size = System::Drawing::Size(110, 24);
+			   this->tb_facru->Size = System::Drawing::Size(220, 24);
 			   this->tb_facru->TabIndex = 27;
 			   // 
 			   // label9
 			   // 
 			   this->label9->AutoSize = true;
-			   this->label9->Location = System::Drawing::Point(688, 444);
+			   this->label9->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			   this->label9->Location = System::Drawing::Point(548, 452);
 			   this->label9->Name = L"label9";
 			   this->label9->Size = System::Drawing::Size(35, 18);
 			   this->label9->TabIndex = 28;
@@ -378,16 +409,18 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // tb_nvl
 			   // 
-			   this->tb_nvl->Location = System::Drawing::Point(894, 400);
+			   this->tb_nvl->Location = System::Drawing::Point(862, 409);
 			   this->tb_nvl->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_nvl->Name = L"tb_nvl";
-			   this->tb_nvl->Size = System::Drawing::Size(96, 24);
+			   this->tb_nvl->Size = System::Drawing::Size(128, 24);
 			   this->tb_nvl->TabIndex = 29;
 			   // 
 			   // label10
 			   // 
 			   this->label10->AutoSize = true;
-			   this->label10->Location = System::Drawing::Point(865, 447);
+			   this->label10->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			   this->label10->Location = System::Drawing::Point(821, 455);
 			   this->label10->Name = L"label10";
 			   this->label10->Size = System::Drawing::Size(34, 18);
 			   this->label10->TabIndex = 30;
@@ -395,16 +428,18 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // tb_nvf
 			   // 
-			   this->tb_nvf->Location = System::Drawing::Point(894, 441);
+			   this->tb_nvf->Location = System::Drawing::Point(862, 450);
 			   this->tb_nvf->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_nvf->Name = L"tb_nvf";
-			   this->tb_nvf->Size = System::Drawing::Size(96, 24);
+			   this->tb_nvf->Size = System::Drawing::Size(128, 24);
 			   this->tb_nvf->TabIndex = 31;
 			   // 
 			   // label11
 			   // 
 			   this->label11->AutoSize = true;
-			   this->label11->Location = System::Drawing::Point(865, 403);
+			   this->label11->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			   this->label11->Location = System::Drawing::Point(821, 411);
 			   this->label11->Name = L"label11";
 			   this->label11->Size = System::Drawing::Size(34, 18);
 			   this->label11->TabIndex = 32;
@@ -412,19 +447,34 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // btn_clear
 			   // 
-			   this->btn_clear->Location = System::Drawing::Point(1013, 442);
+			   this->btn_clear->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			   this->btn_clear->ForeColor = System::Drawing::SystemColors::HotTrack;
+			   this->btn_clear->Location = System::Drawing::Point(884, 489);
 			   this->btn_clear->Name = L"btn_clear";
-			   this->btn_clear->Size = System::Drawing::Size(84, 42);
+			   this->btn_clear->Size = System::Drawing::Size(105, 28);
 			   this->btn_clear->TabIndex = 33;
 			   this->btn_clear->Text = L"CLEAR";
-			   this->btn_clear->UseVisualStyleBackColor = true;
+			   this->btn_clear->UseVisualStyleBackColor = false;
 			   this->btn_clear->Click += gcnew System::EventHandler(this, &MyForm2::btn_clear_Click);
+			   // 
+			   // label_stock
+			   // 
+			   this->label_stock->AutoSize = true;
+			   this->label_stock->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			   this->label_stock->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			   this->label_stock->Location = System::Drawing::Point(13, 9);
+			   this->label_stock->Name = L"label_stock";
+			   this->label_stock->Size = System::Drawing::Size(72, 20);
+			   this->label_stock->TabIndex = 34;
+			   this->label_stock->Text = L"CLIENTS";
 			   // 
 			   // MyForm2
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(9, 18);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			   this->ClientSize = System::Drawing::Size(1182, 603);
+			   this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
+			   this->ClientSize = System::Drawing::Size(1004, 603);
+			   this->Controls->Add(this->label_stock);
 			   this->Controls->Add(this->btn_clear);
 			   this->Controls->Add(this->label11);
 			   this->Controls->Add(this->tb_nvf);
@@ -458,8 +508,8 @@ namespace ProjetPOOGroupe2 {
 			   this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			   this->MaximumSize = System::Drawing::Size(1200, 650);
-			   this->MinimumSize = System::Drawing::Size(1200, 650);
+			   this->MaximumSize = System::Drawing::Size(1022, 650);
+			   this->MinimumSize = System::Drawing::Size(1022, 650);
 			   this->Name = L"MyForm2";
 			   this->Text = L"Gestion des clients";
 			   this->Load += gcnew System::EventHandler(this, &MyForm2::MyForm_Load);
@@ -499,14 +549,16 @@ namespace ProjetPOOGroupe2 {
 			Object^ prenomValue = selectedRow->Cells[2]->Value;
 			Object^ datenaValue = selectedRow->Cells[3]->Value;
 			Object^ datepaValue = selectedRow->Cells[4]->Value;
-			Object^ numRueValue = selectedRow->Cells[5]->Value;
-			Object^ RueValue = selectedRow->Cells[6]->Value;
-			Object^ natureValue = selectedRow->Cells[7]->Value;
-			Object^ villeValue = selectedRow->Cells[8]->Value;
-
+			Object^ numRueLivValue = selectedRow->Cells[5]->Value;
+			Object^ RueLivValue = selectedRow->Cells[5]->Value;
+			Object^ villeLivValue = selectedRow->Cells[6]->Value;
+			Object^ numRueFactValue = selectedRow->Cells[7]->Value;
+			Object^ RueFactValue = selectedRow->Cells[7]->Value;
+			Object^ villeFactValue = selectedRow->Cells[8]->Value;
 
 			if (idValue != nullptr && nomValue != nullptr && prenomValue != nullptr &&
-				datenaValue != nullptr && datepaValue != nullptr && numRueValue != nullptr && RueValue != nullptr && natureValue != nullptr && villeValue != nullptr) {
+				datenaValue != nullptr && datepaValue != nullptr && numRueLivValue != nullptr && RueLivValue != nullptr &&
+				villeLivValue != nullptr && numRueFactValue != nullptr && RueFactValue != nullptr && villeFactValue != nullptr) {
 				try {
 					this->tb_id->Text = System::Convert::ToString(idValue);
 					this->tb_nom->Text = nomValue->ToString();
@@ -514,22 +566,26 @@ namespace ProjetPOOGroupe2 {
 					this->tb_datena->Text = datenaValue->ToString();
 					this->tb_datepa->Text = datepaValue->ToString();
 
-					if (natureValue->ToString() == "Facturation") {
-						this->tb_facru->Text = RueValue->ToString();
-						this->tb_facnu->Text = numRueValue->ToString();
-						this->tb_nvf->Text = villeValue->ToString();
-					}
-					else {
-						this->tb_livru->Text = RueValue->ToString();
-						this->tb_livnu->Text = numRueValue->ToString();
-						this->tb_nvl->Text = villeValue->ToString();
-					}
+					String^ numRueLivString = numRueLivValue->ToString();
+					int spaceIndexLiv = numRueLivString->IndexOf(' ');
+
+					this->tb_livnu->Text = numRueLivString->Substring(0, spaceIndexLiv);
+					this->tb_livru->Text = numRueLivString->Substring(spaceIndexLiv + 1);
+					this->tb_nvl->Text = villeLivValue->ToString();
+
+					String^ numRueFactString = numRueFactValue->ToString();
+					int spaceIndexFact = numRueFactString->IndexOf(' ');
+
+					this->tb_facnu->Text = numRueFactString->Substring(0, spaceIndexFact);
+					this->tb_facru->Text = numRueFactString->Substring(spaceIndexFact + 1);
+					this->tb_nvf->Text = villeFactValue->ToString();
 				}
 				catch (FormatException^) {
 				}
 			}
 		}
 	}
+
 
 	
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
