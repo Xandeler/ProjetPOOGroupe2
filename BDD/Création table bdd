@@ -38,6 +38,8 @@ CREATE TABLE Commande(
    Reference_Commande VARCHAR(50)  NOT NULL,
    Livraison_Prevue_Commande VARCHAR(50),
    Emission_Commande VARCHAR(50),
+   Moyen_Paiement VARCHAR(50) ,
+   Date_Paiement VARCHAR(50),
    PRIMARY KEY(ID_Commande)
 );
 
@@ -57,15 +59,7 @@ CREATE TABLE Remise(
    PRIMARY KEY(ID_Remise)
 );
 
-CREATE TABLE Paiement(
-   ID_Paiement INT IDENTITY,
-   Moyen_Paiement VARCHAR(50) ,
-   Date_Paiement VARCHAR(50),
-   Date_Solde_Paiement VARCHAR(50),
-   ID_Commande INT NOT NULL,
-   PRIMARY KEY(ID_Paiement),
-   FOREIGN KEY(ID_Commande) REFERENCES Commande(ID_Commande)
-);
+
 
 CREATE TABLE Modif(
    ID_Modif INT IDENTITY,
@@ -135,4 +129,3 @@ CREATE TABLE Comporte(
    FOREIGN KEY(Reference_Article) REFERENCES Article(Reference_Article),
    FOREIGN KEY(ID_Modif) REFERENCES Modif(ID_Modif)
 );
-
