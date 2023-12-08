@@ -506,8 +506,7 @@ namespace ProjetPOOGroupe2 {
 
 
 			if (idValue != nullptr && nomValue != nullptr && prenomValue != nullptr &&
-				datenaValue != nullptr && datepaValue != nullptr && numRueValue != nullptr &&
-				numRueValue != nullptr && RueValue != nullptr && natureValue != nullptr && villeValue != nullptr) {
+				datenaValue != nullptr && datepaValue != nullptr && numRueValue != nullptr && RueValue != nullptr && natureValue != nullptr && villeValue != nullptr) {
 				try {
 					this->tb_id->Text = System::Convert::ToString(idValue);
 					this->tb_nom->Text = nomValue->ToString();
