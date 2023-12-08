@@ -18,7 +18,7 @@ namespace NS_Comp_Mappage
 		void set_Adresse_FacturationI(System::String^ numero_maison, System::String^ rue);
 		void set_Adresse_LivraisonI(System::String^ numero_maison, System::String^ rue);
 		System::Data::DataSet^ selectionnerToutesLesPersonnes(System::String^);
-		void ajouterUnePersonne(CL::Client^);
+		void ajouterUnePersonne(CL::Client^, String^ nom_villef, String^ nom_villel);
 		void supprimerUnePersonne(int);
 		void modifierUnePersonne(int, CL::Client^);
 

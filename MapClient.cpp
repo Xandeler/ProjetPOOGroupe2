@@ -28,12 +28,12 @@ System::Data::DataSet^ NS_Comp_Mappage::CLgenerateSQLcmds::selectionnerToutesLes
 	sql = this->client->afficher_client();
 	return this->accesB->getRows(sql, dataTableName);
 }
-void NS_Comp_Mappage::CLgenerateSQLcmds::ajouterUnePersonne(CL::Client^ client)
+void NS_Comp_Mappage::CLgenerateSQLcmds::ajouterUnePersonne(CL::Client^ client, String^ nom_villef, String^ nom_villel)
 {
 	System::String^ sql;
 
 	this->client = client;
-	sql = this->client->ajouter_client();
+	sql = this->client->ajouter_client(nom_villef, nom_villel);
 
 	this->accesB->actionRows(sql);
 }

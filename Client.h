@@ -25,7 +25,7 @@ public:
 	AD::Adresse^ get_Adresse_Livraison();
 	void set_Adresse_LivraisonI(int numeroMaison, System::String^ nomRue);
 	void set_Adresse_Livraison(AD::Adresse^ adresse_livraison);
-	System::String^ ajouter_client();
+	System::String^ ajouter_client(String^ nom_villef, String^ nom_villel);
 	System::String^ supprimer_client();
 	System::String^ modifier_client();
 	System::String^ afficher_client();

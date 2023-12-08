@@ -97,6 +97,10 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::TextBox^ tb_facru;
 	private: System::Windows::Forms::Label^ label9;
+	private: System::Windows::Forms::TextBox^ tb_nvl;
+	private: System::Windows::Forms::Label^ label10;
+	private: System::Windows::Forms::TextBox^ tb_nvf;
+	private: System::Windows::Forms::Label^ label11;
 	private: System::Windows::Forms::TextBox^ tb_livnu;
 
 
@@ -133,6 +137,10 @@ namespace ProjetPOOGroupe2 {
 			   this->label8 = (gcnew System::Windows::Forms::Label());
 			   this->tb_facru = (gcnew System::Windows::Forms::TextBox());
 			   this->label9 = (gcnew System::Windows::Forms::Label());
+			   this->tb_nvl = (gcnew System::Windows::Forms::TextBox());
+			   this->label10 = (gcnew System::Windows::Forms::Label());
+			   this->tb_nvf = (gcnew System::Windows::Forms::TextBox());
+			   this->label11 = (gcnew System::Windows::Forms::Label());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			   this->SuspendLayout();
 			   // 
@@ -147,7 +155,7 @@ namespace ProjetPOOGroupe2 {
 			   this->dataGridView1->ReadOnly = true;
 			   this->dataGridView1->RowHeadersWidth = 51;
 			   this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			   this->dataGridView1->Size = System::Drawing::Size(928, 220);
+			   this->dataGridView1->Size = System::Drawing::Size(977, 220);
 			   this->dataGridView1->TabIndex = 0;
 			   // 
 			   // btn_load
@@ -328,7 +336,7 @@ namespace ProjetPOOGroupe2 {
 			   this->tb_livnu->Size = System::Drawing::Size(110, 24);
 			   this->tb_livnu->TabIndex = 22;
 			   // 
-			   // textBox5
+			   // tb_id
 			   // 
 			   this->tb_id->Location = System::Drawing::Point(885, 345);
 			   this->tb_id->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
@@ -379,11 +387,49 @@ namespace ProjetPOOGroupe2 {
 			   this->label9->TabIndex = 28;
 			   this->label9->Text = L"Rue";
 			   // 
+			   // tb_nvl
+			   // 
+			   this->tb_nvl->Location = System::Drawing::Point(894, 400);
+			   this->tb_nvl->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			   this->tb_nvl->Name = L"tb_nvl";
+			   this->tb_nvl->Size = System::Drawing::Size(96, 24);
+			   this->tb_nvl->TabIndex = 29;
+			   // 
+			   // label10
+			   // 
+			   this->label10->AutoSize = true;
+			   this->label10->Location = System::Drawing::Point(865, 447);
+			   this->label10->Name = L"label10";
+			   this->label10->Size = System::Drawing::Size(34, 18);
+			   this->label10->TabIndex = 30;
+			   this->label10->Text = L"Ville";
+			   // 
+			   // tb_nvf
+			   // 
+			   this->tb_nvf->Location = System::Drawing::Point(894, 441);
+			   this->tb_nvf->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			   this->tb_nvf->Name = L"tb_nvf";
+			   this->tb_nvf->Size = System::Drawing::Size(96, 24);
+			   this->tb_nvf->TabIndex = 31;
+			   // 
+			   // label11
+			   // 
+			   this->label11->AutoSize = true;
+			   this->label11->Location = System::Drawing::Point(865, 403);
+			   this->label11->Name = L"label11";
+			   this->label11->Size = System::Drawing::Size(34, 18);
+			   this->label11->TabIndex = 32;
+			   this->label11->Text = L"Ville";
+			   // 
 			   // MyForm2
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(9, 18);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			   this->ClientSize = System::Drawing::Size(982, 603);
+			   this->ClientSize = System::Drawing::Size(1182, 603);
+			   this->Controls->Add(this->label11);
+			   this->Controls->Add(this->tb_nvf);
+			   this->Controls->Add(this->label10);
+			   this->Controls->Add(this->tb_nvl);
 			   this->Controls->Add(this->label9);
 			   this->Controls->Add(this->tb_facru);
 			   this->Controls->Add(this->label8);
@@ -413,8 +459,8 @@ namespace ProjetPOOGroupe2 {
 			   this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			   this->MaximumSize = System::Drawing::Size(1000, 650);
-			   this->MinimumSize = System::Drawing::Size(1000, 650);
+			   this->MaximumSize = System::Drawing::Size(1200, 650);
+			   this->MinimumSize = System::Drawing::Size(1200, 650);
 			   this->Name = L"MyForm2";
 			   this->Text = L"Gestion des clients";
 			   this->Load += gcnew System::EventHandler(this, &MyForm2::MyForm_Load);
@@ -432,6 +478,13 @@ namespace ProjetPOOGroupe2 {
 
 	}
 
+	public:	 void actualiser()
+	{
+		this->dataGridView1->Refresh();
+		this->oDs = this->mC->selectionnerToutesLesPersonnes("Rsl");
+		this->dataGridView1->DataSource = this->oDs;
+		this->dataGridView1->DataMember = "Rsl";
+	}
 
 	private: void refresh_datagrid()
 	{
@@ -440,73 +493,10 @@ namespace ProjetPOOGroupe2 {
 		this->txt_results->Text = "Données générées";
 	}
 
-	private: int^ get_selected_id_client()
-	{
-		int^ id_client = Convert::ToInt32(this->dataGridView1->SelectedRows[0]->Cells[0]->Value);
-		return id_client;
-	}
-
-	private: String^ get_selected_id_personne()
-	{
-		String^ id_personne = Convert::ToString(this->dataGridView1->SelectedRows[0]->Cells[1]->Value);
-		return id_personne;
-	}
-
-	private: String^ get_selected_nom()
-	{
-		String^ nom = Convert::ToString(this->dataGridView1->SelectedRows[0]->Cells[1]->Value);
-		return nom;
-	}
-
-	private: String^ get_selected_prenom()
-	{
-		String^ prenom = Convert::ToString(this->dataGridView1->SelectedRows[0]->Cells[1]->Value);
-		return prenom;
-	}
-
-	private: String^ get_selected_date_naissance()
-	{
-		String^ date_naissance = Convert::ToString(this->dataGridView1->SelectedRows[0]->Cells[1]->Value);
-		return date_naissance;
-	}
-
-	private: String^ get_selected_date_premier_achat()
-	{
-		String^ date_premier_achat = Convert::ToString(this->dataGridView1->SelectedRows[0]->Cells[1]->Value);
-		return date_premier_achat;
-	}
-
-	private: String^ get_selected_numero_maison_facturation()
-	{
-		String^ numero_maison_facturation = Convert::ToString(this->dataGridView1->SelectedRows[0]->Cells[1]->Value);
-		return numero_maison_facturation;
-	}
-
-	private: String^ get_selected_rue_facturation()
-	{
-		String^ rue_facturation = Convert::ToString(this->dataGridView1->SelectedRows[0]->Cells[1]->Value);
-		return rue_facturation;
-	}
-
-	private: String^ get_selected_numero_maison_livraison()
-	{
-		String^ numero_maison_livraison = Convert::ToString(this->dataGridView1->SelectedRows[0]->Cells[1]->Value);
-		return numero_maison_livraison;
-	}
-
-	private: String^ get_selected_rue_livraison()
-	{
-		String^ rue_livraison = Convert::ToString(this->dataGridView1->SelectedRows[0]->Cells[1]->Value);
-		return rue_livraison;
-	}
-
-
-
-
-
+	
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{
-		this->client = gcnew CL::Client();
+		this->mC = gcnew NS_Comp_Mappage::CLgenerateSQLcmds();
 		this->dataGridView1->Refresh();
 	}
 
@@ -536,10 +526,15 @@ namespace ProjetPOOGroupe2 {
 
 			this->Adressel->set_Numero_Maison(Convert::ToInt32(this->tb_facnu->Text));
 			this->Adressel->set_Rue(this->tb_facru->Text);
+			this->Adressel->set_Nom_Ville(this->tb_nvl->Text);
+			this->client->set_Adresse_Livraison(this->Adressel);
+
 			this->Adressef->set_Numero_Maison(Convert::ToInt32(this->tb_livnu->Text));
 			this->Adressef->set_Rue(this->tb_livru->Text);
+			this->Adressef->set_Nom_Ville(this->tb_nvf->Text);
+			this->client->set_Adresse_Facturation(this->Adressef);
 
-			this->mC->ajouterUnePersonne(this->client);
+			this->mC->ajouterUnePersonne(this->client, this->tb_nvf->Text, this->tb_nvl->Text);
 			refresh_datagrid();
 
 			this->txt_results->Text = "Données entrées avec succès";
@@ -557,9 +552,7 @@ namespace ProjetPOOGroupe2 {
 		}
 		else {
 			
-			this->client->set_ID_Personne(Convert::ToInt32(this->get_selected_id_personne()));
-
-			this->client->supprimer_client();
+			this->mC->supprimerUnePersonne(Convert::ToInt32(this->tb_id->Text));
 
 			refresh_datagrid();
 
@@ -573,6 +566,21 @@ namespace ProjetPOOGroupe2 {
 			this->txt_results->Text = "Veuillez renseigner l'ID du client que vous souhaitez modifier";
 		}
 		else {
+			this->client->set_ID_Personne(Convert::ToInt32(this->tb_id->Text));
+			this->client->set_Nom(this->tb_nom->Text);
+			this->client->set_Prenom(this->tb_prenom->Text);
+			this->client->set_Date_Naissance(this->tb_datena->Text);
+			this->client->set_Date_Premier_Achat(this->tb_datepa->Text);
+
+			this->Adressel->set_Numero_Maison(Convert::ToInt32(this->tb_facnu->Text));
+			this->Adressel->set_Rue(this->tb_facru->Text);
+			this->client->set_Adresse_Livraison(this->Adressel);
+		
+			this->Adressef->set_Numero_Maison(Convert::ToInt32(this->tb_livnu->Text));
+			this->Adressef->set_Rue(this->tb_livru->Text);
+			this->client->set_Adresse_Facturation(this->Adressef);
+
+			this->mC->modifierUnePersonne(Convert::ToInt32(this->tb_id->Text), this->client);
 
 			refresh_datagrid();
 
@@ -580,6 +588,7 @@ namespace ProjetPOOGroupe2 {
 		}
 		
 	}
+
 
 
 
