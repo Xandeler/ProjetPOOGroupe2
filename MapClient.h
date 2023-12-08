@@ -20,7 +20,7 @@ namespace NS_Comp_Mappage
 		System::Data::DataSet^ selectionnerToutesLesPersonnes(System::String^);
 		void ajouterUnePersonne(CL::Client^, String^ nom_villef, String^ nom_villel);
 		void supprimerUnePersonne(int);
-		void modifierUnePersonne(int, CL::Client^);
+		void modifierUnePersonne(int, CL::Client^, String^ , String^ );
 
 
 
