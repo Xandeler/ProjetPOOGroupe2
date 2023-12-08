@@ -30,7 +30,7 @@ public:
 	void set_ID_Client(int ID);
 	System::String^ ajouter_client(String^ nom_villef, String^ nom_villel);
 	System::String^ supprimer_client();
-	System::String^ modifier_client();
+	System::String^ modifier_client(String^, String^);
 	System::String^ afficher_client();
 };
 }

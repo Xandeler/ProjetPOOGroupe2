@@ -214,19 +214,19 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // tb_nom
 			   // 
-			   this->tb_nom->Location = System::Drawing::Point(656, 307);
-			   this->tb_nom->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			   this->tb_nom->Name = L"tb_nom";
-			   this->tb_nom->Size = System::Drawing::Size(334, 24);
-			   this->tb_nom->TabIndex = 6;
-			   // 
-			   // tb_prenom
-			   // 
-			   this->tb_prenom->Location = System::Drawing::Point(656, 270);
+			   this->tb_prenom->Location = System::Drawing::Point(656, 307);
 			   this->tb_prenom->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_prenom->Name = L"tb_prenom";
 			   this->tb_prenom->Size = System::Drawing::Size(334, 24);
-			   this->tb_prenom->TabIndex = 7;
+			   this->tb_prenom->TabIndex = 6;
+			   // 
+			   // tb_prenom
+			   // 
+			   this->tb_nom->Location = System::Drawing::Point(656, 270);
+			   this->tb_nom->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			   this->tb_nom->Name = L"tb_nom";
+			   this->tb_nom->Size = System::Drawing::Size(334, 24);
+			   this->tb_nom->TabIndex = 7;
 			   // 
 			   // label1
 			   // 

@@ -55,7 +55,7 @@ void NS_Comp_Mappage::CLgenerateSQLcmds::modifierUnePersonne(int id, CL::Client^
 	this->client = client;
 	this->client->set_ID_Client(id);
 
-	sql = this->client->modifier_client();
+	sql = this->client->modifier_client(nom_villef, nom_villel);
 
 	this->accesB->actionRows(sql);
 }
