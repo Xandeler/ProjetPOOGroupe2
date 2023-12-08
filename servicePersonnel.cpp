@@ -12,12 +12,12 @@ System::Data::DataSet^ servPers::CLservices::selectionnerToutesLesPersonnes(Syst
 	sql = this->pe->afficher();
 	return this->acc->getRows(sql, dataTableName);
 }
-void servPers::CLservices::ajouterUnePersonne(PE::Personnel^ personnel)
+void servPers::CLservices::ajouterUnePersonne(PE::Personnel^ personnel, String^ Nom_ville)
 {
 	System::String^ sql;
 
 	this->pe = personnel;
-	sql = this->pe->ajouter();
+	sql = this->pe->ajouter(Nom_ville);
 
 	this->acc->actionRows(sql);
 }
@@ -33,13 +33,13 @@ void servPers::CLservices::supprimerUnePersonne(int id)
 	this->acc->actionRows(sql);
 }
 
-void servPers::CLservices::modifierUnePersonne(int id, PE::Personnel^ personnel)
+void servPers::CLservices::modifierUnePersonne(int id, PE::Personnel^ personnel, String^ Nom_ville)
 {
 	System::String^ sql;
 
-	this->pe->set_ID_Personne(id);
-
-	sql = this->pe->modifier();
+	this->pe = personnel;
+	this->pe->set_ID_personnel(id);
+	sql = this->pe->modifier(id, Nom_ville);
 
 	this->acc->actionRows(sql);
 }

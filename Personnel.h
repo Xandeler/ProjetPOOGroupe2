@@ -21,9 +21,9 @@ namespace PE {
 		AD::Adresse^ get_Adresse_Habitation();
 		void set_Adresse_Habitation(AD::Adresse^ adresse_habitation);
 		void set_ID_personnel(int);
-		System::String^ ajouter();
+		System::String^ ajouter(String^);
 		System::String^ supprimer();
-		System::String^ modifier();
+		System::String^ modifier(int, String^);
 		System::String^ afficher();
 	};
 }

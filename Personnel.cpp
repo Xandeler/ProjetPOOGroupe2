@@ -50,8 +50,9 @@ void PE::Personnel::set_Adresse_Habitation(AD::Adresse^ adresse_habitation)
 	this->Adresse_Habitation = adresse_habitation;
 }
 
-System::String^ PE::Personnel::ajouter()
+System::String^ PE::Personnel::ajouter(String^ Nom_ville)
 {
+
 	String^ sqlQuery = "DECLARE @maxID INT;";
 	sqlQuery += "SELECT @maxID = MAX(ID_Personnel) FROM Personnel;";
 
@@ -66,7 +67,7 @@ System::String^ PE::Personnel::ajouter()
 	sqlQuery += "VALUES ('" + get_Date_Embauche() + "', '" + get_Superieur_Hierarchique() + "', @idCREER);";
 	sqlQuery += "INSERT INTO Adresse (Numero_Maison_Adresse, Rue_Adresse, Nature_Adresse, ID_Ville) ";
 	sqlQuery += "VALUES ('" + get_Adresse_Habitation()->get_Numero_Maison() + "', '" + get_Adresse_Habitation()->get_Rue() + "', '";
-	sqlQuery += get_Adresse_Habitation()->get_Nature() + "', '" + get_Adresse_Habitation()->verifier_Ville("Strasbourg") + "');";
+	sqlQuery += get_Adresse_Habitation()->get_Nature() + "', '" + get_Adresse_Habitation()->verifier_Ville(Nom_ville) + "');";
 	sqlQuery += "SET @idADRESSE = SCOPE_IDENTITY();";
 	sqlQuery += "INSERT INTO Possede (ID_Personne, ID_Adresse) VALUES (@idCREER, @idADRESSE);";
 
@@ -95,14 +96,45 @@ System::String^ PE::Personnel::supprimer()
 
 }
 
-System::String^ PE::Personnel::modifier()
+System::String^ PE::Personnel::modifier(int id, String^ Nom_Ville)
 {
-	return "UPDATE Personne SET Nom_Personne = '" + this->get_Nom() + "', Prenom_Personne = '" + this->get_Prenom() + "' WHERE ID_Personne = " + this->get_ID_Personne() + ";"
-		+ "UPDATE Personnel SET DateEmbauche_Personnel = '" + this->get_Date_Embauche() + "', ID_SuperieurHierarchique = '" + this->get_Superieur_Hierarchique() + "' WHERE ID_Personne = " + this->get_ID_Personne() + ";"
-		+ "UPDATE Adresse SET Numero_Maison_Adresse = '" + this->get_Adresse_Habitation()->get_Numero_Maison() + "', Rue_Adresse = '" + this->get_Adresse_Habitation()->get_Rue() + "', Nature_Adresse = '" + this->get_Adresse_Habitation()->get_Nature() + "', ID_Ville = '" + this->get_Adresse_Habitation()->verifier_Ville("Strasbourg") + "' WHERE Numero_Adresse = " + this->get_Adresse_Habitation()->get_Numero_Maison() + ";";
+	String^ sqlQuery = "";
+	sqlQuery += "UPDATE Personne ";
+	sqlQuery += "SET Nom_Personne = '" + get_Nom() + "', Prenom_Personne = '" + get_Prenom() + "' ";
+	sqlQuery += "WHERE ID_Personne = (SELECT ID_Personne FROM Personnel WHERE ID_Personnel = " + id + " ); ";
+
+	sqlQuery += "UPDATE Personnel ";
+	sqlQuery += "SET DateEmbauche_personnel = '" + get_Date_Embauche() + "' ";
+	sqlQuery += "WHERE ID_Personnel = " + id + " ; ";
+
+	sqlQuery += "UPDATE Adresse ";
+	sqlQuery += "SET Numero_Maison_Adresse = " + get_Adresse_Habitation()->get_Numero_Maison() + ", Rue_Adresse = '" + get_Adresse_Habitation()->get_Rue() + "', ID_Ville = " + get_Adresse_Habitation()->verifier_Ville(Nom_Ville);
+	sqlQuery += "WHERE ID_Adresse = ( ";
+	sqlQuery += "SELECT PO.ID_Adresse ";
+	sqlQuery += "FROM Personne P ";
+	sqlQuery += "JOIN Possede PO ON P.ID_Personne = PO.ID_Personne ";
+	sqlQuery += "WHERE P.ID_Personne = (SELECT ID_Personne FROM Personnel WHERE ID_Personnel = " + id + " ) ";
+	sqlQuery += "); ";
+
+
+	return sqlQuery;
 }
 
 System::String^ PE::Personnel::afficher()
 {
-	return " SELECT [ID_Personnel], [Nom_Personne],[Prenom_Personne],[DateEmbauche_Personnel],[ID_SuperieurHierarchique], CONCAT(Numero_Maison_Adresse, '  ', Rue_Adresse) AS Adresse FROM Personnel INNER JOIN Personne ON Personnel.ID_Personne = Personne.ID_Personne INNER JOIN Possede ON Personne.ID_Personne = Possede.ID_Personne INNER JOIN Adresse ON Possede.ID_Adresse = Adresse.ID_Adresse;";
+	String^ sqlQuery = "SELECT [ID_Personnel], [Nom_Personne], [Prenom_Personne], [DateEmbauche_Personnel], [ID_SuperieurHierarchique], ";
+	sqlQuery += "CONCAT(Numero_Maison_Adresse, '  ', Rue_Adresse) AS Adresse, ";
+	sqlQuery += "[nom_ville] ";
+	sqlQuery += "FROM ";
+	sqlQuery += "Personnel ";
+	sqlQuery += "INNER JOIN ";
+	sqlQuery += "Personne ON Personnel.ID_Personne = Personne.ID_Personne ";
+	sqlQuery += "INNER JOIN ";
+	sqlQuery += "Possede ON Personne.ID_Personne = Possede.ID_Personne ";
+	sqlQuery += "INNER JOIN ";
+	sqlQuery += "Adresse ON Possede.ID_Adresse = Adresse.ID_Adresse ";
+	sqlQuery += "INNER JOIN ";
+	sqlQuery += "Ville ON Adresse.ID_Ville = Ville.ID_Ville;";
+
+	return sqlQuery;
 }
