@@ -105,20 +105,21 @@ System::String^ CL::Client::ajouter_client(String^ nom_villef, String^ nom_ville
 
 System::String^ CL::Client::supprimer_client()
 {
-	return
-		"BEGIN TRANSACTION; " +
-		"   IF EXISTS (SELECT 1 FROM [Electronic].[dbo].[Effectue] WHERE ID_Clients = (SELECT ID_Clients FROM [Electronic].[dbo].[Clients] WHERE ID_Personne = " + this->get_ID_Personne() + ")) " +
-		"       DELETE FROM [Electronic].[dbo].[Effectue] WHERE ID_Clients = (SELECT ID_Clients FROM [Electronic].[dbo].[Clients] WHERE ID_Personne = " + this->get_ID_Personne() + "); " +
-		"   IF EXISTS (SELECT 1 FROM [Electronic].[dbo].[Clients] WHERE ID_Personne = " + this->get_ID_Personne() + ") " +
-		"       DELETE FROM [Electronic].[dbo].[Clients] WHERE ID_Personne = " + this->get_ID_Personne() + "; " +
-		"   IF EXISTS (SELECT 1 FROM [Electronic].[dbo].[Possede] WHERE ID_Personne = " + this->get_ID_Personne() + ") " +
-		"       DELETE FROM [Electronic].[dbo].[Possede] WHERE ID_Personne = " + this->get_ID_Personne() + "; " +
-		"   IF EXISTS (SELECT 1 FROM [Electronic].[dbo].[Personne] WHERE ID_Personne = " + this->get_ID_Personne() + ") " +
-		"   BEGIN " +
-		"       DELETE FROM [Electronic].[dbo].[Personnel] WHERE ID_Personne = " + this->get_ID_Personne() + "; " +
-		"       DELETE FROM [Electronic].[dbo].[Personne] WHERE ID_Personne = " + this->get_ID_Personne() + "; " +
-		"   END; " +
-		"COMMIT;";
+	String^ requete =
+		"DECLARE @ID_Personne INT; " +
+		"DECLARE @ID_Adresses TABLE(ID_Adresse INT); " +
+		"SELECT @ID_Personne = ID_Personne FROM [Electronic].[dbo].[Clients] WHERE ID_Clients = " + this->get_ID_Client() + "; " +
+		"INSERT INTO @ID_Adresses(ID_Adresse) " +
+		"SELECT ID_Adresse FROM [Electronic].[dbo].[Possede] WHERE ID_Personne = @ID_Personne; " +
+		"DELETE FROM [Electronic].[dbo].[Possede] WHERE ID_Personne = @ID_Personne; " +
+		"DELETE FROM [Electronic].[dbo].[Clients] WHERE ID_Clients = " + this->get_ID_Client() + "; " +
+		"DELETE FROM [Electronic].[dbo].[Personne] WHERE ID_Personne = @ID_Personne; " +
+		"DELETE FROM [Electronic].[dbo].[Adresse] WHERE ID_Adresse IN (SELECT ID_Adresse FROM @ID_Adresses);";
+
+	return requete;
+	// Alors, ca supprime mais ca crahs direct après
+	// Quand on relance on voit qu'il a été supprimé mais ca crash quand même
+
 
 }
 
