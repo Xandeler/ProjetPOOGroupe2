@@ -82,23 +82,43 @@ void CL::Client::set_Adresse_Livraison(AD::Adresse^ adresse_livraison)
 // TODO Use stored procedures
 System::String^ CL::Client::ajouter_client(String^ nom_villef, String^ nom_villel)
 {
-	String^ requete = "INSERT INTO Personne (Nom_Personne, Prenom_Personne)" + "VALUES ('" + this->get_Nom() + "', '" + this->get_Prenom() + "');" + "INSERT INTO Adresse (Rue_Adresse, Numero_Maison_Adresse, Nature_Adresse, ID_Ville) VALUES ('" + this->Adresse_Facturation->get_Rue() + "', " + this->Adresse_Facturation->get_Numero_Maison() + ", '" + this->Adresse_Facturation->get_Nature() + "', " + this->Adresse_Facturation->verifier_Ville(nom_villef) + ");" + "INSERT INTO Adresse (Rue_Adresse, Numero_Maison_Adresse, Nature_Adresse, ID_Ville) VALUES ('" + this->Adresse_Livraison->get_Rue() + "', " + this->Adresse_Livraison->get_Numero_Maison() + ", '" + this->Adresse_Livraison->get_Nature() + "', " + this->Adresse_Livraison->verifier_Ville(nom_villel) + ");" + "INSERT INTO Clients (Date_Naissance_Clients, Date_Premier_Achat_Clients, ID_Personne) Values ('" + this->get_Date_Naissance() + "', '" + this->get_Date_Premier_Achat() + "', " + this->get_ID_Personne() + ");" + "INSERT INTO Possede (ID_Personne, ID_Adresse) VALUES (" + this->get_ID_Personne() + ", (SELECT ID_Adresse FROM Adresse WHERE Rue_Adresse = '" + this->Adresse_Livraison->get_Rue() + "' AND Numero_Maison_Adresse = " + this->Adresse_Livraison->get_Numero_Maison() + " AND Nature_Adresse = '" + this->Adresse_Livraison->get_Nature() + "'));" + "INSERT INTO Possede (ID_Personne, ID_Adresse) VALUES (" + this->get_ID_Personne() + ", (SELECT ID_Adresse FROM Adresse WHERE Rue_Adresse = '" + this->Adresse_Facturation->get_Rue() + "' AND Numero_Maison_Adresse = " + this->Adresse_Facturation->get_Numero_Maison() + " AND Nature_Adresse = '" + this->Adresse_Facturation->get_Nature() + "'));";
+	String^ requete =
+		"DECLARE @ID_Personne INT; " +
+		"INSERT INTO [Electronic].[dbo].[Personne] (Nom_Personne, Prenom_Personne) " +
+		"VALUES ('" + this->get_Nom() + "', '" + this->get_Prenom() + "'); " +
+		"SET @ID_Personne = SCOPE_IDENTITY(); " +
+		"INSERT INTO [Electronic].[dbo].[Adresse] (Rue_Adresse, Numero_Maison_Adresse, Nature_Adresse, ID_Ville) " +
+		"VALUES ('" + this->Adresse_Facturation->get_Rue() + "', " + this->Adresse_Facturation->get_Numero_Maison() + ", '" + this->Adresse_Facturation->get_Nature() + "', " + this->Adresse_Facturation->verifier_Ville(nom_villef) + "); " +
+		"INSERT INTO [Electronic].[dbo].[Adresse] (Rue_Adresse, Numero_Maison_Adresse, Nature_Adresse, ID_Ville) " +
+		"VALUES ('" + this->Adresse_Livraison->get_Rue() + "', " + this->Adresse_Livraison->get_Numero_Maison() + ", '" + this->Adresse_Livraison->get_Nature() + "', " + this->Adresse_Livraison->verifier_Ville(nom_villel) + "); " +
+		"INSERT INTO [Electronic].[dbo].[Clients] (Date_Naissance_Clients, Date_Premier_Achat_Clients, ID_Personne) " +
+		"VALUES ('" + this->get_Date_Naissance() + "', '" + this->get_Date_Premier_Achat() + "', @ID_Personne); " +
+		"INSERT INTO [Electronic].[dbo].[Possede] (ID_Personne, ID_Adresse) " +
+		"VALUES (@ID_Personne, (SELECT TOP 1 ID_Adresse FROM [Electronic].[dbo].[Adresse] WHERE Rue_Adresse = '" + this->Adresse_Livraison->get_Rue() + "' AND Numero_Maison_Adresse = " + this->Adresse_Livraison->get_Numero_Maison() + " AND Nature_Adresse = '" + this->Adresse_Livraison->get_Nature() + "')); " +
+		"INSERT INTO [Electronic].[dbo].[Possede] (ID_Personne, ID_Adresse) " +
+		"VALUES (@ID_Personne, (SELECT TOP 1 ID_Adresse FROM [Electronic].[dbo].[Adresse] WHERE Rue_Adresse = '" + this->Adresse_Facturation->get_Rue() + "' AND Numero_Maison_Adresse = " + this->Adresse_Facturation->get_Numero_Maison() + " AND Nature_Adresse = '" + this->Adresse_Facturation->get_Nature() + "'));";
+
 	return requete;
+
+
 }
 
 System::String^ CL::Client::supprimer_client()
 {
-return "IF EXISTS (SELECT 1 FROM Possede WHERE ID_Personne = " + this->get_ID_Personne() + ") " +
-"   DELETE FROM Possede WHERE ID_Personne = " + this->get_ID_Personne() + "; " +
-"IF EXISTS (SELECT 1 FROM Possede WHERE ID_Commande IN (SELECT ID_Commande FROM Effectue WHERE ID_Clients = (SELECT ID_Clients FROM Clients WHERE ID_Personne = " + this->get_ID_Personne() + "))) " +
-"   DELETE FROM Possede WHERE ID_Commande IN (SELECT ID_Commande FROM Effectue WHERE ID_Clients = (SELECT ID_Clients FROM Clients WHERE ID_Personne = " + this->get_ID_Personne() + ")); " +
-"IF EXISTS (SELECT 1 FROM Effectue WHERE ID_Clients = (SELECT ID_Clients FROM Clients WHERE ID_Personne = " + this->get_ID_Personne() + ")) " +
-"   DELETE FROM Effectue WHERE ID_Clients = (SELECT ID_Clients FROM Clients WHERE ID_Personne = " + this->get_ID_Personne() + "); " +
-"IF EXISTS (SELECT 1 FROM Clients WHERE ID_Personne = " + this->get_ID_Personne() + ") " +
-"   DELETE FROM Clients WHERE ID_Personne = " + this->get_ID_Personne() + "; " +
-"IF EXISTS (SELECT 1 FROM Personne WHERE ID_Personne = " + this->get_ID_Personne() + ") " +
-"   DELETE FROM Personne WHERE ID_Personne = " + this->get_ID_Personne() + ";";
-
+	return
+		"BEGIN TRANSACTION; " +
+		"   IF EXISTS (SELECT 1 FROM [Electronic].[dbo].[Effectue] WHERE ID_Clients = (SELECT ID_Clients FROM [Electronic].[dbo].[Clients] WHERE ID_Personne = " + this->get_ID_Personne() + ")) " +
+		"       DELETE FROM [Electronic].[dbo].[Effectue] WHERE ID_Clients = (SELECT ID_Clients FROM [Electronic].[dbo].[Clients] WHERE ID_Personne = " + this->get_ID_Personne() + "); " +
+		"   IF EXISTS (SELECT 1 FROM [Electronic].[dbo].[Clients] WHERE ID_Personne = " + this->get_ID_Personne() + ") " +
+		"       DELETE FROM [Electronic].[dbo].[Clients] WHERE ID_Personne = " + this->get_ID_Personne() + "; " +
+		"   IF EXISTS (SELECT 1 FROM [Electronic].[dbo].[Possede] WHERE ID_Personne = " + this->get_ID_Personne() + ") " +
+		"       DELETE FROM [Electronic].[dbo].[Possede] WHERE ID_Personne = " + this->get_ID_Personne() + "; " +
+		"   IF EXISTS (SELECT 1 FROM [Electronic].[dbo].[Personne] WHERE ID_Personne = " + this->get_ID_Personne() + ") " +
+		"   BEGIN " +
+		"       DELETE FROM [Electronic].[dbo].[Personnel] WHERE ID_Personne = " + this->get_ID_Personne() + "; " +
+		"       DELETE FROM [Electronic].[dbo].[Personne] WHERE ID_Personne = " + this->get_ID_Personne() + "; " +
+		"   END; " +
+		"COMMIT;";
 
 }
 
