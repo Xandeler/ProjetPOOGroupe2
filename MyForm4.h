@@ -74,6 +74,7 @@ namespace ProjetPOOGroupe2 {
 
 	private: NS_Stock::Stock^ stock;
 	private: System::Data::DataSet^ dataset;
+	private: System::Windows::Forms::Button^ button2;
 
 	protected:
 
@@ -108,6 +109,7 @@ namespace ProjetPOOGroupe2 {
 			   this->textBox_quantite_article = (gcnew System::Windows::Forms::TextBox());
 			   this->label_quantite_article = (gcnew System::Windows::Forms::Label());
 			   this->label_stock = (gcnew System::Windows::Forms::Label());
+			   this->button2 = (gcnew System::Windows::Forms::Button());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView_stock))->BeginInit();
 			   this->SuspendLayout();
 			   // 
@@ -135,6 +137,7 @@ namespace ProjetPOOGroupe2 {
 			   this->dataGridView_stock->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			   this->dataGridView_stock->Size = System::Drawing::Size(853, 212);
 			   this->dataGridView_stock->TabIndex = 5;
+			   this->dataGridView_stock->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm4::get_infos);
 			   // 
 			   // button_modifier_article
 			   // 
@@ -277,12 +280,26 @@ namespace ProjetPOOGroupe2 {
 			   this->label_stock->TabIndex = 21;
 			   this->label_stock->Text = L"STOCK";
 			   // 
+			   // button2
+			   // 
+			   this->button2->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			   this->button2->ForeColor = System::Drawing::SystemColors::HotTrack;
+			   this->button2->Location = System::Drawing::Point(647, 465);
+			   this->button2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			   this->button2->Name = L"button2";
+			   this->button2->Size = System::Drawing::Size(105, 28);
+			   this->button2->TabIndex = 27;
+			   this->button2->Text = L"CLEAR";
+			   this->button2->UseVisualStyleBackColor = false;
+			   this->button2->Click += gcnew System::EventHandler(this, &MyForm4::button2_Click);
+			   // 
 			   // MyForm4
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			   this->ClientSize = System::Drawing::Size(904, 592);
+			   this->Controls->Add(this->button2);
 			   this->Controls->Add(this->label_stock);
 			   this->Controls->Add(this->textBox_seuil_reduction_article);
 			   this->Controls->Add(this->label_seuil_reduction_article);
@@ -310,6 +327,31 @@ namespace ProjetPOOGroupe2 {
 
 		   }
 #pragma endregion
+	private: System::Void get_infos(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+		if (e->RowIndex >= 0 && e->ColumnIndex >= 0) {
+			DataGridViewRow^ selectedRow = this->dataGridView_stock->Rows[e->RowIndex];
+			Object^ nomValue = selectedRow->Cells[1]->Value;
+			Object^ quantiteValue = selectedRow->Cells[2]->Value;
+			Object^ prixHTValue = selectedRow->Cells[3]->Value;
+			Object^ seuilReductionValue = selectedRow->Cells[5]->Value;
+			Object^ seuilReapproValue = selectedRow->Cells[6]->Value;
+
+			if (nomValue != nullptr && quantiteValue != nullptr && prixHTValue != nullptr &&
+				seuilReductionValue != nullptr && seuilReapproValue != nullptr) {
+				try {
+					this->textBox_nom_article->Text = nomValue->ToString();
+					this->textBox_quantite_article->Text = quantiteValue->ToString();
+					this->textBox_prix_ht_article->Text = prixHTValue->ToString();
+					this->textBox_seuil_reduction_article->Text = seuilReductionValue->ToString();
+					this->textBox_seuil_reapprovisionnement_article->Text = seuilReapproValue->ToString();
+				}
+				catch (FormatException^) {
+				}
+			}
+		}
+	}
+
+
 	private: void affichage()
 	{
 		this->dataGridView_stock->Refresh();
@@ -426,5 +468,12 @@ namespace ProjetPOOGroupe2 {
 		this->textBox_seuil_reduction_article->Text = "";
 		this->affichage();
 	}
-	};
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->textBox_nom_article->Text = "";
+		this->textBox_quantite_article->Text = "";
+		this->textBox_prix_ht_article->Text = "";
+		this->textBox_seuil_reapprovisionnement_article->Text = "";
+		this->textBox_seuil_reduction_article->Text = "";
+	}
+};
 }
