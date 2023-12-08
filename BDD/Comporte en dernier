@@ -1,3 +1,9 @@
+UPDATE Commande SET Moyen_Paiement = 'CB', Date_Paiement = '2023-11-09' WHERE ID_Commande = 1;
+UPDATE Commande SET Moyen_Paiement = 'Espece', Date_Paiement = '2023-10-09' WHERE ID_Commande = 2;
+UPDATE Commande SET Moyen_Paiement = 'CB', Date_Paiement = '2023-09-09' WHERE ID_Commande = 3;
+UPDATE Commande SET Moyen_Paiement = 'Cheque', Date_Paiement = '2023-08-09' WHERE ID_Commande = 4;
+UPDATE Commande SET Moyen_Paiement = 'CB', Date_Paiement = '2023-07-09' WHERE ID_Commande = 5;
+
 
 INSERT INTO Comporte (Reference_Article, ID_Modif) VALUES
 	('1', '1'),
