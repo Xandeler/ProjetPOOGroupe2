@@ -377,6 +377,7 @@ VALUES
 ('MELE2023BOU4', '2023-12-14', '2023-12-05'),
 ('CEKI2023CLE5', '2023-12-15', '2023-12-06');
 
+
 INSERT INTO Compose (ID_Commande, Reference_Article, Quantite_Commande_Article)
 VALUES
 	(1, 8, 20),
@@ -394,12 +395,6 @@ INSERT INTO Modif (Taux_TVA_Modif, Taux_Reduction_Modif)
 VALUES
   (1.2, 0.95);
 
-INSERT INTO Paiement (Moyen_Paiement, Date_Paiement, Date_Solde_Paiement, ID_Commande) VALUES
-	('Carte', '2023-12-02', '2023-12-02', '1'),
-	('Carte', '2023-12-03', '2023-12-03', '2'),
-	('Espece', '2023-12-04', '2023-12-04', '3'),
-	('Carte', '2023-12-05', '2023-12-05', '4'),
-	('Cheque', '2023-12-06', '2023-12-06', '5');
 
 INSERT INTO Effectue(ID_Clients, ID_Commande)
 VALUES
