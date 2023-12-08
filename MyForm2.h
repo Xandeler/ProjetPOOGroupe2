@@ -586,15 +586,11 @@ namespace ProjetPOOGroupe2 {
 		}
 	}
 
-
-	
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{
 		this->mC = gcnew NS_Comp_Mappage::CLgenerateSQLcmds();
 		actualiser();
 	}
-
-	
 
 	private: System::Void btn_ajouter_Click(System::Object^ sender, System::EventArgs^ e)
 	{
@@ -626,6 +622,17 @@ namespace ProjetPOOGroupe2 {
 			btn_clear_Click(sender, e);
 
 			actualiser();
+			this->tb_id->Text = "";
+			this->tb_nom->Text = "";
+			this->tb_prenom->Text = "";
+			this->tb_datena->Text = "";
+			this->tb_datepa->Text = "";
+			this->tb_facnu->Text = "";
+			this->tb_facru->Text = "";
+			this->tb_livnu->Text = "";
+			this->tb_livru->Text = "";
+			this->tb_nvl->Text = "";
+			this->tb_nvf->Text = "";
 			this->txt_results->Text = "Données entrées avec succès";
 		}
 		
@@ -644,6 +651,17 @@ namespace ProjetPOOGroupe2 {
 			this->mC->supprimerUnePersonne(Convert::ToInt32(this->tb_id->Text));
 
 			this->tb_id->Text = "";
+			this->tb_nom->Text = "";
+			this->tb_prenom->Text = "";
+			this->tb_datena->Text = "";
+			this->tb_datepa->Text = "";
+			this->tb_facnu->Text = "";
+			this->tb_facru->Text = "";
+			this->tb_livnu->Text = "";
+			this->tb_livru->Text = "";
+			this->tb_nvl->Text = "";
+			this->tb_nvf->Text = "";
+
 			actualiser();
 			this->txt_results->Text = "Données supprimées avec succès";
 		}
@@ -673,6 +691,18 @@ namespace ProjetPOOGroupe2 {
 			this->mC->modifierUnePersonne(Convert::ToInt32(this->tb_id->Text), this->client, this->tb_nvf->Text, this->tb_nvl->Text);
 
 			actualiser();
+
+			this->tb_id->Text = "";
+			this->tb_nom->Text = "";
+			this->tb_prenom->Text = "";
+			this->tb_datena->Text = "";
+			this->tb_datepa->Text = "";
+			this->tb_facnu->Text = "";
+			this->tb_facru->Text = "";
+			this->tb_livnu->Text = "";
+			this->tb_livru->Text = "";
+			this->tb_nvl->Text = "";
+			this->tb_nvf->Text = "";
 
 			this->txt_results->Text = "Données modifiées avec succès";
 		}

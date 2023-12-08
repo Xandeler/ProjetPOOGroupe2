@@ -83,6 +83,9 @@ void CL::Client::set_Adresse_Livraison(AD::Adresse^ adresse_livraison)
 System::String^ CL::Client::ajouter_client(String^ nom_villef, String^ nom_villel)
 {
 	String^ requete =
+		"DECLARE @maxID INT;" +
+		"SELECT @maxID = MAX(ID_Clients) FROM Clients;" +
+		"DBCC CHECKIDENT('Clients', RESEED, @maxID); " +
 		"DECLARE @ID_Personne INT; " +
 		"INSERT INTO [Electronic].[dbo].[Personne] (Nom_Personne, Prenom_Personne) " +
 		"VALUES ('" + this->get_Nom() + "', '" + this->get_Prenom() + "'); " +
@@ -105,16 +108,22 @@ System::String^ CL::Client::ajouter_client(String^ nom_villef, String^ nom_ville
 
 System::String^ CL::Client::supprimer_client()
 {
-	String^ requete =
-		"DECLARE @ID_Personne INT; " +
-		"DECLARE @ID_Adresses TABLE(ID_Adresse INT); " +
-		"SELECT @ID_Personne = ID_Personne FROM [Electronic].[dbo].[Clients] WHERE ID_Clients = " + this->get_ID_Client() + "; " +
-		"INSERT INTO @ID_Adresses(ID_Adresse) " +
-		"SELECT ID_Adresse FROM [Electronic].[dbo].[Possede] WHERE ID_Personne = @ID_Personne; " +
-		"DELETE FROM [Electronic].[dbo].[Possede] WHERE ID_Personne = @ID_Personne; " +
-		"DELETE FROM [Electronic].[dbo].[Clients] WHERE ID_Clients = " + this->get_ID_Client() + "; " +
-		"DELETE FROM [Electronic].[dbo].[Personne] WHERE ID_Personne = @ID_Personne; " +
-		"DELETE FROM [Electronic].[dbo].[Adresse] WHERE ID_Adresse IN (SELECT ID_Adresse FROM @ID_Adresses);";
+	String^ requete = "";
+	requete += "DECLARE @ID_CLIENT INT; ";
+		requete += "DECLARE @ID_Personne INT; ";
+		requete += "DECLARE @ID_Adresses TABLE(ID_Adresse INT); ";
+
+		requete += "SET @ID_CLIENT = " + this->ID_Client + " ; ";
+
+		requete += "SELECT @ID_Personne = ID_Personne FROM Clients WHERE ID_Clients = @ID_CLIENT; ";
+
+		requete += "INSERT INTO @ID_Adresses(ID_Adresse) ";
+		requete += "SELECT ID_Adresse FROM Possede WHERE ID_Personne = @ID_Personne; ";
+
+		requete += "DELETE FROM Possede WHERE ID_Personne = @ID_Personne; ";
+		requete += "DELETE FROM Clients WHERE ID_Clients = @ID_CLIENT; ";
+		requete += "DELETE FROM Personne WHERE ID_Personne = @ID_Personne; ";
+		requete += "DELETE FROM Adresse WHERE ID_Adresse IN(SELECT ID_Adresse FROM @ID_Adresses); ";
 
 	return requete;
 	// Alors, ca supprime mais ca crahs direct après
