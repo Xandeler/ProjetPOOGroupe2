@@ -334,4 +334,12 @@ DELETE FROM Comporte WHERE Reference_Article IN (SELECT Reference_Article FROM C
 DELETE FROM Commande WHERE ID_Commande = 5;
 
 //Modifier une commande
-
+UPDATE Commande
+SET
+    Reference_Commande = 'TERT2023TER5',
+    Livraison_Prevue_Commande = '2023-03-05',
+    Emission_Commande = '2023-03-05',
+	Moyen_Paiement = 'CB',
+    Date_Paiement = '2023-02-01'
+WHERE
+    ID_Commande = 3;
