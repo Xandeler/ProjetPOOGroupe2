@@ -42,17 +42,18 @@ void NS_Comp_Mappage::CLgenerateSQLcmds::supprimerUnePersonne(int id)
 {
 	System::String^ sql;
 
-	this->client->set_ID_Personne(id);
+	this->client->set_ID_Client(id);
 	sql = this->client->supprimer_client();
 
 	this->accesB->actionRows(sql);
 }
 
-void NS_Comp_Mappage::CLgenerateSQLcmds::modifierUnePersonne(int id, CL::Client^ personnel)
+void NS_Comp_Mappage::CLgenerateSQLcmds::modifierUnePersonne(int id, CL::Client^ client, String^ nom_villef, String^ nom_villel)
 {
 	System::String^ sql;
 
-	this->client->set_ID_Personne(id);
+	this->client = client;
+	this->client->set_ID_Client(id);
 
 	sql = this->client->modifier_client();
 

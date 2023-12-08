@@ -38,7 +38,6 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	protected:
 
-	private: System::Windows::Forms::Button^ btn_load;
 	private: System::Windows::Forms::Button^ btn_retour;
 	private: System::Windows::Forms::Button^ btn_ajouter;
 	private: System::Windows::Forms::Button^ btn_supprimer;
@@ -49,7 +48,6 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::TextBox^ txt_results;
-
 	private: System::Windows::Forms::Label^ lbl_resultats;
 
 
@@ -58,9 +56,9 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::TextBox^ tb_datepa;
 	private: System::Windows::Forms::TextBox^ tb_datena;
-	private: CL::Client^ client;
-	private: AD::Adresse^ Adressel;
-	private: AD::Adresse^ Adressef;
+	private: CL::Client^ client = gcnew CL::Client;
+	private: AD::Adresse^ Adressel = gcnew AD::Adresse;
+	private: AD::Adresse^ Adressef = gcnew AD::Adresse;
 	private: System::Data::DataSet^ oDs;
 	private: NS_Comp_Mappage::CLgenerateSQLcmds^ mC;
 
@@ -101,6 +99,7 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::Label^ label10;
 	private: System::Windows::Forms::TextBox^ tb_nvf;
 	private: System::Windows::Forms::Label^ label11;
+	private: System::Windows::Forms::Button^ btn_clear;
 	private: System::Windows::Forms::TextBox^ tb_livnu;
 
 
@@ -112,7 +111,6 @@ namespace ProjetPOOGroupe2 {
 		   void InitializeComponent(void)
 		   {
 			   this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			   this->btn_load = (gcnew System::Windows::Forms::Button());
 			   this->btn_retour = (gcnew System::Windows::Forms::Button());
 			   this->btn_ajouter = (gcnew System::Windows::Forms::Button());
 			   this->btn_supprimer = (gcnew System::Windows::Forms::Button());
@@ -141,6 +139,7 @@ namespace ProjetPOOGroupe2 {
 			   this->label10 = (gcnew System::Windows::Forms::Label());
 			   this->tb_nvf = (gcnew System::Windows::Forms::TextBox());
 			   this->label11 = (gcnew System::Windows::Forms::Label());
+			   this->btn_clear = (gcnew System::Windows::Forms::Button());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			   this->SuspendLayout();
 			   // 
@@ -157,17 +156,7 @@ namespace ProjetPOOGroupe2 {
 			   this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			   this->dataGridView1->Size = System::Drawing::Size(977, 220);
 			   this->dataGridView1->TabIndex = 0;
-			   // 
-			   // btn_load
-			   // 
-			   this->btn_load->Location = System::Drawing::Point(22, 267);
-			   this->btn_load->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			   this->btn_load->Name = L"btn_load";
-			   this->btn_load->Size = System::Drawing::Size(94, 176);
-			   this->btn_load->TabIndex = 1;
-			   this->btn_load->Text = L"Load DB";
-			   this->btn_load->UseVisualStyleBackColor = true;
-			   this->btn_load->Click += gcnew System::EventHandler(this, &MyForm2::btn_load_Click);
+			   this->dataGridView1->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm2::get_infos);
 			   // 
 			   // btn_retour
 			   // 
@@ -181,7 +170,7 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // btn_ajouter
 			   // 
-			   this->btn_ajouter->Location = System::Drawing::Point(124, 267);
+			   this->btn_ajouter->Location = System::Drawing::Point(24, 265);
 			   this->btn_ajouter->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->btn_ajouter->Name = L"btn_ajouter";
 			   this->btn_ajouter->Size = System::Drawing::Size(171, 55);
@@ -192,23 +181,23 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // btn_supprimer
 			   // 
-			   this->btn_supprimer->Location = System::Drawing::Point(124, 388);
+			   this->btn_supprimer->Location = System::Drawing::Point(24, 429);
 			   this->btn_supprimer->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->btn_supprimer->Name = L"btn_supprimer";
 			   this->btn_supprimer->Size = System::Drawing::Size(171, 55);
 			   this->btn_supprimer->TabIndex = 3;
-			   this->btn_supprimer->Text = L"SUPPRIMER UN CLIENT";
+			   this->btn_supprimer->Text = L"SUPPRIMER UN CLIENT (renseignez l'ID)";
 			   this->btn_supprimer->UseVisualStyleBackColor = true;
 			   this->btn_supprimer->Click += gcnew System::EventHandler(this, &MyForm2::btn_supprimer_Click);
 			   // 
 			   // btn_modifier
 			   // 
-			   this->btn_modifier->Location = System::Drawing::Point(124, 330);
+			   this->btn_modifier->Location = System::Drawing::Point(24, 345);
 			   this->btn_modifier->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->btn_modifier->Name = L"btn_modifier";
 			   this->btn_modifier->Size = System::Drawing::Size(171, 55);
 			   this->btn_modifier->TabIndex = 4;
-			   this->btn_modifier->Text = L"MODIFIER UN CLIENT";
+			   this->btn_modifier->Text = L"MODIFIER UN CLIENT (renseignez l'ID)";
 			   this->btn_modifier->UseVisualStyleBackColor = true;
 			   this->btn_modifier->Click += gcnew System::EventHandler(this, &MyForm2::btn_modifier_Click);
 			   // 
@@ -338,7 +327,7 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // tb_id
 			   // 
-			   this->tb_id->Location = System::Drawing::Point(885, 345);
+			   this->tb_id->Location = System::Drawing::Point(364, 550);
 			   this->tb_id->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_id->Name = L"tb_id";
 			   this->tb_id->Size = System::Drawing::Size(56, 24);
@@ -347,7 +336,7 @@ namespace ProjetPOOGroupe2 {
 			   // label7
 			   // 
 			   this->label7->AutoSize = true;
-			   this->label7->Location = System::Drawing::Point(891, 322);
+			   this->label7->Location = System::Drawing::Point(335, 553);
 			   this->label7->Name = L"label7";
 			   this->label7->Size = System::Drawing::Size(22, 18);
 			   this->label7->TabIndex = 24;
@@ -421,11 +410,22 @@ namespace ProjetPOOGroupe2 {
 			   this->label11->TabIndex = 32;
 			   this->label11->Text = L"Ville";
 			   // 
+			   // btn_clear
+			   // 
+			   this->btn_clear->Location = System::Drawing::Point(1013, 442);
+			   this->btn_clear->Name = L"btn_clear";
+			   this->btn_clear->Size = System::Drawing::Size(84, 42);
+			   this->btn_clear->TabIndex = 33;
+			   this->btn_clear->Text = L"CLEAR";
+			   this->btn_clear->UseVisualStyleBackColor = true;
+			   this->btn_clear->Click += gcnew System::EventHandler(this, &MyForm2::btn_clear_Click);
+			   // 
 			   // MyForm2
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(9, 18);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->ClientSize = System::Drawing::Size(1182, 603);
+			   this->Controls->Add(this->btn_clear);
 			   this->Controls->Add(this->label11);
 			   this->Controls->Add(this->tb_nvf);
 			   this->Controls->Add(this->label10);
@@ -438,7 +438,6 @@ namespace ProjetPOOGroupe2 {
 			   this->Controls->Add(this->tb_id);
 			   this->Controls->Add(this->tb_livnu);
 			   this->Controls->Add(this->tb_facnu);
-			   this->Controls->Add(this->btn_load);
 			   this->Controls->Add(this->label6);
 			   this->Controls->Add(this->label5);
 			   this->Controls->Add(this->tb_datena);
@@ -478,7 +477,13 @@ namespace ProjetPOOGroupe2 {
 
 	}
 
-	public:	 void actualiser()
+	private: void refresh_datagrid()
+	{
+		this->dataGridView1->Refresh();
+		this->txt_results->Text = "Données générées";
+	}
+
+	public: void actualiser()
 	{
 		this->dataGridView1->Refresh();
 		this->oDs = this->mC->selectionnerToutesLesPersonnes("Rsl");
@@ -486,39 +491,63 @@ namespace ProjetPOOGroupe2 {
 		this->dataGridView1->DataMember = "Rsl";
 	}
 
-	private: void refresh_datagrid()
-	{
-		this->dataGridView1->Refresh();
+	private: System::Void get_infos(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+		if (e->RowIndex >= 0 && e->ColumnIndex >= 0) {
+			DataGridViewRow^ selectedRow = this->dataGridView1->Rows[e->RowIndex];
+			Object^ idValue = selectedRow->Cells[0]->Value;
+			Object^ nomValue = selectedRow->Cells[1]->Value;
+			Object^ prenomValue = selectedRow->Cells[2]->Value;
+			Object^ datenaValue = selectedRow->Cells[3]->Value;
+			Object^ datepaValue = selectedRow->Cells[4]->Value;
+			Object^ numRueValue = selectedRow->Cells[5]->Value;
+			Object^ RueValue = selectedRow->Cells[6]->Value;
+			Object^ natureValue = selectedRow->Cells[7]->Value;
+			Object^ villeValue = selectedRow->Cells[8]->Value;
 
-		this->txt_results->Text = "Données générées";
+
+			if (idValue != nullptr && nomValue != nullptr && prenomValue != nullptr &&
+				datenaValue != nullptr && datepaValue != nullptr && numRueValue != nullptr && RueValue != nullptr && natureValue != nullptr && villeValue != nullptr) {
+				try {
+					this->tb_id->Text = System::Convert::ToString(idValue);
+					this->tb_nom->Text = nomValue->ToString();
+					this->tb_prenom->Text = prenomValue->ToString();
+					this->tb_datena->Text = datenaValue->ToString();
+					this->tb_datepa->Text = datepaValue->ToString();
+
+					if (natureValue->ToString() == "Facturation") {
+						this->tb_facru->Text = RueValue->ToString();
+						this->tb_facnu->Text = numRueValue->ToString();
+						this->tb_nvf->Text = villeValue->ToString();
+					}
+					else {
+						this->tb_livru->Text = RueValue->ToString();
+						this->tb_livnu->Text = numRueValue->ToString();
+						this->tb_nvl->Text = villeValue->ToString();
+					}
+				}
+				catch (FormatException^) {
+				}
+			}
+		}
 	}
 
 	
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{
 		this->mC = gcnew NS_Comp_Mappage::CLgenerateSQLcmds();
-		this->dataGridView1->Refresh();
+		actualiser();
 	}
 
-
-	private: System::Void btn_load_Click(System::Object^ sender, System::EventArgs^ e) {
-		this->dataGridView1->Refresh();
-		this->oDs = this->mC->selectionnerToutesLesPersonnes("Rsl");
-		this->dataGridView1->DataSource = this->oDs;
-		this->dataGridView1->DataMember = "Rsl";
-	}
+	
 
 	private: System::Void btn_ajouter_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		if (this->tb_nom->Text == "" || this->tb_prenom->Text == "" || this->tb_datena->Text == "" || this->tb_datepa->Text == "" || this->tb_facnu->Text == "" || this->tb_facru->Text == "" || this->tb_livnu->Text == "" || this->tb_livru->Text == "")
+		if (this->tb_nom->Text == "" || this->tb_prenom->Text == "" || this->tb_datena->Text == "" || this->tb_datepa->Text == "" || this->tb_facnu->Text == "" || this->tb_facru->Text == "" || this->tb_livnu->Text == "" || this->tb_livru->Text == "" || this->tb_nvf->Text == "" || this->tb_nvl->Text == "")
 		{
 			this->txt_results->Text = "Veuillez remplir tous les champs";
 		}
 		else {
-			this->client = gcnew CL::Client();
-		    this->Adressel = gcnew AD::Adresse();
-            this->Adressef = gcnew AD::Adresse();
-
+			
 			this->client->set_Nom(this->tb_nom->Text);
             this->client->set_Prenom(this->tb_prenom->Text);
 			this->client->set_Date_Naissance(this->tb_datena->Text);
@@ -526,17 +555,21 @@ namespace ProjetPOOGroupe2 {
 
 			this->Adressel->set_Numero_Maison(Convert::ToInt32(this->tb_facnu->Text));
 			this->Adressel->set_Rue(this->tb_facru->Text);
+			this->Adressel->set_Nature("Livraison");
 			this->Adressel->set_Nom_Ville(this->tb_nvl->Text);
-			this->client->set_Adresse_Livraison(this->Adressel);
 
 			this->Adressef->set_Numero_Maison(Convert::ToInt32(this->tb_livnu->Text));
 			this->Adressef->set_Rue(this->tb_livru->Text);
+			this->Adressef->set_Nature("Facturation");
 			this->Adressef->set_Nom_Ville(this->tb_nvf->Text);
-			this->client->set_Adresse_Facturation(this->Adressef);
+
+			this->client->set_Adresse_Livraison(Adressel);
+			this->client->set_Adresse_Facturation(Adressef);
 
 			this->mC->ajouterUnePersonne(this->client, this->tb_nvf->Text, this->tb_nvl->Text);
-			refresh_datagrid();
+			btn_clear_Click(sender, e);
 
+			actualiser();
 			this->txt_results->Text = "Données entrées avec succès";
 		}
 		
@@ -554,8 +587,8 @@ namespace ProjetPOOGroupe2 {
 			
 			this->mC->supprimerUnePersonne(Convert::ToInt32(this->tb_id->Text));
 
-			refresh_datagrid();
-
+			this->tb_id->Text = "";
+			actualiser();
 			this->txt_results->Text = "Données supprimées avec succès";
 		}
 
@@ -566,7 +599,6 @@ namespace ProjetPOOGroupe2 {
 			this->txt_results->Text = "Veuillez renseigner l'ID du client que vous souhaitez modifier";
 		}
 		else {
-			this->client->set_ID_Personne(Convert::ToInt32(this->tb_id->Text));
 			this->client->set_Nom(this->tb_nom->Text);
 			this->client->set_Prenom(this->tb_prenom->Text);
 			this->client->set_Date_Naissance(this->tb_datena->Text);
@@ -574,32 +606,34 @@ namespace ProjetPOOGroupe2 {
 
 			this->Adressel->set_Numero_Maison(Convert::ToInt32(this->tb_facnu->Text));
 			this->Adressel->set_Rue(this->tb_facru->Text);
+			this->Adressel->set_Nom_Ville(this->tb_nvl->Text);
 			this->client->set_Adresse_Livraison(this->Adressel);
 		
 			this->Adressef->set_Numero_Maison(Convert::ToInt32(this->tb_livnu->Text));
 			this->Adressef->set_Rue(this->tb_livru->Text);
+			this->Adressef->set_Nom_Ville(this->tb_nvf->Text);
 			this->client->set_Adresse_Facturation(this->Adressef);
 
-			this->mC->modifierUnePersonne(Convert::ToInt32(this->tb_id->Text), this->client);
+			this->mC->modifierUnePersonne(Convert::ToInt32(this->tb_id->Text), this->client, this->tb_nvf->Text, this->tb_nvl->Text);
 
-			refresh_datagrid();
+			actualiser();
 
 			this->txt_results->Text = "Données modifiées avec succès";
 		}
 		
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
+		   private: System::Void btn_clear_Click(System::Object^ sender, System::EventArgs^ e) {
+			   this->tb_id->Text = "";
+			   this->tb_nom->Text = "";
+			   this->tb_prenom->Text = "";
+			   this->tb_datena->Text = "";
+			   this->tb_datepa->Text = "";
+			   this->tb_facnu->Text = "";
+			   this->tb_facru->Text = "";
+			   this->tb_livnu->Text = "";
+			   this->tb_livru->Text = "";
+			   this->tb_nvl->Text = "";
+			   this->tb_nvf->Text = "";
+		   }
 };
 }

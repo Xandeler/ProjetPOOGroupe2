@@ -8,6 +8,7 @@ ref class Client : public Personne
 protected:
 	String^ Date_Naissance;
 	String^ Date_Premier_Achat;
+	int ID_Client;
 	AD::Adresse^ Adresse_Facturation;
 	AD::Adresse^ Adresse_Livraison;
 	AB::AccesBase^ AccesBase;
@@ -25,6 +26,8 @@ public:
 	AD::Adresse^ get_Adresse_Livraison();
 	void set_Adresse_LivraisonI(int numeroMaison, System::String^ nomRue);
 	void set_Adresse_Livraison(AD::Adresse^ adresse_livraison);
+	int get_ID_Client();
+	void set_ID_Client(int ID);
 	System::String^ ajouter_client(String^ nom_villef, String^ nom_villel);
 	System::String^ supprimer_client();
 	System::String^ modifier_client();
