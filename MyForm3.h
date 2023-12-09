@@ -95,6 +95,7 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::Label^ label_id_article;
 	private: System::Windows::Forms::TextBox^ textBox_id_article;
+	private: System::Windows::Forms::Button^ button_imprimer;
 
 	private: System::Windows::Forms::TextBox^ textBox6;
 
@@ -134,6 +135,7 @@ namespace ProjetPOOGroupe2 {
 			   this->textBox6 = (gcnew System::Windows::Forms::TextBox());
 			   this->label_id_article = (gcnew System::Windows::Forms::Label());
 			   this->textBox_id_article = (gcnew System::Windows::Forms::TextBox());
+			   this->button_imprimer = (gcnew System::Windows::Forms::Button());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			   this->SuspendLayout();
 			   // 
@@ -423,12 +425,26 @@ namespace ProjetPOOGroupe2 {
 			   this->textBox_id_article->Size = System::Drawing::Size(315, 24);
 			   this->textBox_id_article->TabIndex = 33;
 			   // 
+			   // button_imprimer
+			   // 
+			   this->button_imprimer->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			   this->button_imprimer->ForeColor = System::Drawing::SystemColors::HotTrack;
+			   this->button_imprimer->Location = System::Drawing::Point(232, 349);
+			   this->button_imprimer->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			   this->button_imprimer->Name = L"button_imprimer";
+			   this->button_imprimer->Size = System::Drawing::Size(211, 67);
+			   this->button_imprimer->TabIndex = 34;
+			   this->button_imprimer->Text = L"IMPRIMER COMMANDE";
+			   this->button_imprimer->UseVisualStyleBackColor = false;
+			   this->button_imprimer->Click += gcnew System::EventHandler(this, &MyForm3::bouton_imprimer_click);
+			   // 
 			   // MyForm3
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(9, 18);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			   this->ClientSize = System::Drawing::Size(882, 566);
+			   this->Controls->Add(this->button_imprimer);
 			   this->Controls->Add(this->textBox_id_article);
 			   this->Controls->Add(this->label_id_article);
 			   this->Controls->Add(this->textBox6);
@@ -613,5 +629,15 @@ namespace ProjetPOOGroupe2 {
 		this->affichage_tout();
 	}
 
+	private: System::Void bouton_imprimer_click(System::Object^ sender, System::EventArgs^ e)
+	{
+		int^ id_commande = Convert::ToInt32(this->tb_prenom->Text);
+
+		this->commandes = gcnew StockageCommandes(id_commande);
+
+		this->commandes->imprimer_commande();
+
+		this->txt_results->Text = "Commande imprimée avec succes.";
+	}
 };
 }
