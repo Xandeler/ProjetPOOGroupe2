@@ -513,7 +513,7 @@ namespace ProjetPOOGroupe2 {
 					int spaceIndex = numRueString->IndexOf(' ');
 					if (spaceIndex != -1 && spaceIndex < numRueString->Length - 1) {
 						this->tb_numrue->Text = numRueString->Substring(0, spaceIndex);
-						this->tb_nomrue->Text = numRueString->Substring(spaceIndex + 1);
+						this->tb_nomrue->Text = numRueString->Substring(spaceIndex + 2);
 					}
 					else {
 						this->tb_numrue->Text = numRueString;

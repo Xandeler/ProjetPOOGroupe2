@@ -566,25 +566,44 @@ namespace ProjetPOOGroupe2 {
 					this->tb_datena->Text = datenaValue->ToString();
 					this->tb_datepa->Text = datepaValue->ToString();
 
+					// Extraction des numéros et noms de rue pour l'adresse de livraison
 					String^ numRueLivString = numRueLivValue->ToString();
 					int spaceIndexLiv = numRueLivString->IndexOf(' ');
 
-					this->tb_livnu->Text = numRueLivString->Substring(0, spaceIndexLiv);
-					this->tb_livru->Text = numRueLivString->Substring(spaceIndexLiv + 1);
+					if (spaceIndexLiv != -1) {
+						this->tb_livnu->Text = numRueLivString->Substring(0, spaceIndexLiv); // Numéro de rue
+						this->tb_livru->Text = numRueLivString->Substring(spaceIndexLiv + 2); // Nom de rue (sans l'espace initial)
+					}
+					else {
+						this->tb_livnu->Text = numRueLivString; // Numéro de rue si aucun espace n'est trouvé
+						this->tb_livru->Text = ""; // Aucun nom de rue disponible
+					}
+
 					this->tb_nvl->Text = villeLivValue->ToString();
 
+					// Extraction des numéros et noms de rue pour l'adresse de facturation (de manière similaire)
 					String^ numRueFactString = numRueFactValue->ToString();
 					int spaceIndexFact = numRueFactString->IndexOf(' ');
 
-					this->tb_facnu->Text = numRueFactString->Substring(0, spaceIndexFact);
-					this->tb_facru->Text = numRueFactString->Substring(spaceIndexFact + 1);
+					if (spaceIndexFact != -1) {
+						this->tb_facnu->Text = numRueFactString->Substring(0, spaceIndexFact); // Numéro de rue
+						this->tb_facru->Text = numRueFactString->Substring(spaceIndexFact + 2); // Nom de rue (sans l'espace initial)
+					}
+					else {
+						this->tb_facnu->Text = numRueFactString; // Numéro de rue si aucun espace n'est trouvé
+						this->tb_facru->Text = ""; // Aucun nom de rue disponible
+					}
+
 					this->tb_nvf->Text = villeFactValue->ToString();
+
 				}
 				catch (FormatException^) {
+					// Gestion des erreurs de conversion
 				}
 			}
 		}
 	}
+
 
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{
