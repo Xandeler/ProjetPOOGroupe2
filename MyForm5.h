@@ -39,7 +39,7 @@ namespace ProjetPOOGroupe2 {
 		}
 	private: System::Windows::Forms::Button^ button_retour;
 
-	private: System::Windows::Forms::TextBox^ textBox_resultat;
+
 
 	private: System::Windows::Forms::Button^ button_panier_moyen;
 	private: System::Windows::Forms::Button^ button_total_un_client;
@@ -58,6 +58,7 @@ namespace ProjetPOOGroupe2 {
 
 	private: Statistiques^ statistiques;
 	private: System::Data::DataSet^ dataset;
+	private: System::Windows::Forms::DataGridView^ dataGridView_stock;
 
 		   /// <summary>
 		   /// Variable n cessaire au concepteur.
@@ -74,7 +75,6 @@ namespace ProjetPOOGroupe2 {
 		   {
 			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm5::typeid));
 			   this->button_retour = (gcnew System::Windows::Forms::Button());
-			   this->textBox_resultat = (gcnew System::Windows::Forms::TextBox());
 			   this->button_panier_moyen = (gcnew System::Windows::Forms::Button());
 			   this->button_total_un_client = (gcnew System::Windows::Forms::Button());
 			   this->button_articles_a_commander = (gcnew System::Windows::Forms::Button());
@@ -86,6 +86,8 @@ namespace ProjetPOOGroupe2 {
 			   this->textBox_ID_client = (gcnew System::Windows::Forms::TextBox());
 			   this->label_ID_client = (gcnew System::Windows::Forms::Label());
 			   this->label_statistiques = (gcnew System::Windows::Forms::Label());
+			   this->dataGridView_stock = (gcnew System::Windows::Forms::DataGridView());
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView_stock))->BeginInit();
 			   this->SuspendLayout();
 			   // 
 			   // button_retour
@@ -99,15 +101,6 @@ namespace ProjetPOOGroupe2 {
 			   this->button_retour->Text = L"RETOUR";
 			   this->button_retour->UseVisualStyleBackColor = false;
 			   this->button_retour->Click += gcnew System::EventHandler(this, &MyForm5::bouton_retour_click);
-			   // 
-			   // textBox_resultat
-			   // 
-			   this->textBox_resultat->BackColor = System::Drawing::SystemColors::ButtonHighlight;
-			   this->textBox_resultat->Location = System::Drawing::Point(8, 35);
-			   this->textBox_resultat->Multiline = true;
-			   this->textBox_resultat->Name = L"textBox_resultat";
-			   this->textBox_resultat->Size = System::Drawing::Size(870, 201);
-			   this->textBox_resultat->TabIndex = 10;
 			   // 
 			   // button_panier_moyen
 			   // 
@@ -235,12 +228,26 @@ namespace ProjetPOOGroupe2 {
 			   this->label_statistiques->TabIndex = 24;
 			   this->label_statistiques->Text = L"STATISTIQUES";
 			   // 
+			   // dataGridView_stock
+			   // 
+			   this->dataGridView_stock->BackgroundColor = System::Drawing::SystemColors::ButtonHighlight;
+			   this->dataGridView_stock->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			   this->dataGridView_stock->GridColor = System::Drawing::SystemColors::HighlightText;
+			   this->dataGridView_stock->Location = System::Drawing::Point(8, 36);
+			   this->dataGridView_stock->Name = L"dataGridView_stock";
+			   this->dataGridView_stock->RowHeadersWidth = 51;
+			   this->dataGridView_stock->RowTemplate->Height = 24;
+			   this->dataGridView_stock->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
+			   this->dataGridView_stock->Size = System::Drawing::Size(863, 195);
+			   this->dataGridView_stock->TabIndex = 25;
+			   // 
 			   // MyForm5
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			   this->ClientSize = System::Drawing::Size(883, 506);
+			   this->Controls->Add(this->dataGridView_stock);
 			   this->Controls->Add(this->label_statistiques);
 			   this->Controls->Add(this->label_ID_client);
 			   this->Controls->Add(this->textBox_ID_client);
@@ -252,7 +259,6 @@ namespace ProjetPOOGroupe2 {
 			   this->Controls->Add(this->button_articles_a_commander);
 			   this->Controls->Add(this->button_total_un_client);
 			   this->Controls->Add(this->button_panier_moyen);
-			   this->Controls->Add(this->textBox_resultat);
 			   this->Controls->Add(this->button_retour);
 			   this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->MaximumSize = System::Drawing::Size(901, 553);
@@ -260,6 +266,7 @@ namespace ProjetPOOGroupe2 {
 			   this->Name = L"MyForm5";
 			   this->Text = L"Gestion des statistiques";
 			   this->Load += gcnew System::EventHandler(this, &MyForm5::MyForm5_Load);
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView_stock))->EndInit();
 			   this->ResumeLayout(false);
 			   this->PerformLayout();
 
