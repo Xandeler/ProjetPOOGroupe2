@@ -111,6 +111,8 @@ System::String^ CL::Client::supprimer_client()
 	String^ requete = "";
 
 	requete += "DECLARE @ID_CLIENT INT = " + this->ID_Client + "; ";
+	requete += "DECLARE @ID_commande INT; ";
+	requete += "SET @ID_commande = (SELECT Effectue.ID_Commande FROM Effectue WHERE Effectue.ID_Clients = @ID_CLIENT) ";
 
 	requete += "SELECT Commande.ID_Commande INTO #tmp_commande ";
 	requete += "FROM Clients ";
@@ -144,6 +146,9 @@ System::String^ CL::Client::supprimer_client()
 	requete += "FROM Personne WHERE Personne.ID_Personne IN(SELECT Personne.ID_Personne FROM Personne ";
 	requete += "LEFT JOIN Clients ON Personne.ID_Personne = Clients.ID_Personne ";
 	requete += "WHERE ID_Clients = @ID_CLIENT) ";
+
+	requete += "DELETE ";
+	requete += "FROM Commande WHERE ID_Commande = @ID_commande ";
 
 	requete += "DROP TABLE #tmp_commande ";
 

@@ -281,7 +281,7 @@ namespace ProjetPOOGroupe2 {
 		this->textBox_resultat->Clear();
 
 		this->textBox_resultat->Text += "Le panier moyen est de : ";
-		this->textBox_resultat->Text += this->statistiques->Calcul_Panier_Moyen("PanierMoyen");
+		this->textBox_resultat->Text += this->statistiques->Calcul_Panier_Moyen("Article");
 		this->textBox_resultat->Text += " euros.";
 	}
 
