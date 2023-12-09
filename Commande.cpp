@@ -168,6 +168,7 @@ void Commande::ajouter_Article(int^ id_commande, int^ id_article, int^ quantite)
     String^ requete;
 
     this->map = gcnew NS_mapArticle::mapArticle();
+    this->Acces_Base = gcnew AB::AccesBase();
 
     requete = this->map->INSERT(id_commande, id_article, quantite);
 
