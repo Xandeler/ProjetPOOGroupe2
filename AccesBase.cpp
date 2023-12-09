@@ -5,7 +5,7 @@ AB::AccesBase::AccesBase(void)
 
     ////FAIRE UN FICHIER DE CONFIGURATION POUR LA CONNEXION////
     // Nom de la base de données : Electronic
-    this->sCnx = "Data Source=LISA_ORDI;Initial Catalog=Electronic;Integrated Security=True";
+    this->sCnx = "Data Source=DESKTOP-UT1JQET;Initial Catalog=Electronic;Persist Security Info=True;User ID=PROJET_POO_GROUPE_2;Password=***********;Encrypt=True;Trust Server Certificate=True";
     // <this->sCnx = System::String::Format("Data Source={0}; Initial Catalog = Electronic; Persist Security Info = True; User ID = PROJET_POO_GROUPE_2; Password = PROJET_POO_GROUPE_2", System::Environment::MachineName);
 
 
