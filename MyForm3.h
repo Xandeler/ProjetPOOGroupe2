@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <cstdlib>
 #include "StockageCommandes.h"
+#include "Commande.h"
 #include "Adresse.h"
 
 namespace ProjetPOOGroupe2 {
@@ -60,6 +61,7 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::TextBox^ textBox2;
 
 	private: StockageCommandes^ commandes = gcnew StockageCommandes();
+	private: Commande^ commande = gcnew Commande();
 	private: DataSet^ dataset = gcnew DataSet();
 
 
@@ -82,7 +84,8 @@ namespace ProjetPOOGroupe2 {
 		/// </summary>
 		System::ComponentModel::Container^ components;
 	private: System::Windows::Forms::Label^ label_stock;
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ button_ajouter_article;
+
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::TextBox^ textBox3;
@@ -90,6 +93,9 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::TextBox^ textBox5;
 	private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::Label^ label_id_article;
+	private: System::Windows::Forms::TextBox^ textBox_id_article;
+
 	private: System::Windows::Forms::TextBox^ textBox6;
 
 
@@ -117,7 +123,7 @@ namespace ProjetPOOGroupe2 {
 			   this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			   this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			   this->label_stock = (gcnew System::Windows::Forms::Label());
-			   this->button1 = (gcnew System::Windows::Forms::Button());
+			   this->button_ajouter_article = (gcnew System::Windows::Forms::Button());
 			   this->label5 = (gcnew System::Windows::Forms::Label());
 			   this->label6 = (gcnew System::Windows::Forms::Label());
 			   this->textBox3 = (gcnew System::Windows::Forms::TextBox());
@@ -126,6 +132,8 @@ namespace ProjetPOOGroupe2 {
 			   this->textBox5 = (gcnew System::Windows::Forms::TextBox());
 			   this->label8 = (gcnew System::Windows::Forms::Label());
 			   this->textBox6 = (gcnew System::Windows::Forms::TextBox());
+			   this->label_id_article = (gcnew System::Windows::Forms::Label());
+			   this->textBox_id_article = (gcnew System::Windows::Forms::TextBox());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			   this->SuspendLayout();
 			   // 
@@ -307,17 +315,18 @@ namespace ProjetPOOGroupe2 {
 			   this->label_stock->TabIndex = 22;
 			   this->label_stock->Text = L"COMMANDES";
 			   // 
-			   // button1
+			   // button_ajouter_article
 			   // 
-			   this->button1->BackColor = System::Drawing::SystemColors::InactiveCaption;
-			   this->button1->ForeColor = System::Drawing::SystemColors::HotTrack;
-			   this->button1->Location = System::Drawing::Point(232, 272);
-			   this->button1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			   this->button1->Name = L"button1";
-			   this->button1->Size = System::Drawing::Size(211, 67);
-			   this->button1->TabIndex = 23;
-			   this->button1->Text = L"AJOUTER ARTICLE COMMANDE";
-			   this->button1->UseVisualStyleBackColor = false;
+			   this->button_ajouter_article->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			   this->button_ajouter_article->ForeColor = System::Drawing::SystemColors::HotTrack;
+			   this->button_ajouter_article->Location = System::Drawing::Point(232, 272);
+			   this->button_ajouter_article->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			   this->button_ajouter_article->Name = L"button_ajouter_article";
+			   this->button_ajouter_article->Size = System::Drawing::Size(211, 67);
+			   this->button_ajouter_article->TabIndex = 23;
+			   this->button_ajouter_article->Text = L"AJOUTER ARTICLE COMMANDE";
+			   this->button_ajouter_article->UseVisualStyleBackColor = false;
+			   this->button_ajouter_article->Click += gcnew System::EventHandler(this, &MyForm3::bouton_ajouter_article_click);
 			   // 
 			   // label5
 			   // 
@@ -395,12 +404,33 @@ namespace ProjetPOOGroupe2 {
 			   this->textBox6->Size = System::Drawing::Size(315, 24);
 			   this->textBox6->TabIndex = 31;
 			   // 
+			   // label_id_article
+			   // 
+			   this->label_id_article->AutoSize = true;
+			   this->label_id_article->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			   this->label_id_article->Location = System::Drawing::Point(676, 431);
+			   this->label_id_article->Name = L"label_id_article";
+			   this->label_id_article->Size = System::Drawing::Size(66, 18);
+			   this->label_id_article->TabIndex = 32;
+			   this->label_id_article->Text = L"ID Article";
+			   // 
+			   // textBox_id_article
+			   // 
+			   this->textBox_id_article->Location = System::Drawing::Point(553, 454);
+			   this->textBox_id_article->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			   this->textBox_id_article->Name = L"textBox_id_article";
+			   this->textBox_id_article->Size = System::Drawing::Size(315, 24);
+			   this->textBox_id_article->TabIndex = 33;
+			   // 
 			   // MyForm3
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(9, 18);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			   this->ClientSize = System::Drawing::Size(882, 566);
+			   this->Controls->Add(this->textBox_id_article);
+			   this->Controls->Add(this->label_id_article);
 			   this->Controls->Add(this->textBox6);
 			   this->Controls->Add(this->label8);
 			   this->Controls->Add(this->textBox5);
@@ -409,7 +439,7 @@ namespace ProjetPOOGroupe2 {
 			   this->Controls->Add(this->textBox3);
 			   this->Controls->Add(this->label6);
 			   this->Controls->Add(this->label5);
-			   this->Controls->Add(this->button1);
+			   this->Controls->Add(this->button_ajouter_article);
 			   this->Controls->Add(this->label_stock);
 			   this->Controls->Add(this->textBox2);
 			   this->Controls->Add(this->textBox1);
@@ -459,10 +489,6 @@ namespace ProjetPOOGroupe2 {
 		this->dataGridView1->DataMember = "Liste_Commandes";
 	}
 
-	private: void affichage_un()
-	{
-		this->dataGridView1->Refresh();
-	}
 
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{
@@ -572,7 +598,20 @@ namespace ProjetPOOGroupe2 {
 		}
 	}
 
+	private: System::Void bouton_ajouter_article_click(System::Object^ sender, System::EventArgs^ e)
+	{
+		refresh_datagrid();
 
+		int^ id_commande = Convert::ToInt32(this->tb_prenom->Text);
+		int^ id_article = Convert::ToInt32(this->textBox_id_article);
+		int^ quantite = Convert::ToInt32(this->textBox6);
+
+		this->commande->ajouter_Article(id_commande, id_article, quantite);
+
+		this->txt_results->Text = "Données enregistrées avec succes.";
+
+		this->affichage_tout();
+	}
 
 };
 }
