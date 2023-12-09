@@ -163,22 +163,13 @@ void Commande::set_Adresse_Livraison(AD::Adresse^ adresse_livraison)
     this->Adresse_Livraison = adresse_livraison;
 }
 
-void Commande::ajouter_Article()
+void Commande::ajouter_Article(int^ id_commande, int^ id_article, int^ quantite)
 {
+    String^ requete;
 
-}
+    this->map = gcnew NS_mapArticle::mapArticle();
 
-void Commande::supprimer_Article()
-{
+    requete = this->map->INSERT(id_commande, id_article, quantite);
 
-}
-
-void Commande::modifier_Article()
-{
-
-}
-
-String^ Commande::afficher_Article()
-{
-    return "";
+    this->Acces_Base->actionRows(requete);
 }

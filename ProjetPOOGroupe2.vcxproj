@@ -125,6 +125,7 @@
     <ClCompile Include="Article.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Commande.cpp" />
+    <ClCompile Include="mapArticle.cpp" />
     <ClCompile Include="mapStock.cpp" />
     <ClCompile Include="MapStockageCommande.cpp" />
     <ClCompile Include="MyForm.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="Article.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="Commande.h" />
+    <ClInclude Include="mapArticle.h" />
     <ClInclude Include="mapStock.h" />
     <ClInclude Include="MapClient.h" />
     <ClInclude Include="MapStockageCommande.h" />

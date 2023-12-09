@@ -3,6 +3,7 @@
 #include "Article.h"
 #include "Adresse.h"
 #include "AccesBase.h"
+#include "mapArticle.h"
 
 using namespace System;
 
@@ -10,6 +11,7 @@ ref class Commande
 {
 private:
 	AB::AccesBase^ Acces_Base;
+	NS_mapArticle::mapArticle^ map;
 	int^ ID_Commande;
 	String^ Reference;
 	String^ Date_Livraison;
@@ -56,8 +58,5 @@ public:
 	void set_Adresse_Facturation(AD::Adresse^ adresse_facturation);
 	AD::Adresse^ get_Adresse_Livraison();
 	void set_Adresse_Livraison(AD::Adresse^ adresse_livraison);
-	void ajouter_Article();
-	void supprimer_Article();
-	void modifier_Article();
-	String^ afficher_Article();
+	void ajouter_Article(int^ id_commande, int^ id_article, int^ quantite);
 };
