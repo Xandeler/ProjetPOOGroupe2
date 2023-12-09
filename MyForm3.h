@@ -603,8 +603,8 @@ namespace ProjetPOOGroupe2 {
 		refresh_datagrid();
 
 		int^ id_commande = Convert::ToInt32(this->tb_prenom->Text);
-		int^ id_article = Convert::ToInt32(this->textBox_id_article);
-		int^ quantite = Convert::ToInt32(this->textBox6);
+		int^ id_article = Convert::ToInt32(this->textBox_id_article->Text);
+		int^ quantite = Convert::ToInt32(this->textBox6->Text);
 
 		this->commande->ajouter_Article(id_commande, id_article, quantite);
 
