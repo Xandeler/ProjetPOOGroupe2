@@ -109,21 +109,43 @@ System::String^ CL::Client::ajouter_client(String^ nom_villef, String^ nom_ville
 System::String^ CL::Client::supprimer_client()
 {
 	String^ requete = "";
-	requete += "DECLARE @ID_CLIENT INT; ";
-		requete += "DECLARE @ID_Personne INT; ";
-		requete += "DECLARE @ID_Adresses TABLE(ID_Adresse INT); ";
 
-		requete += "SET @ID_CLIENT = " + this->ID_Client + " ; ";
+	requete += "DECLARE @ID_CLIENT INT = " + this->ID_Client + "; ";
 
-		requete += "SELECT @ID_Personne = ID_Personne FROM Clients WHERE ID_Clients = @ID_CLIENT; ";
+	requete += "SELECT Commande.ID_Commande INTO #tmp_commande ";
+	requete += "FROM Clients ";
+	requete += "LEFT JOIN Effectue ON Clients.ID_Clients = Effectue.ID_Clients ";
+	requete += "LEFT JOIN Commande ON Effectue.ID_Commande = Commande.ID_Commande ";
+	requete += "WHERE Clients.ID_Clients = @ID_CLIENT; ";
 
-		requete += "INSERT INTO @ID_Adresses(ID_Adresse) ";
-		requete += "SELECT ID_Adresse FROM Possede WHERE ID_Personne = @ID_Personne; ";
+	requete += "DELETE ";
+	requete += "FROM Compose WHERE Compose.ID_Commande IN(SELECT Compose.ID_Commande FROM Compose ";
+	requete += "RIGHT JOIN #tmp_commande ON Compose.ID_Commande = #tmp_commande.ID_Commande) ";
 
-		requete += "DELETE FROM Possede WHERE ID_Personne = @ID_Personne; ";
-		requete += "DELETE FROM Clients WHERE ID_Clients = @ID_CLIENT; ";
-		requete += "DELETE FROM Personne WHERE ID_Personne = @ID_Personne; ";
-		requete += "DELETE FROM Adresse WHERE ID_Adresse IN(SELECT ID_Adresse FROM @ID_Adresses); ";
+	requete += "DELETE ";
+	requete += "FROM Comprend WHERE Comprend.ID_Commande IN(SELECT Comprend.ID_Commande FROM Comprend ";
+	requete += "RIGHT JOIN #tmp_commande ON Comprend.ID_Commande = #tmp_commande.ID_Commande) ";
+
+	requete += "DELETE ";
+	requete += "FROM Effectue WHERE Effectue.ID_Commande IN(SELECT Effectue.ID_Commande FROM Effectue ";
+	requete += "RIGHT JOIN #tmp_commande ON Effectue.ID_Commande = #tmp_commande.ID_Commande) ";
+
+	requete += "DELETE ";
+	requete += "FROM Possede WHERE Possede.ID_Personne IN(SELECT Possede.ID_Personne FROM Possede ";
+	requete += "LEFT JOIN Personne ON Possede.ID_Personne = Personne.ID_Personne ";
+	requete += "LEFT JOIN Clients ON Personne.ID_Personne = Clients.ID_Personne ";
+	requete += "WHERE ID_Clients = @ID_CLIENT) ";
+
+	requete += "DELETE ";
+	requete += "FROM Clients ";
+	requete += "WHERE ID_Clients = @ID_CLIENT ";
+
+	requete += "DELETE ";
+	requete += "FROM Personne WHERE Personne.ID_Personne IN(SELECT Personne.ID_Personne FROM Personne ";
+	requete += "LEFT JOIN Clients ON Personne.ID_Personne = Clients.ID_Personne ";
+	requete += "WHERE ID_Clients = @ID_CLIENT) ";
+
+	requete += "DROP TABLE #tmp_commande ";
 
 	return requete;
 	// Alors, ca supprime mais ca crahs direct après

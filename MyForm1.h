@@ -475,6 +475,7 @@ namespace ProjetPOOGroupe2 {
 		this->Hide();
 
 	}
+
 	private: void refresh_datagrid()
 	{
 		this->dataGridView1->Refresh();
