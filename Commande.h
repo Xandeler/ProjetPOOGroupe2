@@ -13,7 +13,7 @@ private:
 	AB::AccesBase^ Acces_Base;
 	NS_mapArticle::mapArticle^ map;
 	int^ ID_Commande;
-	String^ Reference;
+	int^ ID_Client;
 	String^ Date_Livraison;
 	String^ Date_Emission;
 	String^ Date_Paiement;
@@ -29,11 +29,11 @@ private:
 
 public:
 	Commande();
-	Commande(int^ id, String^ reference, String^ date_livraison, String^ date_emission, String^ date_paiement, String^ moyen_paiement, double^ total_ht, double^ total_ttc, String^ nom_societe, AD::Adresse^ adresse_societe, int^ numero_service_clients, String^ logo, AD::Adresse^ adresse_facturation, AD::Adresse^ adresse_livraison);
+	Commande(int^ id_commande, int^ id_client, String^ date_livraison, String^ date_emission, String^ date_paiement, String^ moyen_paiement, double^ total_ht, double^ total_ttc, String^ nom_societe, AD::Adresse^ adresse_societe, int^ numero_service_clients, String^ logo, AD::Adresse^ adresse_facturation, AD::Adresse^ adresse_livraison);
 	int^ get_ID_Commande();
 	void set_ID_Commande(int^ id);
-	String^ get_Reference();
-	void set_Reference(String^ reference);
+	int^ get_ID_Client();
+	void set_ID_Client(int^ id);
 	String^ get_Date_Livraison();
 	void set_Date_Livraison(String^ date_livraison);
 	String^ get_Date_Emission();

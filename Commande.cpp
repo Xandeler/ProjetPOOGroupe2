@@ -5,10 +5,10 @@ Commande::Commande()
 
 }
 
-Commande::Commande(int^ id, String^ reference, String^ date_livraison, String^ date_emission, String^ date_paiement, String^ moyen_paiement, double^ total_ht, double^ total_ttc, String^ nom_societe, AD::Adresse^ adresse_societe, int^ numero_service_clients, String^ logo, AD::Adresse^ adresse_facturation, AD::Adresse^ adresse_livraison)
+Commande::Commande(int^ id_commande, int^ id_client, String^ date_livraison, String^ date_emission, String^ date_paiement, String^ moyen_paiement, double^ total_ht, double^ total_ttc, String^ nom_societe, AD::Adresse^ adresse_societe, int^ numero_service_clients, String^ logo, AD::Adresse^ adresse_facturation, AD::Adresse^ adresse_livraison)
 {
-    this->set_ID_Commande(id);
-    this->set_Reference(reference);
+    this->set_ID_Commande(id_commande);
+    this->set_ID_Client(id_client);
     this->set_Date_Livraison(date_livraison);
     this->set_Date_Emission(date_emission);
     this->set_Date_Paiement(date_paiement);
@@ -33,14 +33,14 @@ void Commande::set_ID_Commande(int^ id)
     this->ID_Commande = id;
 }
 
-String^ Commande::get_Reference()
+int^ Commande::get_ID_Client()
 {
-    return this->Reference;
+    return this->ID_Client;
 }
 
-void Commande::set_Reference(String^ reference)
+void Commande::set_ID_Client(int^ id)
 {
-    this->Reference = reference;
+    this->ID_Client = id;
 }
 
 String^ Commande::get_Date_Livraison()
