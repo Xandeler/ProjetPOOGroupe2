@@ -125,6 +125,7 @@
     <ClCompile Include="Article.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Commande.cpp" />
+    <ClCompile Include="log.cpp" />
     <ClCompile Include="mapArticle.cpp" />
     <ClCompile Include="mapFichier.cpp" />
     <ClCompile Include="mapStock.cpp" />
@@ -135,8 +136,10 @@
     <ClCompile Include="MyForm3.cpp" />
     <ClCompile Include="MyForm4.cpp" />
     <ClCompile Include="MyForm5.cpp" />
+    <ClCompile Include="MyForm6.cpp" />
     <ClCompile Include="Personne.cpp" />
     <ClCompile Include="Personnel.cpp" />
+    <ClCompile Include="servicelog.cpp" />
     <ClCompile Include="servicePersonnel.cpp" />
     <ClCompile Include="MapClient.cpp" />
     <ClCompile Include="serviceStatistiques.cpp" />
@@ -152,6 +155,7 @@
     <ClInclude Include="Article.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="Commande.h" />
+    <ClInclude Include="log.h" />
     <ClInclude Include="mapArticle.h" />
     <ClInclude Include="mapFichier.h" />
     <ClInclude Include="mapStock.h" />
@@ -175,8 +179,12 @@
     <ClInclude Include="MyForm5.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="MyForm6.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Personne.h" />
     <ClInclude Include="Personnel.h" />
+    <ClInclude Include="servicelog.h" />
     <ClInclude Include="servicePersonnel.h" />
     <ClInclude Include="serviceStatistiques.h" />
     <ClInclude Include="Statistiques.h" />
@@ -203,6 +211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm5.resx">
       <DependentUpon>MyForm5.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForm6.resx">
+      <DependentUpon>MyForm6.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

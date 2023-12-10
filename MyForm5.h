@@ -21,17 +21,11 @@ namespace ProjetPOOGroupe2 {
 		MyForm5(void)
 		{
 			InitializeComponent();
-			// Permet de lier le bouton a fonction
 
-			//
-			//TODO: ajoutez ici le code du constructeur
-			//
 		}
 
 	protected:
-		/// <summary>
-		/// Nettoyage des ressources utilisees.
-		/// </summary>
+
 		~MyForm5()
 		{
 			if (components)
@@ -62,6 +56,7 @@ namespace ProjetPOOGroupe2 {
 	private: servstat::serviceStatistiques^ serviceStatistiques = gcnew servstat::serviceStatistiques();
 	private: stat::Statistiques^ Statistiques = gcnew stat::Statistiques();
 	private: System::Data::DataSet^ dataset = gcnew DataSet();
+
 	private: System::Windows::Forms::DataGridView^ dataGridView_stat;
 	private: System::Data::DataSet^ oDs;
 
@@ -75,19 +70,11 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::Label^ label2;
 
 
-
-
-		   /// <summary>
-		   /// Variable n cessaire au concepteur.
-		   /// </summary>
 	private: System::ComponentModel::Container^ components;
 
 
 #pragma region Windows Form Designer generated code
-		   /// <summary>
-		   /// M thode requise pour la prise en charge du concepteur - ne modifiez pas
-		   /// le contenu de cette m thode avec l' diteur de code.
-		   /// </summary>
+
 		   void InitializeComponent(void)
 		   {
 			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm5::typeid));

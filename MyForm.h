@@ -4,6 +4,10 @@
 #include "MyForm3.h"
 #include "MyForm4.h"	
 #include "MyForm5.h"
+#include "MyForm6.h"
+
+#include "servicelog.h"
+#include "AccesBase.h"
 
 namespace ProjetPOOGroupe2 {
 
@@ -41,10 +45,11 @@ namespace ProjetPOOGroupe2 {
 		}
 	private: System::Windows::Forms::Button^ b_personnel;
 	private: System::Windows::Forms::Button^ b_client;
-	protected:
 
-	protected:
-
+	private: L::log^ Log = gcnew L::log();
+	private: servL::servicelog^ service_log = gcnew servL::servicelog();
+	private: AB::AccesBase^ Acces_Base = gcnew AB::AccesBase();
+	private: System::Data::DataSet^ oDs;
 
 
 
@@ -186,29 +191,38 @@ namespace ProjetPOOGroupe2 {
 	private: System::Void b_personnel_Click(System::Object^ sender, System::EventArgs^ e) {
 		MyForm1^ f1 = gcnew MyForm1();
 		f1->Show();
+		this->service_log->accespersonnelSERVICE(this->Log);
+
 	}
 
 	private: System::Void b_client_Click(System::Object^ sender, System::EventArgs^ e) {
 		MyForm2^ f2 = gcnew MyForm2();	   
 		f2->Show();
+		this->service_log->accesclientSERVICE(this->Log);
 	}
 
 	private: System::Void b_commandes_Click(System::Object^ sender, System::EventArgs^ e) {
 		MyForm3^ f3 = gcnew MyForm3();
 		f3->Show();
+		this->service_log->accescommandeSERVICE(this->Log);
 	}
 
 	private: System::Void b_stocks_Click(System::Object^ sender, System::EventArgs^ e) {
 		MyForm4^ f4 = gcnew MyForm4();
 		f4->Show();
+		this->service_log->accesstockSERVICE(this->Log);
 	}
 
 	private: System::Void b_statistiques_Click(System::Object^ sender, System::EventArgs^ e) {
 		MyForm5^ f5 = gcnew MyForm5();
 		f5->Show();
+		this->service_log->accesstatistiquesSERVICE(this->Log);
 	}
-private: System::Void bouton_log_Click(System::Object^ sender, System::EventArgs^ e) {
-}
+	private: System::Void bouton_log_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->service_log->acceslogSERVICE(this->Log);
+		MyForm6^ f6 = gcnew MyForm6();
+		f6->Show();
+	}
 };
 }
 
