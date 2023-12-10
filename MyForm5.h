@@ -392,6 +392,7 @@ namespace ProjetPOOGroupe2 {
 			this->oDs = this->serviceStatistiques->Calcul_Panier_MoyenSERVICE(Convert::ToInt32(this->tb_idcommande->Text), "Commande");
 			this->dataGridView_stat->DataSource = this->oDs;
 			this->dataGridView_stat->DataMember = "Commande";
+			this->tb_idcommande->Text = "";
 			donneesgeneree();
 		}
 	}
@@ -428,6 +429,7 @@ namespace ProjetPOOGroupe2 {
 			this->oDs = this->serviceStatistiques->Calcul_Montant_ClientSERVICE(Convert::ToInt32(this->tb_idclient->Text), "Commande2");
 			this->dataGridView_stat->DataSource = this->oDs;
 			this->dataGridView_stat->DataMember = "Commande2";
+			this->tb_idclient->Text = "";
 			donneesgeneree();
 		}
 	}
