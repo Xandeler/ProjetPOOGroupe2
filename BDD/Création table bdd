@@ -129,3 +129,8 @@ CREATE TABLE Comporte(
    FOREIGN KEY(Reference_Article) REFERENCES Article(Reference_Article),
    FOREIGN KEY(ID_Modif) REFERENCES Modif(ID_Modif)
 );
+
+CREATE TABLE Log (
+    DateHeure VARCHAR(50),
+    Action VARCHAR(50)
+);
