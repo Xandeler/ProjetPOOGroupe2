@@ -10,9 +10,6 @@ namespace ProjetPOOGroupe2 {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// Description resume de MyForm1
-	/// </summary>
 	public ref class MyForm4 : public System::Windows::Forms::Form
 	{
 	public:
@@ -20,15 +17,10 @@ namespace ProjetPOOGroupe2 {
 		{
 			InitializeComponent();
 
-			//
-			//TODO: ajoutez ici le code du constructeur
-			//
 		}
 
 	protected:
-		/// <summary>
-		/// Nettoyage des ressources utilis?es.
-		/// </summary>
+
 		~MyForm4()
 		{
 			if (components)
@@ -44,52 +36,26 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::Label^ label_nom_article;
 	private: System::Windows::Forms::TextBox^ textBox_nom_article;
 	private: System::Windows::Forms::TextBox^ textBox_seuil_reapprovisionnement_article;
-
-
-
 	private: System::Windows::Forms::Label^ label_seuil_reapprovisionnement_article;
 	private: System::Windows::Forms::TextBox^ textBox_prix_ht_article;
-
-
-
 	private: System::Windows::Forms::Label^ label_prix_ht_article;
-
-
-
-
 	private: System::Windows::Forms::TextBox^ textBox_seuil_reduction_article;
-
 
 	private: System::Windows::Forms::Label^ label_seuil_reduction_article;
 	private: System::Windows::Forms::TextBox^ textBox_quantite_article;
 
 	private: System::Windows::Forms::Label^ label_quantite_article;
 
-
-
 	private: System::Windows::Forms::Label^ label_stock;
-
-
-
 
 	private: NS_Stock::Stock^ stock;
 	private: System::Data::DataSet^ dataset;
 	private: System::Windows::Forms::Button^ button2;
 
-	protected:
-
-	private:
-		/// <summary>
-		/// Variable necessaire au concepteur.
-		/// </summary>
 	private: System::ComponentModel::Container^ components;
 
 
 #pragma region Windows Form Designer generated code
-		   /// <summary>
-		   /// M?thode requise pour la prise en charge du concepteur - ne modifiez pas
-		   /// le contenu de cette methode avec l'editeur de code.
-		   /// </summary>
 		   void InitializeComponent(void)
 		   {
 			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm4::typeid));
@@ -351,7 +317,6 @@ namespace ProjetPOOGroupe2 {
 		}
 	}
 
-
 	private: void affichage()
 	{
 		this->dataGridView_stock->Refresh();
@@ -367,7 +332,6 @@ namespace ProjetPOOGroupe2 {
 		affichage();
 	}
 
-	
 	private: int^ get_selected_id()
 	{
 		int^ id_article = Convert::ToInt32(this->dataGridView_stock->SelectedRows[0]->Cells[0]->Value);
@@ -409,6 +373,14 @@ namespace ProjetPOOGroupe2 {
 		this->Hide();
 	}
 
+	private: System::Void clearentree() {
+		this->textBox_nom_article->Text = "";
+		this->textBox_quantite_article->Text = "";
+		this->textBox_prix_ht_article->Text = "";
+		this->textBox_seuil_reapprovisionnement_article->Text = "";
+		this->textBox_seuil_reduction_article->Text = "";
+	}
+
 	private: System::Void bouton_ajouter_article_click(System::Object^ sender, System::EventArgs^ e)
 	{
 		int^ id_article = 1;
@@ -420,12 +392,7 @@ namespace ProjetPOOGroupe2 {
 
 		this->stock->ajouter(id_article, nom_article, quantite_article, prixHT_article, seuil_reapprovisionnement_article, seuil_reduction_article);
 
-		this->textBox_nom_article->Text = "";
-		this->textBox_quantite_article->Text = "";
-		this->textBox_prix_ht_article->Text = "";
-		this->textBox_seuil_reapprovisionnement_article->Text = "";
-		this->textBox_seuil_reduction_article->Text = "";
-
+		clearentree();
 
 		this->affichage();
 	}
@@ -440,12 +407,7 @@ namespace ProjetPOOGroupe2 {
 		int^ seuil_reduction_article = this->get_selected_reduction();
 
 		this->stock->supprimer(id_article, nom_article, quantite_article, prixHT_article, seuil_reapprovisionnement_article, seuil_reduction_article);
-		this->textBox_nom_article->Text = "";
-		this->textBox_quantite_article->Text = "";
-		this->textBox_prix_ht_article->Text = "";
-		this->textBox_seuil_reapprovisionnement_article->Text = "";
-		this->textBox_seuil_reduction_article->Text = "";
-
+		clearentree();
 
 		this->affichage();
 	}
@@ -467,19 +429,11 @@ namespace ProjetPOOGroupe2 {
 		int^ seuil_reduction_article_m = Convert::ToInt32(this->textBox_seuil_reduction_article->Text);
 
 		this->stock->modifier(id_article, nom_article, quantite_article, prixHT_article, seuil_reapprovisionnement_article, seuil_reduction_article, id_article_m, nom_article_m, quantite_article_m, prixHT_article_m, seuil_reapprovisionnement_article_m, seuil_reduction_article_m);
-		this->textBox_nom_article->Text = "";
-		this->textBox_quantite_article->Text = "";
-		this->textBox_prix_ht_article->Text = "";
-		this->textBox_seuil_reapprovisionnement_article->Text = "";
-		this->textBox_seuil_reduction_article->Text = "";
+		clearentree();
 		this->affichage();
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		this->textBox_nom_article->Text = "";
-		this->textBox_quantite_article->Text = "";
-		this->textBox_prix_ht_article->Text = "";
-		this->textBox_seuil_reapprovisionnement_article->Text = "";
-		this->textBox_seuil_reduction_article->Text = "";
+		clearentree();
 	}
 };
 }

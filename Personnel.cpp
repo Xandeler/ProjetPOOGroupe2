@@ -96,7 +96,7 @@ System::String^ PE::Personnel::supprimer()
 
 }
 
-System::String^ PE::Personnel::modifier(int id, String^ Nom_Ville)
+System::String^ PE::Personnel::modifier(int id, String^ Nom_Ville, int idsup)
 {
 	String^ sqlQuery = "";
 	sqlQuery += "UPDATE Personne ";
@@ -105,6 +105,10 @@ System::String^ PE::Personnel::modifier(int id, String^ Nom_Ville)
 
 	sqlQuery += "UPDATE Personnel ";
 	sqlQuery += "SET DateEmbauche_personnel = '" + get_Date_Embauche() + "' ";
+	sqlQuery += "WHERE ID_Personnel = " + id + " ; ";
+
+	sqlQuery += "UPDATE Personnel ";
+	sqlQuery += "SET ID_SuperieurHierarchique = " + idsup + " ";
 	sqlQuery += "WHERE ID_Personnel = " + id + " ; ";
 
 	sqlQuery += "UPDATE Adresse ";

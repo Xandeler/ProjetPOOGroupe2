@@ -11,9 +11,6 @@ namespace ProjetPOOGroupe2 {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// Description résumé de MyForm
-	/// </summary>
 	public ref class MyForm2 : public System::Windows::Forms::Form
 	{
 	public:
@@ -25,9 +22,6 @@ namespace ProjetPOOGroupe2 {
 		}
 
 	protected:
-		/// <summary>
-		/// Nettoyage des ressources utilisées.
-		/// </summary>
 		~MyForm2()
 		{
 			if (components)
@@ -36,7 +30,6 @@ namespace ProjetPOOGroupe2 {
 			}
 		}
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
-	protected:
 
 	private: System::Windows::Forms::Button^ btn_retour;
 	private: System::Windows::Forms::Button^ btn_ajouter;
@@ -49,9 +42,6 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::TextBox^ txt_results;
 	private: System::Windows::Forms::Label^ lbl_resultats;
-
-
-
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::TextBox^ tb_datepa;
@@ -61,31 +51,7 @@ namespace ProjetPOOGroupe2 {
 	private: AD::Adresse^ Adressef = gcnew AD::Adresse;
 	private: System::Data::DataSet^ oDs;
 	private: NS_Comp_Mappage::CLgenerateSQLcmds^ mC;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	protected:
-
-	private:
-		/// <summary>
-		/// Variable n�cessaire au concepteur.
-		/// </summary>
 	private: System::ComponentModel::Container^ components;
-
-
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::TextBox^ tb_facnu;
@@ -103,12 +69,7 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::Label^ label_stock;
 	private: System::Windows::Forms::TextBox^ tb_livnu;
 
-
 #pragma region Windows Form Designer generated code
-		   /// <summary>
-		   /// M�thode requise pour la prise en charge du concepteur - ne modifiez pas
-		   /// le contenu de cette m�thode avec l'�diteur de code.
-		   /// </summary>
 		   void InitializeComponent(void)
 		   {
 			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm2::typeid));
@@ -516,21 +477,26 @@ namespace ProjetPOOGroupe2 {
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			   this->ResumeLayout(false);
 			   this->PerformLayout();
-
 		   }
 
 #pragma endregion
-
 	private: System::Void btn_retour_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		this->Hide();
-
 	}
 
-	private: void refresh_datagrid()
-	{
-		this->dataGridView1->Refresh();
-		this->txt_results->Text = "Données générées";
+	private: System::Void clearentree() {
+		this->tb_id->Text = "";
+		this->tb_nom->Text = "";
+		this->tb_prenom->Text = "";
+		this->tb_datena->Text = "";
+		this->tb_datepa->Text = "";
+		this->tb_facnu->Text = "";
+		this->tb_facru->Text = "";
+		this->tb_livnu->Text = "";
+		this->tb_livru->Text = "";
+		this->tb_nvl->Text = "";
+		this->tb_nvf->Text = "";
 	}
 
 	public: void actualiser()
@@ -566,44 +532,37 @@ namespace ProjetPOOGroupe2 {
 					this->tb_datena->Text = datenaValue->ToString();
 					this->tb_datepa->Text = datepaValue->ToString();
 
-					// Extraction des numéros et noms de rue pour l'adresse de livraison
 					String^ numRueLivString = numRueLivValue->ToString();
 					int spaceIndexLiv = numRueLivString->IndexOf(' ');
 
 					if (spaceIndexLiv != -1) {
-						this->tb_livnu->Text = numRueLivString->Substring(0, spaceIndexLiv); // Numéro de rue
-						this->tb_livru->Text = numRueLivString->Substring(spaceIndexLiv + 2); // Nom de rue (sans l'espace initial)
+						this->tb_livnu->Text = numRueLivString->Substring(0, spaceIndexLiv);
+						this->tb_livru->Text = numRueLivString->Substring(spaceIndexLiv + 2);
 					}
 					else {
-						this->tb_livnu->Text = numRueLivString; // Numéro de rue si aucun espace n'est trouvé
-						this->tb_livru->Text = ""; // Aucun nom de rue disponible
+						this->tb_livnu->Text = numRueLivString; 
+						this->tb_livru->Text = "";
 					}
 
 					this->tb_nvl->Text = villeLivValue->ToString();
-
-					// Extraction des numéros et noms de rue pour l'adresse de facturation (de manière similaire)
 					String^ numRueFactString = numRueFactValue->ToString();
 					int spaceIndexFact = numRueFactString->IndexOf(' ');
 
 					if (spaceIndexFact != -1) {
-						this->tb_facnu->Text = numRueFactString->Substring(0, spaceIndexFact); // Numéro de rue
-						this->tb_facru->Text = numRueFactString->Substring(spaceIndexFact + 2); // Nom de rue (sans l'espace initial)
+						this->tb_facnu->Text = numRueFactString->Substring(0, spaceIndexFact);
+						this->tb_facru->Text = numRueFactString->Substring(spaceIndexFact + 2);
 					}
 					else {
-						this->tb_facnu->Text = numRueFactString; // Numéro de rue si aucun espace n'est trouvé
-						this->tb_facru->Text = ""; // Aucun nom de rue disponible
+						this->tb_facnu->Text = numRueFactString;
+						this->tb_facru->Text = "";
 					}
-
 					this->tb_nvf->Text = villeFactValue->ToString();
-
 				}
 				catch (FormatException^) {
-					// Gestion des erreurs de conversion
 				}
 			}
 		}
 	}
-
 
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{
@@ -633,30 +592,16 @@ namespace ProjetPOOGroupe2 {
 			this->Adressef->set_Rue(this->tb_livru->Text);
 			this->Adressef->set_Nature("Facturation");
 			this->Adressef->set_Nom_Ville(this->tb_nvf->Text);
-
 			this->client->set_Adresse_Livraison(Adressel);
 			this->client->set_Adresse_Facturation(Adressef);
 
 			this->mC->ajouterUnePersonne(this->client, this->tb_nvf->Text, this->tb_nvl->Text);
 			btn_clear_Click(sender, e);
 
+			clearentree();
 			actualiser();
-			this->tb_id->Text = "";
-			this->tb_nom->Text = "";
-			this->tb_prenom->Text = "";
-			this->tb_datena->Text = "";
-			this->tb_datepa->Text = "";
-			this->tb_facnu->Text = "";
-			this->tb_facru->Text = "";
-			this->tb_livnu->Text = "";
-			this->tb_livru->Text = "";
-			this->tb_nvl->Text = "";
-			this->tb_nvf->Text = "";
 			this->txt_results->Text = "Données entrées avec succès";
-		}
-		
-		
-			
+		}		
 	}
 
 	private: System::Void btn_supprimer_Click(System::Object^ sender, System::EventArgs^ e)
@@ -668,24 +613,12 @@ namespace ProjetPOOGroupe2 {
 		else {
 			
 			this->mC->supprimerUnePersonne(Convert::ToInt32(this->tb_id->Text));
-
-			this->tb_id->Text = "";
-			this->tb_nom->Text = "";
-			this->tb_prenom->Text = "";
-			this->tb_datena->Text = "";
-			this->tb_datepa->Text = "";
-			this->tb_facnu->Text = "";
-			this->tb_facru->Text = "";
-			this->tb_livnu->Text = "";
-			this->tb_livru->Text = "";
-			this->tb_nvl->Text = "";
-			this->tb_nvf->Text = "";
-
+			clearentree();
 			actualiser();
 			this->txt_results->Text = "Données supprimées avec succès";
 		}
-
 	}
+
 	private: System::Void btn_modifier_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (this->tb_id->Text == "")
 		{
@@ -708,37 +641,14 @@ namespace ProjetPOOGroupe2 {
 			this->client->set_Adresse_Facturation(this->Adressef);
 
 			this->mC->modifierUnePersonne(Convert::ToInt32(this->tb_id->Text), this->client, this->tb_nvf->Text, this->tb_nvl->Text);
-
+			clearentree();
 			actualiser();
-
-			this->tb_id->Text = "";
-			this->tb_nom->Text = "";
-			this->tb_prenom->Text = "";
-			this->tb_datena->Text = "";
-			this->tb_datepa->Text = "";
-			this->tb_facnu->Text = "";
-			this->tb_facru->Text = "";
-			this->tb_livnu->Text = "";
-			this->tb_livru->Text = "";
-			this->tb_nvl->Text = "";
-			this->tb_nvf->Text = "";
 
 			this->txt_results->Text = "Données modifiées avec succès";
 		}
-		
 	}
 		   private: System::Void btn_clear_Click(System::Object^ sender, System::EventArgs^ e) {
-			   this->tb_id->Text = "";
-			   this->tb_nom->Text = "";
-			   this->tb_prenom->Text = "";
-			   this->tb_datena->Text = "";
-			   this->tb_datepa->Text = "";
-			   this->tb_facnu->Text = "";
-			   this->tb_facru->Text = "";
-			   this->tb_livnu->Text = "";
-			   this->tb_livru->Text = "";
-			   this->tb_nvl->Text = "";
-			   this->tb_nvf->Text = "";
+			   clearentree();
 		   }
 };
 }

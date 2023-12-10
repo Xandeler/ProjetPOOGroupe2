@@ -23,7 +23,7 @@ namespace PE {
 		void set_ID_personnel(int);
 		System::String^ ajouter(String^);
 		System::String^ supprimer();
-		System::String^ modifier(int, String^);
+		System::String^ modifier(int, String^, int);
 		System::String^ afficher();
 	};
 }

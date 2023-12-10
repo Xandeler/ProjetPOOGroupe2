@@ -12,7 +12,6 @@ namespace ProjetPOOGroupe2 {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-
 	public ref class MyForm6 : public System::Windows::Forms::Form
 	{
 	public:
@@ -32,7 +31,6 @@ namespace ProjetPOOGroupe2 {
 		}
 	private: System::Windows::Forms::DataGridView^ datagridview_log;
 
-
 	private: System::Windows::Forms::Button^ btn_retour;
 	private: System::ComponentModel::Container ^components;
 	private: servL::servicelog^ service_log = gcnew servL::servicelog();
@@ -43,7 +41,6 @@ namespace ProjetPOOGroupe2 {
 
 
 #pragma region Windows Form Designer generated code
-
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm6::typeid));

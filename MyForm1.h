@@ -14,9 +14,6 @@ namespace ProjetPOOGroupe2 {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// Description résumé de MyForm
-	/// </summary>
 	public ref class MyForm1 : public System::Windows::Forms::Form
 	{
 	public:
@@ -28,9 +25,6 @@ namespace ProjetPOOGroupe2 {
 		}
 
 	protected:
-		/// <summary>
-		/// Nettoyage des ressources utilisées.
-		/// </summary>
 		~MyForm1()
 		{
 			if (components)
@@ -39,9 +33,6 @@ namespace ProjetPOOGroupe2 {
 			}
 		}
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
-	protected:
-
-
 	private: System::Windows::Forms::Button^ btn_retour;
 	private: System::Windows::Forms::Button^ btn_ajouter;
 	private: System::Windows::Forms::Button^ btn_supprimer;
@@ -53,36 +44,16 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::TextBox^ txt_results;
-
 	private: System::Windows::Forms::Label^ lbl_resultats;
 	private: System::Windows::Forms::TextBox^ tb_superieur;
-
-
-
-
-
-
-
-
 	private: System::Windows::Forms::TextBox^ tb_date;
-
-
 	private: servPers::CLservices^ pe;
 	private: System::Data::DataSet^ oDs;
-
-
-
-
 	private: System::ComponentModel::Container^ components;
-
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::TextBox^ tb_numrue;
-
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::TextBox^ tb_nomrue;
-
-
-
 	private: System::Windows::Forms::Label^ label_id;
 	private: System::Windows::Forms::TextBox^ tb_ID;
 	private: System::Windows::Forms::Label^ label_ville;
@@ -94,10 +65,6 @@ namespace ProjetPOOGroupe2 {
 	private: AD::Adresse^ Adresse = gcnew AD::Adresse();
 
 #pragma region Windows Form Designer generated code
-		   /// <summary>
-		   /// M?thode requise pour la prise en charge du concepteur - ne modifiez pas
-		   /// le contenu de cette m?thode avec l'?diteur de code.
-		   /// </summary>
 		   void InitializeComponent(void)
 		   {
 			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm1::typeid));
@@ -293,7 +260,6 @@ namespace ProjetPOOGroupe2 {
 			   this->lbl_resultats->Size = System::Drawing::Size(70, 18);
 			   this->lbl_resultats->TabIndex = 14;
 			   this->lbl_resultats->Text = L"Resultats";
-			   this->lbl_resultats->Click += gcnew System::EventHandler(this, &MyForm1::lbl_resultats_Click);
 			   // 
 			   // tb_superieur
 			   // 
@@ -324,7 +290,6 @@ namespace ProjetPOOGroupe2 {
 			   this->label5->Size = System::Drawing::Size(107, 18);
 			   this->label5->TabIndex = 17;
 			   this->label5->Text = L"Numero de rue";
-			   this->label5->Click += gcnew System::EventHandler(this, &MyForm1::label5_Click);
 			   // 
 			   // tb_numrue
 			   // 
@@ -465,7 +430,6 @@ namespace ProjetPOOGroupe2 {
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			   this->ResumeLayout(false);
 			   this->PerformLayout();
-
 		   }
 
 #pragma endregion
@@ -473,13 +437,16 @@ namespace ProjetPOOGroupe2 {
 	private: System::Void btn_retour_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		this->Hide();
-
 	}
 
-	private: void refresh_datagrid()
-	{
-		this->dataGridView1->Refresh();
-		this->txt_results->Text = "Données générées";
+	private: System::Void clearentree() {
+		this->tb_nom->Text = "";
+		this->tb_prenom->Text = "";
+		this->tb_date->Text = "";
+		this->tb_superieur->Text = "";
+		this->tb_nomrue->Text = "";
+		this->tb_numrue->Text = "";
+		this->tb_ville->Text = "";
 	}
 
 	public:	 void actualiser()
@@ -528,7 +495,6 @@ namespace ProjetPOOGroupe2 {
 		}
 	}
 
-
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{
 		this->pe = gcnew servPers::CLservices();
@@ -537,59 +503,32 @@ namespace ProjetPOOGroupe2 {
 
 	private: System::Void btn_ajouter_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		// initialiser un objet personne avec les valeurs des textbox
-		// ajouter la personne dans la base de données
-		// rafraichir le datagridview
-		// afficher un message de confirmation
-
 		if (this->tb_nom->Text == "" || this->tb_prenom->Text == "" || this->tb_superieur->Text == "" || this->tb_nomrue->Text == "" || this->tb_date->Text == "" || this->tb_date->Text == "" || this->tb_ville->Text == "")
 		{
 			this->txt_results->Text = "Veuillez remplir tous les champs";
 		}
 		else
 		{
-
 			this->personnel->set_Nom(this->tb_nom->Text);
 			this->personnel->set_Prenom(this->tb_prenom->Text);
 			this->personnel->set_Date_Embauche(this->tb_date->Text); //Vérifier si c'est la bonne textBox.
 			this->personnel->set_Superieur_Hierarchique(Convert::ToInt32(this->tb_superieur->Text));
-
 			this->Adresse->set_Rue(this->tb_nomrue->Text);
 			this->Adresse->set_Numero_Maison(Convert::ToInt32(this->tb_numrue->Text));
 			this->Adresse->set_Nature("Habitation");
 			this->personnel->set_Adresse_Habitation(this->Adresse);
 			this->Adresse->set_Nom_Ville(this->tb_ville->Text);
-
 			this->pe->ajouterUnePersonne(this->personnel, this->tb_ville->Text);
-			this->tb_nom->Text = "";
-			this->tb_prenom->Text = "";
-			this->tb_date->Text = "";
-			this->tb_superieur->Text = "";
-			this->tb_nomrue->Text = "";
-			this->tb_numrue->Text = "";
-			this->tb_ville->Text = "";
-
+			clearentree();
 			actualiser();
-
 			this->txt_results->Text = "Données entrées avec succès";
 		}
-
-
-
 	}
 
 	private: System::Void btn_supprimer_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		this->pe->supprimerUnePersonne(Convert::ToInt32(this->tb_ID->Text));
-		this->tb_ID->Text = "";
-		this->tb_nom->Text = "";
-		this->tb_prenom->Text = "";
-		this->tb_date->Text = "";
-		this->tb_superieur->Text = "";
-		this->tb_nomrue->Text = "";
-		this->tb_numrue->Text = "";
-		this->tb_ville->Text = "";
-
+		clearentree();
 		actualiser();
 	}
 	private: System::Void btn_modifier_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -597,39 +536,23 @@ namespace ProjetPOOGroupe2 {
 		this->personnel->set_Nom(this->tb_nom->Text);
 		this->personnel->set_Prenom(this->tb_prenom->Text);
 		this->personnel->set_Date_Embauche(this->tb_date->Text); //Vérifier si c'est la bonne textBox.
-
 		this->Adresse->set_Rue(this->tb_nomrue->Text);
 		this->Adresse->set_Numero_Maison(Convert::ToInt32(this->tb_numrue->Text));
 		this->personnel->set_Adresse_Habitation(this->Adresse);
 		this->Adresse->set_Nom_Ville(this->tb_ville->Text);
-		this->pe->modifierUnePersonne(Convert::ToInt32(this->tb_ID->Text), this->personnel, this->tb_ville->Text);
-
-
-
+		this->pe->modifierUnePersonne(Convert::ToInt32(this->tb_ID->Text), this->personnel, this->tb_ville->Text, Convert::ToInt32(this->tb_superieur->Text));
+		clearentree();
 		actualiser();
-
 		this->txt_results->Text = "Données entrées avec succès";
-
 	}
 
-	private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		actualiser();
 	}
 
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		this->tb_ID->Text = "";
-		this->tb_nom->Text = "";
-		this->tb_prenom->Text = "";
-		this->tb_date->Text = "";
-		this->tb_superieur->Text = "";
-		this->tb_nomrue->Text = "";
-		this->tb_numrue->Text = "";
-		this->tb_ville->Text = "";
+		clearentree();
 	}
-	private: System::Void lbl_resultats_Click(System::Object^ sender, System::EventArgs^ e) {
 
-	}
 };
 }

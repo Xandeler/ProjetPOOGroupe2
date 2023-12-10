@@ -12,9 +12,6 @@ namespace ProjetPOOGroupe2 {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// Description r sum e de MyForm1
-	/// </summary>
 	public ref class MyForm5 : public System::Windows::Forms::Form
 	{
 	public:
@@ -25,7 +22,6 @@ namespace ProjetPOOGroupe2 {
 		}
 
 	protected:
-
 		~MyForm5()
 		{
 			if (components)
@@ -34,9 +30,6 @@ namespace ProjetPOOGroupe2 {
 			}
 		}
 	private: System::Windows::Forms::Button^ button_retour;
-
-
-
 	private: System::Windows::Forms::Button^ button_panier_moyen;
 	private: System::Windows::Forms::Button^ button_total_un_client;
 
@@ -68,10 +61,7 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::TextBox^ txt_verif;
 
 	private: System::Windows::Forms::Label^ label2;
-
-
 	private: System::ComponentModel::Container^ components;
-
 
 #pragma region Windows Form Designer generated code
 
@@ -346,10 +336,9 @@ namespace ProjetPOOGroupe2 {
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView_stat))->EndInit();
 			   this->ResumeLayout(false);
 			   this->PerformLayout();
-
 		   }
-#pragma endregion
 
+#pragma endregion
 	private: void donneesgeneree()
 	{
 		this->txt_verif->Text = "Données générées";
@@ -460,7 +449,6 @@ namespace ProjetPOOGroupe2 {
 		this->dataGridView_stat->DataMember = "Commande6";
 		donneesgeneree();
 	}
-
 
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}

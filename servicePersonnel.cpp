@@ -33,13 +33,13 @@ void servPers::CLservices::supprimerUnePersonne(int id)
 	this->acc->actionRows(sql);
 }
 
-void servPers::CLservices::modifierUnePersonne(int id, PE::Personnel^ personnel, String^ Nom_ville)
+void servPers::CLservices::modifierUnePersonne(int id, PE::Personnel^ personnel, String^ Nom_ville, int idsup)
 {
 	System::String^ sql;
 
 	this->pe = personnel;
 	this->pe->set_ID_personnel(id);
-	sql = this->pe->modifier(id, Nom_ville);
+	sql = this->pe->modifier(id, Nom_ville, idsup);
 
 	this->acc->actionRows(sql);
 }

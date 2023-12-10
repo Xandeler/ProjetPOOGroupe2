@@ -13,9 +13,6 @@ namespace ProjetPOOGroupe2 {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// Description résumé de MyForm
-	/// </summary>
 	public ref class MyForm3 : public System::Windows::Forms::Form
 	{
 	public:
@@ -27,9 +24,6 @@ namespace ProjetPOOGroupe2 {
 		}
 
 	protected:
-		/// <summary>
-		/// Nettoyage des ressources utilisées.
-		/// </summary>
 		~MyForm3()
 		{
 			if (components)
@@ -38,22 +32,15 @@ namespace ProjetPOOGroupe2 {
 			}
 		}
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
-	protected:
-
 
 	private: System::Windows::Forms::Button^ btn_retour;
 	private: System::Windows::Forms::Button^ btn_ajouter;
 	private: System::Windows::Forms::Button^ btn_supprimer;
 	private: System::Windows::Forms::Button^ btn_modifier;
-
 	private: System::Windows::Forms::TextBox^ tb_prenom;
-
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::TextBox^ txt_results;
-
 	private: System::Windows::Forms::Label^ lbl_resultats;
-
-
 
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label4;
@@ -64,25 +51,7 @@ namespace ProjetPOOGroupe2 {
 	private: CO::Commande^ commande = gcnew CO::Commande();
 	private: DataSet^ dataset = gcnew DataSet();
 
-
-
-
-
-
-
-
-
-
-
-
-
-	protected:
-
-	private:
-		/// <summary>
-		/// Variable n cessaire au concepteur.
-		/// </summary>
-		System::ComponentModel::Container^ components;
+	private: System::ComponentModel::Container^ components;
 	private: System::Windows::Forms::Label^ label_stock;
 	private: System::Windows::Forms::Button^ button_ajouter_article;
 
@@ -102,10 +71,7 @@ namespace ProjetPOOGroupe2 {
 
 
 #pragma region Windows Form Designer generated code
-		   /// <summary>
-		   /// M thode requise pour la prise en charge du concepteur - ne modifiez pas
-		   /// le contenu de cette m thode avec l' diteur de code.
-		   /// </summary>
+
 		   void InitializeComponent(void)
 		   {
 			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm3::typeid));
@@ -459,11 +425,9 @@ namespace ProjetPOOGroupe2 {
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			   this->ResumeLayout(false);
 			   this->PerformLayout();
-
 		   }
 
 #pragma endregion
-
 	private: System::Void btn_retour_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		this->Hide();
@@ -482,7 +446,6 @@ namespace ProjetPOOGroupe2 {
 		this->dataGridView1->DataSource = this->dataset;
 		this->dataGridView1->DataMember = "Liste_Commandes";
 	}
-
 
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{
@@ -507,7 +470,6 @@ namespace ProjetPOOGroupe2 {
 			String^ logo = "rien";
 			AD::Adresse^ adresse_f = gcnew AD::Adresse();
 			AD::Adresse^ adresse_l = gcnew AD::Adresse();
-
 
 			this->commandes->ajouter(id_commande, id_client, date_livraison, date_emission, date_paiement, moyen_paiement, total_ht, total_ttc, nom, adresse, num, logo, adresse_f, adresse_l);
 
@@ -541,14 +503,11 @@ namespace ProjetPOOGroupe2 {
 			AD::Adresse^ adresse_f = gcnew AD::Adresse();
 			AD::Adresse^ adresse_l = gcnew AD::Adresse();
 
-
 			this->commandes->supprimer(id_commande, id_client, date_livraison, date_emission, date_paiement, moyen_paiement, total_ht, total_ttc, nom, adresse, num, logo, adresse_f, adresse_l);
-
 
 			this->txt_results->Text = "Données supprimées avec succès";
 
 			affichage_tout();
-
 		}
 		catch (Exception^ execept)
 		{
@@ -557,11 +516,11 @@ namespace ProjetPOOGroupe2 {
 			this->txt_results->Text += execept->StackTrace;
 		}
 	}
+
 	private: System::Void btn_modifier_Click(System::Object^ sender, System::EventArgs^ e) {
 		try
 		{
 			refresh_datagrid();
-
 			int^ id_commande = Convert::ToInt32(this->tb_prenom->Text);
 			int^ id_client = 0;
 			String^ date_livraison = this->textBox2->Text;
@@ -576,7 +535,6 @@ namespace ProjetPOOGroupe2 {
 			String^ logo = "rien";
 			AD::Adresse^ adresse_f = gcnew AD::Adresse();
 			AD::Adresse^ adresse_l = gcnew AD::Adresse();
-
 
 			this->commandes->modifier(id_commande, id_client, date_livraison, date_emission, date_paiement, moyen_paiement, total_ht, total_ttc, nom, adresse, num, logo, adresse_f, adresse_l);
 

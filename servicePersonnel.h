@@ -14,7 +14,7 @@ namespace servPers
 		System::Data::DataSet^ selectionnerToutesLesPersonnes(System::String^);
 		void ajouterUnePersonne(PE::Personnel^, String^);
 		void supprimerUnePersonne(int);
-		void modifierUnePersonne(int, PE::Personnel^, String^);
+		void modifierUnePersonne(int, PE::Personnel^, String^, int);
 
 	};
 }
