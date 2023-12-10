@@ -129,11 +129,11 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   this->button_panier_moyen->BackColor = System::Drawing::SystemColors::InactiveCaption;
 			   this->button_panier_moyen->ForeColor = System::Drawing::SystemColors::HotTrack;
-			   this->button_panier_moyen->Location = System::Drawing::Point(213, 422);
+			   this->button_panier_moyen->Location = System::Drawing::Point(622, 256);
 			   this->button_panier_moyen->Name = L"button_panier_moyen";
 			   this->button_panier_moyen->Size = System::Drawing::Size(138, 55);
 			   this->button_panier_moyen->TabIndex = 13;
-			   this->button_panier_moyen->Text = L"Panier moyen";
+			   this->button_panier_moyen->Text = L"Panier moyen d\'une commande";
 			   this->button_panier_moyen->UseVisualStyleBackColor = false;
 			   this->button_panier_moyen->Click += gcnew System::EventHandler(this, &MyForm5::bouton_panier_moyen_click);
 			   // 
@@ -141,7 +141,7 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   this->button_total_un_client->BackColor = System::Drawing::SystemColors::InactiveCaption;
 			   this->button_total_un_client->ForeColor = System::Drawing::SystemColors::HotTrack;
-			   this->button_total_un_client->Location = System::Drawing::Point(213, 258);
+			   this->button_total_un_client->Location = System::Drawing::Point(117, 256);
 			   this->button_total_un_client->Name = L"button_total_un_client";
 			   this->button_total_un_client->Size = System::Drawing::Size(138, 55);
 			   this->button_total_un_client->TabIndex = 14;
@@ -153,7 +153,7 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   this->button_articles_a_commander->BackColor = System::Drawing::SystemColors::InactiveCaption;
 			   this->button_articles_a_commander->ForeColor = System::Drawing::SystemColors::HotTrack;
-			   this->button_articles_a_commander->Location = System::Drawing::Point(131, 348);
+			   this->button_articles_a_commander->Location = System::Drawing::Point(213, 422);
 			   this->button_articles_a_commander->Name = L"button_articles_a_commander";
 			   this->button_articles_a_commander->Size = System::Drawing::Size(138, 55);
 			   this->button_articles_a_commander->TabIndex = 15;
@@ -177,7 +177,7 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   this->button_articles_moins_vendus->BackColor = System::Drawing::SystemColors::InactiveCaption;
 			   this->button_articles_moins_vendus->ForeColor = System::Drawing::SystemColors::HotTrack;
-			   this->button_articles_moins_vendus->Location = System::Drawing::Point(461, 348);
+			   this->button_articles_moins_vendus->Location = System::Drawing::Point(382, 337);
 			   this->button_articles_moins_vendus->Name = L"button_articles_moins_vendus";
 			   this->button_articles_moins_vendus->Size = System::Drawing::Size(138, 55);
 			   this->button_articles_moins_vendus->TabIndex = 20;
@@ -189,7 +189,7 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   this->button_valeur_commerciale->BackColor = System::Drawing::SystemColors::InactiveCaption;
 			   this->button_valeur_commerciale->ForeColor = System::Drawing::SystemColors::HotTrack;
-			   this->button_valeur_commerciale->Location = System::Drawing::Point(621, 348);
+			   this->button_valeur_commerciale->Location = System::Drawing::Point(545, 337);
 			   this->button_valeur_commerciale->Name = L"button_valeur_commerciale";
 			   this->button_valeur_commerciale->Size = System::Drawing::Size(138, 55);
 			   this->button_valeur_commerciale->TabIndex = 19;
@@ -213,7 +213,7 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   this->button_articles_plus_vendus->BackColor = System::Drawing::SystemColors::InactiveCaption;
 			   this->button_articles_plus_vendus->ForeColor = System::Drawing::SystemColors::HotTrack;
-			   this->button_articles_plus_vendus->Location = System::Drawing::Point(293, 348);
+			   this->button_articles_plus_vendus->Location = System::Drawing::Point(213, 337);
 			   this->button_articles_plus_vendus->Name = L"button_articles_plus_vendus";
 			   this->button_articles_plus_vendus->Size = System::Drawing::Size(138, 55);
 			   this->button_articles_plus_vendus->TabIndex = 17;
@@ -223,7 +223,7 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // tb_idclient
 			   // 
-			   this->tb_idclient->Location = System::Drawing::Point(392, 289);
+			   this->tb_idclient->Location = System::Drawing::Point(309, 283);
 			   this->tb_idclient->Name = L"tb_idclient";
 			   this->tb_idclient->Size = System::Drawing::Size(100, 22);
 			   this->tb_idclient->TabIndex = 21;
@@ -233,7 +233,7 @@ namespace ProjetPOOGroupe2 {
 			   this->label_ID_client->AutoSize = true;
 			   this->label_ID_client->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(255)));
-			   this->label_ID_client->Location = System::Drawing::Point(410, 266);
+			   this->label_ID_client->Location = System::Drawing::Point(327, 260);
 			   this->label_ID_client->Name = L"label_ID_client";
 			   this->label_ID_client->Size = System::Drawing::Size(62, 16);
 			   this->label_ID_client->TabIndex = 22;
@@ -278,7 +278,7 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   // tb_idcommande
 			   // 
-			   this->tb_idcommande->Location = System::Drawing::Point(560, 289);
+			   this->tb_idcommande->Location = System::Drawing::Point(478, 283);
 			   this->tb_idcommande->Name = L"tb_idcommande";
 			   this->tb_idcommande->Size = System::Drawing::Size(100, 22);
 			   this->tb_idcommande->TabIndex = 27;
@@ -288,7 +288,7 @@ namespace ProjetPOOGroupe2 {
 			   this->label1->AutoSize = true;
 			   this->label1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(255)));
-			   this->label1->Location = System::Drawing::Point(559, 266);
+			   this->label1->Location = System::Drawing::Point(477, 260);
 			   this->label1->Name = L"label1";
 			   this->label1->Size = System::Drawing::Size(99, 16);
 			   this->label1->TabIndex = 28;
@@ -363,9 +363,8 @@ namespace ProjetPOOGroupe2 {
 		   }
 #pragma endregion
 
-	private: void refresh_dataGridView()
+	private: void donneesgeneree()
 	{
-		this->dataGridView_stat->Refresh();
 		this->txt_verif->Text = "Données générées";
 	}
 
@@ -392,7 +391,7 @@ namespace ProjetPOOGroupe2 {
 			this->oDs = this->serviceStatistiques->Calcul_Panier_MoyenSERVICE(Convert::ToInt32(this->tb_idcommande->Text), "Commande");
 			this->dataGridView_stat->DataSource = this->oDs;
 			this->dataGridView_stat->DataMember = "Commande";
-			refresh_dataGridView();
+			donneesgeneree();
 		}
 	}
 
@@ -403,7 +402,7 @@ namespace ProjetPOOGroupe2 {
 		this->serviceStatistiques->Calcul_Chiffre_AffairesSERVICE("Commande");
 		this->dataGridView_stat->DataSource = this->oDs;
 		this->dataGridView_stat->DataMember = "Commande";
-		refresh_dataGridView();
+		donneesgeneree();
 	}
 
 	private: System::Void bouton_articles_a_commander_click(System::Object^ sender, System::EventArgs^ e)
@@ -413,7 +412,7 @@ namespace ProjetPOOGroupe2 {
 		this->serviceStatistiques->Produit_A_CommanderSERVICE("Article");
 		this->dataGridView_stat->DataSource = this->oDs;
 		this->dataGridView_stat->DataMember = "Article";
-		refresh_dataGridView();
+		donneesgeneree();
 	}
 
 	private: System::Void bouton_montant_client_click(System::Object^ sender, System::EventArgs^ e)
@@ -427,7 +426,7 @@ namespace ProjetPOOGroupe2 {
 			this->serviceStatistiques->Calcul_Montant_ClientSERVICE(Convert::ToInt32(this->tb_idclient->Text), "Commande");
 			this->dataGridView_stat->DataSource = this->oDs;
 			this->dataGridView_stat->DataMember = "Commande";
-			refresh_dataGridView();
+			donneesgeneree();
 		}
 	}
 
@@ -438,7 +437,7 @@ namespace ProjetPOOGroupe2 {
 		this->serviceStatistiques->Articles_Plus_VendusSERVICE("Article");
 		this->dataGridView_stat->DataSource = this->oDs;
 		this->dataGridView_stat->DataMember = "Article";
-		refresh_dataGridView();
+		donneesgeneree();
 	}
 
 	private: System::Void bouton_articles_moins_vendus_click(System::Object^ sender, System::EventArgs^ e)
@@ -448,7 +447,7 @@ namespace ProjetPOOGroupe2 {
 		this->serviceStatistiques->Articles_Moins_VendusSERVICE("Article");
 		this->dataGridView_stat->DataSource = this->oDs;
 		this->dataGridView_stat->DataMember = "Article";
-		refresh_dataGridView();
+		donneesgeneree();
 	}
 
 	private: System::Void bouton_valeur_commerciale_click(System::Object^ sender, System::EventArgs^ e)
@@ -458,7 +457,7 @@ namespace ProjetPOOGroupe2 {
 		this->serviceStatistiques->Calcul_Valeur_Commerciale_StockSERVICE("Article");
 		this->dataGridView_stat->DataSource = this->oDs;
 		this->dataGridView_stat->DataMember = "Article";
-		refresh_dataGridView();
+		donneesgeneree();
 	}
 
 	private: System::Void bouton_valeur_achat_click(System::Object^ sender, System::EventArgs^ e)
@@ -468,7 +467,7 @@ namespace ProjetPOOGroupe2 {
 		this->serviceStatistiques->Calcul_Valeur_Achat_StockSERVICE("Article");
 		this->dataGridView_stat->DataSource = this->oDs;
 		this->dataGridView_stat->DataMember = "Article";
-		refresh_dataGridView();
+		donneesgeneree();
 	}
 
 
