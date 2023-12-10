@@ -440,6 +440,7 @@ namespace ProjetPOOGroupe2 {
 	}
 
 	private: System::Void clearentree() {
+		this->tb_ID->Text = "";
 		this->tb_nom->Text = "";
 		this->tb_prenom->Text = "";
 		this->tb_date->Text = "";

@@ -56,21 +56,21 @@ namespace ProjetPOOGroupe2 {
 			this->datagridview_log->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->datagridview_log->BackgroundColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->datagridview_log->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->datagridview_log->Location = System::Drawing::Point(13, 32);
+			this->datagridview_log->Location = System::Drawing::Point(12, 32);
 			this->datagridview_log->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->datagridview_log->MultiSelect = false;
 			this->datagridview_log->Name = L"datagridview_log";
 			this->datagridview_log->ReadOnly = true;
 			this->datagridview_log->RowHeadersWidth = 51;
 			this->datagridview_log->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->datagridview_log->Size = System::Drawing::Size(317, 617);
+			this->datagridview_log->Size = System::Drawing::Size(359, 617);
 			this->datagridview_log->TabIndex = 1;
 			// 
 			// btn_retour
 			// 
 			this->btn_retour->BackColor = System::Drawing::SystemColors::InactiveCaption;
 			this->btn_retour->ForeColor = System::Drawing::SystemColors::HotTrack;
-			this->btn_retour->Location = System::Drawing::Point(337, 613);
+			this->btn_retour->Location = System::Drawing::Point(378, 613);
 			this->btn_retour->Name = L"btn_retour";
 			this->btn_retour->Size = System::Drawing::Size(112, 36);
 			this->btn_retour->TabIndex = 5;
@@ -94,7 +94,7 @@ namespace ProjetPOOGroupe2 {
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(455, 654);
+			this->ClientSize = System::Drawing::Size(490, 654);
 			this->Controls->Add(this->label_stock);
 			this->Controls->Add(this->btn_retour);
 			this->Controls->Add(this->datagridview_log);
