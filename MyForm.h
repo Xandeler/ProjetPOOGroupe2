@@ -56,6 +56,7 @@ namespace ProjetPOOGroupe2 {
 
 
 	private: System::Windows::Forms::Button^ b_statistiques;
+	private: System::Windows::Forms::Button^ bouton_log;
 
 
 
@@ -83,6 +84,7 @@ namespace ProjetPOOGroupe2 {
 			this->b_commandes = (gcnew System::Windows::Forms::Button());
 			this->b_stocks = (gcnew System::Windows::Forms::Button());
 			this->b_statistiques = (gcnew System::Windows::Forms::Button());
+			this->bouton_log = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// b_personnel
@@ -145,12 +147,25 @@ namespace ProjetPOOGroupe2 {
 			this->b_statistiques->UseVisualStyleBackColor = false;
 			this->b_statistiques->Click += gcnew System::EventHandler(this, &MyForm::b_statistiques_Click);
 			// 
+			// bouton_log
+			// 
+			this->bouton_log->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			this->bouton_log->ForeColor = System::Drawing::SystemColors::HotTrack;
+			this->bouton_log->Location = System::Drawing::Point(395, 381);
+			this->bouton_log->Name = L"bouton_log";
+			this->bouton_log->Size = System::Drawing::Size(92, 46);
+			this->bouton_log->TabIndex = 11;
+			this->bouton_log->Text = L"LOG";
+			this->bouton_log->UseVisualStyleBackColor = false;
+			this->bouton_log->Click += gcnew System::EventHandler(this, &MyForm::bouton_log_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->ClientSize = System::Drawing::Size(499, 439);
+			this->Controls->Add(this->bouton_log);
 			this->Controls->Add(this->b_statistiques);
 			this->Controls->Add(this->b_stocks);
 			this->Controls->Add(this->b_commandes);
@@ -192,6 +207,8 @@ namespace ProjetPOOGroupe2 {
 		MyForm5^ f5 = gcnew MyForm5();
 		f5->Show();
 	}
+private: System::Void bouton_log_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
 

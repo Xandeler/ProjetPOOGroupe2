@@ -2,29 +2,9 @@
 
 stat::Statistiques::Statistiques()
 {
-    Client = gcnew CL::Client();
-    Commande = gcnew CO::Commande();
+
 }
 
-void stat::Statistiques::set_commande(CO::Commande^ commande)
-{
-    this->Commande = commande;
-}
-
-void stat::Statistiques::set_client(CL::Client^ client)
-{
-    this->Client = client;
-}
-
-CO::Commande^ stat::Statistiques::get_commande()
-{
-    return this->Commande;
-}
-
-CL::Client^ stat::Statistiques::get_client()
-{
-    return this->Client;
-}
 
 String^ stat::Statistiques::Calcul_Panier_Moyen(int id)
 {
