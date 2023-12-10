@@ -365,9 +365,9 @@ namespace ProjetPOOGroupe2 {
 		}
 		else {
 
-			this->oDs = this->serviceStatistiques->Calcul_Panier_MoyenSERVICE(Convert::ToInt32(this->tb_idcommande->Text), "Commande");
+			this->oDs = this->serviceStatistiques->Calcul_Panier_MoyenSERVICE(Convert::ToInt32(this->tb_idcommande->Text), "Commande7");
 			this->dataGridView_stat->DataSource = this->oDs;
-			this->dataGridView_stat->DataMember = "Commande";
+			this->dataGridView_stat->DataMember = "Commande7";
 			this->tb_idcommande->Text = "";
 			donneesgeneree();
 		}
