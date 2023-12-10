@@ -61,7 +61,7 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::TextBox^ textBox2;
 
 	private: StockageCommandes^ commandes = gcnew StockageCommandes();
-	private: Commande^ commande = gcnew Commande();
+	private: CO::Commande^ commande = gcnew CO::Commande();
 	private: DataSet^ dataset = gcnew DataSet();
 
 
@@ -617,5 +617,5 @@ namespace ProjetPOOGroupe2 {
 
 		this->txt_results->Text = "Commande imprimée avec succes.";
 	}
-};
+	};
 }

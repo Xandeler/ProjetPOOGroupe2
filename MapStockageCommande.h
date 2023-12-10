@@ -6,7 +6,7 @@ namespace StoCom
 	ref class CLgenerateSQLStoCom
 	{
 	private:
-		Commande^ commande;
+		CO::Commande^ commande;
 
 	public:
 		CLgenerateSQLStoCom();

@@ -1,5 +1,7 @@
 ﻿#pragma once
 #include "Statistiques.h"
+#include "AccesBase.h"
+#include "serviceStatistiques.h"
 
 namespace ProjetPOOGroupe2 {
 
@@ -52,19 +54,34 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::Button^ button_achat_stock;
 
 	private: System::Windows::Forms::Button^ button_articles_plus_vendus;
-	private: System::Windows::Forms::TextBox^ textBox_ID_client;
+	private: System::Windows::Forms::TextBox^ tb_idclient;
+
 	private: System::Windows::Forms::Label^ label_ID_client;
 	private: System::Windows::Forms::Label^ label_statistiques;
 
-	private: Statistiques^ statistiques;
-	private: System::Data::DataSet^ dataset;
-	private: System::Windows::Forms::DataGridView^ dataGridView_stock;
+	private: servstat::serviceStatistiques^ serviceStatistiques = gcnew servstat::serviceStatistiques();
+	private: stat::Statistiques^ Statistiques = gcnew stat::Statistiques();
+	private: System::Data::DataSet^ dataset = gcnew DataSet();
+	private: System::Windows::Forms::DataGridView^ dataGridView_stat;
+	private: System::Data::DataSet^ oDs;
+
+	private: System::Windows::Forms::Label^ tb_afficher;
+	private: System::Windows::Forms::TextBox^ tb_idcommande;
+
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::TextBox^ txt_results;
+	private: System::Windows::Forms::TextBox^ txt_verif;
+
+	private: System::Windows::Forms::Label^ label2;
+
+
+
 
 		   /// <summary>
 		   /// Variable n cessaire au concepteur.
 		   /// </summary>
 	private: System::ComponentModel::Container^ components;
-	
+
 
 #pragma region Windows Form Designer generated code
 		   /// <summary>
@@ -83,11 +100,17 @@ namespace ProjetPOOGroupe2 {
 			   this->button_valeur_commerciale = (gcnew System::Windows::Forms::Button());
 			   this->button_achat_stock = (gcnew System::Windows::Forms::Button());
 			   this->button_articles_plus_vendus = (gcnew System::Windows::Forms::Button());
-			   this->textBox_ID_client = (gcnew System::Windows::Forms::TextBox());
+			   this->tb_idclient = (gcnew System::Windows::Forms::TextBox());
 			   this->label_ID_client = (gcnew System::Windows::Forms::Label());
 			   this->label_statistiques = (gcnew System::Windows::Forms::Label());
-			   this->dataGridView_stock = (gcnew System::Windows::Forms::DataGridView());
-			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView_stock))->BeginInit();
+			   this->dataGridView_stat = (gcnew System::Windows::Forms::DataGridView());
+			   this->tb_afficher = (gcnew System::Windows::Forms::Label());
+			   this->tb_idcommande = (gcnew System::Windows::Forms::TextBox());
+			   this->label1 = (gcnew System::Windows::Forms::Label());
+			   this->txt_results = (gcnew System::Windows::Forms::TextBox());
+			   this->txt_verif = (gcnew System::Windows::Forms::TextBox());
+			   this->label2 = (gcnew System::Windows::Forms::Label());
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView_stat))->BeginInit();
 			   this->SuspendLayout();
 			   // 
 			   // button_retour
@@ -118,7 +141,7 @@ namespace ProjetPOOGroupe2 {
 			   // 
 			   this->button_total_un_client->BackColor = System::Drawing::SystemColors::InactiveCaption;
 			   this->button_total_un_client->ForeColor = System::Drawing::SystemColors::HotTrack;
-			   this->button_total_un_client->Location = System::Drawing::Point(293, 253);
+			   this->button_total_un_client->Location = System::Drawing::Point(213, 258);
 			   this->button_total_un_client->Name = L"button_total_un_client";
 			   this->button_total_un_client->Size = System::Drawing::Size(138, 55);
 			   this->button_total_un_client->TabIndex = 14;
@@ -198,23 +221,23 @@ namespace ProjetPOOGroupe2 {
 			   this->button_articles_plus_vendus->UseVisualStyleBackColor = false;
 			   this->button_articles_plus_vendus->Click += gcnew System::EventHandler(this, &MyForm5::bouton_articles_plus_vendus_click);
 			   // 
-			   // textBox_ID_client
+			   // tb_idclient
 			   // 
-			   this->textBox_ID_client->Location = System::Drawing::Point(474, 283);
-			   this->textBox_ID_client->Name = L"textBox_ID_client";
-			   this->textBox_ID_client->Size = System::Drawing::Size(100, 22);
-			   this->textBox_ID_client->TabIndex = 21;
+			   this->tb_idclient->Location = System::Drawing::Point(392, 289);
+			   this->tb_idclient->Name = L"tb_idclient";
+			   this->tb_idclient->Size = System::Drawing::Size(100, 22);
+			   this->tb_idclient->TabIndex = 21;
 			   // 
 			   // label_ID_client
 			   // 
 			   this->label_ID_client->AutoSize = true;
 			   this->label_ID_client->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(255)));
-			   this->label_ID_client->Location = System::Drawing::Point(484, 258);
+			   this->label_ID_client->Location = System::Drawing::Point(410, 266);
 			   this->label_ID_client->Name = L"label_ID_client";
-			   this->label_ID_client->Size = System::Drawing::Size(78, 16);
+			   this->label_ID_client->Size = System::Drawing::Size(62, 16);
 			   this->label_ID_client->TabIndex = 22;
-			   this->label_ID_client->Text = L"ID du client :";
+			   this->label_ID_client->Text = L"ID Client :";
 			   // 
 			   // label_statistiques
 			   // 
@@ -228,18 +251,79 @@ namespace ProjetPOOGroupe2 {
 			   this->label_statistiques->TabIndex = 24;
 			   this->label_statistiques->Text = L"STATISTIQUES";
 			   // 
-			   // dataGridView_stock
+			   // dataGridView_stat
 			   // 
-			   this->dataGridView_stock->BackgroundColor = System::Drawing::SystemColors::ButtonHighlight;
-			   this->dataGridView_stock->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			   this->dataGridView_stock->GridColor = System::Drawing::SystemColors::HighlightText;
-			   this->dataGridView_stock->Location = System::Drawing::Point(8, 36);
-			   this->dataGridView_stock->Name = L"dataGridView_stock";
-			   this->dataGridView_stock->RowHeadersWidth = 51;
-			   this->dataGridView_stock->RowTemplate->Height = 24;
-			   this->dataGridView_stock->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			   this->dataGridView_stock->Size = System::Drawing::Size(863, 195);
-			   this->dataGridView_stock->TabIndex = 25;
+			   this->dataGridView_stat->BackgroundColor = System::Drawing::SystemColors::ButtonHighlight;
+			   this->dataGridView_stat->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			   this->dataGridView_stat->GridColor = System::Drawing::SystemColors::HighlightText;
+			   this->dataGridView_stat->Location = System::Drawing::Point(437, 36);
+			   this->dataGridView_stat->Name = L"dataGridView_stat";
+			   this->dataGridView_stat->RowHeadersWidth = 51;
+			   this->dataGridView_stat->RowTemplate->Height = 24;
+			   this->dataGridView_stat->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
+			   this->dataGridView_stat->Size = System::Drawing::Size(434, 195);
+			   this->dataGridView_stat->TabIndex = 25;
+			   // 
+			   // tb_afficher
+			   // 
+			   this->tb_afficher->AutoSize = true;
+			   this->tb_afficher->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			   this->tb_afficher->Location = System::Drawing::Point(12, 49);
+			   this->tb_afficher->Name = L"tb_afficher";
+			   this->tb_afficher->Size = System::Drawing::Size(69, 16);
+			   this->tb_afficher->TabIndex = 26;
+			   this->tb_afficher->Text = L"Affichage :";
+			   this->tb_afficher->Click += gcnew System::EventHandler(this, &MyForm5::label1_Click);
+			   // 
+			   // tb_idcommande
+			   // 
+			   this->tb_idcommande->Location = System::Drawing::Point(560, 289);
+			   this->tb_idcommande->Name = L"tb_idcommande";
+			   this->tb_idcommande->Size = System::Drawing::Size(100, 22);
+			   this->tb_idcommande->TabIndex = 27;
+			   // 
+			   // label1
+			   // 
+			   this->label1->AutoSize = true;
+			   this->label1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			   this->label1->Location = System::Drawing::Point(559, 266);
+			   this->label1->Name = L"label1";
+			   this->label1->Size = System::Drawing::Size(99, 16);
+			   this->label1->TabIndex = 28;
+			   this->label1->Text = L"ID Commande :";
+			   // 
+			   // txt_results
+			   // 
+			   this->txt_results->Location = System::Drawing::Point(12, 69);
+			   this->txt_results->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			   this->txt_results->Multiline = true;
+			   this->txt_results->Name = L"txt_results";
+			   this->txt_results->ReadOnly = true;
+			   this->txt_results->Size = System::Drawing::Size(397, 44);
+			   this->txt_results->TabIndex = 29;
+			   // 
+			   // txt_verif
+			   // 
+			   this->txt_verif->Location = System::Drawing::Point(12, 166);
+			   this->txt_verif->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			   this->txt_verif->Multiline = true;
+			   this->txt_verif->Name = L"txt_verif";
+			   this->txt_verif->ReadOnly = true;
+			   this->txt_verif->Size = System::Drawing::Size(397, 44);
+			   this->txt_verif->TabIndex = 30;
+			   // 
+			   // label2
+			   // 
+			   this->label2->AutoSize = true;
+			   this->label2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			   this->label2->Location = System::Drawing::Point(12, 146);
+			   this->label2->Name = L"label2";
+			   this->label2->Size = System::Drawing::Size(79, 16);
+			   this->label2->TabIndex = 31;
+			   this->label2->Text = L"Vérification :";
 			   // 
 			   // MyForm5
 			   // 
@@ -247,10 +331,16 @@ namespace ProjetPOOGroupe2 {
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			   this->ClientSize = System::Drawing::Size(883, 506);
-			   this->Controls->Add(this->dataGridView_stock);
+			   this->Controls->Add(this->label2);
+			   this->Controls->Add(this->txt_verif);
+			   this->Controls->Add(this->txt_results);
+			   this->Controls->Add(this->label1);
+			   this->Controls->Add(this->tb_idcommande);
+			   this->Controls->Add(this->tb_afficher);
+			   this->Controls->Add(this->dataGridView_stat);
 			   this->Controls->Add(this->label_statistiques);
 			   this->Controls->Add(this->label_ID_client);
-			   this->Controls->Add(this->textBox_ID_client);
+			   this->Controls->Add(this->tb_idclient);
 			   this->Controls->Add(this->button_articles_moins_vendus);
 			   this->Controls->Add(this->button_valeur_commerciale);
 			   this->Controls->Add(this->button_achat_stock);
@@ -266,16 +356,23 @@ namespace ProjetPOOGroupe2 {
 			   this->Name = L"MyForm5";
 			   this->Text = L"Gestion des statistiques";
 			   this->Load += gcnew System::EventHandler(this, &MyForm5::MyForm5_Load);
-			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView_stock))->EndInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView_stat))->EndInit();
 			   this->ResumeLayout(false);
 			   this->PerformLayout();
 
 		   }
 #pragma endregion
 
+	private: void refresh_dataGridView()
+	{
+		this->dataGridView_stat->Refresh();
+		this->txt_verif->Text = "Données générées";
+	}
+
+
 	private: System::Void MyForm5_Load(System::Object^ sender, System::EventArgs^ e)
 	{
-
+		this->txt_results->Text = "Cliquez sur un bouton :";
 	}
 
 	private: System::Void bouton_retour_click(System::Object^ sender, System::EventArgs^ e)
@@ -285,77 +382,97 @@ namespace ProjetPOOGroupe2 {
 
 	private: System::Void bouton_panier_moyen_click(System::Object^ sender, System::EventArgs^ e)
 	{
-		this->textBox_resultat->Clear();
+		this->dataGridView_stat->Refresh();
+		this->txt_results->Text = "Panier moyen : ";
+		if (this->tb_idcommande->Text == "") {
+			this->txt_verif->Text = "Veuillez entrer un ID de commande";
+		}
+		else {
 
-		this->textBox_resultat->Text += "Le panier moyen est de : ";
-		this->textBox_resultat->Text += this->statistiques->Calcul_Panier_Moyen("Article");
-		this->textBox_resultat->Text += " euros.";
+			this->oDs = this->serviceStatistiques->Calcul_Panier_MoyenSERVICE(Convert::ToInt32(this->tb_idcommande->Text), "Commande");
+			this->dataGridView_stat->DataSource = this->oDs;
+			this->dataGridView_stat->DataMember = "Commande";
+			refresh_dataGridView();
+		}
 	}
 
 	private: System::Void bouton_chiffre_affaires_click(System::Object^ sender, System::EventArgs^ e)
 	{
-		this->textBox_resultat->Clear();
-
-		this->textBox_resultat->Text += "Le chiffre d'affaires du mois en cours est de : ";
-		this->textBox_resultat->Text += this->statistiques->Calcul_Chiffre_Affaires("ChiffreAffaires");
-		this->textBox_resultat->Text += " euros.";
+		this->dataGridView_stat->Refresh();
+		this->txt_results->Text = "Chiffre d'affaires : ";
+		this->serviceStatistiques->Calcul_Chiffre_AffairesSERVICE("Commande");
+		this->dataGridView_stat->DataSource = this->oDs;
+		this->dataGridView_stat->DataMember = "Commande";
+		refresh_dataGridView();
 	}
 
 	private: System::Void bouton_articles_a_commander_click(System::Object^ sender, System::EventArgs^ e)
 	{
-		this->textBox_resultat->Clear();
-
-		this->textBox_resultat->Text += "Les articles sous le seuil de reapprovisionnement sont les suivants : ";
-		this->textBox_resultat->Text += this->statistiques->Produit_A_Commander("ProduitCommander");
-		this->textBox_resultat->Text += ".";
+		this->dataGridView_stat->Refresh();
+		this->txt_results->Text = "Articles à commander : ";
+		this->serviceStatistiques->Produit_A_CommanderSERVICE("Article");
+		this->dataGridView_stat->DataSource = this->oDs;
+		this->dataGridView_stat->DataMember = "Article";
+		refresh_dataGridView();
 	}
 
 	private: System::Void bouton_montant_client_click(System::Object^ sender, System::EventArgs^ e)
 	{
-		this->textBox_resultat->Clear();
-
-		this->textBox_resultat->Text += "Le montant total de tous les achats effectues par le client ";
-		this->textBox_resultat->Text += this->textBox_ID_client->Text;
-		this->textBox_resultat->Text += " est de : ";
-		this->textBox_resultat->Text += this->statistiques->Calcul_Montant_Client(Convert::ToInt32(this->textBox_ID_client->Text), "MontantClient");
-		this->textBox_resultat->Text += " euros.";
-		this->textBox_ID_client->Text = "";
+		this->dataGridView_stat->Refresh();
+		this->txt_results->Text = "Montant total d'un client : ";
+		if (this->tb_idclient->Text == "") {
+			this->txt_verif->Text = "Veuillez entrer un ID de client";
+		}
+		else {
+			this->serviceStatistiques->Calcul_Montant_ClientSERVICE(Convert::ToInt32(this->tb_idclient->Text), "Commande");
+			this->dataGridView_stat->DataSource = this->oDs;
+			this->dataGridView_stat->DataMember = "Commande";
+			refresh_dataGridView();
+		}
 	}
 
 	private: System::Void bouton_articles_plus_vendus_click(System::Object^ sender, System::EventArgs^ e)
 	{
-		this->textBox_resultat->Clear();
-
-		this->textBox_resultat->Text += "Les dix articles les plus vendus sont : ";
-		this->textBox_resultat->Text += this->statistiques->Articles_Plus_Vendus("ArticlesPlusVendus");
-		this->textBox_resultat->Text += ".";
+		this->dataGridView_stat->Refresh();
+		this->txt_results->Text = "10 articles les plus vendus : ";
+		this->serviceStatistiques->Articles_Plus_VendusSERVICE("Article");
+		this->dataGridView_stat->DataSource = this->oDs;
+		this->dataGridView_stat->DataMember = "Article";
+		refresh_dataGridView();
 	}
 
 	private: System::Void bouton_articles_moins_vendus_click(System::Object^ sender, System::EventArgs^ e)
 	{
-		this->textBox_resultat->Clear();
-
-		this->textBox_resultat->Text += "Les dix articles les moins vendus sont : ";
-		this->textBox_resultat->Text += this->statistiques->Articles_Moins_Vendus("ArticlesMoinsVendus");
-		this->textBox_resultat->Text += ".";
+		this->dataGridView_stat->Refresh();
+		this->txt_results->Text = "10 articles les moins vendus : ";
+		this->serviceStatistiques->Articles_Moins_VendusSERVICE("Article");
+		this->dataGridView_stat->DataSource = this->oDs;
+		this->dataGridView_stat->DataMember = "Article";
+		refresh_dataGridView();
 	}
 
 	private: System::Void bouton_valeur_commerciale_click(System::Object^ sender, System::EventArgs^ e)
 	{
-		this->textBox_resultat->Clear();
-
-		this->textBox_resultat->Text += "La valeur commerciale du stock est de : ";
-		this->textBox_resultat->Text += this->statistiques->Calcul_Valeur_Commerciale_Stock("ValeurCommercialeStock");
-		this->textBox_resultat->Text += " euros.";
+		this->dataGridView_stat->Refresh();
+		this->txt_results->Text = "Valeur commerciale du stock : ";
+		this->serviceStatistiques->Calcul_Valeur_Commerciale_StockSERVICE("Article");
+		this->dataGridView_stat->DataSource = this->oDs;
+		this->dataGridView_stat->DataMember = "Article";
+		refresh_dataGridView();
 	}
 
 	private: System::Void bouton_valeur_achat_click(System::Object^ sender, System::EventArgs^ e)
 	{
-		this->textBox_resultat->Clear();
+		this->dataGridView_stat->Refresh();
+		this->txt_results->Text = "Valeur d'achat du stock : ";
+		this->serviceStatistiques->Calcul_Valeur_Achat_StockSERVICE("Article");
+		this->dataGridView_stat->DataSource = this->oDs;
+		this->dataGridView_stat->DataMember = "Article";
+		refresh_dataGridView();
+	}
 
-		this->textBox_resultat->Text += "La valeur d'achat du stock est de : ";
-		this->textBox_resultat->Text += this->statistiques->Calcul_Valeur_Achat_Stock("ValeurAchatStock");
-		this->textBox_resultat->Text += "euros.";
+
+	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	};
 }

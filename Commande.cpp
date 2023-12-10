@@ -1,11 +1,11 @@
 #include "Commande.h"
 
-Commande::Commande()
+CO::Commande::Commande()
 {
 
 }
 
-Commande::Commande(int^ id_commande, int^ id_client, String^ date_livraison, String^ date_emission, String^ date_paiement, String^ moyen_paiement, double^ total_ht, double^ total_ttc, String^ nom_societe, AD::Adresse^ adresse_societe, int^ numero_service_clients, String^ logo, AD::Adresse^ adresse_facturation, AD::Adresse^ adresse_livraison)
+CO::Commande::Commande(int^ id_commande, int^ id_client, String^ date_livraison, String^ date_emission, String^ date_paiement, String^ moyen_paiement, double^ total_ht, double^ total_ttc, String^ nom_societe, AD::Adresse^ adresse_societe, int^ numero_service_clients, String^ logo, AD::Adresse^ adresse_facturation, AD::Adresse^ adresse_livraison)
 {
     this->set_ID_Commande(id_commande);
     this->set_ID_Client(id_client);
@@ -23,147 +23,147 @@ Commande::Commande(int^ id_commande, int^ id_client, String^ date_livraison, Str
     this->set_Adresse_Livraison(adresse_livraison);
 }
 
-int^ Commande::get_ID_Commande()
+int^ CO::Commande::get_ID_Commande()
 {
     return this->ID_Commande;
 }
 
-void Commande::set_ID_Commande(int^ id)
+void CO::Commande::set_ID_Commande(int^ id)
 {
     this->ID_Commande = id;
 }
 
-int^ Commande::get_ID_Client()
+int^ CO::Commande::get_ID_Client()
 {
     return this->ID_Client;
 }
 
-void Commande::set_ID_Client(int^ id)
+void CO::Commande::set_ID_Client(int^ id)
 {
     this->ID_Client = id;
 }
 
-String^ Commande::get_Date_Livraison()
+String^ CO::Commande::get_Date_Livraison()
 {
     return this->Date_Livraison;
 }
 
-void Commande::set_Date_Livraison(String^ date_livraison)
+void CO::Commande::set_Date_Livraison(String^ date_livraison)
 {
     this->Date_Livraison = date_livraison;
 }
 
-String^ Commande::get_Date_Emission()
+String^ CO::Commande::get_Date_Emission()
 {
     return this->Date_Emission;
 }
 
-void Commande::set_Date_Emission(String^ date_emission)
+void CO::Commande::set_Date_Emission(String^ date_emission)
 {
     this->Date_Emission = date_emission;
 }
 
-String^ Commande::get_Date_Paiement()
+String^ CO::Commande::get_Date_Paiement()
 {
     return this->Date_Paiement;
 }
 
-void Commande::set_Date_Paiement(String^ date_paiement)
+void CO::Commande::set_Date_Paiement(String^ date_paiement)
 {
     this->Date_Paiement = date_paiement;
 }
 
-String^ Commande::get_Moyen_Paiement()
+String^ CO::Commande::get_Moyen_Paiement()
 {
     return this->Moyen_Paiement;
 }
 
-void Commande::set_Moyen_Paiement(String^ moyen_paiement)
+void CO::Commande::set_Moyen_Paiement(String^ moyen_paiement)
 {
     this->Moyen_Paiement = moyen_paiement;
 }
 
-double^ Commande::get_Total_HT()
+double^ CO::Commande::get_Total_HT()
 {
     return this->Total_HT;
 }
 
-void Commande::set_Total_HT(double^ total_ht)
+void CO::Commande::set_Total_HT(double^ total_ht)
 {
     this->Total_HT = total_ht;
 }
 
-double^ Commande::get_Total_TTC()
+double^ CO::Commande::get_Total_TTC()
 {
     return this->Total_TTC;
 }
 
-void Commande::set_Total_TTC(double^ total_ttc)
+void CO::Commande::set_Total_TTC(double^ total_ttc)
 {
     this->Total_TTC = total_ttc;
 }
 
-String^ Commande::get_Nom_Societe()
+String^ CO::Commande::get_Nom_Societe()
 {
     return this->Nom_Societe;
 }
 
-void Commande::set_Nom_Societe(String^ nom_societe)
+void CO::Commande::set_Nom_Societe(String^ nom_societe)
 {
     this->Nom_Societe = nom_societe;
 }
 
-AD::Adresse^ Commande::get_Adresse_Societe()
+AD::Adresse^ CO::Commande::get_Adresse_Societe()
 {
     return this->Adresse_Societe;
 }
 
-void Commande::set_Adresse_Societe(AD::Adresse^ adresse_societe)
+void CO::Commande::set_Adresse_Societe(AD::Adresse^ adresse_societe)
 {
     this->Adresse_Societe = adresse_societe;
 }
 
-int^ Commande::get_Numero_Service_Clients()
+int^ CO::Commande::get_Numero_Service_Clients()
 {
     return this->Numero_Service_Clients;
 }
 
-void Commande::set_Numero_Service_Clients(int^ numero_service_clients)
+void CO::Commande::set_Numero_Service_Clients(int^ numero_service_clients)
 {
     this->Numero_Service_Clients = numero_service_clients;
 }
 
-String^ Commande::get_Logo()
+String^ CO::Commande::get_Logo()
 {
     return this->Logo;
 }
 
-void Commande::set_Logo(String^ logo)
+void CO::Commande::set_Logo(String^ logo)
 {
     this->Logo = logo;
 }
 
-AD::Adresse^ Commande::get_Adresse_Facturation()
+AD::Adresse^ CO::Commande::get_Adresse_Facturation()
 {
     return this->Adresse_Facturation;
 }
 
-void Commande::set_Adresse_Facturation(AD::Adresse^ adresse_facturation)
+void CO::Commande::set_Adresse_Facturation(AD::Adresse^ adresse_facturation)
 {
     this->Adresse_Facturation = adresse_facturation;
 }
 
-AD::Adresse^ Commande::get_Adresse_Livraison()
+AD::Adresse^ CO::Commande::get_Adresse_Livraison()
 {
     return this->Adresse_Livraison;
 }
 
-void Commande::set_Adresse_Livraison(AD::Adresse^ adresse_livraison)
+void CO::Commande::set_Adresse_Livraison(AD::Adresse^ adresse_livraison)
 {
     this->Adresse_Livraison = adresse_livraison;
 }
 
-void Commande::ajouter_Article(int^ id_commande, int^ id_article, int^ quantite)
+void CO::Commande::ajouter_Article(int^ id_commande, int^ id_article, int^ quantite)
 {
     String^ requete;
 

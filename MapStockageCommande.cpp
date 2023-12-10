@@ -3,12 +3,12 @@
 
 StoCom::CLgenerateSQLStoCom::CLgenerateSQLStoCom()
 {
-    this->commande = gcnew Commande();
+    this->commande = gcnew CO::Commande();
 }
 
 StoCom::CLgenerateSQLStoCom::CLgenerateSQLStoCom(int^ id_commande, int^ id_client, String^ date_livraison, String^ date_emission, String^ date_paiement, String^ moyen_paiement, double^ total_ht, double^ total_ttc, String^ nom_societe, AD::Adresse^ adresse_societe, int^ numero_service_clients, String^ logo, AD::Adresse^ adresse_facturation, AD::Adresse^ adresse_livraison)
 {
-    this->commande = gcnew Commande(id_commande, id_client, date_livraison, date_emission, date_paiement, moyen_paiement, total_ht, total_ttc, nom_societe, adresse_societe, numero_service_clients, logo, adresse_facturation, adresse_livraison);
+    this->commande = gcnew CO::Commande(id_commande, id_client, date_livraison, date_emission, date_paiement, moyen_paiement, total_ht, total_ttc, nom_societe, adresse_societe, numero_service_clients, logo, adresse_facturation, adresse_livraison);
 }
 
 System::String^ StoCom::CLgenerateSQLStoCom::SQL_Select(void)

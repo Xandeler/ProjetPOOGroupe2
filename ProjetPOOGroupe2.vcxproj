@@ -139,6 +139,7 @@
     <ClCompile Include="Personnel.cpp" />
     <ClCompile Include="servicePersonnel.cpp" />
     <ClCompile Include="MapClient.cpp" />
+    <ClCompile Include="serviceStatistiques.cpp" />
     <ClCompile Include="Statistiques.cpp" />
     <ClCompile Include="Stock.cpp" />
     <ClCompile Include="StockageCommandes.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="Personne.h" />
     <ClInclude Include="Personnel.h" />
     <ClInclude Include="servicePersonnel.h" />
+    <ClInclude Include="serviceStatistiques.h" />
     <ClInclude Include="Statistiques.h" />
     <ClInclude Include="Stock.h" />
     <ClInclude Include="StockageCommandes.h" />
