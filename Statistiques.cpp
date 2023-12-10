@@ -26,7 +26,7 @@ CL::Client^ stat::Statistiques::get_client()
     return this->Client;
 }
 
-String^ stat::Statistiques::Calcul_Panier_Moyen(int id, String^ NomTable)
+String^ stat::Statistiques::Calcul_Panier_Moyen(int id)
 {
     String^ requete = "SELECT SUM(Prix_HT_Article * Taux_TVA_Modif * Quantite_Commande_Article * Taux_Reduction_Modif) / SUM(Quantite_Commande_Article) AS PrixPanierMoyen ";
     requete += "FROM Article ";
@@ -39,7 +39,7 @@ String^ stat::Statistiques::Calcul_Panier_Moyen(int id, String^ NomTable)
     return requete;
 }
 
-String^ stat::Statistiques::Calcul_Chiffre_Affaires(String^ NomTable)
+String^ stat::Statistiques::Calcul_Chiffre_Affaires()
 {
     String^ requete = "SELECT SUM(a.Prix_HT_Article * c.Quantite_Commande_Article) AS Total_HT, ";
     requete += "SUM((a.Prix_HT_Article * c.Quantite_Commande_Article * m.Taux_TVA_Modif)) - SUM(a.Prix_HT_Article * c.Quantite_Commande_Article) AS Total_TVA, ";
@@ -55,7 +55,7 @@ String^ stat::Statistiques::Calcul_Chiffre_Affaires(String^ NomTable)
     return requete;
 }
 
-String^ stat::Statistiques::Produit_A_Commander(String^ NomTable)
+String^ stat::Statistiques::Produit_A_Commander()
 {
     String^ requete = "SELECT Nom_Article, Quantite_Stock_Article, Seuil_Reapprovisionnement_Article ";
     requete += "FROM Article ";
@@ -64,7 +64,7 @@ String^ stat::Statistiques::Produit_A_Commander(String^ NomTable)
     return requete;
 }
 
-String^ stat::Statistiques::Calcul_Montant_Client(int id, String^ NomTable)
+String^ stat::Statistiques::Calcul_Montant_Client(int id)
 {
     String^ requete = "SELECT SUM(Prix_HT_Article * Taux_TVA_Modif * Quantite_Commande_Article * ";
     requete += "CASE ";
@@ -83,9 +83,9 @@ String^ stat::Statistiques::Calcul_Montant_Client(int id, String^ NomTable)
     return requete;
 }
 
-String^ stat::Statistiques::Articles_Plus_Vendus(String^ NomTable)
+String^ stat::Statistiques::Articles_Plus_Vendus()
 {
-    String^ requete = "SELECT TOP 10 Article.Nom_Article, SUM(Quantite_Commande_Article) AS Total_Ventes ";
+    String^ requete = "SELECT TOP 10 Article.Nom_Article, COALESCE(SUM(Quantite_Commande_Article), 0) AS Total_Ventes ";
     requete += "FROM Article ";
     requete += "LEFT JOIN Compose ON Article.Reference_Article = Compose.Reference_Article ";
     requete += "GROUP BY Article.Reference_Article, Article.Nom_Article ";
@@ -94,9 +94,9 @@ String^ stat::Statistiques::Articles_Plus_Vendus(String^ NomTable)
     return requete;
 }
 
-String^ stat::Statistiques::Articles_Moins_Vendus(String^ NomTable)
+String^ stat::Statistiques::Articles_Moins_Vendus()
 {
-    String^ requete = "SELECT TOP 10 Article.Nom_Article, SUM(Quantite_Commande_Article) AS Total_Ventes ";
+    String^ requete = "SELECT TOP 10 Article.Nom_Article, COALESCE(SUM(Compose.Quantite_Commande_Article), 0) AS Total_Ventes ";
     requete += "FROM Article ";
     requete += "LEFT JOIN Compose ON Article.Reference_Article = Compose.Reference_Article ";
     requete += "GROUP BY Article.Reference_Article, Article.Nom_Article ";
@@ -106,7 +106,7 @@ String^ stat::Statistiques::Articles_Moins_Vendus(String^ NomTable)
 }
 
 
-String^ stat::Statistiques::Calcul_Valeur_Commerciale_Stock(String^ NomTable)
+String^ stat::Statistiques::Calcul_Valeur_Commerciale_Stock()
 {
     String^ requete = "SELECT SUM((Prix_HT_Article * (Modif.Taux_TVA_Modif)) * Quantite_Stock_Article) AS Valeur_Commerciale_Stock ";
     requete += "FROM Article ";
@@ -116,7 +116,7 @@ String^ stat::Statistiques::Calcul_Valeur_Commerciale_Stock(String^ NomTable)
     return requete;
 }
 
-String^ stat::Statistiques::Calcul_Valeur_Achat_Stock(String^ NomTable)
+String^ stat::Statistiques::Calcul_Valeur_Achat_Stock()
 {
     String^ requete = "SELECT SUM(Prix_HT_Article * Quantite_Stock_Article) AS Valeur_Achat_Stock ";
     requete += "FROM Article;";

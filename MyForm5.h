@@ -384,6 +384,7 @@ namespace ProjetPOOGroupe2 {
 		this->dataGridView_stat->Refresh();
 		this->txt_results->Text = "Panier moyen : ";
 		if (this->tb_idcommande->Text == "") {
+			this->dataGridView_stat->DataSource = nullptr;
 			this->txt_verif->Text = "Veuillez entrer un ID de commande";
 		}
 		else {
@@ -399,7 +400,7 @@ namespace ProjetPOOGroupe2 {
 	{
 		this->dataGridView_stat->Refresh();
 		this->txt_results->Text = "Chiffre d'affaires : ";
-		this->serviceStatistiques->Calcul_Chiffre_AffairesSERVICE("Commande");
+		this->oDs = this->serviceStatistiques->Calcul_Chiffre_AffairesSERVICE("Commande");
 		this->dataGridView_stat->DataSource = this->oDs;
 		this->dataGridView_stat->DataMember = "Commande";
 		donneesgeneree();
@@ -409,9 +410,9 @@ namespace ProjetPOOGroupe2 {
 	{
 		this->dataGridView_stat->Refresh();
 		this->txt_results->Text = "Articles à commander : ";
-		this->serviceStatistiques->Produit_A_CommanderSERVICE("Article");
+		this->oDs = this->serviceStatistiques->Produit_A_CommanderSERVICE("Commande1");
 		this->dataGridView_stat->DataSource = this->oDs;
-		this->dataGridView_stat->DataMember = "Article";
+		this->dataGridView_stat->DataMember = "Commande1";
 		donneesgeneree();
 	}
 
@@ -420,12 +421,13 @@ namespace ProjetPOOGroupe2 {
 		this->dataGridView_stat->Refresh();
 		this->txt_results->Text = "Montant total d'un client : ";
 		if (this->tb_idclient->Text == "") {
+			this->dataGridView_stat->DataSource = nullptr;
 			this->txt_verif->Text = "Veuillez entrer un ID de client";
 		}
 		else {
-			this->serviceStatistiques->Calcul_Montant_ClientSERVICE(Convert::ToInt32(this->tb_idclient->Text), "Commande");
+			this->oDs = this->serviceStatistiques->Calcul_Montant_ClientSERVICE(Convert::ToInt32(this->tb_idclient->Text), "Commande2");
 			this->dataGridView_stat->DataSource = this->oDs;
-			this->dataGridView_stat->DataMember = "Commande";
+			this->dataGridView_stat->DataMember = "Commande2";
 			donneesgeneree();
 		}
 	}
@@ -434,9 +436,9 @@ namespace ProjetPOOGroupe2 {
 	{
 		this->dataGridView_stat->Refresh();
 		this->txt_results->Text = "10 articles les plus vendus : ";
-		this->serviceStatistiques->Articles_Plus_VendusSERVICE("Article");
+		this->oDs = this->serviceStatistiques->Articles_Plus_VendusSERVICE("Commande3");
 		this->dataGridView_stat->DataSource = this->oDs;
-		this->dataGridView_stat->DataMember = "Article";
+		this->dataGridView_stat->DataMember = "Commande3";
 		donneesgeneree();
 	}
 
@@ -444,9 +446,9 @@ namespace ProjetPOOGroupe2 {
 	{
 		this->dataGridView_stat->Refresh();
 		this->txt_results->Text = "10 articles les moins vendus : ";
-		this->serviceStatistiques->Articles_Moins_VendusSERVICE("Article");
+		this->oDs = this->serviceStatistiques->Articles_Moins_VendusSERVICE("Commande4");
 		this->dataGridView_stat->DataSource = this->oDs;
-		this->dataGridView_stat->DataMember = "Article";
+		this->dataGridView_stat->DataMember = "Commande4";
 		donneesgeneree();
 	}
 
@@ -454,9 +456,9 @@ namespace ProjetPOOGroupe2 {
 	{
 		this->dataGridView_stat->Refresh();
 		this->txt_results->Text = "Valeur commerciale du stock : ";
-		this->serviceStatistiques->Calcul_Valeur_Commerciale_StockSERVICE("Article");
+		this->oDs = this->serviceStatistiques->Calcul_Valeur_Commerciale_StockSERVICE("Commande5");
 		this->dataGridView_stat->DataSource = this->oDs;
-		this->dataGridView_stat->DataMember = "Article";
+		this->dataGridView_stat->DataMember = "Commande5";
 		donneesgeneree();
 	}
 
@@ -464,9 +466,9 @@ namespace ProjetPOOGroupe2 {
 	{
 		this->dataGridView_stat->Refresh();
 		this->txt_results->Text = "Valeur d'achat du stock : ";
-		this->serviceStatistiques->Calcul_Valeur_Achat_StockSERVICE("Article");
+		this->oDs = this->serviceStatistiques->Calcul_Valeur_Achat_StockSERVICE("Commande6");
 		this->dataGridView_stat->DataSource = this->oDs;
-		this->dataGridView_stat->DataMember = "Article";
+		this->dataGridView_stat->DataMember = "Commande6";
 		donneesgeneree();
 	}
 
