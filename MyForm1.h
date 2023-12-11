@@ -438,6 +438,14 @@ namespace ProjetPOOGroupe2 {
 	{
 		this->Hide();
 	}
+	private: bool verifentree() {
+		if (this->tb_nom->Text == "" || this->tb_prenom->Text == "" || this->tb_superieur->Text == "" || this->tb_nomrue->Text == "" || this->tb_date->Text == "" || this->tb_ville->Text == "") {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
 
 	private: System::Void clearentree() {
 		this->tb_ID->Text = "";
@@ -504,7 +512,7 @@ namespace ProjetPOOGroupe2 {
 
 	private: System::Void btn_ajouter_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		if (this->tb_nom->Text == "" || this->tb_prenom->Text == "" || this->tb_superieur->Text == "" || this->tb_nomrue->Text == "" || this->tb_date->Text == "" || this->tb_date->Text == "" || this->tb_ville->Text == "")
+		if (verifentree() == false)
 		{
 			this->txt_results->Text = "Veuillez remplir tous les champs";
 		}
@@ -528,23 +536,33 @@ namespace ProjetPOOGroupe2 {
 
 	private: System::Void btn_supprimer_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		this->pe->supprimerUnePersonne(Convert::ToInt32(this->tb_ID->Text));
-		clearentree();
-		actualiser();
+		if (this->tb_ID->Text == "" || this->tb_ID->Text == "0") {
+			this->txt_results->Text = "Veuillez entrer un identifiant à supprimer";
+		}
+		else {
+			this->pe->supprimerUnePersonne(Convert::ToInt32(this->tb_ID->Text));
+			clearentree();
+			actualiser();
+		}
 	}
 	private: System::Void btn_modifier_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		this->personnel->set_Nom(this->tb_nom->Text);
-		this->personnel->set_Prenom(this->tb_prenom->Text);
-		this->personnel->set_Date_Embauche(this->tb_date->Text); //Vérifier si c'est la bonne textBox.
-		this->Adresse->set_Rue(this->tb_nomrue->Text);
-		this->Adresse->set_Numero_Maison(Convert::ToInt32(this->tb_numrue->Text));
-		this->personnel->set_Adresse_Habitation(this->Adresse);
-		this->Adresse->set_Nom_Ville(this->tb_ville->Text);
-		this->pe->modifierUnePersonne(Convert::ToInt32(this->tb_ID->Text), this->personnel, this->tb_ville->Text, Convert::ToInt32(this->tb_superieur->Text));
-		clearentree();
-		actualiser();
-		this->txt_results->Text = "Données entrées avec succès";
+		if (verifentree() == false || this->tb_ID->Text == "" || this->tb_ID->Text == "0") {
+			this->txt_results->Text = "Veuillez remplir tous les champs";
+		}
+		else {
+			this->personnel->set_Nom(this->tb_nom->Text);
+			this->personnel->set_Prenom(this->tb_prenom->Text);
+			this->personnel->set_Date_Embauche(this->tb_date->Text); //Vérifier si c'est la bonne textBox.
+			this->Adresse->set_Rue(this->tb_nomrue->Text);
+			this->Adresse->set_Numero_Maison(Convert::ToInt32(this->tb_numrue->Text));
+			this->personnel->set_Adresse_Habitation(this->Adresse);
+			this->Adresse->set_Nom_Ville(this->tb_ville->Text);
+			this->pe->modifierUnePersonne(Convert::ToInt32(this->tb_ID->Text), this->personnel, this->tb_ville->Text, Convert::ToInt32(this->tb_superieur->Text));
+			clearentree();
+			actualiser();
+			this->txt_results->Text = "Données entrées avec succès";
+		}
 	}
 
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {

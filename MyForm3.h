@@ -447,6 +447,7 @@ namespace ProjetPOOGroupe2 {
 		this->dataGridView1->DataMember = "Liste_Commandes";
 	}
 
+
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{
 		affichage_tout();

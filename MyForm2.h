@@ -499,6 +499,16 @@ namespace ProjetPOOGroupe2 {
 		this->tb_nvf->Text = "";
 	}
 
+	private: bool verifentree() {
+		if (this->tb_nom->Text == "" || this->tb_prenom->Text == "" || this->tb_datena->Text == "" || this->tb_datepa->Text == "" || this->tb_facnu->Text == "" || this->tb_facru->Text == "" || this->tb_livnu->Text == "" || this->tb_livru->Text == "" || this->tb_nvl->Text == "" || this->tb_nvf->Text == "") {
+			return false;
+		}
+		else {
+			return true;
+		}
+
+	}
+
 	public: void actualiser()
 	{
 		this->dataGridView1->Refresh();
@@ -572,7 +582,7 @@ namespace ProjetPOOGroupe2 {
 
 	private: System::Void btn_ajouter_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		if (this->tb_nom->Text == "" || this->tb_prenom->Text == "" || this->tb_datena->Text == "" || this->tb_datepa->Text == "" || this->tb_facnu->Text == "" || this->tb_facru->Text == "" || this->tb_livnu->Text == "" || this->tb_livru->Text == "" || this->tb_nvf->Text == "" || this->tb_nvl->Text == "")
+		if (verifentree() == false)
 		{
 			this->txt_results->Text = "Veuillez remplir tous les champs";
 		}
@@ -606,7 +616,7 @@ namespace ProjetPOOGroupe2 {
 
 	private: System::Void btn_supprimer_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		if (this->tb_id->Text == "")
+		if (this->tb_id->Text == "" || this->tb_id->Text == "0")
 		{
 			this->txt_results->Text = "Veuillez renseigner l'ID du client que vous souhaitez supprimer";
 		}
@@ -620,7 +630,7 @@ namespace ProjetPOOGroupe2 {
 	}
 
 	private: System::Void btn_modifier_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (this->tb_id->Text == "")
+		if (verifentree() == false || this->tb_id->Text == "" || this->tb_id->Text == "")
 		{
 			this->txt_results->Text = "Veuillez renseigner l'ID du client que vous souhaitez modifier";
 		}
