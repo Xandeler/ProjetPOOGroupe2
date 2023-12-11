@@ -464,8 +464,6 @@ namespace ProjetPOOGroupe2 {
 		 this->textBox3->Text = "";
 		 this->textBox4->Text = "";
 		 this->textBox_id_client->Text = "";
-		 this->textBox6->Text = "";
-		 this->textBox_id_article->Text = "";
 	 }
 
 	private: System::Void get_infos(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
