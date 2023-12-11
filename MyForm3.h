@@ -118,6 +118,7 @@ namespace ProjetPOOGroupe2 {
 			   this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			   this->dataGridView1->Size = System::Drawing::Size(429, 196);
 			   this->dataGridView1->TabIndex = 0;
+			   this->dataGridView1->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm3::get_infos);
 			   // 
 			   // btn_retour
 			   // 
@@ -340,9 +341,9 @@ namespace ProjetPOOGroupe2 {
 				   static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			   this->label8->Location = System::Drawing::Point(583, 342);
 			   this->label8->Name = L"label8";
-			   this->label8->Size = System::Drawing::Size(258, 18);
+			   this->label8->Size = System::Drawing::Size(246, 18);
 			   this->label8->TabIndex = 30;
-			   this->label8->Text = L"Quantité de cette article à commander";
+			   this->label8->Text = L"Quantité de cet article à commander";
 			   // 
 			   // textBox6
 			   // 
@@ -425,6 +426,7 @@ namespace ProjetPOOGroupe2 {
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			   this->ResumeLayout(false);
 			   this->PerformLayout();
+
 		   }
 
 #pragma endregion
@@ -436,6 +438,35 @@ namespace ProjetPOOGroupe2 {
 	private: void refresh_datagrid()
 	{
 		this->dataGridView1->Refresh();
+	}
+
+	private: System::Void get_infos(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+		if (e->RowIndex >= 0 && e->ColumnIndex == 0) { // Seulement lorsque la colonne 0 est sélectionnée
+			DataGridViewRow^ selectedRow = this->dataGridView1->Rows[e->RowIndex];
+			Object^ idValue = selectedRow->Cells[0]->Value;
+
+			if (idValue != nullptr) {
+				try {
+					this->tb_prenom->Text = System::Convert::ToString(idValue);
+				}
+				catch (FormatException^) {
+					// Gérer les exceptions si nécessaire
+				}
+			}
+		}
+	}
+
+	private: bool verifentree()
+	{
+		if (this->textBox2->Text == "" || this->textBox1->Text == "" || this->textBox4->Text == "" || this->textBox3->Text == "")
+		{
+			return false;
+		}
+
+		else
+		{
+			return true;
+		}
 	}
 
 	private: void affichage_tout()
@@ -457,26 +488,35 @@ namespace ProjetPOOGroupe2 {
 	{
 		try
 		{
-			int^ id_commande = 0;
-			int^ id_client = Convert::ToInt32(this->textBox_id_client->Text);
-			String^ date_livraison = this->textBox2->Text;
-			String^ date_emission = this->textBox1->Text;
-			String^ date_paiement = this->textBox3->Text;
-			String^ moyen_paiement = this->textBox4->Text;
-			double^ total_ht = 0.0;
-			double^ total_ttc = 0.0;
-			String^ nom = "rien";
-			AD::Adresse^ adresse = gcnew AD::Adresse();
-			int^ num = 0;
-			String^ logo = "rien";
-			AD::Adresse^ adresse_f = gcnew AD::Adresse();
-			AD::Adresse^ adresse_l = gcnew AD::Adresse();
+			if (verifentree() == false || this->textBox_id_client->Text == "")
+			{
+				this->txt_results->Text = "Veuillez remplir tous les champs nécéssaires";
+			}
 
-			this->commandes->ajouter(id_commande, id_client, date_livraison, date_emission, date_paiement, moyen_paiement, total_ht, total_ttc, nom, adresse, num, logo, adresse_f, adresse_l);
+			else
+			{
+				int^ id_commande = 0;
+				int^ id_client = Convert::ToInt32(this->textBox_id_client->Text);
+				String^ date_livraison = this->textBox2->Text;
+				String^ date_emission = this->textBox1->Text;
+				String^ date_paiement = this->textBox3->Text;
+				String^ moyen_paiement = this->textBox4->Text;
+				double^ total_ht = 0.0;
+				double^ total_ttc = 0.0;
+				String^ nom = "rien";
+				AD::Adresse^ adresse = gcnew AD::Adresse();
+				int^ num = 0;
+				String^ logo = "rien";
+				AD::Adresse^ adresse_f = gcnew AD::Adresse();
+				AD::Adresse^ adresse_l = gcnew AD::Adresse();
 
-			this->txt_results->Text = "Données entrées avec succès";
+				this->commandes->ajouter(id_commande, id_client, date_livraison, date_emission, date_paiement, moyen_paiement, total_ht, total_ttc, nom, adresse, num, logo, adresse_f, adresse_l);
 
-			affichage_tout();
+				this->txt_results->Text = "Données entrées avec succès";
+
+				affichage_tout();
+			}
+			
 		}
 		catch (Exception^ execept)
 		{
@@ -489,26 +529,35 @@ namespace ProjetPOOGroupe2 {
 	private: System::Void btn_supprimer_Click(System::Object^ sender, System::EventArgs^ e) {
 		try
 		{
-			int^ id_commande = Convert::ToInt32(this->tb_prenom->Text);
-			int^ id_client = 0;
-			String^ date_livraison = this->textBox2->Text;
-			String^ date_emission = this->textBox1->Text;
-			String^ date_paiement = this->textBox3->Text;
-			String^ moyen_paiement = this->textBox4->Text;
-			double^ total_ht = 0.0;
-			double^ total_ttc = 0.0;
-			String^ nom = "rien";
-			AD::Adresse^ adresse = gcnew AD::Adresse();
-			int^ num = 0;
-			String^ logo = "rien";
-			AD::Adresse^ adresse_f = gcnew AD::Adresse();
-			AD::Adresse^ adresse_l = gcnew AD::Adresse();
+			if (this->tb_prenom->Text == "")
+			{
+				this->txt_results->Text = "Veuillez spécifier un id de commande.";
+			}
 
-			this->commandes->supprimer(id_commande, id_client, date_livraison, date_emission, date_paiement, moyen_paiement, total_ht, total_ttc, nom, adresse, num, logo, adresse_f, adresse_l);
+			else
+			{
+				int^ id_commande = Convert::ToInt32(this->tb_prenom->Text);
+				int^ id_client = 0;
+				String^ date_livraison = this->textBox2->Text;
+				String^ date_emission = this->textBox1->Text;
+				String^ date_paiement = this->textBox3->Text;
+				String^ moyen_paiement = this->textBox4->Text;
+				double^ total_ht = 0.0;
+				double^ total_ttc = 0.0;
+				String^ nom = "rien";
+				AD::Adresse^ adresse = gcnew AD::Adresse();
+				int^ num = 0;
+				String^ logo = "rien";
+				AD::Adresse^ adresse_f = gcnew AD::Adresse();
+				AD::Adresse^ adresse_l = gcnew AD::Adresse();
 
-			this->txt_results->Text = "Données supprimées avec succès";
+				this->commandes->supprimer(id_commande, id_client, date_livraison, date_emission, date_paiement, moyen_paiement, total_ht, total_ttc, nom, adresse, num, logo, adresse_f, adresse_l);
 
-			affichage_tout();
+				this->txt_results->Text = "Données supprimées avec succès";
+
+				affichage_tout();
+			}
+			
 		}
 		catch (Exception^ execept)
 		{
@@ -521,27 +570,36 @@ namespace ProjetPOOGroupe2 {
 	private: System::Void btn_modifier_Click(System::Object^ sender, System::EventArgs^ e) {
 		try
 		{
-			refresh_datagrid();
-			int^ id_commande = Convert::ToInt32(this->tb_prenom->Text);
-			int^ id_client = 0;
-			String^ date_livraison = this->textBox2->Text;
-			String^ date_emission = this->textBox1->Text;
-			String^ date_paiement = this->textBox3->Text;
-			String^ moyen_paiement = this->textBox4->Text;
-			double^ total_ht = 0.0;
-			double^ total_ttc = 0.0;
-			String^ nom = "rien";
-			AD::Adresse^ adresse = gcnew AD::Adresse();
-			int^ num = 0;
-			String^ logo = "rien";
-			AD::Adresse^ adresse_f = gcnew AD::Adresse();
-			AD::Adresse^ adresse_l = gcnew AD::Adresse();
+			if (verifentree() == false)
+			{
+				this->txt_results->Text = "Veuillez remplir tous les champs nécessaires.";
+			}
 
-			this->commandes->modifier(id_commande, id_client, date_livraison, date_emission, date_paiement, moyen_paiement, total_ht, total_ttc, nom, adresse, num, logo, adresse_f, adresse_l);
+			else
+			{
+				refresh_datagrid();
+				int^ id_commande = Convert::ToInt32(this->tb_prenom->Text);
+				int^ id_client = 0;
+				String^ date_livraison = this->textBox2->Text;
+				String^ date_emission = this->textBox1->Text;
+				String^ date_paiement = this->textBox3->Text;
+				String^ moyen_paiement = this->textBox4->Text;
+				double^ total_ht = 0.0;
+				double^ total_ttc = 0.0;
+				String^ nom = "rien";
+				AD::Adresse^ adresse = gcnew AD::Adresse();
+				int^ num = 0;
+				String^ logo = "rien";
+				AD::Adresse^ adresse_f = gcnew AD::Adresse();
+				AD::Adresse^ adresse_l = gcnew AD::Adresse();
 
-			this->txt_results->Text = "Données modifiées avec succès";
+				this->commandes->modifier(id_commande, id_client, date_livraison, date_emission, date_paiement, moyen_paiement, total_ht, total_ttc, nom, adresse, num, logo, adresse_f, adresse_l);
 
-			affichage_tout();
+				this->txt_results->Text = "Données modifiées avec succès";
+
+				affichage_tout();
+			}
+			
 		}
 		catch (Exception^ execept)
 		{
@@ -568,13 +626,22 @@ namespace ProjetPOOGroupe2 {
 
 	private: System::Void bouton_imprimer_click(System::Object^ sender, System::EventArgs^ e)
 	{
-		int^ id_commande = Convert::ToInt32(this->tb_prenom->Text);
+		if (this->tb_prenom->Text == "")
+		{
+			this->txt_results->Text = "Veuillez spécifier un id de commande.";
+		}
 
-		this->commandes = gcnew StockageCommandes(id_commande);
+		else
+		{
+			int^ id_commande = Convert::ToInt32(this->tb_prenom->Text);
 
-		this->commandes->imprimer_commande();
+			this->commandes = gcnew StockageCommandes(id_commande);
 
-		this->txt_results->Text = "Commande imprimée avec succes.";
+			this->commandes->imprimer_commande();
+
+			this->txt_results->Text = "Commande imprimée avec succes.";
+		}
+		
 	}
 	};
 }
