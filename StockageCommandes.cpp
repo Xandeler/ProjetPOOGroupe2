@@ -302,7 +302,7 @@ void StockageCommandes::livraison(StreamWriter^ ecriture)
 
 void StockageCommandes::imprimer_commande()
 {
-	String^ chemin_acces = "C:\\Users\\lisaj\\OneDrive - Association Cesi Viacesi mail\\CESI A2\\Programmation Orientée Objets\\Projet\\test.rtf";
+	String^ chemin_acces = "C:\\Users\\leosc\\OneDrive - Association Cesi Viacesi mail\\Bureau\\A2\\(2) Conception et programmation objet\\Livrables\\Factures\\test.rtf";
 
 	StreamWriter^ ecriture = gcnew StreamWriter(chemin_acces);
 

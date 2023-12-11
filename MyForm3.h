@@ -37,7 +37,8 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::Button^ btn_ajouter;
 	private: System::Windows::Forms::Button^ btn_supprimer;
 	private: System::Windows::Forms::Button^ btn_modifier;
-	private: System::Windows::Forms::TextBox^ tb_prenom;
+	private: System::Windows::Forms::TextBox^ tb_idcommande;
+
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::TextBox^ txt_results;
 	private: System::Windows::Forms::Label^ lbl_resultats;
@@ -80,7 +81,7 @@ namespace ProjetPOOGroupe2 {
 			   this->btn_ajouter = (gcnew System::Windows::Forms::Button());
 			   this->btn_supprimer = (gcnew System::Windows::Forms::Button());
 			   this->btn_modifier = (gcnew System::Windows::Forms::Button());
-			   this->tb_prenom = (gcnew System::Windows::Forms::TextBox());
+			   this->tb_idcommande = (gcnew System::Windows::Forms::TextBox());
 			   this->label2 = (gcnew System::Windows::Forms::Label());
 			   this->txt_results = (gcnew System::Windows::Forms::TextBox());
 			   this->lbl_resultats = (gcnew System::Windows::Forms::Label());
@@ -171,13 +172,13 @@ namespace ProjetPOOGroupe2 {
 			   this->btn_modifier->UseVisualStyleBackColor = false;
 			   this->btn_modifier->Click += gcnew System::EventHandler(this, &MyForm3::btn_modifier_Click);
 			   // 
-			   // tb_prenom
+			   // tb_idcommande
 			   // 
-			   this->tb_prenom->Location = System::Drawing::Point(552, 49);
-			   this->tb_prenom->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			   this->tb_prenom->Name = L"tb_prenom";
-			   this->tb_prenom->Size = System::Drawing::Size(316, 24);
-			   this->tb_prenom->TabIndex = 7;
+			   this->tb_idcommande->Location = System::Drawing::Point(552, 49);
+			   this->tb_idcommande->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			   this->tb_idcommande->Name = L"tb_idcommande";
+			   this->tb_idcommande->Size = System::Drawing::Size(316, 24);
+			   this->tb_idcommande->TabIndex = 7;
 			   // 
 			   // label2
 			   // 
@@ -412,7 +413,7 @@ namespace ProjetPOOGroupe2 {
 			   this->Controls->Add(this->txt_results);
 			   this->Controls->Add(this->label2);
 			   this->Controls->Add(this->btn_retour);
-			   this->Controls->Add(this->tb_prenom);
+			   this->Controls->Add(this->tb_idcommande);
 			   this->Controls->Add(this->btn_ajouter);
 			   this->Controls->Add(this->btn_supprimer);
 			   this->Controls->Add(this->btn_modifier);
@@ -447,7 +448,7 @@ namespace ProjetPOOGroupe2 {
 
 			if (idValue != nullptr) {
 				try {
-					this->tb_prenom->Text = System::Convert::ToString(idValue);
+					this->tb_idcommande->Text = System::Convert::ToString(idValue);
 				}
 				catch (FormatException^) {
 					// Gérer les exceptions si nécessaire
@@ -529,14 +530,14 @@ namespace ProjetPOOGroupe2 {
 	private: System::Void btn_supprimer_Click(System::Object^ sender, System::EventArgs^ e) {
 		try
 		{
-			if (this->tb_prenom->Text == "")
+			if (this->tb_idcommande->Text == "")
 			{
 				this->txt_results->Text = "Veuillez spécifier un id de commande.";
 			}
 
 			else
 			{
-				int^ id_commande = Convert::ToInt32(this->tb_prenom->Text);
+				int^ id_commande = Convert::ToInt32(this->tb_idcommande->Text);
 				int^ id_client = 0;
 				String^ date_livraison = this->textBox2->Text;
 				String^ date_emission = this->textBox1->Text;
@@ -578,7 +579,7 @@ namespace ProjetPOOGroupe2 {
 			else
 			{
 				refresh_datagrid();
-				int^ id_commande = Convert::ToInt32(this->tb_prenom->Text);
+				int^ id_commande = Convert::ToInt32(this->tb_idcommande->Text);
 				int^ id_client = 0;
 				String^ date_livraison = this->textBox2->Text;
 				String^ date_emission = this->textBox1->Text;
@@ -613,7 +614,7 @@ namespace ProjetPOOGroupe2 {
 	{
 		refresh_datagrid();
 
-		int^ id_commande = Convert::ToInt32(this->tb_prenom->Text);
+		int^ id_commande = Convert::ToInt32(this->tb_idcommande->Text);
 		int^ id_article = Convert::ToInt32(this->textBox_id_article->Text);
 		int^ quantite = Convert::ToInt32(this->textBox6->Text);
 
@@ -626,14 +627,14 @@ namespace ProjetPOOGroupe2 {
 
 	private: System::Void bouton_imprimer_click(System::Object^ sender, System::EventArgs^ e)
 	{
-		if (this->tb_prenom->Text == "")
+		if (this->tb_idcommande->Text == "")
 		{
 			this->txt_results->Text = "Veuillez spécifier un id de commande.";
 		}
 
 		else
 		{
-			int^ id_commande = Convert::ToInt32(this->tb_prenom->Text);
+			int^ id_commande = Convert::ToInt32(this->tb_idcommande->Text);
 
 			this->commandes = gcnew StockageCommandes(id_commande);
 
