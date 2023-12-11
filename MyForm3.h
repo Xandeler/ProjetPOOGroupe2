@@ -67,6 +67,7 @@ namespace ProjetPOOGroupe2 {
 	private: System::Windows::Forms::Label^ label_id_article;
 	private: System::Windows::Forms::TextBox^ textBox_id_article;
 	private: System::Windows::Forms::Button^ button_imprimer;
+	private: System::Windows::Forms::Button^ btn_clear;
 
 	private: System::Windows::Forms::TextBox^ textBox6;
 
@@ -102,6 +103,7 @@ namespace ProjetPOOGroupe2 {
 			   this->label_id_article = (gcnew System::Windows::Forms::Label());
 			   this->textBox_id_article = (gcnew System::Windows::Forms::TextBox());
 			   this->button_imprimer = (gcnew System::Windows::Forms::Button());
+			   this->btn_clear = (gcnew System::Windows::Forms::Button());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			   this->SuspendLayout();
 			   // 
@@ -386,12 +388,25 @@ namespace ProjetPOOGroupe2 {
 			   this->button_imprimer->UseVisualStyleBackColor = false;
 			   this->button_imprimer->Click += gcnew System::EventHandler(this, &MyForm3::bouton_imprimer_click);
 			   // 
+			   // btn_clear
+			   // 
+			   this->btn_clear->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			   this->btn_clear->ForeColor = System::Drawing::SystemColors::HotTrack;
+			   this->btn_clear->Location = System::Drawing::Point(762, 449);
+			   this->btn_clear->Name = L"btn_clear";
+			   this->btn_clear->Size = System::Drawing::Size(105, 28);
+			   this->btn_clear->TabIndex = 40;
+			   this->btn_clear->Text = L"CLEAR";
+			   this->btn_clear->UseVisualStyleBackColor = false;
+			   this->btn_clear->Click += gcnew System::EventHandler(this, &MyForm3::btn_clear_Click);
+			   // 
 			   // MyForm3
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(9, 18);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			   this->ClientSize = System::Drawing::Size(882, 566);
+			   this->Controls->Add(this->btn_clear);
 			   this->Controls->Add(this->button_imprimer);
 			   this->Controls->Add(this->textBox_id_article);
 			   this->Controls->Add(this->label_id_article);
@@ -440,6 +455,18 @@ namespace ProjetPOOGroupe2 {
 	{
 		this->dataGridView1->Refresh();
 	}
+
+	 private: void refresh_textboxes()
+	 {
+		 this->tb_idcommande->Text = "";
+		 this->textBox1->Text = "";
+		 this->textBox2->Text = "";
+		 this->textBox3->Text = "";
+		 this->textBox4->Text = "";
+		 this->textBox_id_client->Text = "";
+		 this->textBox6->Text = "";
+		 this->textBox_id_article->Text = "";
+	 }
 
 	private: System::Void get_infos(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 		if (e->RowIndex >= 0 && e->ColumnIndex == 0) { // Seulement lorsque la colonne 0 est sélectionnée
@@ -516,6 +543,7 @@ namespace ProjetPOOGroupe2 {
 				this->txt_results->Text = "Données entrées avec succès";
 
 				affichage_tout();
+				refresh_textboxes();
 			}
 			
 		}
@@ -557,6 +585,7 @@ namespace ProjetPOOGroupe2 {
 				this->txt_results->Text = "Données supprimées avec succès";
 
 				affichage_tout();
+				refresh_textboxes();
 			}
 			
 		}
@@ -599,6 +628,7 @@ namespace ProjetPOOGroupe2 {
 				this->txt_results->Text = "Données modifiées avec succès";
 
 				affichage_tout();
+				refresh_textboxes();
 			}
 			
 		}
@@ -644,5 +674,8 @@ namespace ProjetPOOGroupe2 {
 		}
 		
 	}
-	};
+	private: System::Void btn_clear_Click(System::Object^ sender, System::EventArgs^ e) {
+		refresh_textboxes();
+	}
+};
 }
