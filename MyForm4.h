@@ -86,7 +86,7 @@ namespace ProjetPOOGroupe2 {
 			   this->button_retour->Location = System::Drawing::Point(22, 544);
 			   this->button_retour->Name = L"button_retour";
 			   this->button_retour->Size = System::Drawing::Size(112, 36);
-			   this->button_retour->TabIndex = 4;
+			   this->button_retour->TabIndex = 27;
 			   this->button_retour->Text = L"RETOUR";
 			   this->button_retour->UseVisualStyleBackColor = false;
 			   this->button_retour->Click += gcnew System::EventHandler(this, &MyForm4::bouton_retour_click);
@@ -102,7 +102,7 @@ namespace ProjetPOOGroupe2 {
 			   this->dataGridView_stock->RowTemplate->Height = 24;
 			   this->dataGridView_stock->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			   this->dataGridView_stock->Size = System::Drawing::Size(853, 212);
-			   this->dataGridView_stock->TabIndex = 5;
+			   this->dataGridView_stock->TabIndex = 23;
 			   this->dataGridView_stock->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm4::get_infos);
 			   // 
 			   // button_modifier_article
@@ -113,7 +113,7 @@ namespace ProjetPOOGroupe2 {
 			   this->button_modifier_article->Location = System::Drawing::Point(22, 445);
 			   this->button_modifier_article->Name = L"button_modifier_article";
 			   this->button_modifier_article->Size = System::Drawing::Size(211, 67);
-			   this->button_modifier_article->TabIndex = 6;
+			   this->button_modifier_article->TabIndex = 26;
 			   this->button_modifier_article->Text = L"MODIFIER L\'ARTICLE";
 			   this->button_modifier_article->UseVisualStyleBackColor = false;
 			   this->button_modifier_article->Click += gcnew System::EventHandler(this, &MyForm4::bouton_modifier_article_click);
@@ -126,7 +126,7 @@ namespace ProjetPOOGroupe2 {
 			   this->button_supprimer_article->Location = System::Drawing::Point(22, 356);
 			   this->button_supprimer_article->Name = L"button_supprimer_article";
 			   this->button_supprimer_article->Size = System::Drawing::Size(211, 67);
-			   this->button_supprimer_article->TabIndex = 7;
+			   this->button_supprimer_article->TabIndex = 25;
 			   this->button_supprimer_article->Text = L"SUPPRIMER L\'ARTICLE";
 			   this->button_supprimer_article->UseVisualStyleBackColor = false;
 			   this->button_supprimer_article->Click += gcnew System::EventHandler(this, &MyForm4::bouton_supprimer_article_click);
@@ -139,7 +139,7 @@ namespace ProjetPOOGroupe2 {
 			   this->button_ajouter_article->Location = System::Drawing::Point(22, 265);
 			   this->button_ajouter_article->Name = L"button_ajouter_article";
 			   this->button_ajouter_article->Size = System::Drawing::Size(211, 67);
-			   this->button_ajouter_article->TabIndex = 8;
+			   this->button_ajouter_article->TabIndex = 24;
 			   this->button_ajouter_article->Text = L"AJOUTER UN ARTICLE";
 			   this->button_ajouter_article->UseVisualStyleBackColor = false;
 			   this->button_ajouter_article->Click += gcnew System::EventHandler(this, &MyForm4::bouton_ajouter_article_click);
@@ -160,14 +160,14 @@ namespace ProjetPOOGroupe2 {
 			   this->textBox_nom_article->Location = System::Drawing::Point(368, 310);
 			   this->textBox_nom_article->Name = L"textBox_nom_article";
 			   this->textBox_nom_article->Size = System::Drawing::Size(100, 22);
-			   this->textBox_nom_article->TabIndex = 10;
+			   this->textBox_nom_article->TabIndex = 0;
 			   // 
 			   // textBox_seuil_reapprovisionnement_article
 			   // 
 			   this->textBox_seuil_reapprovisionnement_article->Location = System::Drawing::Point(368, 390);
 			   this->textBox_seuil_reapprovisionnement_article->Name = L"textBox_seuil_reapprovisionnement_article";
 			   this->textBox_seuil_reapprovisionnement_article->Size = System::Drawing::Size(100, 22);
-			   this->textBox_seuil_reapprovisionnement_article->TabIndex = 12;
+			   this->textBox_seuil_reapprovisionnement_article->TabIndex = 2;
 			   // 
 			   // label_seuil_reapprovisionnement_article
 			   // 
@@ -185,7 +185,7 @@ namespace ProjetPOOGroupe2 {
 			   this->textBox_prix_ht_article->Location = System::Drawing::Point(368, 474);
 			   this->textBox_prix_ht_article->Name = L"textBox_prix_ht_article";
 			   this->textBox_prix_ht_article->Size = System::Drawing::Size(100, 22);
-			   this->textBox_prix_ht_article->TabIndex = 14;
+			   this->textBox_prix_ht_article->TabIndex = 4;
 			   // 
 			   // label_prix_ht_article
 			   // 
@@ -203,7 +203,7 @@ namespace ProjetPOOGroupe2 {
 			   this->textBox_seuil_reduction_article->Location = System::Drawing::Point(652, 388);
 			   this->textBox_seuil_reduction_article->Name = L"textBox_seuil_reduction_article";
 			   this->textBox_seuil_reduction_article->Size = System::Drawing::Size(100, 22);
-			   this->textBox_seuil_reduction_article->TabIndex = 18;
+			   this->textBox_seuil_reduction_article->TabIndex = 3;
 			   // 
 			   // label_seuil_reduction_article
 			   // 
@@ -221,7 +221,7 @@ namespace ProjetPOOGroupe2 {
 			   this->textBox_quantite_article->Location = System::Drawing::Point(652, 310);
 			   this->textBox_quantite_article->Name = L"textBox_quantite_article";
 			   this->textBox_quantite_article->Size = System::Drawing::Size(100, 22);
-			   this->textBox_quantite_article->TabIndex = 16;
+			   this->textBox_quantite_article->TabIndex = 1;
 			   // 
 			   // label_quantite_article
 			   // 
@@ -254,7 +254,7 @@ namespace ProjetPOOGroupe2 {
 			   this->button2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->button2->Name = L"button2";
 			   this->button2->Size = System::Drawing::Size(105, 28);
-			   this->button2->TabIndex = 27;
+			   this->button2->TabIndex = 5;
 			   this->button2->Text = L"CLEAR";
 			   this->button2->UseVisualStyleBackColor = false;
 			   this->button2->Click += gcnew System::EventHandler(this, &MyForm4::button2_Click);

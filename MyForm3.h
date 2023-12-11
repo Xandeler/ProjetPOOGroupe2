@@ -118,7 +118,7 @@ namespace ProjetPOOGroupe2 {
 			   this->dataGridView1->RowHeadersWidth = 51;
 			   this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			   this->dataGridView1->Size = System::Drawing::Size(429, 196);
-			   this->dataGridView1->TabIndex = 0;
+			   this->dataGridView1->TabIndex = 36;
 			   this->dataGridView1->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm3::get_infos);
 			   // 
 			   // btn_retour
@@ -128,7 +128,7 @@ namespace ProjetPOOGroupe2 {
 			   this->btn_retour->Location = System::Drawing::Point(13, 518);
 			   this->btn_retour->Name = L"btn_retour";
 			   this->btn_retour->Size = System::Drawing::Size(112, 36);
-			   this->btn_retour->TabIndex = 4;
+			   this->btn_retour->TabIndex = 39;
 			   this->btn_retour->Text = L"RETOUR";
 			   this->btn_retour->UseVisualStyleBackColor = false;
 			   this->btn_retour->Click += gcnew System::EventHandler(this, &MyForm3::btn_retour_Click);
@@ -141,7 +141,7 @@ namespace ProjetPOOGroupe2 {
 			   this->btn_ajouter->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->btn_ajouter->Name = L"btn_ajouter";
 			   this->btn_ajouter->Size = System::Drawing::Size(211, 67);
-			   this->btn_ajouter->TabIndex = 2;
+			   this->btn_ajouter->TabIndex = 32;
 			   this->btn_ajouter->Text = L"AJOUTER COMMANDE";
 			   this->btn_ajouter->UseVisualStyleBackColor = false;
 			   this->btn_ajouter->Click += gcnew System::EventHandler(this, &MyForm3::btn_ajouter_Click);
@@ -154,7 +154,7 @@ namespace ProjetPOOGroupe2 {
 			   this->btn_supprimer->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->btn_supprimer->Name = L"btn_supprimer";
 			   this->btn_supprimer->Size = System::Drawing::Size(211, 67);
-			   this->btn_supprimer->TabIndex = 3;
+			   this->btn_supprimer->TabIndex = 34;
 			   this->btn_supprimer->Text = L"SUPPRIMER";
 			   this->btn_supprimer->UseVisualStyleBackColor = false;
 			   this->btn_supprimer->Click += gcnew System::EventHandler(this, &MyForm3::btn_supprimer_Click);
@@ -167,7 +167,7 @@ namespace ProjetPOOGroupe2 {
 			   this->btn_modifier->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->btn_modifier->Name = L"btn_modifier";
 			   this->btn_modifier->Size = System::Drawing::Size(211, 67);
-			   this->btn_modifier->TabIndex = 4;
+			   this->btn_modifier->TabIndex = 33;
 			   this->btn_modifier->Text = L"MODIFIER";
 			   this->btn_modifier->UseVisualStyleBackColor = false;
 			   this->btn_modifier->Click += gcnew System::EventHandler(this, &MyForm3::btn_modifier_Click);
@@ -178,7 +178,7 @@ namespace ProjetPOOGroupe2 {
 			   this->tb_idcommande->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_idcommande->Name = L"tb_idcommande";
 			   this->tb_idcommande->Size = System::Drawing::Size(316, 24);
-			   this->tb_idcommande->TabIndex = 7;
+			   this->tb_idcommande->TabIndex = 0;
 			   // 
 			   // label2
 			   // 
@@ -199,7 +199,7 @@ namespace ProjetPOOGroupe2 {
 			   this->txt_results->Name = L"txt_results";
 			   this->txt_results->ReadOnly = true;
 			   this->txt_results->Size = System::Drawing::Size(470, 68);
-			   this->txt_results->TabIndex = 10;
+			   this->txt_results->TabIndex = 38;
 			   // 
 			   // lbl_resultats
 			   // 
@@ -243,7 +243,7 @@ namespace ProjetPOOGroupe2 {
 			   this->textBox1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->textBox1->Name = L"textBox1";
 			   this->textBox1->Size = System::Drawing::Size(315, 24);
-			   this->textBox1->TabIndex = 17;
+			   this->textBox1->TabIndex = 2;
 			   // 
 			   // textBox2
 			   // 
@@ -251,7 +251,7 @@ namespace ProjetPOOGroupe2 {
 			   this->textBox2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->textBox2->Name = L"textBox2";
 			   this->textBox2->Size = System::Drawing::Size(316, 24);
-			   this->textBox2->TabIndex = 18;
+			   this->textBox2->TabIndex = 1;
 			   // 
 			   // label_stock
 			   // 
@@ -273,7 +273,7 @@ namespace ProjetPOOGroupe2 {
 			   this->button_ajouter_article->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->button_ajouter_article->Name = L"button_ajouter_article";
 			   this->button_ajouter_article->Size = System::Drawing::Size(211, 67);
-			   this->button_ajouter_article->TabIndex = 23;
+			   this->button_ajouter_article->TabIndex = 35;
 			   this->button_ajouter_article->Text = L"AJOUTER ARTICLE COMMANDE";
 			   this->button_ajouter_article->UseVisualStyleBackColor = false;
 			   this->button_ajouter_article->Click += gcnew System::EventHandler(this, &MyForm3::bouton_ajouter_article_click);
@@ -306,7 +306,7 @@ namespace ProjetPOOGroupe2 {
 			   this->textBox3->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->textBox3->Name = L"textBox3";
 			   this->textBox3->Size = System::Drawing::Size(315, 24);
-			   this->textBox3->TabIndex = 26;
+			   this->textBox3->TabIndex = 4;
 			   // 
 			   // textBox4
 			   // 
@@ -314,7 +314,7 @@ namespace ProjetPOOGroupe2 {
 			   this->textBox4->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->textBox4->Name = L"textBox4";
 			   this->textBox4->Size = System::Drawing::Size(315, 24);
-			   this->textBox4->TabIndex = 27;
+			   this->textBox4->TabIndex = 3;
 			   // 
 			   // label7
 			   // 
@@ -333,7 +333,7 @@ namespace ProjetPOOGroupe2 {
 			   this->textBox_id_client->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->textBox_id_client->Name = L"textBox_id_client";
 			   this->textBox_id_client->Size = System::Drawing::Size(315, 24);
-			   this->textBox_id_client->TabIndex = 29;
+			   this->textBox_id_client->TabIndex = 5;
 			   // 
 			   // label8
 			   // 
@@ -352,7 +352,7 @@ namespace ProjetPOOGroupe2 {
 			   this->textBox6->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->textBox6->Name = L"textBox6";
 			   this->textBox6->Size = System::Drawing::Size(315, 24);
-			   this->textBox6->TabIndex = 31;
+			   this->textBox6->TabIndex = 6;
 			   // 
 			   // label_id_article
 			   // 
@@ -371,7 +371,7 @@ namespace ProjetPOOGroupe2 {
 			   this->textBox_id_article->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->textBox_id_article->Name = L"textBox_id_article";
 			   this->textBox_id_article->Size = System::Drawing::Size(315, 24);
-			   this->textBox_id_article->TabIndex = 33;
+			   this->textBox_id_article->TabIndex = 7;
 			   // 
 			   // button_imprimer
 			   // 
@@ -381,7 +381,7 @@ namespace ProjetPOOGroupe2 {
 			   this->button_imprimer->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->button_imprimer->Name = L"button_imprimer";
 			   this->button_imprimer->Size = System::Drawing::Size(211, 67);
-			   this->button_imprimer->TabIndex = 34;
+			   this->button_imprimer->TabIndex = 36;
 			   this->button_imprimer->Text = L"IMPRIMER COMMANDE";
 			   this->button_imprimer->UseVisualStyleBackColor = false;
 			   this->button_imprimer->Click += gcnew System::EventHandler(this, &MyForm3::bouton_imprimer_click);

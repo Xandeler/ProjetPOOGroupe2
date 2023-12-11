@@ -203,7 +203,7 @@ namespace ProjetPOOGroupe2 {
 			   this->tb_idclient->Location = System::Drawing::Point(309, 283);
 			   this->tb_idclient->Name = L"tb_idclient";
 			   this->tb_idclient->Size = System::Drawing::Size(100, 22);
-			   this->tb_idclient->TabIndex = 21;
+			   this->tb_idclient->TabIndex = 0;
 			   // 
 			   // label_ID_client
 			   // 
@@ -258,7 +258,7 @@ namespace ProjetPOOGroupe2 {
 			   this->tb_idcommande->Location = System::Drawing::Point(478, 283);
 			   this->tb_idcommande->Name = L"tb_idcommande";
 			   this->tb_idcommande->Size = System::Drawing::Size(100, 22);
-			   this->tb_idcommande->TabIndex = 27;
+			   this->tb_idcommande->TabIndex = 1;
 			   // 
 			   // label1
 			   // 
@@ -336,6 +336,7 @@ namespace ProjetPOOGroupe2 {
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView_stat))->EndInit();
 			   this->ResumeLayout(false);
 			   this->PerformLayout();
+
 		   }
 
 #pragma endregion

@@ -119,7 +119,7 @@ namespace ProjetPOOGroupe2 {
 			   this->dataGridView1->RowHeadersWidth = 51;
 			   this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			   this->dataGridView1->Size = System::Drawing::Size(977, 220);
-			   this->dataGridView1->TabIndex = 0;
+			   this->dataGridView1->TabIndex = 63;
 			   this->dataGridView1->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm2::get_infos);
 			   // 
 			   // btn_retour
@@ -129,7 +129,7 @@ namespace ProjetPOOGroupe2 {
 			   this->btn_retour->Location = System::Drawing::Point(13, 554);
 			   this->btn_retour->Name = L"btn_retour";
 			   this->btn_retour->Size = System::Drawing::Size(112, 36);
-			   this->btn_retour->TabIndex = 4;
+			   this->btn_retour->TabIndex = 45;
 			   this->btn_retour->Text = L"RETOUR";
 			   this->btn_retour->UseVisualStyleBackColor = false;
 			   this->btn_retour->Click += gcnew System::EventHandler(this, &MyForm2::btn_retour_Click);
@@ -142,7 +142,7 @@ namespace ProjetPOOGroupe2 {
 			   this->btn_ajouter->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->btn_ajouter->Name = L"btn_ajouter";
 			   this->btn_ajouter->Size = System::Drawing::Size(211, 67);
-			   this->btn_ajouter->TabIndex = 2;
+			   this->btn_ajouter->TabIndex = 42;
 			   this->btn_ajouter->Text = L"AJOUTER UN CLIENT";
 			   this->btn_ajouter->UseVisualStyleBackColor = false;
 			   this->btn_ajouter->Click += gcnew System::EventHandler(this, &MyForm2::btn_ajouter_Click);
@@ -155,7 +155,7 @@ namespace ProjetPOOGroupe2 {
 			   this->btn_supprimer->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->btn_supprimer->Name = L"btn_supprimer";
 			   this->btn_supprimer->Size = System::Drawing::Size(211, 67);
-			   this->btn_supprimer->TabIndex = 3;
+			   this->btn_supprimer->TabIndex = 44;
 			   this->btn_supprimer->Text = L"SUPPRIMER UN CLIENT";
 			   this->btn_supprimer->UseVisualStyleBackColor = false;
 			   this->btn_supprimer->Click += gcnew System::EventHandler(this, &MyForm2::btn_supprimer_Click);
@@ -168,26 +168,26 @@ namespace ProjetPOOGroupe2 {
 			   this->btn_modifier->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->btn_modifier->Name = L"btn_modifier";
 			   this->btn_modifier->Size = System::Drawing::Size(211, 67);
-			   this->btn_modifier->TabIndex = 4;
+			   this->btn_modifier->TabIndex = 43;
 			   this->btn_modifier->Text = L"MODIFIER UN CLIENT";
 			   this->btn_modifier->UseVisualStyleBackColor = false;
 			   this->btn_modifier->Click += gcnew System::EventHandler(this, &MyForm2::btn_modifier_Click);
 			   // 
 			   // tb_nom
 			   // 
-			   this->tb_prenom->Location = System::Drawing::Point(656, 307);
-			   this->tb_prenom->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			   this->tb_prenom->Name = L"tb_prenom";
-			   this->tb_prenom->Size = System::Drawing::Size(334, 24);
-			   this->tb_prenom->TabIndex = 6;
-			   // 
-			   // tb_prenom
-			   // 
 			   this->tb_nom->Location = System::Drawing::Point(656, 270);
 			   this->tb_nom->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_nom->Name = L"tb_nom";
 			   this->tb_nom->Size = System::Drawing::Size(334, 24);
-			   this->tb_nom->TabIndex = 7;
+			   this->tb_nom->TabIndex = 2;
+			   // 
+			   // tb_prenom
+			   // 
+			   this->tb_prenom->Location = System::Drawing::Point(656, 307);
+			   this->tb_prenom->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			   this->tb_prenom->Name = L"tb_prenom";
+			   this->tb_prenom->Size = System::Drawing::Size(334, 24);
+			   this->tb_prenom->TabIndex = 3;
 			   // 
 			   // label1
 			   // 
@@ -219,7 +219,7 @@ namespace ProjetPOOGroupe2 {
 			   this->txt_results->Name = L"txt_results";
 			   this->txt_results->ReadOnly = true;
 			   this->txt_results->Size = System::Drawing::Size(491, 64);
-			   this->txt_results->TabIndex = 10;
+			   this->txt_results->TabIndex = 56;
 			   // 
 			   // lbl_resultats
 			   // 
@@ -232,7 +232,7 @@ namespace ProjetPOOGroupe2 {
 			   this->lbl_resultats->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			   this->lbl_resultats->Name = L"lbl_resultats";
 			   this->lbl_resultats->Size = System::Drawing::Size(70, 18);
-			   this->lbl_resultats->TabIndex = 14;
+			   this->lbl_resultats->TabIndex = 52;
 			   this->lbl_resultats->Text = L"Resultats";
 			   // 
 			   // label3
@@ -263,7 +263,7 @@ namespace ProjetPOOGroupe2 {
 			   this->tb_datepa->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_datepa->Name = L"tb_datepa";
 			   this->tb_datepa->Size = System::Drawing::Size(333, 24);
-			   this->tb_datepa->TabIndex = 17;
+			   this->tb_datepa->TabIndex = 5;
 			   // 
 			   // tb_datena
 			   // 
@@ -271,7 +271,7 @@ namespace ProjetPOOGroupe2 {
 			   this->tb_datena->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_datena->Name = L"tb_datena";
 			   this->tb_datena->Size = System::Drawing::Size(334, 24);
-			   this->tb_datena->TabIndex = 18;
+			   this->tb_datena->TabIndex = 4;
 			   // 
 			   // label5
 			   // 
@@ -301,7 +301,7 @@ namespace ProjetPOOGroupe2 {
 			   this->tb_facnu->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_facnu->Name = L"tb_facnu";
 			   this->tb_facnu->Size = System::Drawing::Size(61, 24);
-			   this->tb_facnu->TabIndex = 21;
+			   this->tb_facnu->TabIndex = 9;
 			   // 
 			   // tb_livnu
 			   // 
@@ -309,7 +309,7 @@ namespace ProjetPOOGroupe2 {
 			   this->tb_livnu->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_livnu->Name = L"tb_livnu";
 			   this->tb_livnu->Size = System::Drawing::Size(61, 24);
-			   this->tb_livnu->TabIndex = 22;
+			   this->tb_livnu->TabIndex = 6;
 			   // 
 			   // tb_id
 			   // 
@@ -317,7 +317,7 @@ namespace ProjetPOOGroupe2 {
 			   this->tb_id->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_id->Name = L"tb_id";
 			   this->tb_id->Size = System::Drawing::Size(56, 24);
-			   this->tb_id->TabIndex = 23;
+			   this->tb_id->TabIndex = 1;
 			   // 
 			   // label7
 			   // 
@@ -336,7 +336,7 @@ namespace ProjetPOOGroupe2 {
 			   this->tb_livru->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_livru->Name = L"tb_livru";
 			   this->tb_livru->Size = System::Drawing::Size(220, 24);
-			   this->tb_livru->TabIndex = 25;
+			   this->tb_livru->TabIndex = 7;
 			   // 
 			   // label8
 			   // 
@@ -355,7 +355,7 @@ namespace ProjetPOOGroupe2 {
 			   this->tb_facru->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_facru->Name = L"tb_facru";
 			   this->tb_facru->Size = System::Drawing::Size(220, 24);
-			   this->tb_facru->TabIndex = 27;
+			   this->tb_facru->TabIndex = 10;
 			   // 
 			   // label9
 			   // 
@@ -374,7 +374,7 @@ namespace ProjetPOOGroupe2 {
 			   this->tb_nvl->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_nvl->Name = L"tb_nvl";
 			   this->tb_nvl->Size = System::Drawing::Size(128, 24);
-			   this->tb_nvl->TabIndex = 29;
+			   this->tb_nvl->TabIndex = 8;
 			   // 
 			   // label10
 			   // 
@@ -393,7 +393,7 @@ namespace ProjetPOOGroupe2 {
 			   this->tb_nvf->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->tb_nvf->Name = L"tb_nvf";
 			   this->tb_nvf->Size = System::Drawing::Size(128, 24);
-			   this->tb_nvf->TabIndex = 31;
+			   this->tb_nvf->TabIndex = 11;
 			   // 
 			   // label11
 			   // 
@@ -477,6 +477,7 @@ namespace ProjetPOOGroupe2 {
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			   this->ResumeLayout(false);
 			   this->PerformLayout();
+
 		   }
 
 #pragma endregion

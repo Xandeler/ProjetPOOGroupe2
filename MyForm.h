@@ -62,6 +62,8 @@ namespace ProjetPOOGroupe2 {
 
 	private: System::Windows::Forms::Button^ b_statistiques;
 	private: System::Windows::Forms::Button^ bouton_log;
+	private: System::Windows::Forms::Label^ label1;
+
 
 
 
@@ -90,6 +92,7 @@ namespace ProjetPOOGroupe2 {
 			this->b_stocks = (gcnew System::Windows::Forms::Button());
 			this->b_statistiques = (gcnew System::Windows::Forms::Button());
 			this->bouton_log = (gcnew System::Windows::Forms::Button());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// b_personnel
@@ -99,7 +102,7 @@ namespace ProjetPOOGroupe2 {
 			this->b_personnel->Location = System::Drawing::Point(45, 93);
 			this->b_personnel->Name = L"b_personnel";
 			this->b_personnel->Size = System::Drawing::Size(176, 69);
-			this->b_personnel->TabIndex = 6;
+			this->b_personnel->TabIndex = 0;
 			this->b_personnel->Text = L"PERSONNEL";
 			this->b_personnel->UseVisualStyleBackColor = false;
 			this->b_personnel->Click += gcnew System::EventHandler(this, &MyForm::b_personnel_Click);
@@ -111,7 +114,7 @@ namespace ProjetPOOGroupe2 {
 			this->b_client->Location = System::Drawing::Point(277, 93);
 			this->b_client->Name = L"b_client";
 			this->b_client->Size = System::Drawing::Size(176, 69);
-			this->b_client->TabIndex = 7;
+			this->b_client->TabIndex = 1;
 			this->b_client->Text = L"CLIENT";
 			this->b_client->UseVisualStyleBackColor = false;
 			this->b_client->Click += gcnew System::EventHandler(this, &MyForm::b_client_Click);
@@ -123,7 +126,7 @@ namespace ProjetPOOGroupe2 {
 			this->b_commandes->Location = System::Drawing::Point(277, 203);
 			this->b_commandes->Name = L"b_commandes";
 			this->b_commandes->Size = System::Drawing::Size(176, 69);
-			this->b_commandes->TabIndex = 8;
+			this->b_commandes->TabIndex = 3;
 			this->b_commandes->Text = L"COMMANDES";
 			this->b_commandes->UseVisualStyleBackColor = false;
 			this->b_commandes->Click += gcnew System::EventHandler(this, &MyForm::b_commandes_Click);
@@ -135,7 +138,7 @@ namespace ProjetPOOGroupe2 {
 			this->b_stocks->Location = System::Drawing::Point(45, 203);
 			this->b_stocks->Name = L"b_stocks";
 			this->b_stocks->Size = System::Drawing::Size(176, 69);
-			this->b_stocks->TabIndex = 9;
+			this->b_stocks->TabIndex = 2;
 			this->b_stocks->Text = L"STOCK";
 			this->b_stocks->UseVisualStyleBackColor = false;
 			this->b_stocks->Click += gcnew System::EventHandler(this, &MyForm::b_stocks_Click);
@@ -147,7 +150,7 @@ namespace ProjetPOOGroupe2 {
 			this->b_statistiques->Location = System::Drawing::Point(163, 300);
 			this->b_statistiques->Name = L"b_statistiques";
 			this->b_statistiques->Size = System::Drawing::Size(176, 69);
-			this->b_statistiques->TabIndex = 10;
+			this->b_statistiques->TabIndex = 4;
 			this->b_statistiques->Text = L"STATISTIQUES";
 			this->b_statistiques->UseVisualStyleBackColor = false;
 			this->b_statistiques->Click += gcnew System::EventHandler(this, &MyForm::b_statistiques_Click);
@@ -164,12 +167,26 @@ namespace ProjetPOOGroupe2 {
 			this->bouton_log->UseVisualStyleBackColor = false;
 			this->bouton_log->Click += gcnew System::EventHandler(this, &MyForm::bouton_log_Click);
 			// 
+			// label1
+			// 
+			this->label1->Anchor = System::Windows::Forms::AnchorStyles::Top;
+			this->label1->AutoSize = true;
+			this->label1->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(37, 25);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(402, 46);
+			this->label1->TabIndex = 12;
+			this->label1->Text = L"The Electronic Power";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->ClientSize = System::Drawing::Size(499, 439);
+			this->Controls->Add(this->label1);
 			this->Controls->Add(this->bouton_log);
 			this->Controls->Add(this->b_statistiques);
 			this->Controls->Add(this->b_stocks);
@@ -181,6 +198,7 @@ namespace ProjetPOOGroupe2 {
 			this->Name = L"MyForm";
 			this->Text = L"Accueil";
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 
