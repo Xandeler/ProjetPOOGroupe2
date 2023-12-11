@@ -27,7 +27,7 @@ String^ mapFichier::SELECT_commande()
 
 String^ mapFichier::SELECT_totaux()
 {
-	return "SELECT SUM(Prix_HT_Article * Taux_TVA_Modif * Quantite_Commande_Article * CASE WHEN ISNULL(M.Taux_Reduction_Modif, 0) = 0 THEN 1 WHEN A.Seuil_Reduction_Article <= Co.Quantite_Commande_Article THEN M.Taux_Reduction_Modif ELSE 1 END) AS Total_TTC, SUM(Prix_HT_Article * Quantite_Commande_Article) AS Total_HT FROM Commande C JOIN Effectue E ON C.ID_Commande = E.ID_Commande JOIN Clients Cl ON E.ID_Clients = Cl.ID_Clients JOIN Compose Co ON C.ID_Commande = Co.ID_Commande JOIN Article A ON Co.Reference_Article = A.Reference_Article JOIN Comporte Cp ON Cp.Reference_Article = A.Reference_Article JOIN Modif M ON M.ID_Modif = Cp.ID_Modif WHERE C.ID_Commande = " + this->get_id_commande() + ";";
+	return "SELECT SUM(Prix_HT_Article * Quantite_Commande_Article) AS Total_HT, SUM(Prix_HT_Article * Taux_TVA_Modif * Quantite_Commande_Article * CASE WHEN ISNULL(M.Taux_Reduction_Modif, 0) = 0 THEN 1 WHEN A.Seuil_Reduction_Article <= Co.Quantite_Commande_Article THEN M.Taux_Reduction_Modif ELSE 1 END) AS Total_TTC FROM Commande C JOIN Effectue E ON C.ID_Commande = E.ID_Commande JOIN Clients Cl ON E.ID_Clients = Cl.ID_Clients JOIN Compose Co ON C.ID_Commande = Co.ID_Commande JOIN Article A ON Co.Reference_Article = A.Reference_Article JOIN Comporte Cp ON Cp.Reference_Article = A.Reference_Article JOIN Modif M ON M.ID_Modif = Cp.ID_Modif WHERE C.ID_Commande = " + this->get_id_commande() + ";";
 }
 
 String^ mapFichier::SELECT_reference()
