@@ -1,11 +1,9 @@
-# ProjetPOOGroupe2
+# Gestion de Stock 📦 | Projet C++ (POO)  
 
 GRASSER Alexandre
 JUNG Lisa
 RINALDI Johan
 SCHAEFFER Léo
-
-# Gestion de Stock 📦 | Projet C++ (POO)  
 
 Ce projet en **C++** applique les principes de la **programmation orientée objet (POO)** pour développer une application de gestion de stock et de création de commandes pour une entreprise fictive.  
 
